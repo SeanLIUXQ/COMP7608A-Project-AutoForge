@@ -94,7 +94,13 @@ flowchart LR
 
 ### 4.2 Tool-RAG and Query Strategies
 
-AutoForge uses Tool-RAG to match a user query against tool metadata, descriptions, parameter names, keywords, and schemas. The current live backend uses lexical retrieval with intent-aware preprocessing, and the project also includes optional vector-store support. Each retrieval produces a `retrieval_trace` so that the system can explain which tools were considered, what score they received, and why they were accepted or rejected.
+AutoForge uses Tool-RAG as a capability-retrieval layer rather than a document-answering layer. Each registered tool is stored as a skill bundle containing `metadata.json`, `schema.json`, `tool.py`, optional `README.md`, and example input. The registry converts this bundle into a searchable tool document that combines the tool name, natural-language description, parameter names, parameter descriptions, keywords, schema fields, and source-level capability hints. A user query is therefore compared against the operational interface of a tool, not against an arbitrary text passage.
+
+The submitted live backend uses the default lexical retrieval path implemented in `backend/tool_registry.py`. Before scoring, quoted literals, list/dictionary payloads, numeric-only tokens, and common task words are down-weighted or removed so that retrieval focuses on user intent rather than benchmark payload values. The lexical score combines query-token overlap and a light length-ratio term, with the overlap component weighted more heavily. This design is deliberately simple and inspectable: when a query such as "reverse the text streamlit" is evaluated, the retrieval trace can show which tools matched because of intent words such as `reverse` and `text`, instead of being dominated by the literal string `streamlit`.
+
+The project also includes an optional vector retrieval path. When `AUTOFORGE_ENABLE_VECTOR_STORE=1`, `ToolRegistry` attempts to initialize ChromaDB through `chromadb.PersistentClient` and embeds tool documents using `sentence-transformers`. If ChromaDB or the embedding model is unavailable, the system falls back to lexical retrieval. In the final reported backend benchmark we kept the lexical path as the default because it is deterministic, lightweight, and easy for the TA to reproduce without first downloading embedding models.
+
+Every retrieval returns a ranked candidate list and a `retrieval_trace` containing tool id, tool name, score, threshold, acceptance decision, and debug scores. The service only executes a candidate when its score reaches the configured `AUTOFORGE_SIMILARITY_THRESHOLD`. If the selected tool requires structured parameters rather than a single `query` argument, the backend uses the lightweight payload extractor in `backend/llm_tools.py` and validates the resulting payload against the tool schema before execution. This makes retrieval, argument extraction, and execution observable as separate sources of success or failure.
 
 The backend supports four strategies:
 
@@ -105,7 +111,7 @@ The backend supports four strategies:
 | `registry_only` | Retrieve and execute only; no fallback. | Measures registry coverage. |
 | `agent` | Force the LLM forge path. | Demonstrates cold tool creation. |
 
-This design allows the evaluation to separate correctness, reuse, and coverage. In particular, `registry_only` is expected to fail on tasks not covered by the registry; this is useful because it exposes the boundary of the current tool catalog.
+This strategy design makes the evaluation more diagnostic. `full` measures the user-facing system with both reuse and fallback available. `no_retrieval` measures how much performance remains when reuse is disabled. `registry_only` intentionally removes fallback, so its failures reveal the current boundary of the tool catalog. `agent` forces cold tool creation and is used for the real DeepSeek-backed agent evidence. Together, these modes separate three research questions: whether AutoForge can answer the query, whether it can reuse an existing tool, and whether it can expand the registry when no suitable tool exists.
 
 ### 4.3 Multi-Agent Tool Forge
 
@@ -184,17 +190,19 @@ This evidence is stored in `docs/report/real_agent_evidence/docker_sandbox/docke
 
 ### 4.6 API, MCP, and Frontend
 
-The backend exposes health, tool listing, tool inspection, and query endpoints through FastAPI. Newly packaged tools can also be registered as dynamic tool routes, so generated tools behave more like deployable services than temporary snippets.
+The backend is implemented as a Python FastAPI service with Pydantic request and response schemas shared through `shared/schemas.py`. `backend/main.py` assembles modular routers for health checks, tool listing/inspection, query execution, and dashboard evidence; the provided start scripts run the service with Uvicorn. The central orchestration logic lives in `backend/service.py`, while `backend/tool_registry.py` manages skill-bundle loading, retrieval, and registry synchronization. Generated tools are not treated as temporary snippets: `backend/dynamic_api.py` validates payloads against each tool's JSON schema and can expose packaged tools as dynamic callable routes.
 
-The MCP-compatible helper exposes catalog listing, direct tool invocation, and natural-language querying. Verification showed a non-empty catalog, successful direct invocation, and successful natural-language query routing. In the MCP helper verification, a reverse-text query returned `tilmaerts` through the fast path with `reused_existing_tool = true`.
+Sandbox execution is implemented in two layers. The default local runner performs AST parsing, rejects banned imports and calls, enforces timeouts, and checks JSON-serializable outputs. The Docker runner adds container-level isolation through the Docker CLI with `--network none`, `--read-only`, `--cpus 1.0`, `--memory 512m`, and `--pids-limit 256`. The real agent evidence uses Docker sandbox verification, while the default TA reproduction path can run locally without requiring Docker or an API key.
 
-The Streamlit frontend contains three main pages:
+The MCP-compatible surface is implemented in `backend/mcp/server.py` using the `mcp` package's `FastMCP` interface. It exposes three practical tool-facing operations: `list_forged_tools`, `invoke_forged_tool`, and `autoforge_query`. This lets an MCP client inspect the AutoForge catalog, invoke a registered generated tool directly, or route a natural-language query through the same backend service used by the REST API. Verification showed a non-empty catalog, successful direct invocation, and successful natural-language query routing. In the MCP helper verification, a reverse-text query returned `tilmaerts` through the fast path with `reused_existing_tool = true`.
+
+The frontend is implemented with Streamlit and communicates with the backend through a small HTTP client in `frontend/api_client.py`. It contains three main pages:
 
 - **Chat:** submit natural-language queries and inspect path, latency, reused tool, and retrieval trace.
 - **Tool Browser:** inspect registered tool schemas, parameters, source code, and direct invocation behavior.
 - **Dashboard:** view backend status, benchmark reports, strategy comparisons, cold/warm metrics, per-family performance, and failure cases.
 
-Screenshots used as evidence are saved under `docs/report/real_agent_evidence/screenshots/`.
+The reporting and visualization pipeline uses Pandas for tabular summaries, Plotly for interactive dashboard-style charts, and Matplotlib for static report figures. Screenshots used as evidence are saved under `docs/report/real_agent_evidence/screenshots/`.
 
 ## 5. Benchmark and Evaluation Protocol
 
