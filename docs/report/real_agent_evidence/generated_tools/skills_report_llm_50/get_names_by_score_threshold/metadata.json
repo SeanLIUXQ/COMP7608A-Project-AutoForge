@@ -1,0 +1,19 @@
+{
+  "metadata_version": 1,
+  "tool_id": "8aae96b6-e4a3-4404-9093-93fa51d5a42e",
+  "name": "get_names_by_score_threshold",
+  "description": "Given a list of dictionaries and a numeric threshold, return a list of 'name'",
+  "created_at": "2026-05-02T07:46:40.324613+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

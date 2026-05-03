@@ -1,0 +1,20 @@
+{
+  "metadata_version": 1,
+  "tool_id": "37bc0911-2db8-4b95-a61f-15777d0e80a0",
+  "name": "sum_jsonl_field",
+  "description": "Parse a sequence of JSONL (JSON lines) strings and return the sum of the",
+  "created_at": "2026-05-02T07:27:03.350895+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "json",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

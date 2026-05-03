@@ -1,0 +1,33 @@
+{
+  "name": "filter_csv_names_by_score",
+  "description": "Return a delimited string of names from rows where the score exceeds the threshold.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "csv_text": {
+        "type": "string",
+        "description": ""
+      },
+      "threshold": {
+        "type": "number",
+        "description": ""
+      },
+      "name_column": {
+        "type": "string",
+        "description": ""
+      },
+      "score_column": {
+        "type": "string",
+        "description": ""
+      },
+      "delimiter": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "csv_text",
+      "threshold"
+    ]
+  }
+}

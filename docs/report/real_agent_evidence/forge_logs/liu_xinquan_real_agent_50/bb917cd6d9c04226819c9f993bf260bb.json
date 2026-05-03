@@ -1,0 +1,117 @@
+{
+  "trace_id": "bb917cd6d9c04226819c9f993bf260bb",
+  "timestamp": "2026-05-02T06:54:48.889538+00:00",
+  "status": "success",
+  "attempts": 2,
+  "summary": {
+    "headline": "Forge succeeded for deduplicate_ordered after 2 attempt(s).",
+    "function_name": "deduplicate_ordered",
+    "status": "success",
+    "attempts": 2,
+    "step_count": 5,
+    "plan_steps": [
+      "Ensure input is iterable (list, tuple, etc.)",
+      "Initialize empty set 'seen' and empty list 'result'",
+      "Iterate over each element in input",
+      "If element not in 'seen', add it to 'seen' and append to 'result'",
+      "Return 'result'"
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": "runtime",
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that removes duplicates while preserving first occurrence order."
+  },
+  "plan": {
+    "steps": [
+      "Ensure input is iterable (list, tuple, etc.)",
+      "Initialize empty set 'seen' and empty list 'result'",
+      "Iterate over each element in input",
+      "If element not in 'seen', add it to 'seen' and append to 'result'",
+      "Return 'result'"
+    ],
+    "suggested_function_name": "deduplicate_ordered"
+  },
+  "source_code": "from typing import Iterable, List, TypeVar\n\nT = TypeVar(\"T\")\n\ndef deduplicate_ordered(seq: Iterable[T]) -> List[T]:\n    \"\"\"Remove duplicates from an iterable while preserving the order of first occurrence.\n\n    Works for any iterable, including those containing unhashable elements\n    (e.g., lists, dicts, sets).\n\n    Args:\n        seq: An iterable of elements.\n\n    Returns:\n        A new list containing the first occurrence of each distinct element,\n        in the order they first appeared.\n\n    Raises:\n        TypeError: If *seq* is not iterable.\n    \"\"\"\n    # Validate that seq is iterable\n    try:\n        iterator = iter(seq)\n    except TypeError:\n        raise TypeError(f\"Input must be an iterable, got {type(seq)}\")\n\n    # Use a list instead of a set to support unhashable types\n    seen: List[T] = []\n    result: List[T] = []\n\n    for item in seq:\n        if item not in seen:\n            seen.append(item)\n            result.append(item)\n\n    return result",
+  "function_name": "deduplicate_ordered",
+  "verification": {
+    "success": true,
+    "stdout": "[]\n",
+    "stderr": "",
+    "execution_time_ms": 2063.1993999995757,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "deduplicate_ordered",
+          "seq": "example"
+        },
+        "success": true,
+        "stdout": "['e', 'x', 'a', 'm', 'p', 'l']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['e', 'x', 'a', 'm', 'p', 'l']"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "deduplicate_ordered",
+          "seq": "nearby input"
+        },
+        "success": true,
+        "stdout": "['n', 'e', 'a', 'r', 'b', 'y', ' ', 'i', 'p', 'u', 't']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['n', 'e', 'a', 'r', 'b', 'y', ' ', 'i', 'p', 'u', 't']"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "deduplicate_ordered",
+          "seq": ""
+        },
+        "success": true,
+        "stdout": "[]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": []
+      }
+    ]
+  },
+  "error_type": "runtime",
+  "error": null,
+  "tool": {
+    "tool_id": "db454efe-37f4-4a9e-ad18-94ee8d77f84d",
+    "name": "deduplicate_ordered",
+    "description": "Remove duplicates from an iterable while preserving the order of first occurrence.",
+    "parameters": [
+      {
+        "name": "seq",
+        "type": "string",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import Iterable, List, TypeVar\n\nT = TypeVar(\"T\")\n\ndef deduplicate_ordered(seq: Iterable[T]) -> List[T]:\n    \"\"\"Remove duplicates from an iterable while preserving the order of first occurrence.\n\n    Works for any iterable, including those containing unhashable elements\n    (e.g., lists, dicts, sets).\n\n    Args:\n        seq: An iterable of elements.\n\n    Returns:\n        A new list containing the first occurrence of each distinct element,\n        in the order they first appeared.\n\n    Raises:\n        TypeError: If *seq* is not iterable.\n    \"\"\"\n    # Validate that seq is iterable\n    try:\n        iterator = iter(seq)\n    except TypeError:\n        raise TypeError(f\"Input must be an iterable, got {type(seq)}\")\n\n    # Use a list instead of a set to support unhashable types\n    seen: List[T] = []\n    result: List[T] = []\n\n    for item in seq:\n        if item not in seen:\n            seen.append(item)\n            result.append(item)\n\n    return result",
+    "json_schema": {
+      "name": "deduplicate_ordered",
+      "description": "Remove duplicates from an iterable while preserving the order of first occurrence.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "seq": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "seq"
+        ]
+      }
+    }
+  }
+}

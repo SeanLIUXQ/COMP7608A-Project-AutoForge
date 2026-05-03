@@ -1,0 +1,16 @@
+{
+  "name": "remove_duplicates_preserve_order",
+  "description": "Return a new list with duplicates removed while preserving the order of first occurrence.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "values": {
+        "type": "array",
+        "description": ""
+      }
+    },
+    "required": [
+      "values"
+    ]
+  }
+}

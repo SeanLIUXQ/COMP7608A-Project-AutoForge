@@ -1,0 +1,19 @@
+{
+  "metadata_version": 1,
+  "tool_id": "0ceecc65-1a70-4541-aeb1-bb5e68f8e0dd",
+  "name": "remove_duplicates_preserve_order",
+  "description": "Return a list of unique elements from the input sequence, preserving the",
+  "created_at": "2026-05-02T07:34:09.020774+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

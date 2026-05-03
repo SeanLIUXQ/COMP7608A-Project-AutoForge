@@ -1,0 +1,179 @@
+{
+  "trace_id": "250c1f881f5940ef98925d74ed575857",
+  "timestamp": "2026-05-02T07:52:14.806618+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for sum_amounts_by_category after 1 attempt(s).",
+    "function_name": "sum_amounts_by_category",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 5,
+    "plan_steps": [
+      "Validate that the input is a list of row dictionaries.",
+      "For each row, ensure it is a dict containing 'category' and 'amount' keys.",
+      "Initialize an empty dictionary to hold category totals.",
+      "Iterate through valid rows, convert 'amount' to float, and add to the corresponding category total.",
+      "Return the dictionary mapping categories to summed amounts."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that totals amounts by category for row dictionaries."
+  },
+  "plan": {
+    "steps": [
+      "Validate that the input is a list of row dictionaries.",
+      "For each row, ensure it is a dict containing 'category' and 'amount' keys.",
+      "Initialize an empty dictionary to hold category totals.",
+      "Iterate through valid rows, convert 'amount' to float, and add to the corresponding category total.",
+      "Return the dictionary mapping categories to summed amounts."
+    ],
+    "suggested_function_name": "sum_amounts_by_category"
+  },
+  "source_code": "def sum_amounts_by_category(\n    rows: list[dict],\n    category_field: str = \"category\",\n    amount_field: str = \"amount\"\n) -> dict[str, float]:\n    \"\"\"Sum amounts by category across a list of row dictionaries.\n\n    Args:\n        rows: List of dictionaries, each containing at least category_field\n            and amount_field keys.\n        category_field: Name of the key holding the category value\n            (default 'category').\n        amount_field: Name of the key holding the numeric amount\n            (default 'amount').\n\n    Returns:\n        Dictionary mapping each category to the total sum of amounts.\n\n    Raises:\n        TypeError: If rows is not a list, or any element is not a dict.\n        KeyError: If a row dictionary is missing the category_field or\n            amount_field key.\n        ValueError: If an amount cannot be converted to a float.\n    \"\"\"\n    if not isinstance(rows, list):\n        raise TypeError(\"rows must be a list of dictionaries.\")\n\n    totals: dict[str, float] = {}\n\n    for row_idx, row in enumerate(rows):\n        if not isinstance(row, dict):\n            raise TypeError(f\"Element at index {row_idx} is not a dict.\")\n\n        if category_field not in row:\n            raise KeyError(\n                f\"Row {row_idx} is missing the category field \"\n                f\"'{category_field}'.\"\n            )\n        if amount_field not in row:\n            raise KeyError(\n                f\"Row {row_idx} is missing the amount field \"\n                f\"'{amount_field}'.\"\n            )\n\n        try:\n            amount = float(row[amount_field])\n        except (TypeError, ValueError) as exc:\n            raise ValueError(\n                f\"Amount at row {row_idx} cannot be converted to float: \"\n                f\"{row[amount_field]!r}\"\n            ) from exc\n\n        cat = row[category_field]\n        totals[cat] = totals.get(cat, 0.0) + amount\n\n    return totals",
+  "function_name": "sum_amounts_by_category",
+  "verification": {
+    "success": true,
+    "stdout": "{}\n",
+    "stderr": "",
+    "execution_time_ms": 1565.5585999920731,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "sum_amounts_by_category",
+          "rows": [
+            {
+              "name": "Ada",
+              "score": 91,
+              "cat": "infra",
+              "amt": 18,
+              "category": "infra",
+              "amount": 18
+            },
+            {
+              "name": "Ben",
+              "score": 72,
+              "cat": "ml",
+              "amt": 32,
+              "category": "ml",
+              "amount": 32
+            },
+            {
+              "name": "Cy",
+              "score": 88,
+              "cat": "infra",
+              "amt": 22,
+              "category": "infra",
+              "amount": 22
+            }
+          ]
+        },
+        "success": true,
+        "stdout": "{'infra': 40.0, 'ml': 32.0}\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "{'infra': 40.0, 'ml': 32.0}"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "sum_amounts_by_category",
+          "rows": [
+            {
+              "name": "A",
+              "score": 1,
+              "cat": "ops",
+              "amt": 1,
+              "category": "ops",
+              "amount": 1
+            },
+            {
+              "name": "B",
+              "score": 3,
+              "cat": "ops",
+              "amt": 2,
+              "category": "ops",
+              "amount": 2
+            }
+          ]
+        },
+        "success": true,
+        "stdout": "{'ops': 3.0}\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "{'ops': 3.0}"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "sum_amounts_by_category",
+          "rows": []
+        },
+        "success": true,
+        "stdout": "{}\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": {}
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "e7d29836-39cc-4e71-903e-66e9c3e5c036",
+    "name": "sum_amounts_by_category",
+    "description": "Sum amounts by category across a list of row dictionaries.",
+    "parameters": [
+      {
+        "name": "rows",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "category_field",
+        "type": "string",
+        "description": null,
+        "required": false
+      },
+      {
+        "name": "amount_field",
+        "type": "string",
+        "description": null,
+        "required": false
+      }
+    ],
+    "source_code": "def sum_amounts_by_category(\n    rows: list[dict],\n    category_field: str = \"category\",\n    amount_field: str = \"amount\"\n) -> dict[str, float]:\n    \"\"\"Sum amounts by category across a list of row dictionaries.\n\n    Args:\n        rows: List of dictionaries, each containing at least category_field\n            and amount_field keys.\n        category_field: Name of the key holding the category value\n            (default 'category').\n        amount_field: Name of the key holding the numeric amount\n            (default 'amount').\n\n    Returns:\n        Dictionary mapping each category to the total sum of amounts.\n\n    Raises:\n        TypeError: If rows is not a list, or any element is not a dict.\n        KeyError: If a row dictionary is missing the category_field or\n            amount_field key.\n        ValueError: If an amount cannot be converted to a float.\n    \"\"\"\n    if not isinstance(rows, list):\n        raise TypeError(\"rows must be a list of dictionaries.\")\n\n    totals: dict[str, float] = {}\n\n    for row_idx, row in enumerate(rows):\n        if not isinstance(row, dict):\n            raise TypeError(f\"Element at index {row_idx} is not a dict.\")\n\n        if category_field not in row:\n            raise KeyError(\n                f\"Row {row_idx} is missing the category field \"\n                f\"'{category_field}'.\"\n            )\n        if amount_field not in row:\n            raise KeyError(\n                f\"Row {row_idx} is missing the amount field \"\n                f\"'{amount_field}'.\"\n            )\n\n        try:\n            amount = float(row[amount_field])\n        except (TypeError, ValueError) as exc:\n            raise ValueError(\n                f\"Amount at row {row_idx} cannot be converted to float: \"\n                f\"{row[amount_field]!r}\"\n            ) from exc\n\n        cat = row[category_field]\n        totals[cat] = totals.get(cat, 0.0) + amount\n\n    return totals",
+    "json_schema": {
+      "name": "sum_amounts_by_category",
+      "description": "Sum amounts by category across a list of row dictionaries.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "description": ""
+          },
+          "category_field": {
+            "type": "string",
+            "description": ""
+          },
+          "amount_field": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "rows"
+        ]
+      }
+    }
+  }
+}

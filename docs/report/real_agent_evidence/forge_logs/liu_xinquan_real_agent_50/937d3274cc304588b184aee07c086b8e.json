@@ -1,0 +1,151 @@
+{
+  "trace_id": "937d3274cc304588b184aee07c086b8e",
+  "timestamp": "2026-05-02T07:12:54.822958+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for sort_numbers_ascending after 1 attempt(s).",
+    "function_name": "sort_numbers_ascending",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 5,
+    "plan_steps": [
+      "Ensure input is a list.",
+      "Validate all elements are numeric (int or float).",
+      "If the list is empty, return an empty list.",
+      "Sort the list in ascending order using built-in sorting.",
+      "Return the new sorted list without mutating the original."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that sorts a list of numbers ascending."
+  },
+  "plan": {
+    "steps": [
+      "Ensure input is a list.",
+      "Validate all elements are numeric (int or float).",
+      "If the list is empty, return an empty list.",
+      "Sort the list in ascending order using built-in sorting.",
+      "Return the new sorted list without mutating the original."
+    ],
+    "suggested_function_name": "sort_numbers_ascending"
+  },
+  "source_code": "from typing import List, Union\n\ndef sort_numbers_ascending(numbers: List[Union[int, float]]) -> List[Union[int, float]]:\n    \"\"\"\n    Return a new list containing the numbers sorted in ascending order.\n    \n    The input must be a list of integers or floats. Booleans are not accepted \n    because they are not considered plain numbers. The original list is not modified.\n    If the list is empty, an empty list is returned.\n    \n    Args:\n        numbers: List of numeric values (int or float).\n        \n    Returns:\n        A new list with the same numbers sorted in ascending order.\n        \n    Raises:\n        TypeError: If the input is not a list or any element is not an int/float\n                   (or is a boolean).\n    \"\"\"\n    if not isinstance(numbers, list):\n        raise TypeError(\"Input must be a list.\")\n    for idx, val in enumerate(numbers):\n        if type(val) is bool or not isinstance(val, (int, float)):\n            raise TypeError(\n                f\"Element at index {idx} is not a valid number (got {type(val).__name__}).\"\n            )\n    if not numbers:\n        return []\n    return sorted(numbers)",
+  "function_name": "sort_numbers_ascending",
+  "verification": {
+    "success": true,
+    "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+    "stderr": "",
+    "execution_time_ms": 2081.7259999894304,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "sort_numbers_ascending",
+          "numbers": [
+            5,
+            1,
+            9,
+            2
+          ]
+        },
+        "success": true,
+        "stdout": "[1, 2, 5, 9]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1,
+          2,
+          5,
+          9
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "sort_numbers_ascending",
+          "numbers": [
+            1,
+            2,
+            2,
+            3,
+            1,
+            4
+          ]
+        },
+        "success": true,
+        "stdout": "[1, 1, 2, 2, 3, 4]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1,
+          1,
+          2,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "sort_numbers_ascending",
+          "numbers": [
+            10.0,
+            11.0,
+            12.0,
+            13.0
+          ]
+        },
+        "success": true,
+        "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          10.0,
+          11.0,
+          12.0,
+          13.0
+        ]
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "d99019f9-eb88-4e8b-8aff-efd3a1f7f612",
+    "name": "sort_numbers_ascending",
+    "description": "Return a new list containing the numbers sorted in ascending order.",
+    "parameters": [
+      {
+        "name": "numbers",
+        "type": "array",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import List, Union\n\ndef sort_numbers_ascending(numbers: List[Union[int, float]]) -> List[Union[int, float]]:\n    \"\"\"\n    Return a new list containing the numbers sorted in ascending order.\n    \n    The input must be a list of integers or floats. Booleans are not accepted \n    because they are not considered plain numbers. The original list is not modified.\n    If the list is empty, an empty list is returned.\n    \n    Args:\n        numbers: List of numeric values (int or float).\n        \n    Returns:\n        A new list with the same numbers sorted in ascending order.\n        \n    Raises:\n        TypeError: If the input is not a list or any element is not an int/float\n                   (or is a boolean).\n    \"\"\"\n    if not isinstance(numbers, list):\n        raise TypeError(\"Input must be a list.\")\n    for idx, val in enumerate(numbers):\n        if type(val) is bool or not isinstance(val, (int, float)):\n            raise TypeError(\n                f\"Element at index {idx} is not a valid number (got {type(val).__name__}).\"\n            )\n    if not numbers:\n        return []\n    return sorted(numbers)",
+    "json_schema": {
+      "name": "sort_numbers_ascending",
+      "description": "Return a new list containing the numbers sorted in ascending order.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "numbers": {
+            "type": "array",
+            "description": ""
+          }
+        },
+        "required": [
+          "numbers"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "deduplicate_preserve_order",
+  "description": "Return a list of unique elements from the input iterable,",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "sequence": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "sequence"
+    ]
+  }
+}

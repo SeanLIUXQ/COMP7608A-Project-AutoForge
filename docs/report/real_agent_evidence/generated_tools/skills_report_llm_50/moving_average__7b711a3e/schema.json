@@ -1,0 +1,21 @@
+{
+  "name": "moving_average",
+  "description": "Compute the simple moving average (SMA) of a numerical series.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "series": {
+        "type": "array",
+        "description": ""
+      },
+      "window": {
+        "type": "integer",
+        "description": ""
+      }
+    },
+    "required": [
+      "series",
+      "window"
+    ]
+  }
+}

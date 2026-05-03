@@ -1,0 +1,17 @@
+{
+  "metadata_version": 1,
+  "tool_id": "1a897b18-2c41-43eb-9a4d-0464f6931214",
+  "name": "reverse_string",
+  "description": "Reverse a given string.",
+  "created_at": "2026-05-02T07:26:42.393085+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

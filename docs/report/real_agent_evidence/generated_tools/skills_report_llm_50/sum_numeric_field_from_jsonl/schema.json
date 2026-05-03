@@ -1,0 +1,21 @@
+{
+  "name": "sum_numeric_field_from_jsonl",
+  "description": "Parse JSONL input (a newline-separated string or a list of JSON strings),",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "jsonl_text": {
+        "type": "string",
+        "description": ""
+      },
+      "field_name": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "jsonl_text",
+      "field_name"
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "trace_id": "0ea01282383b42aa9614357c336ae3e2",
+  "timestamp": "2026-05-02T07:49:24.941429+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for sum_field_in_jsonl after 1 attempt(s).",
+    "function_name": "sum_field_in_jsonl",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 6,
+    "plan_steps": [
+      "Validate that inputs are an iterable of strings and a string field name.",
+      "Iterate over each line in the input.",
+      "Attempt to parse each line as JSON; skip any line that fails to parse.",
+      "For each parsed object, check if the named field exists and its value is numeric (int or float).",
+      "Accumulate the numeric values of valid entries.",
+      "Return the total sum as a number."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that parses JSON lines and sums a numeric field."
+  },
+  "plan": {
+    "steps": [
+      "Validate that inputs are an iterable of strings and a string field name.",
+      "Iterate over each line in the input.",
+      "Attempt to parse each line as JSON; skip any line that fails to parse.",
+      "For each parsed object, check if the named field exists and its value is numeric (int or float).",
+      "Accumulate the numeric values of valid entries.",
+      "Return the total sum as a number."
+    ],
+    "suggested_function_name": "sum_field_in_jsonl"
+  },
+  "source_code": "from typing import Iterable, Union\nimport json\n\ndef sum_field_in_jsonl(lines: Iterable[str], field: str) -> Union[int, float]:\n    \"\"\"\n    Parse an iterable of JSON strings (JSONL) and return the sum of all numeric\n    values found under the given field name in parsed dictionaries.\n\n    Args:\n        lines: An iterable of strings, each expected to be a single JSON object.\n        field: The key whose numeric value should be summed.\n\n    Returns:\n        The sum of valid numeric values (int or float).  Returns 0 if no valid\n        values are found.\n\n    Raises:\n        TypeError: If `lines` is not an iterable of strings, or `field` is not\n                   a string.\n    \"\"\"\n    if not isinstance(lines, Iterable):\n        raise TypeError(\"lines must be an iterable of strings\")\n    if not isinstance(field, str):\n        raise TypeError(\"field must be a string\")\n\n    total = 0\n    for line in lines:\n        if not isinstance(line, str):\n            raise TypeError(\"Every item in lines must be a string\")\n        try:\n            obj = json.loads(line)\n        except json.JSONDecodeError:\n            continue  # skip invalid JSON lines\n\n        # We only consider dictionaries\n        if not isinstance(obj, dict):\n            continue\n\n        # Check that the field exists and its value is a plain int or float (not bool)\n        value = obj.get(field)\n        if isinstance(value, (int, float)) and not isinstance(value, bool):\n            total += value\n\n    return total",
+  "function_name": "sum_field_in_jsonl",
+  "verification": {
+    "success": true,
+    "stdout": "10\n",
+    "stderr": "",
+    "execution_time_ms": 1583.7799000000814,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "sum_field_in_jsonl",
+          "lines": [
+            "{\"x\": 1}",
+            "{\"x\": 2}",
+            "{\"x\": 4}"
+          ],
+          "field": "x"
+        },
+        "success": true,
+        "stdout": "7\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 7
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "sum_field_in_jsonl",
+          "lines": [
+            "{\"score\": 2}",
+            "{\"score\": 5}"
+          ],
+          "field": "score"
+        },
+        "success": true,
+        "stdout": "7\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 7
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "sum_field_in_jsonl",
+          "lines": [
+            "{\"amt\": 3}",
+            "{\"amt\": 7}"
+          ],
+          "field": "amt"
+        },
+        "success": true,
+        "stdout": "10\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 10
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "24ba91da-fe4d-4590-8cb7-0df298d73d71",
+    "name": "sum_field_in_jsonl",
+    "description": "Parse an iterable of JSON strings (JSONL) and return the sum of all numeric",
+    "parameters": [
+      {
+        "name": "lines",
+        "type": "string",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "field",
+        "type": "string",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import Iterable, Union\nimport json\n\ndef sum_field_in_jsonl(lines: Iterable[str], field: str) -> Union[int, float]:\n    \"\"\"\n    Parse an iterable of JSON strings (JSONL) and return the sum of all numeric\n    values found under the given field name in parsed dictionaries.\n\n    Args:\n        lines: An iterable of strings, each expected to be a single JSON object.\n        field: The key whose numeric value should be summed.\n\n    Returns:\n        The sum of valid numeric values (int or float).  Returns 0 if no valid\n        values are found.\n\n    Raises:\n        TypeError: If `lines` is not an iterable of strings, or `field` is not\n                   a string.\n    \"\"\"\n    if not isinstance(lines, Iterable):\n        raise TypeError(\"lines must be an iterable of strings\")\n    if not isinstance(field, str):\n        raise TypeError(\"field must be a string\")\n\n    total = 0\n    for line in lines:\n        if not isinstance(line, str):\n            raise TypeError(\"Every item in lines must be a string\")\n        try:\n            obj = json.loads(line)\n        except json.JSONDecodeError:\n            continue  # skip invalid JSON lines\n\n        # We only consider dictionaries\n        if not isinstance(obj, dict):\n            continue\n\n        # Check that the field exists and its value is a plain int or float (not bool)\n        value = obj.get(field)\n        if isinstance(value, (int, float)) and not isinstance(value, bool):\n            total += value\n\n    return total",
+    "json_schema": {
+      "name": "sum_field_in_jsonl",
+      "description": "Parse an iterable of JSON strings (JSONL) and return the sum of all numeric",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "lines": {
+            "type": "string",
+            "description": ""
+          },
+          "field": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "lines",
+          "field"
+        ]
+      }
+    }
+  }
+}

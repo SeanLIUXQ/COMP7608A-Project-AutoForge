@@ -1,0 +1,8 @@
+{
+  "__function_name": "filter_csv_and_join_column",
+  "csv_text": "example",
+  "threshold": 1,
+  "name_col": "example",
+  "score_col": "example",
+  "separator": "example"
+}

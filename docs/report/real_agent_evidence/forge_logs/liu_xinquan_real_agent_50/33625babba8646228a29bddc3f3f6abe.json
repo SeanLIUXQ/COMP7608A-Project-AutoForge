@@ -1,0 +1,141 @@
+{
+  "trace_id": "33625babba8646228a29bddc3f3f6abe",
+  "timestamp": "2026-05-02T06:44:11.826661+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for sum_jsonl_field after 1 attempt(s).",
+    "function_name": "sum_jsonl_field",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 5,
+    "plan_steps": [
+      "Validate that lines is a list of strings and field is a string.",
+      "Initialize total to 0.",
+      "Iterate over each line, attempt to parse it as JSON.",
+      "If parsing succeeds and the field value is a number, add it to total.",
+      "Return the total."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "sum_jsonl_field: {\"lines\":[\"{\\\"x\\\": 1}\",\"{\\\"x\\\": 2}\",\"{\\\"x\\\": 4}\"],\"field\":\"x\"}"
+  },
+  "plan": {
+    "steps": [
+      "Validate that lines is a list of strings and field is a string.",
+      "Initialize total to 0.",
+      "Iterate over each line, attempt to parse it as JSON.",
+      "If parsing succeeds and the field value is a number, add it to total.",
+      "Return the total."
+    ],
+    "suggested_function_name": "sum_jsonl_field"
+  },
+  "source_code": "import json\nfrom typing import Any\n\ndef sum_jsonl_field(lines: list[str], field: str) -> float:\n    \"\"\"\n    Parse a list of JSON lines and return the sum of a numeric field.\n\n    Args:\n        lines: A list of strings, each containing a valid JSON object (or not).\n        field: The JSON key whose numeric values should be summed.\n\n    Returns:\n        The sum of all valid numeric values for the given field across all lines.\n        Lines that cannot be parsed as JSON or whose field value is missing or\n        non-numeric (including boolean) are silently skipped.\n\n    Raises:\n        TypeError: If `lines` is not a list of strings or `field` is not a string.\n    \"\"\"\n    # Validate input types\n    if not isinstance(lines, list):\n        raise TypeError(\"lines must be a list\")\n    if not all(isinstance(line, str) for line in lines):\n        raise TypeError(\"All elements in lines must be strings\")\n    if not isinstance(field, str):\n        raise TypeError(\"field must be a string\")\n\n    total: float = 0.0\n\n    for line in lines:\n        try:\n            obj: Any = json.loads(line)\n        except json.JSONDecodeError:\n            continue   # not valid JSON, skip this line\n\n        # The plan says \"if the field value is a number, add it\"\n        if field in obj:\n            val = obj[field]\n            # Accept int and float, but not bool (which is a subclass of int in Python)\n            if isinstance(val, (int, float)) and type(val) is not bool:\n                total += val\n\n    return total",
+  "function_name": "sum_jsonl_field",
+  "verification": {
+    "success": true,
+    "stdout": "10.0\n",
+    "stderr": "",
+    "execution_time_ms": 3490.8920000161743,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "sum_jsonl_field",
+          "lines": [
+            "{\"x\": 1}",
+            "{\"x\": 2}",
+            "{\"x\": 4}"
+          ],
+          "field": "x"
+        },
+        "success": true,
+        "stdout": "7.0\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 7.0
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "sum_jsonl_field",
+          "lines": [
+            "{\"score\": 2}",
+            "{\"score\": 5}"
+          ],
+          "field": "score"
+        },
+        "success": true,
+        "stdout": "7.0\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 7.0
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "sum_jsonl_field",
+          "lines": [
+            "{\"amt\": 3}",
+            "{\"amt\": 7}"
+          ],
+          "field": "amt"
+        },
+        "success": true,
+        "stdout": "10.0\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 10.0
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "8f6a5194-4000-49ce-9d6c-b62931e676bb",
+    "name": "sum_jsonl_field",
+    "description": "Parse a list of JSON lines and return the sum of a numeric field.",
+    "parameters": [
+      {
+        "name": "lines",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "field",
+        "type": "string",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "import json\nfrom typing import Any\n\ndef sum_jsonl_field(lines: list[str], field: str) -> float:\n    \"\"\"\n    Parse a list of JSON lines and return the sum of a numeric field.\n\n    Args:\n        lines: A list of strings, each containing a valid JSON object (or not).\n        field: The JSON key whose numeric values should be summed.\n\n    Returns:\n        The sum of all valid numeric values for the given field across all lines.\n        Lines that cannot be parsed as JSON or whose field value is missing or\n        non-numeric (including boolean) are silently skipped.\n\n    Raises:\n        TypeError: If `lines` is not a list of strings or `field` is not a string.\n    \"\"\"\n    # Validate input types\n    if not isinstance(lines, list):\n        raise TypeError(\"lines must be a list\")\n    if not all(isinstance(line, str) for line in lines):\n        raise TypeError(\"All elements in lines must be strings\")\n    if not isinstance(field, str):\n        raise TypeError(\"field must be a string\")\n\n    total: float = 0.0\n\n    for line in lines:\n        try:\n            obj: Any = json.loads(line)\n        except json.JSONDecodeError:\n            continue   # not valid JSON, skip this line\n\n        # The plan says \"if the field value is a number, add it\"\n        if field in obj:\n            val = obj[field]\n            # Accept int and float, but not bool (which is a subclass of int in Python)\n            if isinstance(val, (int, float)) and type(val) is not bool:\n                total += val\n\n    return total",
+    "json_schema": {
+      "name": "sum_jsonl_field",
+      "description": "Parse a list of JSON lines and return the sum of a numeric field.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "lines": {
+            "type": "array",
+            "description": ""
+          },
+          "field": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "lines",
+          "field"
+        ]
+      }
+    }
+  }
+}

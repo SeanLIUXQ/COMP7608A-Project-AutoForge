@@ -1,0 +1,16 @@
+{
+  "name": "sum_amounts_by_category",
+  "description": "Sum the 'amount' values for each 'category' in a list of dictionaries.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "records": {
+        "type": "array",
+        "description": ""
+      }
+    },
+    "required": [
+      "records"
+    ]
+  }
+}

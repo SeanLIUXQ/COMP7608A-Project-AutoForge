@@ -1,0 +1,21 @@
+{
+  "metadata_version": 1,
+  "tool_id": "d9b44ba9-8e7c-4d97-8c83-5a8cc0d20cca",
+  "name": "join_names_above_score_threshold",
+  "description": "Parse a CSV string containing 'name' and 'score' columns, filter rows where",
+  "created_at": "2026-05-02T07:19:52.043975+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "csv",
+    "io",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

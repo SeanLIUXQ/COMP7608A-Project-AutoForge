@@ -1,0 +1,21 @@
+{
+  "metadata_version": 1,
+  "tool_id": "6235840d-0c1c-4b26-8476-a2e66cad6efa",
+  "name": "join_names_above_score_threshold",
+  "description": "Parse a CSV string, filter rows where a score column exceeds a threshold,",
+  "created_at": "2026-05-02T07:47:57.990607+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "csv",
+    "io",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

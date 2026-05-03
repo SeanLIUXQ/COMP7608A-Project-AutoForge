@@ -1,0 +1,147 @@
+{
+  "trace_id": "dda38a7ff45f4b40a36f1d49f334e4ad",
+  "timestamp": "2026-05-02T07:18:34.676609+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for sort_numbers_ascending after 1 attempt(s).",
+    "function_name": "sort_numbers_ascending",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 3,
+    "plan_steps": [
+      "Validate that input is a list and all elements are numeric (int or float)",
+      "Sort the list in ascending order using built-in sorting",
+      "Return the sorted list"
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that sorts a list of numbers ascending."
+  },
+  "plan": {
+    "steps": [
+      "Validate that input is a list and all elements are numeric (int or float)",
+      "Sort the list in ascending order using built-in sorting",
+      "Return the sorted list"
+    ],
+    "suggested_function_name": "sort_numbers_ascending"
+  },
+  "source_code": "from typing import List, Union\n\ndef sort_numbers_ascending(numbers: List[Union[int, float]]) -> List[Union[int, float]]:\n    \"\"\"\n    Return a new list containing the numbers sorted in ascending order.\n\n    Args:\n        numbers: A list of numeric elements (integers or floats). Booleans are\n            not accepted because they are not considered plain numbers.\n\n    Returns:\n        A new list with the elements sorted from smallest to largest.\n\n    Raises:\n        TypeError: If the input is not a list.\n        ValueError: If any element is not an int or float (or is a bool).\n    \"\"\"\n    if not isinstance(numbers, list):\n        raise TypeError(\"Input must be a list\")\n\n    for i, val in enumerate(numbers):\n        if isinstance(val, bool) or not isinstance(val, (int, float)):\n            raise ValueError(\n                f\"Element at index {i} is {type(val).__name__}, expected int or float\"\n            )\n\n    # sorted() returns a new list, leaving the original unchanged\n    return sorted(numbers)",
+  "function_name": "sort_numbers_ascending",
+  "verification": {
+    "success": true,
+    "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+    "stderr": "",
+    "execution_time_ms": 1875.5707999807782,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "sort_numbers_ascending",
+          "numbers": [
+            5,
+            1,
+            9,
+            2
+          ]
+        },
+        "success": true,
+        "stdout": "[1, 2, 5, 9]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1,
+          2,
+          5,
+          9
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "sort_numbers_ascending",
+          "numbers": [
+            1,
+            2,
+            2,
+            3,
+            1,
+            4
+          ]
+        },
+        "success": true,
+        "stdout": "[1, 1, 2, 2, 3, 4]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1,
+          1,
+          2,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "sort_numbers_ascending",
+          "numbers": [
+            10.0,
+            11.0,
+            12.0,
+            13.0
+          ]
+        },
+        "success": true,
+        "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          10.0,
+          11.0,
+          12.0,
+          13.0
+        ]
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "4b2bd6a1-41c8-4b20-837c-2646b9632039",
+    "name": "sort_numbers_ascending",
+    "description": "Return a new list containing the numbers sorted in ascending order.",
+    "parameters": [
+      {
+        "name": "numbers",
+        "type": "array",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import List, Union\n\ndef sort_numbers_ascending(numbers: List[Union[int, float]]) -> List[Union[int, float]]:\n    \"\"\"\n    Return a new list containing the numbers sorted in ascending order.\n\n    Args:\n        numbers: A list of numeric elements (integers or floats). Booleans are\n            not accepted because they are not considered plain numbers.\n\n    Returns:\n        A new list with the elements sorted from smallest to largest.\n\n    Raises:\n        TypeError: If the input is not a list.\n        ValueError: If any element is not an int or float (or is a bool).\n    \"\"\"\n    if not isinstance(numbers, list):\n        raise TypeError(\"Input must be a list\")\n\n    for i, val in enumerate(numbers):\n        if isinstance(val, bool) or not isinstance(val, (int, float)):\n            raise ValueError(\n                f\"Element at index {i} is {type(val).__name__}, expected int or float\"\n            )\n\n    # sorted() returns a new list, leaving the original unchanged\n    return sorted(numbers)",
+    "json_schema": {
+      "name": "sort_numbers_ascending",
+      "description": "Return a new list containing the numbers sorted in ascending order.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "numbers": {
+            "type": "array",
+            "description": ""
+          }
+        },
+        "required": [
+          "numbers"
+        ]
+      }
+    }
+  }
+}

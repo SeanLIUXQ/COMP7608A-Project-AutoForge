@@ -1,0 +1,17 @@
+{
+  "metadata_version": 1,
+  "tool_id": "6ea48de9-a491-4bb2-a6a9-ab63e70c5530",
+  "name": "remove_duplicates_preserve_order",
+  "description": "Remove duplicate elements from an iterable, preserving the order of first occurrence.",
+  "created_at": "2026-05-02T07:19:34.124742+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

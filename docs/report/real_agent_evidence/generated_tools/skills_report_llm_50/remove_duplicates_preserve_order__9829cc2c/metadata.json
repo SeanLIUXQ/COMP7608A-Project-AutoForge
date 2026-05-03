@@ -1,0 +1,17 @@
+{
+  "metadata_version": 1,
+  "tool_id": "9829cc2c-d48c-4406-a1fc-4eabcf424f66",
+  "name": "remove_duplicates_preserve_order",
+  "description": "Return a new list with duplicates removed while preserving the order of first occurrence.",
+  "created_at": "2026-05-02T07:22:08.173845+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

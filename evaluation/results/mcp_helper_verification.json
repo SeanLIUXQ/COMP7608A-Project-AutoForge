@@ -1,0 +1,167 @@
+{
+  "timestamp": "2026-05-03T04:46:50.964729+00:00",
+  "catalog_count": 6,
+  "catalog_sample": [
+    {
+      "name": "add_two_numbers",
+      "tool_id": "6b7e3d2b-af2c-4e8e-9129-5870248832e2",
+      "description": "Returns the sum of two integers.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "integer",
+            "description": ""
+          },
+          "b": {
+            "type": "integer",
+            "description": ""
+          }
+        },
+        "required": [
+          "a",
+          "b"
+        ]
+      }
+    },
+    {
+      "name": "number_list_query_tool",
+      "tool_id": "autoforge-number-list-v1",
+      "description": "Solve sorting, averaging, deduplication, rounded sums, and byte-conversion tasks.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Natural-language task to execute"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "name": "pipeline_query_tool",
+      "tool_id": "autoforge-pipeline-v1",
+      "description": "Solve CSV, JSONL, aggregation, moving-average, and multi-step pipeline tasks.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Natural-language task to execute"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    }
+  ],
+  "direct_invoke": {
+    "success": true,
+    "tool_id": "autoforge-text-basic-v1",
+    "tool_name": "text_basic_query_tool",
+    "result": "tilmaerts",
+    "stdout": "tilmaerts\n",
+    "stderr": "",
+    "execution_time_ms": 124.50480000006792
+  },
+  "natural_language_query": {
+    "path_taken": "fast",
+    "result": "tilmaerts",
+    "total_latency_ms": 107.20669999955135,
+    "tool_id": "autoforge-text-basic-v1",
+    "tool_name": "text_basic_query_tool",
+    "strategy": "full",
+    "reused_existing_tool": true,
+    "retrieval_latency_ms": 0.5203000000619795,
+    "forge_latency_ms": null,
+    "execution_latency_ms": 106.31449999982578,
+    "search_score": 0.8093,
+    "retrieval_trace": [
+      {
+        "rank": 1,
+        "tool_id": "autoforge-text-basic-v1",
+        "tool_name": "text_basic_query_tool",
+        "score": 0.8093,
+        "scores": {
+          "lexical": 0.8093,
+          "chroma": null
+        },
+        "retrieval_backend": "lexical",
+        "threshold": 0.75,
+        "accepted": true,
+        "reason": "accepted"
+      },
+      {
+        "rank": 2,
+        "tool_id": "6b7e3d2b-af2c-4e8e-9129-5870248832e2",
+        "tool_name": "add_two_numbers",
+        "score": 0.019,
+        "scores": {
+          "lexical": 0.019,
+          "chroma": null
+        },
+        "retrieval_backend": "lexical",
+        "threshold": 0.75,
+        "accepted": false,
+        "reason": "not_evaluated"
+      },
+      {
+        "rank": 3,
+        "tool_id": "autoforge-url-time-v1",
+        "tool_name": "url_time_query_tool",
+        "score": 0.0098,
+        "scores": {
+          "lexical": 0.0098,
+          "chroma": null
+        },
+        "retrieval_backend": "lexical",
+        "threshold": 0.75,
+        "accepted": false,
+        "reason": "not_evaluated"
+      },
+      {
+        "rank": 4,
+        "tool_id": "autoforge-number-list-v1",
+        "tool_name": "number_list_query_tool",
+        "score": 0.0087,
+        "scores": {
+          "lexical": 0.0087,
+          "chroma": null
+        },
+        "retrieval_backend": "lexical",
+        "threshold": 0.75,
+        "accepted": false,
+        "reason": "not_evaluated"
+      },
+      {
+        "rank": 5,
+        "tool_id": "autoforge-pipeline-v1",
+        "tool_name": "pipeline_query_tool",
+        "score": 0.0078,
+        "scores": {
+          "lexical": 0.0078,
+          "chroma": null
+        },
+        "retrieval_backend": "lexical",
+        "threshold": 0.75,
+        "accepted": false,
+        "reason": "not_evaluated"
+      }
+    ],
+    "explain": null,
+    "forge_trace_id": null,
+    "forge_log_path": null,
+    "forge_summary": null,
+    "failure_type": null,
+    "error": null
+  },
+  "checks": {
+    "catalog_nonempty": true,
+    "direct_invoke_success": true,
+    "query_success": true
+  }
+}

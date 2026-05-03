@@ -1,0 +1,43 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+
+# Runtime state
+*.log
+.autoforge_pids.json
+data/chromadb/
+data/forge_logs/*
+!data/forge_logs/.gitkeep
+evaluation/results/*_local*.json
+evaluation/results/*checkpoint*.json
+
+# Generated app / OS artifacts
+.streamlit/secrets.toml
+.DS_Store
+Thumbs.db
+build/
+dist/
+site/
+
+# Optional experimental output directories
+skills_agent_demo/
+skills_report_llm/
+skills_report_llm_*/
+temp_*/
+
+# Keep curated real-agent evidence under docs.
+!docs/report/real_agent_evidence/generated_tools/
+!docs/report/real_agent_evidence/generated_tools/**

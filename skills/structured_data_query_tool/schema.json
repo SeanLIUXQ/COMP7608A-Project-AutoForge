@@ -1,0 +1,16 @@
+{
+  "name": "structured_data_query_tool",
+  "description": "Solve dict, JSON, grouping, filtering, and category aggregation tasks.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "Natural-language task to execute"
+      }
+    },
+    "required": [
+      "query"
+    ]
+  }
+}

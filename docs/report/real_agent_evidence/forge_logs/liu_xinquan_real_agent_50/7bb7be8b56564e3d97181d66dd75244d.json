@@ -1,0 +1,191 @@
+{
+  "trace_id": "7bb7be8b56564e3d97181d66dd75244d",
+  "timestamp": "2026-05-02T06:58:13.653336+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for get_names_above_score after 1 attempt(s).",
+    "function_name": "get_names_above_score",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 4,
+    "plan_steps": [
+      "Validate that input is a list of dictionaries each containing 'score' and 'name' keys.",
+      "Filter rows where the value of 'score' is greater than or equal to the given threshold.",
+      "Extract the 'name' value from each filtered row.",
+      "Return the list of names."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that returns names for row dictionaries whose score is at least a threshold."
+  },
+  "plan": {
+    "steps": [
+      "Validate that input is a list of dictionaries each containing 'score' and 'name' keys.",
+      "Filter rows where the value of 'score' is greater than or equal to the given threshold.",
+      "Extract the 'name' value from each filtered row.",
+      "Return the list of names."
+    ],
+    "suggested_function_name": "get_names_above_score"
+  },
+  "source_code": "from typing import Any, Union\n\ndef get_names_above_score(\n    rows: list[dict[str, Any]],\n    threshold: Union[int, float],\n    score_field: str = \"score\",\n    name_field: str = \"name\"\n) -> list[Any]:\n    \"\"\"\n    Filter rows by a score threshold and return the associated names.\n\n    Args:\n        rows: A list of dictionaries, each expected to contain at least the\n            fields specified by `score_field` and `name_field`.\n        threshold: Only rows where the score value is >= threshold are included.\n        score_field: Key to look up the numeric score value (default 'score').\n        name_field: Key to look up the name value (default 'name').\n\n    Returns:\n        A list of the name values from rows meeting the threshold criterion.\n\n    Raises:\n        TypeError: If `rows` is not a list of dictionaries.\n        ValueError: If any row is missing the required fields, or if a score\n            value is not numeric.\n    \"\"\"\n    if not isinstance(rows, list) or not all(isinstance(r, dict) for r in rows):\n        raise TypeError(\"rows must be a list of dictionaries\")\n\n    result: list[Any] = []\n    for row in rows:\n        if score_field not in row or name_field not in row:\n            raise ValueError(\n                f\"Each row must contain '{score_field}' and '{name_field}'\"\n            )\n        score = row[score_field]\n        if not isinstance(score, (int, float)):\n            raise ValueError(\n                f\"Score value must be numeric, got {type(score).__name__}\"\n            )\n        if score >= threshold:\n            result.append(row[name_field])\n    return result",
+  "function_name": "get_names_above_score",
+  "verification": {
+    "success": true,
+    "stdout": "[]\n",
+    "stderr": "",
+    "execution_time_ms": 2159.55229998508,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "get_names_above_score",
+          "rows": [
+            {
+              "name": "Ada",
+              "score": 91,
+              "cat": "infra",
+              "amt": 18,
+              "category": "infra",
+              "amount": 18
+            },
+            {
+              "name": "Ben",
+              "score": 72,
+              "cat": "ml",
+              "amt": 32,
+              "category": "ml",
+              "amount": 32
+            },
+            {
+              "name": "Cy",
+              "score": 88,
+              "cat": "infra",
+              "amt": 22,
+              "category": "infra",
+              "amount": 22
+            }
+          ],
+          "threshold": 80
+        },
+        "success": true,
+        "stdout": "['Ada', 'Cy']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['Ada', 'Cy']"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "get_names_above_score",
+          "rows": [
+            {
+              "name": "A",
+              "score": 1,
+              "cat": "ops",
+              "amt": 1,
+              "category": "ops",
+              "amount": 1
+            },
+            {
+              "name": "B",
+              "score": 3,
+              "cat": "ops",
+              "amt": 2,
+              "category": "ops",
+              "amount": 2
+            }
+          ],
+          "threshold": 1
+        },
+        "success": true,
+        "stdout": "['A', 'B']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['A', 'B']"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "get_names_above_score",
+          "rows": [],
+          "threshold": 0
+        },
+        "success": true,
+        "stdout": "[]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": []
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "d2f6f29f-27e7-45f5-bc98-5140be2c38fe",
+    "name": "get_names_above_score",
+    "description": "Filter rows by a score threshold and return the associated names.",
+    "parameters": [
+      {
+        "name": "rows",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "threshold",
+        "type": "integer",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "score_field",
+        "type": "string",
+        "description": null,
+        "required": false
+      },
+      {
+        "name": "name_field",
+        "type": "string",
+        "description": null,
+        "required": false
+      }
+    ],
+    "source_code": "from typing import Any, Union\n\ndef get_names_above_score(\n    rows: list[dict[str, Any]],\n    threshold: Union[int, float],\n    score_field: str = \"score\",\n    name_field: str = \"name\"\n) -> list[Any]:\n    \"\"\"\n    Filter rows by a score threshold and return the associated names.\n\n    Args:\n        rows: A list of dictionaries, each expected to contain at least the\n            fields specified by `score_field` and `name_field`.\n        threshold: Only rows where the score value is >= threshold are included.\n        score_field: Key to look up the numeric score value (default 'score').\n        name_field: Key to look up the name value (default 'name').\n\n    Returns:\n        A list of the name values from rows meeting the threshold criterion.\n\n    Raises:\n        TypeError: If `rows` is not a list of dictionaries.\n        ValueError: If any row is missing the required fields, or if a score\n            value is not numeric.\n    \"\"\"\n    if not isinstance(rows, list) or not all(isinstance(r, dict) for r in rows):\n        raise TypeError(\"rows must be a list of dictionaries\")\n\n    result: list[Any] = []\n    for row in rows:\n        if score_field not in row or name_field not in row:\n            raise ValueError(\n                f\"Each row must contain '{score_field}' and '{name_field}'\"\n            )\n        score = row[score_field]\n        if not isinstance(score, (int, float)):\n            raise ValueError(\n                f\"Score value must be numeric, got {type(score).__name__}\"\n            )\n        if score >= threshold:\n            result.append(row[name_field])\n    return result",
+    "json_schema": {
+      "name": "get_names_above_score",
+      "description": "Filter rows by a score threshold and return the associated names.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "description": ""
+          },
+          "threshold": {
+            "type": "integer",
+            "description": ""
+          },
+          "score_field": {
+            "type": "string",
+            "description": ""
+          },
+          "name_field": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "rows",
+          "threshold"
+        ]
+      }
+    }
+  }
+}

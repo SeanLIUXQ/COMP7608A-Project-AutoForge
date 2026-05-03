@@ -1,0 +1,21 @@
+{
+  "name": "filter_names_by_threshold",
+  "description": "Filter a list of dictionaries, keeping only rows where the 'score' value",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      },
+      "threshold": {
+        "type": "integer",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows",
+      "threshold"
+    ]
+  }
+}

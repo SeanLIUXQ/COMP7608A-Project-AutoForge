@@ -1,0 +1,12 @@
+# sort_numbers_ascending
+
+Sort a list of numbers in ascending order.
+
+## Parameters
+- numbers (array) [required]
+
+## Imports
+numbers, typing
+
+## Usage
+Use `example_input.json` as a starting point for invocation.

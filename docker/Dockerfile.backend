@@ -1,0 +1,21 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+ARG PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV SANDBOX_BACKEND=local
+ENV AUTOFORGE_ENABLE_VECTOR_STORE=0
+ENV PIP_DEFAULT_TIMEOUT=120
+ENV PIP_INDEX_URL=${PIP_INDEX_URL}
+
+COPY docker/requirements.backend.txt /app/requirements.backend.txt
+RUN pip install --no-cache-dir --retries 10 -r /app/requirements.backend.txt
+
+COPY . /app
+
+EXPOSE 8000
+
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]

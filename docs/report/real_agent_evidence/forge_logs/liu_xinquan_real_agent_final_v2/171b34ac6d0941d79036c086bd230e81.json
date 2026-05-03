@@ -1,0 +1,85 @@
+{
+  "trace_id": "171b34ac6d0941d79036c086bd230e81",
+  "timestamp": "2026-05-02T05:36:52.686521+00:00",
+  "status": "failed",
+  "attempts": 5,
+  "summary": {
+    "headline": "Forge failed after 5 attempt(s): runtime.",
+    "function_name": "deduplicate_preserve_order",
+    "status": "failed",
+    "attempts": 5,
+    "step_count": 5,
+    "plan_steps": [
+      "Validate that the input is a dict containing the key 'values' with a list value",
+      "Initialize an empty set to track seen elements and an empty list for the unique result",
+      "Iterate over each item in the input list",
+      "If the item is not in the seen set, add it to the set and append to the result list",
+      "Return the result list preserving the original relative order"
+    ],
+    "verification_case_count": 1,
+    "verification_passed": false,
+    "failure_type": "runtime",
+    "failure_message": "error_type: runtime\nmessage:\nTraceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 70, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 56, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 17, in deduplicate_preserve_order\n    raise TypeError(f\"Expected a dict with a 'values' key, got {type(data).__name__}\")\nTypeError: Expected a dict with a 'values' key, got list\n\nRepair guidance:\n- Preserve the planned function name and signature intent.\n- Return a plain Python value instead of printing.\n- Avoid side effects and banned imports/calls.\n- Add input validation only where it improves clarity.",
+    "failed_case": {
+      "case": 1,
+      "input": {
+        "__function_name": "deduplicate_preserve_order",
+        "data": [
+          5,
+          1,
+          9,
+          2
+        ]
+      },
+      "success": false,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 70, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 56, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 17, in deduplicate_preserve_order\n    raise TypeError(f\"Expected a dict with a 'values' key, got {type(data).__name__}\")\nTypeError: Expected a dict with a 'values' key, got list\n",
+      "failure_type": "runtime",
+      "result": null
+    }
+  },
+  "request": {
+    "query": "deduplicate_preserve_order: {\"values\":[1,2,2,3,1,4]}"
+  },
+  "plan": {
+    "steps": [
+      "Validate that the input is a dict containing the key 'values' with a list value",
+      "Initialize an empty set to track seen elements and an empty list for the unique result",
+      "Iterate over each item in the input list",
+      "If the item is not in the seen set, add it to the set and append to the result list",
+      "Return the result list preserving the original relative order"
+    ],
+    "suggested_function_name": "deduplicate_preserve_order"
+  },
+  "source_code": "from typing import Dict, List, Any\n\ndef deduplicate_preserve_order(data: Dict[str, Any]) -> List[Any]:\n    \"\"\"Remove duplicates from a list provided under the 'values' key, preserving order.\n\n    Args:\n        data: A dictionary that must contain the key 'values' mapping to a list.\n\n    Returns:\n        A new list with duplicates removed, preserving the original relative order.\n\n    Raises:\n        TypeError: If data is not a dict, if it lacks the 'values' key, or if\n                   the value for 'values' is not a list.\n    \"\"\"\n    if not isinstance(data, dict):\n        raise TypeError(f\"Expected a dict with a 'values' key, got {type(data).__name__}\")\n    if 'values' not in data:\n        raise TypeError(\"Dict is missing the required key 'values'\")\n    values = data['values']\n    if not isinstance(values, list):\n        raise TypeError(f\"The 'values' key must map to a list, got {type(values).__name__}\")\n\n    seen = set()\n    result = []\n    for item in values:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result",
+  "function_name": "deduplicate_preserve_order",
+  "verification": {
+    "success": false,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 70, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 56, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 17, in deduplicate_preserve_order\n    raise TypeError(f\"Expected a dict with a 'values' key, got {type(data).__name__}\")\nTypeError: Expected a dict with a 'values' key, got list\n",
+    "execution_time_ms": 572.819699998945,
+    "failure_type": "runtime",
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "deduplicate_preserve_order",
+          "data": [
+            5,
+            1,
+            9,
+            2
+          ]
+        },
+        "success": false,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 70, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 56, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 17, in deduplicate_preserve_order\n    raise TypeError(f\"Expected a dict with a 'values' key, got {type(data).__name__}\")\nTypeError: Expected a dict with a 'values' key, got list\n",
+        "failure_type": "runtime",
+        "result": null
+      }
+    ]
+  },
+  "error_type": "runtime",
+  "error": "error_type: runtime\nmessage:\nTraceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 70, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 56, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 17, in deduplicate_preserve_order\n    raise TypeError(f\"Expected a dict with a 'values' key, got {type(data).__name__}\")\nTypeError: Expected a dict with a 'values' key, got list\n\nRepair guidance:\n- Preserve the planned function name and signature intent.\n- Return a plain Python value instead of printing.\n- Avoid side effects and banned imports/calls.\n- Add input validation only where it improves clarity.",
+  "tool": null
+}

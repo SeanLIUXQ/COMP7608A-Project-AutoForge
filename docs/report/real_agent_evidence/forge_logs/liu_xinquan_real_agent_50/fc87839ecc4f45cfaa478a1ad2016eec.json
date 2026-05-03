@@ -1,0 +1,139 @@
+{
+  "trace_id": "fc87839ecc4f45cfaa478a1ad2016eec",
+  "timestamp": "2026-05-02T07:06:18.407478+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for deduplicate_list_preserve_first after 1 attempt(s).",
+    "function_name": "deduplicate_list_preserve_first",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 6,
+    "plan_steps": [
+      "Validate the input is a list.",
+      "Initialize an empty set to track seen items.",
+      "Initialize an empty list for the result.",
+      "Iterate over each element in the input list.",
+      "If the element is not in the seen set, add it to the set and append to the result list.",
+      "Return the result list containing only first occurrences."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that removes duplicates while preserving first occurrence order."
+  },
+  "plan": {
+    "steps": [
+      "Validate the input is a list.",
+      "Initialize an empty set to track seen items.",
+      "Initialize an empty list for the result.",
+      "Iterate over each element in the input list.",
+      "If the element is not in the seen set, add it to the set and append to the result list.",
+      "Return the result list containing only first occurrences."
+    ],
+    "suggested_function_name": "deduplicate_list_preserve_first"
+  },
+  "source_code": "from typing import List, Any\n\ndef deduplicate_list_preserve_first(lst: List[Any]) -> List[Any]:\n    \"\"\"\n    Return a new list with duplicate elements removed, preserving the order of first occurrence.\n\n    Args:\n        lst: A list of elements (must be hashable).\n\n    Returns:\n        A list containing only the first occurrence of each element, in original order.\n\n    Raises:\n        TypeError: If the input is not a list.\n    \"\"\"\n    if not isinstance(lst, list):\n        raise TypeError(f\"Expected a list, got {type(lst).__name__}\")\n\n    seen = set()\n    result = []\n    for item in lst:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result",
+  "function_name": "deduplicate_list_preserve_first",
+  "verification": {
+    "success": true,
+    "stdout": "[0]\n",
+    "stderr": "",
+    "execution_time_ms": 2154.194100017776,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "deduplicate_list_preserve_first",
+          "lst": [
+            1,
+            2,
+            3
+          ]
+        },
+        "success": true,
+        "stdout": "[1, 2, 3]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "deduplicate_list_preserve_first",
+          "lst": [
+            3,
+            1,
+            2
+          ]
+        },
+        "success": true,
+        "stdout": "[3, 1, 2]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          3,
+          1,
+          2
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "deduplicate_list_preserve_first",
+          "lst": [
+            0
+          ]
+        },
+        "success": true,
+        "stdout": "[0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          0
+        ]
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "7d4d11f2-7190-4075-82a0-d1a2331a7988",
+    "name": "deduplicate_list_preserve_first",
+    "description": "Return a new list with duplicate elements removed, preserving the order of first occurrence.",
+    "parameters": [
+      {
+        "name": "lst",
+        "type": "array",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import List, Any\n\ndef deduplicate_list_preserve_first(lst: List[Any]) -> List[Any]:\n    \"\"\"\n    Return a new list with duplicate elements removed, preserving the order of first occurrence.\n\n    Args:\n        lst: A list of elements (must be hashable).\n\n    Returns:\n        A list containing only the first occurrence of each element, in original order.\n\n    Raises:\n        TypeError: If the input is not a list.\n    \"\"\"\n    if not isinstance(lst, list):\n        raise TypeError(f\"Expected a list, got {type(lst).__name__}\")\n\n    seen = set()\n    result = []\n    for item in lst:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result",
+    "json_schema": {
+      "name": "deduplicate_list_preserve_first",
+      "description": "Return a new list with duplicate elements removed, preserving the order of first occurrence.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "lst": {
+            "type": "array",
+            "description": ""
+          }
+        },
+        "required": [
+          "lst"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "trace_id": "ea77196cc2e54896ba5c497675cda6b3",
+  "timestamp": "2026-05-02T07:28:15.046911+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for compute_moving_average after 1 attempt(s).",
+    "function_name": "compute_moving_average",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 5,
+    "plan_steps": [
+      "Validate that the input series is a list of numbers and the window is a positive integer.",
+      "If the window size is greater than the length of the series, return an empty list.",
+      "Initialize an empty list for storing moving averages.",
+      "Iterate over the series with a sliding window, computing the mean of each consecutive sub-sequence of size window.",
+      "Return the list of computed moving averages."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that computes a moving average over a numeric series."
+  },
+  "plan": {
+    "steps": [
+      "Validate that the input series is a list of numbers and the window is a positive integer.",
+      "If the window size is greater than the length of the series, return an empty list.",
+      "Initialize an empty list for storing moving averages.",
+      "Iterate over the series with a sliding window, computing the mean of each consecutive sub-sequence of size window.",
+      "Return the list of computed moving averages."
+    ],
+    "suggested_function_name": "compute_moving_average"
+  },
+  "source_code": "from typing import List, Union\nimport numbers\n\ndef compute_moving_average(series: List[Union[int, float]], window: int) -> List[float]:\n    \"\"\"Compute the simple moving average (SMA) for a series of numbers.\n\n    Args:\n        series: A list of numeric values (int or float).\n        window: The number of consecutive elements to average (must be a positive integer).\n\n    Returns:\n        A list of floats representing the moving averages. If the window size\n        exceeds the length of `series`, an empty list is returned.\n\n    Raises:\n        ValueError: If `series` is not a list of numbers or `window` is not a positive integer.\n        TypeError: If any element in `series` is not numeric.\n    \"\"\"\n    if not isinstance(series, list):\n        raise ValueError(\"Series must be a list.\")\n    if not all(isinstance(x, (int, float)) for x in series):\n        raise TypeError(\"All elements of series must be numbers (int or float).\")\n    if not isinstance(window, int) or window <= 0:\n        raise ValueError(\"Window must be a positive integer.\")\n\n    if window > len(series):\n        return []\n\n    averages: List[float] = []\n    for i in range(len(series) - window + 1):\n        window_slice = series[i:i+window]\n        averages.append(sum(window_slice) / window)\n\n    return averages",
+  "function_name": "compute_moving_average",
+  "verification": {
+    "success": true,
+    "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+    "stderr": "",
+    "execution_time_ms": 1929.114099999424,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "series": [
+            5,
+            1,
+            9,
+            2
+          ],
+          "window": 3
+        },
+        "success": true,
+        "stdout": "[5.0, 4.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          5.0,
+          4.0
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "series": [
+            1,
+            2,
+            2,
+            3,
+            1,
+            4
+          ],
+          "window": 2
+        },
+        "success": true,
+        "stdout": "[1.5, 2.0, 2.5, 2.0, 2.5]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1.5,
+          2.0,
+          2.5,
+          2.0,
+          2.5
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "series": [
+            10.0,
+            11.0,
+            12.0,
+            13.0
+          ],
+          "window": 1
+        },
+        "success": true,
+        "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          10.0,
+          11.0,
+          12.0,
+          13.0
+        ]
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "6b7f8093-2b3f-4b02-bb0c-0e780d297360",
+    "name": "compute_moving_average",
+    "description": "Compute the simple moving average (SMA) for a series of numbers.",
+    "parameters": [
+      {
+        "name": "series",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "window",
+        "type": "integer",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import List, Union\nimport numbers\n\ndef compute_moving_average(series: List[Union[int, float]], window: int) -> List[float]:\n    \"\"\"Compute the simple moving average (SMA) for a series of numbers.\n\n    Args:\n        series: A list of numeric values (int or float).\n        window: The number of consecutive elements to average (must be a positive integer).\n\n    Returns:\n        A list of floats representing the moving averages. If the window size\n        exceeds the length of `series`, an empty list is returned.\n\n    Raises:\n        ValueError: If `series` is not a list of numbers or `window` is not a positive integer.\n        TypeError: If any element in `series` is not numeric.\n    \"\"\"\n    if not isinstance(series, list):\n        raise ValueError(\"Series must be a list.\")\n    if not all(isinstance(x, (int, float)) for x in series):\n        raise TypeError(\"All elements of series must be numbers (int or float).\")\n    if not isinstance(window, int) or window <= 0:\n        raise ValueError(\"Window must be a positive integer.\")\n\n    if window > len(series):\n        return []\n\n    averages: List[float] = []\n    for i in range(len(series) - window + 1):\n        window_slice = series[i:i+window]\n        averages.append(sum(window_slice) / window)\n\n    return averages",
+    "json_schema": {
+      "name": "compute_moving_average",
+      "description": "Compute the simple moving average (SMA) for a series of numbers.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "series": {
+            "type": "array",
+            "description": ""
+          },
+          "window": {
+            "type": "integer",
+            "description": ""
+          }
+        },
+        "required": [
+          "series",
+          "window"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "agent_demo_01_text_reverse",
+    "family": "string",
+    "query": "Create a reusable function that reverses any input text.",
+    "example_payload": {"text": "AutoForge", "__function_name": "reverse_text"},
+    "expected_output": "egroFotuA"
+  },
+  {
+    "id": "agent_demo_02_vowel_count",
+    "family": "string",
+    "query": "Create a reusable function that counts vowels in arbitrary text.",
+    "example_payload": {"text": "streamlit dashboard", "__function_name": "count_vowels"},
+    "expected_output": 6
+  },
+  {
+    "id": "agent_demo_03_sort_numbers",
+    "family": "list",
+    "query": "Create a reusable function that sorts a list of numbers ascending.",
+    "example_payload": {"values": [5, 1, 9, 2], "__function_name": "sort_numbers_ascending"},
+    "expected_output": [1, 2, 5, 9]
+  },
+  {
+    "id": "agent_demo_04_deduplicate",
+    "family": "list",
+    "query": "Create a reusable function that removes duplicates while preserving first occurrence order.",
+    "example_payload": {"values": [1, 2, 2, 3, 1, 4], "__function_name": "deduplicate_preserve_order"},
+    "expected_output": [1, 2, 3, 4]
+  },
+  {
+    "id": "agent_demo_05_json_rows_filter",
+    "family": "json_rows",
+    "query": "Create a reusable function that returns names for row dictionaries whose score is at least a threshold.",
+    "example_payload": {
+      "rows": [{"name": "Ada", "score": 91}, {"name": "Ben", "score": 72}],
+      "threshold": 80,
+      "__function_name": "filter_names_by_score"
+    },
+    "expected_output": ["Ada"]
+  },
+  {
+    "id": "agent_demo_06_csv_text",
+    "family": "csv_text",
+    "query": "Create a reusable function that parses CSV text and joins names whose score is above a threshold.",
+    "example_payload": {
+      "csv_text": "name,score\nAda,91\nBen,72\nCy,88",
+      "threshold": 80,
+      "__function_name": "join_csv_names_by_score"
+    },
+    "expected_output": "Ada,Cy"
+  },
+  {
+    "id": "agent_demo_07_jsonl_sum",
+    "family": "jsonl",
+    "query": "Create a reusable function that parses JSON lines and sums a numeric field.",
+    "example_payload": {
+      "lines": ["{\"x\": 1}", "{\"x\": 2}", "{\"x\": 4}"],
+      "field": "x",
+      "__function_name": "sum_json_lines_field"
+    },
+    "expected_output": 7
+  },
+  {
+    "id": "agent_demo_08_moving_average",
+    "family": "moving_average",
+    "query": "Create a reusable function that computes a moving average over a numeric series.",
+    "example_payload": {"values": [10.0, 11.0, 12.0, 13.0], "window": 3, "__function_name": "moving_average"},
+    "expected_output": [11.0, 12.0]
+  },
+  {
+    "id": "agent_demo_09_category_aggregation",
+    "family": "category_aggregation",
+    "query": "Create a reusable function that totals amounts by category for row dictionaries.",
+    "example_payload": {
+      "rows": [{"cat": "infra", "amt": 18}, {"cat": "ml", "amt": 32}, {"cat": "infra", "amt": 22}],
+      "__function_name": "category_totals"
+    },
+    "expected_output": {"infra": 40, "ml": 32}
+  },
+  {
+    "id": "agent_demo_10_url_query_keys",
+    "family": "url",
+    "query": "Create a reusable function that returns sorted query parameter names from a URL.",
+    "example_payload": {
+      "url": "https://demo.org/report?day=mon&owner=alex&status=open",
+      "__function_name": "sorted_url_query_keys"
+    },
+    "expected_output": ["day", "owner", "status"]
+  }
+]

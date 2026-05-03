@@ -1,0 +1,16 @@
+{
+  "name": "total_by_category",
+  "description": "Aggregates total amounts by category from a list of dictionaries.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows"
+    ]
+  }
+}

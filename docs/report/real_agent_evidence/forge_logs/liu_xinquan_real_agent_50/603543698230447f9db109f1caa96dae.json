@@ -1,0 +1,141 @@
+{
+  "trace_id": "603543698230447f9db109f1caa96dae",
+  "timestamp": "2026-05-02T07:00:03.725019+00:00",
+  "status": "success",
+  "attempts": 2,
+  "summary": {
+    "headline": "Forge succeeded for sum_json_lines_field after 2 attempt(s).",
+    "function_name": "sum_json_lines_field",
+    "status": "success",
+    "attempts": 2,
+    "step_count": 5,
+    "plan_steps": [
+      "Validate input is a dict with 'lines' (list of strings) and 'field' (string) keys.",
+      "Initialize total to 0.",
+      "Iterate over each JSON string in 'lines': parse it, extract the value of 'field', and convert to a numeric type.",
+      "Add the numeric value to total, skipping any line that is invalid JSON, missing the field, or has a non-numeric value.",
+      "Return the total sum."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": "runtime",
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "sum_json_lines_field: {\"lines\":[\"{\\\"x\\\": 1}\",\"{\\\"x\\\": 2}\",\"{\\\"x\\\": 4}\"],\"field\":\"x\"}"
+  },
+  "plan": {
+    "steps": [
+      "Validate input is a dict with 'lines' (list of strings) and 'field' (string) keys.",
+      "Initialize total to 0.",
+      "Iterate over each JSON string in 'lines': parse it, extract the value of 'field', and convert to a numeric type.",
+      "Add the numeric value to total, skipping any line that is invalid JSON, missing the field, or has a non-numeric value.",
+      "Return the total sum."
+    ],
+    "suggested_function_name": "sum_json_lines_field"
+  },
+  "source_code": "import json\nfrom typing import Any\n\ndef sum_json_lines_field(lines: list[str], field: str) -> float:\n    \"\"\"Sum numeric values of a given field from a list of JSON strings.\n\n    Args:\n        lines: A list of JSON-formatted strings.\n        field: The key whose numeric value should be summed.\n\n    Returns:\n        The total sum as a float. Invalid JSON lines, missing fields,\n        and non-numeric values are silently skipped. Returns 0.0 for\n        an empty list.\n    \n    Raises:\n        TypeError: If lines is not a list or field is not a string.\n    \"\"\"\n    if not isinstance(lines, list):\n        raise TypeError(\"lines must be a list of strings.\")\n    if not isinstance(field, str):\n        raise TypeError(\"field must be a string.\")\n\n    total = 0.0\n    for line in lines:\n        # skip non-string entries gracefully\n        if not isinstance(line, str):\n            continue\n        try:\n            data = json.loads(line)\n        except (json.JSONDecodeError, TypeError):\n            continue\n        # only operate on object dicts\n        if not isinstance(data, dict):\n            continue\n        if field not in data:\n            continue\n        value = data[field]\n        # attempt numeric conversion; skip on failure\n        try:\n            num = float(value)\n        except (TypeError, ValueError):\n            continue\n        total += num\n    return total",
+  "function_name": "sum_json_lines_field",
+  "verification": {
+    "success": true,
+    "stdout": "10.0\n",
+    "stderr": "",
+    "execution_time_ms": 1922.3576000076719,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "sum_json_lines_field",
+          "lines": [
+            "{\"x\": 1}",
+            "{\"x\": 2}",
+            "{\"x\": 4}"
+          ],
+          "field": "x"
+        },
+        "success": true,
+        "stdout": "7.0\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 7.0
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "sum_json_lines_field",
+          "lines": [
+            "{\"score\": 2}",
+            "{\"score\": 5}"
+          ],
+          "field": "score"
+        },
+        "success": true,
+        "stdout": "7.0\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 7.0
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "sum_json_lines_field",
+          "lines": [
+            "{\"amt\": 3}",
+            "{\"amt\": 7}"
+          ],
+          "field": "amt"
+        },
+        "success": true,
+        "stdout": "10.0\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 10.0
+      }
+    ]
+  },
+  "error_type": "runtime",
+  "error": null,
+  "tool": {
+    "tool_id": "21097c80-12ef-4376-a485-a2db21a42629",
+    "name": "sum_json_lines_field",
+    "description": "Sum numeric values of a given field from a list of JSON strings.",
+    "parameters": [
+      {
+        "name": "lines",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "field",
+        "type": "string",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "import json\nfrom typing import Any\n\ndef sum_json_lines_field(lines: list[str], field: str) -> float:\n    \"\"\"Sum numeric values of a given field from a list of JSON strings.\n\n    Args:\n        lines: A list of JSON-formatted strings.\n        field: The key whose numeric value should be summed.\n\n    Returns:\n        The total sum as a float. Invalid JSON lines, missing fields,\n        and non-numeric values are silently skipped. Returns 0.0 for\n        an empty list.\n    \n    Raises:\n        TypeError: If lines is not a list or field is not a string.\n    \"\"\"\n    if not isinstance(lines, list):\n        raise TypeError(\"lines must be a list of strings.\")\n    if not isinstance(field, str):\n        raise TypeError(\"field must be a string.\")\n\n    total = 0.0\n    for line in lines:\n        # skip non-string entries gracefully\n        if not isinstance(line, str):\n            continue\n        try:\n            data = json.loads(line)\n        except (json.JSONDecodeError, TypeError):\n            continue\n        # only operate on object dicts\n        if not isinstance(data, dict):\n            continue\n        if field not in data:\n            continue\n        value = data[field]\n        # attempt numeric conversion; skip on failure\n        try:\n            num = float(value)\n        except (TypeError, ValueError):\n            continue\n        total += num\n    return total",
+    "json_schema": {
+      "name": "sum_json_lines_field",
+      "description": "Sum numeric values of a given field from a list of JSON strings.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "lines": {
+            "type": "array",
+            "description": ""
+          },
+          "field": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "lines",
+          "field"
+        ]
+      }
+    }
+  }
+}

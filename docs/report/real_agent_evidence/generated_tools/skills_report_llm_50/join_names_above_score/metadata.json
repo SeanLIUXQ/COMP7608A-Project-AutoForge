@@ -1,0 +1,21 @@
+{
+  "metadata_version": 1,
+  "tool_id": "9262ed03-b719-4166-967b-6c8dccf6e523",
+  "name": "join_names_above_score",
+  "description": "Parse a CSV string, filter rows where the score is strictly greater than",
+  "created_at": "2026-05-02T07:35:52.411529+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "csv",
+    "io",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

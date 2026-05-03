@@ -1,0 +1,6 @@
+repeat_index,trials,cold_success_rate,warm_success_rate,warm_reuse_rate,mean_cold_latency_s,mean_warm_latency_s
+1,10,1.0,0.9,0.9,67.378,21.459
+2,10,1.0,1.0,0.9,59.313,27.189
+3,10,1.0,0.9,1.0,59.68,14.602
+4,10,1.0,0.8,0.8,55.428,31.844
+5,10,1.0,1.0,1.0,93.582,14.859

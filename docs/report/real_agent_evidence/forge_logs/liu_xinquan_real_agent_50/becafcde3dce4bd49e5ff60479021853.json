@@ -1,0 +1,177 @@
+{
+  "trace_id": "becafcde3dce4bd49e5ff60479021853",
+  "timestamp": "2026-05-02T07:29:49.412278+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for total_amounts_by_category after 1 attempt(s).",
+    "function_name": "total_amounts_by_category",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 4,
+    "plan_steps": [
+      "Validate inputs: rows must be a list of dicts, category_key and amount_key must be strings, and every row must contain both keys with the amount being numeric.",
+      "Initialize a defaultdict with float as the default factory to accumulate totals.",
+      "Iterate over rows, extracting the category value and amount for each row, and add the amount to the corresponding category total.",
+      "Convert the defaultdict to a plain dict and return the result."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that totals amounts by category for row dictionaries."
+  },
+  "plan": {
+    "steps": [
+      "Validate inputs: rows must be a list of dicts, category_key and amount_key must be strings, and every row must contain both keys with the amount being numeric.",
+      "Initialize a defaultdict with float as the default factory to accumulate totals.",
+      "Iterate over rows, extracting the category value and amount for each row, and add the amount to the corresponding category total.",
+      "Convert the defaultdict to a plain dict and return the result."
+    ],
+    "suggested_function_name": "total_amounts_by_category"
+  },
+  "source_code": "from collections import defaultdict\n\ndef total_amounts_by_category(\n    rows: list[dict],\n    category_key: str = \"category\",\n    amount_key: str = \"amount\",\n) -> dict:\n    \"\"\"\n    Aggregate amounts by category from a list of dictionaries.\n\n    For each record, the value at `category_key` is used as the grouping key,\n    and the value at `amount_key` (which must be numeric) is added to that\n    category's total.  Returns a dictionary mapping each unique category to\n    the sum of its amounts (as a float).\n\n    Args:\n        rows: A list of dictionaries representing the records.\n        category_key: Key to extract the category from each row.\n            Defaults to \"category\".\n        amount_key: Key to extract the numeric amount from each row.\n            Defaults to \"amount\".\n\n    Returns:\n        A dict mapping each distinct category to its total amount (float).\n\n    Raises:\n        TypeError: If `rows` is not a list, or `category_key`/`amount_key`\n            are not strings.\n        ValueError: If any element is not a dict, or if a row is missing a\n            required key, or if an amount is not numeric (int/float).\n    \"\"\"\n    if not isinstance(rows, list):\n        raise TypeError(\"rows must be a list\")\n    if not isinstance(category_key, str):\n        raise TypeError(\"category_key must be a string\")\n    if not isinstance(amount_key, str):\n        raise TypeError(\"amount_key must be a string\")\n\n    totals = defaultdict(float)\n\n    for i, row in enumerate(rows):\n        if not isinstance(row, dict):\n            raise ValueError(f\"Row at index {i} is not a dictionary\")\n        if category_key not in row:\n            raise ValueError(\n                f\"Row at index {i} is missing the category key '{category_key}'\"\n            )\n        if amount_key not in row:\n            raise ValueError(\n                f\"Row at index {i} is missing the amount key '{amount_key}'\"\n            )\n        amount = row[amount_key]\n        if not isinstance(amount, (int, float)):\n            raise ValueError(\n                f\"Row at index {i} has a non-numeric amount for key \"\n                f\"'{amount_key}': {amount!r}\"\n            )\n        totals[row[category_key]] += float(amount)\n\n    return dict(totals)",
+  "function_name": "total_amounts_by_category",
+  "verification": {
+    "success": true,
+    "stdout": "{}\n",
+    "stderr": "",
+    "execution_time_ms": 1822.3217000049772,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "total_amounts_by_category",
+          "rows": [
+            {
+              "name": "Ada",
+              "score": 91,
+              "cat": "infra",
+              "amt": 18,
+              "category": "infra",
+              "amount": 18
+            },
+            {
+              "name": "Ben",
+              "score": 72,
+              "cat": "ml",
+              "amt": 32,
+              "category": "ml",
+              "amount": 32
+            },
+            {
+              "name": "Cy",
+              "score": 88,
+              "cat": "infra",
+              "amt": 22,
+              "category": "infra",
+              "amount": 22
+            }
+          ]
+        },
+        "success": true,
+        "stdout": "{'infra': 40.0, 'ml': 32.0}\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "{'infra': 40.0, 'ml': 32.0}"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "total_amounts_by_category",
+          "rows": [
+            {
+              "name": "A",
+              "score": 1,
+              "cat": "ops",
+              "amt": 1,
+              "category": "ops",
+              "amount": 1
+            },
+            {
+              "name": "B",
+              "score": 3,
+              "cat": "ops",
+              "amt": 2,
+              "category": "ops",
+              "amount": 2
+            }
+          ]
+        },
+        "success": true,
+        "stdout": "{'ops': 3.0}\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "{'ops': 3.0}"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "total_amounts_by_category",
+          "rows": []
+        },
+        "success": true,
+        "stdout": "{}\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": {}
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "06956bfa-d923-4c0c-a5f7-7d52f2928f6f",
+    "name": "total_amounts_by_category",
+    "description": "Aggregate amounts by category from a list of dictionaries.",
+    "parameters": [
+      {
+        "name": "rows",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "category_key",
+        "type": "string",
+        "description": null,
+        "required": false
+      },
+      {
+        "name": "amount_key",
+        "type": "string",
+        "description": null,
+        "required": false
+      }
+    ],
+    "source_code": "from collections import defaultdict\n\ndef total_amounts_by_category(\n    rows: list[dict],\n    category_key: str = \"category\",\n    amount_key: str = \"amount\",\n) -> dict:\n    \"\"\"\n    Aggregate amounts by category from a list of dictionaries.\n\n    For each record, the value at `category_key` is used as the grouping key,\n    and the value at `amount_key` (which must be numeric) is added to that\n    category's total.  Returns a dictionary mapping each unique category to\n    the sum of its amounts (as a float).\n\n    Args:\n        rows: A list of dictionaries representing the records.\n        category_key: Key to extract the category from each row.\n            Defaults to \"category\".\n        amount_key: Key to extract the numeric amount from each row.\n            Defaults to \"amount\".\n\n    Returns:\n        A dict mapping each distinct category to its total amount (float).\n\n    Raises:\n        TypeError: If `rows` is not a list, or `category_key`/`amount_key`\n            are not strings.\n        ValueError: If any element is not a dict, or if a row is missing a\n            required key, or if an amount is not numeric (int/float).\n    \"\"\"\n    if not isinstance(rows, list):\n        raise TypeError(\"rows must be a list\")\n    if not isinstance(category_key, str):\n        raise TypeError(\"category_key must be a string\")\n    if not isinstance(amount_key, str):\n        raise TypeError(\"amount_key must be a string\")\n\n    totals = defaultdict(float)\n\n    for i, row in enumerate(rows):\n        if not isinstance(row, dict):\n            raise ValueError(f\"Row at index {i} is not a dictionary\")\n        if category_key not in row:\n            raise ValueError(\n                f\"Row at index {i} is missing the category key '{category_key}'\"\n            )\n        if amount_key not in row:\n            raise ValueError(\n                f\"Row at index {i} is missing the amount key '{amount_key}'\"\n            )\n        amount = row[amount_key]\n        if not isinstance(amount, (int, float)):\n            raise ValueError(\n                f\"Row at index {i} has a non-numeric amount for key \"\n                f\"'{amount_key}': {amount!r}\"\n            )\n        totals[row[category_key]] += float(amount)\n\n    return dict(totals)",
+    "json_schema": {
+      "name": "total_amounts_by_category",
+      "description": "Aggregate amounts by category from a list of dictionaries.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "description": ""
+          },
+          "category_key": {
+            "type": "string",
+            "description": ""
+          },
+          "amount_key": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "rows"
+        ]
+      }
+    }
+  }
+}

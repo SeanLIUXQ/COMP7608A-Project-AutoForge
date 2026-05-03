@@ -1,0 +1,7 @@
+{
+  "__function_name": "filter_and_extract_by_threshold",
+  "rows": [],
+  "threshold": 1.0,
+  "score_key": "example",
+  "name_key": "example"
+}

@@ -1,0 +1,29 @@
+{
+  "name": "collect_names_meeting_score_threshold",
+  "description": "Collect the values of `name_field` from rows where `score_field` is at least `threshold`.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      },
+      "threshold": {
+        "type": "integer",
+        "description": ""
+      },
+      "score_field": {
+        "type": "string",
+        "description": ""
+      },
+      "name_field": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows",
+      "threshold"
+    ]
+  }
+}

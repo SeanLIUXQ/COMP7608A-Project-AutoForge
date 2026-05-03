@@ -1,0 +1,16 @@
+{
+  "name": "sorted_query_parameter_names",
+  "description": "Extract query parameter names from a URL and return them as a sorted list.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "url"
+    ]
+  }
+}

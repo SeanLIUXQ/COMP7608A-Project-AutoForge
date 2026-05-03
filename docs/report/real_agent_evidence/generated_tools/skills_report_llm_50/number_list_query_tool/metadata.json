@@ -1,0 +1,46 @@
+{
+  "metadata_version": 1,
+  "tool_id": "autoforge-number-list-v1",
+  "name": "number_list_query_tool",
+  "description": "Solve sorting, averaging, deduplication, rounded sums, and byte-conversion tasks.",
+  "created_at": "seeded",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "ast",
+    "collections",
+    "csv",
+    "datetime",
+    "io",
+    "re",
+    "urllib"
+  ],
+  "language": "python",
+  "tool_origin": "seeded",
+  "tool_status": "active",
+  "keywords": [
+    "list",
+    "numbers",
+    "average",
+    "mean",
+    "sort",
+    "order",
+    "ascending",
+    "deduplicate",
+    "first occurrences",
+    "sum",
+    "add",
+    "bytes",
+    "megabytes"
+  ],
+  "examples": [
+    "Sort numbers [5,1,9,2] ascending",
+    "Order [5,1,9,2] ascending",
+    "Compute average of [10,20,30,40]",
+    "Convert 1048576 bytes to megabytes with 2 decimals"
+  ],
+  "seeded": true
+}

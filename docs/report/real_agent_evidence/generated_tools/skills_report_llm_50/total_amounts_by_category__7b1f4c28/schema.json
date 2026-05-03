@@ -1,0 +1,16 @@
+{
+  "name": "total_amounts_by_category",
+  "description": "Calculate total amounts grouped by category from a list of dictionaries.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows"
+    ]
+  }
+}

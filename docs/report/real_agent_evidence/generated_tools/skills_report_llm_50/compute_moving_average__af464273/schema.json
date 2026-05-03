@@ -1,0 +1,21 @@
+{
+  "name": "compute_moving_average",
+  "description": "Compute the moving average of a numerical sequence.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "array",
+        "description": ""
+      },
+      "window_size": {
+        "type": "integer",
+        "description": ""
+      }
+    },
+    "required": [
+      "data",
+      "window_size"
+    ]
+  }
+}

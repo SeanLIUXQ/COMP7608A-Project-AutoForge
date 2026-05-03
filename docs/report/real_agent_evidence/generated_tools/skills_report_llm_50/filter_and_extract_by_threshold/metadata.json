@@ -1,0 +1,17 @@
+{
+  "metadata_version": 1,
+  "tool_id": "4cacfb4b-f02d-4f3a-add7-42d72212d0f0",
+  "name": "filter_and_extract_by_threshold",
+  "description": "Filter a list of dictionaries by a numeric score threshold and extract names.",
+  "created_at": "2026-05-02T07:47:36.482163+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

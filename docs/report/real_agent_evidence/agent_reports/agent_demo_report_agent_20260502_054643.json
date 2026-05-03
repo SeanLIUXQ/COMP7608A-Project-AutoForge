@@ -1,0 +1,1923 @@
+{
+  "timestamp": "2026-05-02T05:46:43.165839+00:00",
+  "mode": "agent",
+  "cases_path": "agents/demo_cases.json",
+  "total_cases": 10,
+  "cold_success_count": 10,
+  "warm_success_count": 8,
+  "warm_reuse_count": 8,
+  "cold_success_rate": 1.0,
+  "warm_success_rate": 0.8,
+  "warm_reuse_rate": 0.8,
+  "duration_seconds": 1091.664,
+  "results": [
+    {
+      "id": "agent_demo_01_text_reverse",
+      "family": "string",
+      "cold_query": "Create a reusable function that reverses any input text.",
+      "warm_query": "reverse_text: {\"text\":\"AutoForge\"}",
+      "expected_output": "egroFotuA",
+      "cold_success": true,
+      "cold_example_success": true,
+      "cold_example_result": "egroFotuA",
+      "cold_example_error": null,
+      "cold_example_payload": {
+        "text": "AutoForge",
+        "__function_name": "reverse_text"
+      },
+      "warm_success": true,
+      "warm_reused_existing_tool": true,
+      "cold_path_taken": "slow",
+      "warm_path_taken": "fast",
+      "tool_id": "99f06a4f-d455-4f0b-b7e3-d8fa606610b9",
+      "tool_name": "reverse_text",
+      "forge_trace_id": "5136e622db944ecabfb72903e3b5f7b8",
+      "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\5136e622db944ecabfb72903e3b5f7b8.json",
+      "forge_summary": {
+        "headline": "Forge succeeded for reverse_text after 1 attempt(s).",
+        "function_name": "reverse_text",
+        "status": "success",
+        "attempts": 1,
+        "step_count": 5,
+        "plan_steps": [
+          "Accept a text parameter.",
+          "Validate that the parameter is a string.",
+          "If not a string, raise a TypeError.",
+          "Reverse the string using slicing [::-1].",
+          "Return the reversed string."
+        ],
+        "verification_case_count": 3,
+        "verification_passed": true,
+        "failure_type": null,
+        "failure_message": null,
+        "failed_case": null
+      },
+      "failure_type": null,
+      "cold_error": null,
+      "warm_error": null,
+      "cold_total_latency_ms": 41180.054700002074,
+      "warm_total_latency_ms": 5003.099200010183,
+      "cold_response": {
+        "path_taken": "slow",
+        "result": null,
+        "total_latency_ms": 41180.054700002074,
+        "tool_id": "99f06a4f-d455-4f0b-b7e3-d8fa606610b9",
+        "tool_name": "reverse_text",
+        "strategy": "agent",
+        "reused_existing_tool": false,
+        "retrieval_latency_ms": null,
+        "forge_latency_ms": 33849.41490000347,
+        "execution_latency_ms": 93.4001999994507,
+        "search_score": null,
+        "retrieval_trace": [],
+        "explain": null,
+        "forge_trace_id": "5136e622db944ecabfb72903e3b5f7b8",
+        "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\5136e622db944ecabfb72903e3b5f7b8.json",
+        "forge_summary": {
+          "headline": "Forge succeeded for reverse_text after 1 attempt(s).",
+          "function_name": "reverse_text",
+          "status": "success",
+          "attempts": 1,
+          "step_count": 5,
+          "plan_steps": [
+            "Accept a text parameter.",
+            "Validate that the parameter is a string.",
+            "If not a string, raise a TypeError.",
+            "Reverse the string using slicing [::-1].",
+            "Return the reversed string."
+          ],
+          "verification_case_count": 3,
+          "verification_passed": true,
+          "failure_type": null,
+          "failure_message": null,
+          "failed_case": null
+        },
+        "failure_type": null,
+        "error": null
+      },
+      "warm_response": {
+        "path_taken": "fast",
+        "result": "egroFotuA",
+        "total_latency_ms": 5003.099200010183,
+        "tool_id": "99f06a4f-d455-4f0b-b7e3-d8fa606610b9",
+        "tool_name": "reverse_text",
+        "strategy": "full",
+        "reused_existing_tool": true,
+        "retrieval_latency_ms": 0.7886999956099316,
+        "forge_latency_ms": null,
+        "execution_latency_ms": 89.20550000038929,
+        "search_score": 0.81,
+        "retrieval_trace": [
+          {
+            "rank": 1,
+            "tool_id": "99f06a4f-d455-4f0b-b7e3-d8fa606610b9",
+            "tool_name": "reverse_text",
+            "score": 0.81,
+            "scores": {
+              "lexical": 0.81,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": true,
+            "reason": "accepted"
+          },
+          {
+            "rank": 2,
+            "tool_id": "autoforge-url-time-v1",
+            "tool_name": "url_time_query_tool",
+            "score": 0.0049,
+            "scores": {
+              "lexical": 0.0049,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 3,
+            "tool_id": "autoforge-text-basic-v1",
+            "tool_name": "text_basic_query_tool",
+            "score": 0.0047,
+            "scores": {
+              "lexical": 0.0047,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 4,
+            "tool_id": "autoforge-number-list-v1",
+            "tool_name": "number_list_query_tool",
+            "score": 0.0043,
+            "scores": {
+              "lexical": 0.0043,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 5,
+            "tool_id": "autoforge-pipeline-v1",
+            "tool_name": "pipeline_query_tool",
+            "score": 0.0039,
+            "scores": {
+              "lexical": 0.0039,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          }
+        ],
+        "explain": null,
+        "forge_trace_id": null,
+        "forge_log_path": null,
+        "forge_summary": null,
+        "failure_type": null,
+        "error": null
+      }
+    },
+    {
+      "id": "agent_demo_02_vowel_count",
+      "family": "string",
+      "cold_query": "Create a reusable function that counts vowels in arbitrary text.",
+      "warm_query": "count_vowels: {\"text\":\"streamlit dashboard\"}",
+      "expected_output": 6,
+      "cold_success": true,
+      "cold_example_success": false,
+      "cold_example_result": null,
+      "cold_example_error": "Traceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 59, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 45, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\nTypeError: count_vowels() got an unexpected keyword argument 'text'\n",
+      "cold_example_payload": {
+        "text": "streamlit dashboard",
+        "__function_name": "count_vowels"
+      },
+      "warm_success": true,
+      "warm_reused_existing_tool": true,
+      "cold_path_taken": "slow",
+      "warm_path_taken": "fast",
+      "tool_id": "6118beee-2c1b-4f94-931f-2b1c3f67e969",
+      "tool_name": "count_vowels",
+      "forge_trace_id": "42f394023a974aa0a76e69b9ec653bd3",
+      "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\42f394023a974aa0a76e69b9ec653bd3.json",
+      "forge_summary": {
+        "headline": "Forge succeeded for count_vowels after 1 attempt(s).",
+        "function_name": "count_vowels",
+        "status": "success",
+        "attempts": 1,
+        "step_count": 5,
+        "plan_steps": [
+          "Validate that input is a string, raising TypeError otherwise.",
+          "Convert the string to lowercase for case-insensitive counting.",
+          "Define the set of vowels (a, e, i, o, u).",
+          "Iterate over characters and increment count for each vowel found.",
+          "Return the total vowel count as an integer."
+        ],
+        "verification_case_count": 3,
+        "verification_passed": true,
+        "failure_type": null,
+        "failure_message": null,
+        "failed_case": null
+      },
+      "failure_type": null,
+      "cold_error": null,
+      "warm_error": null,
+      "cold_total_latency_ms": 26049.829900002806,
+      "warm_total_latency_ms": 6780.7069000118645,
+      "cold_response": {
+        "path_taken": "slow",
+        "result": 0,
+        "total_latency_ms": 26049.829900002806,
+        "tool_id": "6118beee-2c1b-4f94-931f-2b1c3f67e969",
+        "tool_name": "count_vowels",
+        "strategy": "agent",
+        "reused_existing_tool": false,
+        "retrieval_latency_ms": null,
+        "forge_latency_ms": 21632.936499998323,
+        "execution_latency_ms": 99.0484999929322,
+        "search_score": null,
+        "retrieval_trace": [],
+        "explain": null,
+        "forge_trace_id": "42f394023a974aa0a76e69b9ec653bd3",
+        "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\42f394023a974aa0a76e69b9ec653bd3.json",
+        "forge_summary": {
+          "headline": "Forge succeeded for count_vowels after 1 attempt(s).",
+          "function_name": "count_vowels",
+          "status": "success",
+          "attempts": 1,
+          "step_count": 5,
+          "plan_steps": [
+            "Validate that input is a string, raising TypeError otherwise.",
+            "Convert the string to lowercase for case-insensitive counting.",
+            "Define the set of vowels (a, e, i, o, u).",
+            "Iterate over characters and increment count for each vowel found.",
+            "Return the total vowel count as an integer."
+          ],
+          "verification_case_count": 3,
+          "verification_passed": true,
+          "failure_type": null,
+          "failure_message": null,
+          "failed_case": null
+        },
+        "failure_type": null,
+        "error": null
+      },
+      "warm_response": {
+        "path_taken": "fast",
+        "result": 6,
+        "total_latency_ms": 6780.7069000118645,
+        "tool_id": "6118beee-2c1b-4f94-931f-2b1c3f67e969",
+        "tool_name": "count_vowels",
+        "strategy": "full",
+        "reused_existing_tool": true,
+        "retrieval_latency_ms": 0.45599999430123717,
+        "forge_latency_ms": null,
+        "execution_latency_ms": 84.83069999783766,
+        "search_score": 0.8083,
+        "retrieval_trace": [
+          {
+            "rank": 1,
+            "tool_id": "6118beee-2c1b-4f94-931f-2b1c3f67e969",
+            "tool_name": "count_vowels",
+            "score": 0.8083,
+            "scores": {
+              "lexical": 0.8083,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": true,
+            "reason": "accepted"
+          },
+          {
+            "rank": 2,
+            "tool_id": "99f06a4f-d455-4f0b-b7e3-d8fa606610b9",
+            "tool_name": "reverse_text",
+            "score": 0.01,
+            "scores": {
+              "lexical": 0.01,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 3,
+            "tool_id": "autoforge-url-time-v1",
+            "tool_name": "url_time_query_tool",
+            "score": 0.0049,
+            "scores": {
+              "lexical": 0.0049,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 4,
+            "tool_id": "autoforge-text-basic-v1",
+            "tool_name": "text_basic_query_tool",
+            "score": 0.0047,
+            "scores": {
+              "lexical": 0.0047,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 5,
+            "tool_id": "autoforge-number-list-v1",
+            "tool_name": "number_list_query_tool",
+            "score": 0.0043,
+            "scores": {
+              "lexical": 0.0043,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          }
+        ],
+        "explain": null,
+        "forge_trace_id": null,
+        "forge_log_path": null,
+        "forge_summary": null,
+        "failure_type": null,
+        "error": null
+      }
+    },
+    {
+      "id": "agent_demo_03_sort_numbers",
+      "family": "list",
+      "cold_query": "Create a reusable function that sorts a list of numbers ascending.",
+      "warm_query": "sort_numbers_ascending: {\"values\":[5,1,9,2]}",
+      "expected_output": [
+        1,
+        2,
+        5,
+        9
+      ],
+      "cold_success": true,
+      "cold_example_success": false,
+      "cold_example_result": null,
+      "cold_example_error": "Traceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 66, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 52, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\nTypeError: sort_numbers_ascending() got an unexpected keyword argument 'values'\n",
+      "cold_example_payload": {
+        "values": [
+          5,
+          1,
+          9,
+          2
+        ],
+        "__function_name": "sort_numbers_ascending"
+      },
+      "warm_success": true,
+      "warm_reused_existing_tool": true,
+      "cold_path_taken": "slow",
+      "warm_path_taken": "fast",
+      "tool_id": "bc6a29f3-46f9-43ff-8d67-2660cad0a887",
+      "tool_name": "sort_numbers_ascending",
+      "forge_trace_id": "6b1d67392d744dc69f46fdfa18def732",
+      "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\6b1d67392d744dc69f46fdfa18def732.json",
+      "forge_summary": {
+        "headline": "Forge succeeded for sort_numbers_ascending after 1 attempt(s).",
+        "function_name": "sort_numbers_ascending",
+        "status": "success",
+        "attempts": 1,
+        "step_count": 4,
+        "plan_steps": [
+          "Validate input is a list.",
+          "Check that each element is a number (int or float).",
+          "Sort the list in ascending order.",
+          "Return the sorted list."
+        ],
+        "verification_case_count": 3,
+        "verification_passed": true,
+        "failure_type": null,
+        "failure_message": null,
+        "failed_case": null
+      },
+      "failure_type": null,
+      "cold_error": null,
+      "warm_error": null,
+      "cold_total_latency_ms": 29337.893000003533,
+      "warm_total_latency_ms": 6826.684100000421,
+      "cold_response": {
+        "path_taken": "slow",
+        "result": [],
+        "total_latency_ms": 29337.893000003533,
+        "tool_id": "bc6a29f3-46f9-43ff-8d67-2660cad0a887",
+        "tool_name": "sort_numbers_ascending",
+        "strategy": "agent",
+        "reused_existing_tool": false,
+        "retrieval_latency_ms": null,
+        "forge_latency_ms": 21645.364199997857,
+        "execution_latency_ms": 100.20929999882355,
+        "search_score": null,
+        "retrieval_trace": [],
+        "explain": null,
+        "forge_trace_id": "6b1d67392d744dc69f46fdfa18def732",
+        "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\6b1d67392d744dc69f46fdfa18def732.json",
+        "forge_summary": {
+          "headline": "Forge succeeded for sort_numbers_ascending after 1 attempt(s).",
+          "function_name": "sort_numbers_ascending",
+          "status": "success",
+          "attempts": 1,
+          "step_count": 4,
+          "plan_steps": [
+            "Validate input is a list.",
+            "Check that each element is a number (int or float).",
+            "Sort the list in ascending order.",
+            "Return the sorted list."
+          ],
+          "verification_case_count": 3,
+          "verification_passed": true,
+          "failure_type": null,
+          "failure_message": null,
+          "failed_case": null
+        },
+        "failure_type": null,
+        "error": null
+      },
+      "warm_response": {
+        "path_taken": "fast",
+        "result": [
+          1,
+          2,
+          5,
+          9
+        ],
+        "total_latency_ms": 6826.684100000421,
+        "tool_id": "bc6a29f3-46f9-43ff-8d67-2660cad0a887",
+        "tool_name": "sort_numbers_ascending",
+        "strategy": "full",
+        "reused_existing_tool": true,
+        "retrieval_latency_ms": 0.5566000036196783,
+        "forge_latency_ms": null,
+        "execution_latency_ms": 86.40610000293236,
+        "search_score": 0.8105,
+        "retrieval_trace": [
+          {
+            "rank": 1,
+            "tool_id": "bc6a29f3-46f9-43ff-8d67-2660cad0a887",
+            "tool_name": "sort_numbers_ascending",
+            "score": 0.8105,
+            "scores": {
+              "lexical": 0.8105,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": true,
+            "reason": "accepted"
+          },
+          {
+            "rank": 2,
+            "tool_id": "99f06a4f-d455-4f0b-b7e3-d8fa606610b9",
+            "tool_name": "reverse_text",
+            "score": 0.01,
+            "scores": {
+              "lexical": 0.01,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 3,
+            "tool_id": "6118beee-2c1b-4f94-931f-2b1c3f67e969",
+            "tool_name": "count_vowels",
+            "score": 0.0083,
+            "scores": {
+              "lexical": 0.0083,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 4,
+            "tool_id": "autoforge-url-time-v1",
+            "tool_name": "url_time_query_tool",
+            "score": 0.0049,
+            "scores": {
+              "lexical": 0.0049,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 5,
+            "tool_id": "autoforge-text-basic-v1",
+            "tool_name": "text_basic_query_tool",
+            "score": 0.0047,
+            "scores": {
+              "lexical": 0.0047,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          }
+        ],
+        "explain": null,
+        "forge_trace_id": null,
+        "forge_log_path": null,
+        "forge_summary": null,
+        "failure_type": null,
+        "error": null
+      }
+    },
+    {
+      "id": "agent_demo_04_deduplicate",
+      "family": "list",
+      "cold_query": "Create a reusable function that removes duplicates while preserving first occurrence order.",
+      "warm_query": "deduplicate_preserve_order: {\"values\":[1,2,2,3,1,4]}",
+      "expected_output": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "cold_success": true,
+      "cold_example_success": false,
+      "cold_example_result": null,
+      "cold_example_error": "Traceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 71, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 57, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\nTypeError: deduplicate_preserve_order() got an unexpected keyword argument 'values'\n",
+      "cold_example_payload": {
+        "values": [
+          1,
+          2,
+          2,
+          3,
+          1,
+          4
+        ],
+        "__function_name": "deduplicate_preserve_order"
+      },
+      "warm_success": false,
+      "warm_reused_existing_tool": false,
+      "cold_path_taken": "slow",
+      "warm_path_taken": "slow",
+      "tool_id": "44683528-60b3-41cc-b6dd-674cbd8102d6",
+      "tool_name": "deduplicate_preserve_order",
+      "forge_trace_id": "7d0734b14707411c8dcfa82ebfd28c73",
+      "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\7d0734b14707411c8dcfa82ebfd28c73.json",
+      "forge_summary": {
+        "headline": "Forge succeeded for deduplicate_preserve_order after 1 attempt(s).",
+        "function_name": "deduplicate_preserve_order",
+        "status": "success",
+        "attempts": 1,
+        "step_count": 4,
+        "plan_steps": [
+          "Validate that the input is an iterable (e.g., list, tuple, string)",
+          "Initialize an empty list for the result and an empty set to track seen items",
+          "Iterate through each item in the input; if the item is not in the seen set, append it to the result list and add it to the seen set",
+          "Return the result list containing first-occurrence-unique items"
+        ],
+        "verification_case_count": 3,
+        "verification_passed": true,
+        "failure_type": null,
+        "failure_message": null,
+        "failed_case": null
+      },
+      "failure_type": "runtime",
+      "cold_error": "NameError: name 'hasattr' is not defined",
+      "warm_error": "error_type: runtime\nmessage:\nTraceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 70, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 56, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 17, in deduplicate_preserve_order\n    raise TypeError(f\"Expected a dict with a 'values' key, got {type(data).__name__}\")\nTypeError: Expected a dict with a 'values' key, got list\n\nRepair guidance:\n- Preserve the planned function name and signature intent.\n- Return a plain Python value instead of printing.\n- Avoid side effects and banned imports/calls.\n- Add input validation only where it improves clarity.",
+      "cold_total_latency_ms": 46453.04999999644,
+      "warm_total_latency_ms": 336964.6225000033,
+      "cold_response": {
+        "path_taken": "slow",
+        "result": null,
+        "total_latency_ms": 46453.04999999644,
+        "tool_id": "44683528-60b3-41cc-b6dd-674cbd8102d6",
+        "tool_name": "deduplicate_preserve_order",
+        "strategy": "agent",
+        "reused_existing_tool": false,
+        "retrieval_latency_ms": null,
+        "forge_latency_ms": 41605.00270000193,
+        "execution_latency_ms": 116.77130000316538,
+        "search_score": null,
+        "retrieval_trace": [],
+        "explain": null,
+        "forge_trace_id": "7d0734b14707411c8dcfa82ebfd28c73",
+        "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\7d0734b14707411c8dcfa82ebfd28c73.json",
+        "forge_summary": {
+          "headline": "Forge succeeded for deduplicate_preserve_order after 1 attempt(s).",
+          "function_name": "deduplicate_preserve_order",
+          "status": "success",
+          "attempts": 1,
+          "step_count": 4,
+          "plan_steps": [
+            "Validate that the input is an iterable (e.g., list, tuple, string)",
+            "Initialize an empty list for the result and an empty set to track seen items",
+            "Iterate through each item in the input; if the item is not in the seen set, append it to the result list and add it to the seen set",
+            "Return the result list containing first-occurrence-unique items"
+          ],
+          "verification_case_count": 3,
+          "verification_passed": true,
+          "failure_type": null,
+          "failure_message": null,
+          "failed_case": null
+        },
+        "failure_type": null,
+        "error": "NameError: name 'hasattr' is not defined"
+      },
+      "warm_response": {
+        "path_taken": "slow",
+        "result": null,
+        "total_latency_ms": 336964.6225000033,
+        "tool_id": "autoforge-fallback-query-v1",
+        "tool_name": "benchmark_fallback_query_tool",
+        "strategy": "full",
+        "reused_existing_tool": false,
+        "retrieval_latency_ms": 0.5094999942230061,
+        "forge_latency_ms": 298547.42909999914,
+        "execution_latency_ms": null,
+        "search_score": 0.0049,
+        "retrieval_trace": [
+          {
+            "rank": 1,
+            "tool_id": "44683528-60b3-41cc-b6dd-674cbd8102d6",
+            "tool_name": "deduplicate_preserve_order",
+            "score": 0.8087,
+            "scores": {
+              "lexical": 0.8087,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "execution_failed: NameError: name 'hasattr' is not defined"
+          },
+          {
+            "rank": 2,
+            "tool_id": "bc6a29f3-46f9-43ff-8d67-2660cad0a887",
+            "tool_name": "sort_numbers_ascending",
+            "score": 0.0105,
+            "scores": {
+              "lexical": 0.0105,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "below_threshold"
+          },
+          {
+            "rank": 3,
+            "tool_id": "99f06a4f-d455-4f0b-b7e3-d8fa606610b9",
+            "tool_name": "reverse_text",
+            "score": 0.01,
+            "scores": {
+              "lexical": 0.01,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "below_threshold"
+          },
+          {
+            "rank": 4,
+            "tool_id": "6118beee-2c1b-4f94-931f-2b1c3f67e969",
+            "tool_name": "count_vowels",
+            "score": 0.0083,
+            "scores": {
+              "lexical": 0.0083,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "below_threshold"
+          },
+          {
+            "rank": 5,
+            "tool_id": "autoforge-url-time-v1",
+            "tool_name": "url_time_query_tool",
+            "score": 0.0049,
+            "scores": {
+              "lexical": 0.0049,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "below_threshold"
+          }
+        ],
+        "explain": null,
+        "forge_trace_id": "171b34ac6d0941d79036c086bd230e81",
+        "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\171b34ac6d0941d79036c086bd230e81.json",
+        "forge_summary": {
+          "headline": "Forge failed after 5 attempt(s): runtime.",
+          "function_name": "deduplicate_preserve_order",
+          "status": "failed",
+          "attempts": 5,
+          "step_count": 5,
+          "plan_steps": [
+            "Validate that the input is a dict containing the key 'values' with a list value",
+            "Initialize an empty set to track seen elements and an empty list for the unique result",
+            "Iterate over each item in the input list",
+            "If the item is not in the seen set, add it to the set and append to the result list",
+            "Return the result list preserving the original relative order"
+          ],
+          "verification_case_count": 1,
+          "verification_passed": false,
+          "failure_type": "runtime",
+          "failure_message": "error_type: runtime\nmessage:\nTraceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 70, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 56, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 17, in deduplicate_preserve_order\n    raise TypeError(f\"Expected a dict with a 'values' key, got {type(data).__name__}\")\nTypeError: Expected a dict with a 'values' key, got list\n\nRepair guidance:\n- Preserve the planned function name and signature intent.\n- Return a plain Python value instead of printing.\n- Avoid side effects and banned imports/calls.\n- Add input validation only where it improves clarity.",
+          "failed_case": {
+            "case": 1,
+            "input": {
+              "__function_name": "deduplicate_preserve_order",
+              "data": [
+                5,
+                1,
+                9,
+                2
+              ]
+            },
+            "success": false,
+            "stdout": "",
+            "stderr": "Traceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 70, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 56, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 17, in deduplicate_preserve_order\n    raise TypeError(f\"Expected a dict with a 'values' key, got {type(data).__name__}\")\nTypeError: Expected a dict with a 'values' key, got list\n",
+            "failure_type": "runtime",
+            "result": null
+          }
+        },
+        "failure_type": "runtime",
+        "error": "error_type: runtime\nmessage:\nTraceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 70, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 56, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 17, in deduplicate_preserve_order\n    raise TypeError(f\"Expected a dict with a 'values' key, got {type(data).__name__}\")\nTypeError: Expected a dict with a 'values' key, got list\n\nRepair guidance:\n- Preserve the planned function name and signature intent.\n- Return a plain Python value instead of printing.\n- Avoid side effects and banned imports/calls.\n- Add input validation only where it improves clarity."
+      }
+    },
+    {
+      "id": "agent_demo_05_json_rows_filter",
+      "family": "json_rows",
+      "cold_query": "Create a reusable function that returns names for row dictionaries whose score is at least a threshold.",
+      "warm_query": "filter_names_by_score: {\"rows\":[{\"name\":\"Ada\",\"score\":91},{\"name\":\"Ben\",\"score\":72}],\"threshold\":80}",
+      "expected_output": [
+        "Ada"
+      ],
+      "cold_success": true,
+      "cold_example_success": true,
+      "cold_example_result": [
+        "Ada"
+      ],
+      "cold_example_error": null,
+      "cold_example_payload": {
+        "rows": [
+          {
+            "name": "Ada",
+            "score": 91
+          },
+          {
+            "name": "Ben",
+            "score": 72
+          }
+        ],
+        "threshold": 80,
+        "__function_name": "filter_names_by_score"
+      },
+      "warm_success": true,
+      "warm_reused_existing_tool": true,
+      "cold_path_taken": "slow",
+      "warm_path_taken": "fast",
+      "tool_id": "a8baae27-4454-4de9-9dc1-aea68bdb4934",
+      "tool_name": "filter_names_by_score",
+      "forge_trace_id": "f060ccd4f8af4125b469d5ca4634abd1",
+      "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\f060ccd4f8af4125b469d5ca4634abd1.json",
+      "forge_summary": {
+        "headline": "Forge succeeded for filter_names_by_score after 1 attempt(s).",
+        "function_name": "filter_names_by_score",
+        "status": "success",
+        "attempts": 1,
+        "step_count": 5,
+        "plan_steps": [
+          "Validate that input is a list of dictionaries and threshold is a numeric value.",
+          "Check that every dictionary contains the required keys 'score' and 'name'.",
+          "Filter the list to retain only rows where row['score'] >= threshold.",
+          "Extract the 'name' value from each filtered row.",
+          "Return the resulting list of names."
+        ],
+        "verification_case_count": 3,
+        "verification_passed": true,
+        "failure_type": null,
+        "failure_message": null,
+        "failed_case": null
+      },
+      "failure_type": null,
+      "cold_error": null,
+      "warm_error": null,
+      "cold_total_latency_ms": 66000.24389999453,
+      "warm_total_latency_ms": 5888.635300012538,
+      "cold_response": {
+        "path_taken": "slow",
+        "result": [],
+        "total_latency_ms": 66000.24389999453,
+        "tool_id": "a8baae27-4454-4de9-9dc1-aea68bdb4934",
+        "tool_name": "filter_names_by_score",
+        "strategy": "agent",
+        "reused_existing_tool": false,
+        "retrieval_latency_ms": null,
+        "forge_latency_ms": 49970.46799999953,
+        "execution_latency_ms": 103.6759999988135,
+        "search_score": null,
+        "retrieval_trace": [],
+        "explain": null,
+        "forge_trace_id": "f060ccd4f8af4125b469d5ca4634abd1",
+        "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\f060ccd4f8af4125b469d5ca4634abd1.json",
+        "forge_summary": {
+          "headline": "Forge succeeded for filter_names_by_score after 1 attempt(s).",
+          "function_name": "filter_names_by_score",
+          "status": "success",
+          "attempts": 1,
+          "step_count": 5,
+          "plan_steps": [
+            "Validate that input is a list of dictionaries and threshold is a numeric value.",
+            "Check that every dictionary contains the required keys 'score' and 'name'.",
+            "Filter the list to retain only rows where row['score'] >= threshold.",
+            "Extract the 'name' value from each filtered row.",
+            "Return the resulting list of names."
+          ],
+          "verification_case_count": 3,
+          "verification_passed": true,
+          "failure_type": null,
+          "failure_message": null,
+          "failed_case": null
+        },
+        "failure_type": null,
+        "error": null
+      },
+      "warm_response": {
+        "path_taken": "fast",
+        "result": [
+          "Ada"
+        ],
+        "total_latency_ms": 5888.635300012538,
+        "tool_id": "a8baae27-4454-4de9-9dc1-aea68bdb4934",
+        "tool_name": "filter_names_by_score",
+        "strategy": "full",
+        "reused_existing_tool": true,
+        "retrieval_latency_ms": 0.6207000114955008,
+        "forge_latency_ms": null,
+        "execution_latency_ms": 87.90120000776369,
+        "search_score": 0.8074,
+        "retrieval_trace": [
+          {
+            "rank": 1,
+            "tool_id": "a8baae27-4454-4de9-9dc1-aea68bdb4934",
+            "tool_name": "filter_names_by_score",
+            "score": 0.8074,
+            "scores": {
+              "lexical": 0.8074,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": true,
+            "reason": "accepted"
+          },
+          {
+            "rank": 2,
+            "tool_id": "bc6a29f3-46f9-43ff-8d67-2660cad0a887",
+            "tool_name": "sort_numbers_ascending",
+            "score": 0.0105,
+            "scores": {
+              "lexical": 0.0105,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 3,
+            "tool_id": "99f06a4f-d455-4f0b-b7e3-d8fa606610b9",
+            "tool_name": "reverse_text",
+            "score": 0.01,
+            "scores": {
+              "lexical": 0.01,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 4,
+            "tool_id": "44683528-60b3-41cc-b6dd-674cbd8102d6",
+            "tool_name": "deduplicate_preserve_order",
+            "score": 0.0087,
+            "scores": {
+              "lexical": 0.0087,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 5,
+            "tool_id": "6118beee-2c1b-4f94-931f-2b1c3f67e969",
+            "tool_name": "count_vowels",
+            "score": 0.0083,
+            "scores": {
+              "lexical": 0.0083,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          }
+        ],
+        "explain": null,
+        "forge_trace_id": null,
+        "forge_log_path": null,
+        "forge_summary": null,
+        "failure_type": null,
+        "error": null
+      }
+    },
+    {
+      "id": "agent_demo_06_csv_text",
+      "family": "csv_text",
+      "cold_query": "Create a reusable function that parses CSV text and joins names whose score is above a threshold.",
+      "warm_query": "join_names_above_threshold: {\"csv_text\":\"name,score\\nAda,91\\nBen,72\\nCy,88\",\"threshold\":80}",
+      "expected_output": "Ada,Cy",
+      "cold_success": true,
+      "cold_example_success": false,
+      "cold_example_result": "Ada, Cy",
+      "cold_example_error": null,
+      "cold_example_payload": {
+        "csv_text": "name,score\nAda,91\nBen,72\nCy,88",
+        "threshold": 80,
+        "__function_name": "join_names_above_threshold"
+      },
+      "warm_success": false,
+      "warm_reused_existing_tool": true,
+      "cold_path_taken": "slow",
+      "warm_path_taken": "fast",
+      "tool_id": "64e00867-d08e-4217-b7b6-3da3ce270b21",
+      "tool_name": "join_names_above_threshold",
+      "forge_trace_id": "9adfa5e620be44bcbadb330d965fc0d6",
+      "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\9adfa5e620be44bcbadb330d965fc0d6.json",
+      "forge_summary": {
+        "headline": "Forge succeeded for join_names_above_threshold after 1 attempt(s).",
+        "function_name": "join_names_above_threshold",
+        "status": "success",
+        "attempts": 1,
+        "step_count": 6,
+        "plan_steps": [
+          "Validate that csv_text is a non-empty string and threshold can be converted to a float.",
+          "Parse the CSV text using csv.DictReader, assuming headers 'name' and 'score' (configurable).",
+          "Filter rows where the numeric score is strictly greater than the threshold.",
+          "Extract the 'name' value from each matching row.",
+          "Join the collected names using a comma-space separator (configurable).",
+          "Return the joined string."
+        ],
+        "verification_case_count": 3,
+        "verification_passed": true,
+        "failure_type": null,
+        "failure_message": null,
+        "failed_case": null
+      },
+      "failure_type": null,
+      "cold_error": "ValueError: csv_text must be a non-empty string",
+      "warm_error": null,
+      "cold_total_latency_ms": 66701.83340000222,
+      "warm_total_latency_ms": 12064.611299996614,
+      "cold_response": {
+        "path_taken": "slow",
+        "result": null,
+        "total_latency_ms": 66701.83340000222,
+        "tool_id": "64e00867-d08e-4217-b7b6-3da3ce270b21",
+        "tool_name": "join_names_above_threshold",
+        "strategy": "agent",
+        "reused_existing_tool": false,
+        "retrieval_latency_ms": null,
+        "forge_latency_ms": 50546.95859999629,
+        "execution_latency_ms": 121.73970000003465,
+        "search_score": null,
+        "retrieval_trace": [],
+        "explain": null,
+        "forge_trace_id": "9adfa5e620be44bcbadb330d965fc0d6",
+        "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\9adfa5e620be44bcbadb330d965fc0d6.json",
+        "forge_summary": {
+          "headline": "Forge succeeded for join_names_above_threshold after 1 attempt(s).",
+          "function_name": "join_names_above_threshold",
+          "status": "success",
+          "attempts": 1,
+          "step_count": 6,
+          "plan_steps": [
+            "Validate that csv_text is a non-empty string and threshold can be converted to a float.",
+            "Parse the CSV text using csv.DictReader, assuming headers 'name' and 'score' (configurable).",
+            "Filter rows where the numeric score is strictly greater than the threshold.",
+            "Extract the 'name' value from each matching row.",
+            "Join the collected names using a comma-space separator (configurable).",
+            "Return the joined string."
+          ],
+          "verification_case_count": 3,
+          "verification_passed": true,
+          "failure_type": null,
+          "failure_message": null,
+          "failed_case": null
+        },
+        "failure_type": null,
+        "error": "ValueError: csv_text must be a non-empty string"
+      },
+      "warm_response": {
+        "path_taken": "fast",
+        "result": "Ada, Cy",
+        "total_latency_ms": 12064.611299996614,
+        "tool_id": "64e00867-d08e-4217-b7b6-3da3ce270b21",
+        "tool_name": "join_names_above_threshold",
+        "strategy": "full",
+        "reused_existing_tool": true,
+        "retrieval_latency_ms": 0.6045999907655641,
+        "forge_latency_ms": null,
+        "execution_latency_ms": 95.12769999855664,
+        "search_score": 0.8074,
+        "retrieval_trace": [
+          {
+            "rank": 1,
+            "tool_id": "64e00867-d08e-4217-b7b6-3da3ce270b21",
+            "tool_name": "join_names_above_threshold",
+            "score": 0.8074,
+            "scores": {
+              "lexical": 0.8074,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": true,
+            "reason": "accepted"
+          },
+          {
+            "rank": 2,
+            "tool_id": "bc6a29f3-46f9-43ff-8d67-2660cad0a887",
+            "tool_name": "sort_numbers_ascending",
+            "score": 0.0105,
+            "scores": {
+              "lexical": 0.0105,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 3,
+            "tool_id": "99f06a4f-d455-4f0b-b7e3-d8fa606610b9",
+            "tool_name": "reverse_text",
+            "score": 0.01,
+            "scores": {
+              "lexical": 0.01,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 4,
+            "tool_id": "44683528-60b3-41cc-b6dd-674cbd8102d6",
+            "tool_name": "deduplicate_preserve_order",
+            "score": 0.0087,
+            "scores": {
+              "lexical": 0.0087,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 5,
+            "tool_id": "6118beee-2c1b-4f94-931f-2b1c3f67e969",
+            "tool_name": "count_vowels",
+            "score": 0.0083,
+            "scores": {
+              "lexical": 0.0083,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          }
+        ],
+        "explain": null,
+        "forge_trace_id": null,
+        "forge_log_path": null,
+        "forge_summary": null,
+        "failure_type": null,
+        "error": null
+      }
+    },
+    {
+      "id": "agent_demo_07_jsonl_sum",
+      "family": "jsonl",
+      "cold_query": "Create a reusable function that parses JSON lines and sums a numeric field.",
+      "warm_query": "sum_jsonl_field: {\"lines\":[\"{\\\"x\\\": 1}\",\"{\\\"x\\\": 2}\",\"{\\\"x\\\": 4}\"],\"field\":\"x\"}",
+      "expected_output": 7,
+      "cold_success": true,
+      "cold_example_success": false,
+      "cold_example_result": null,
+      "cold_example_error": "Traceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 130, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 116, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\nTypeError: sum_jsonl_field() got an unexpected keyword argument 'lines'\n",
+      "cold_example_payload": {
+        "lines": [
+          "{\"x\": 1}",
+          "{\"x\": 2}",
+          "{\"x\": 4}"
+        ],
+        "field": "x",
+        "__function_name": "sum_jsonl_field"
+      },
+      "warm_success": true,
+      "warm_reused_existing_tool": true,
+      "cold_path_taken": "slow",
+      "warm_path_taken": "fast",
+      "tool_id": "e875b3ea-f229-4634-af9a-154c0f2e2d8b",
+      "tool_name": "sum_jsonl_field",
+      "forge_trace_id": "00a4566ab380466f844a352bb2d6cdae",
+      "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\00a4566ab380466f844a352bb2d6cdae.json",
+      "forge_summary": {
+        "headline": "Forge succeeded for sum_jsonl_field after 2 attempt(s).",
+        "function_name": "sum_jsonl_field",
+        "status": "success",
+        "attempts": 2,
+        "step_count": 5,
+        "plan_steps": [
+          "Validate that input is a string and field_name is a non-empty string",
+          "Split the string into lines and parse each non-empty line as JSON",
+          "For each parsed object, safely extract the value for field_name, converting numeric strings if needed",
+          "Accumulate the sum only for values that are int or float, ignoring missing or non-numeric entries",
+          "Return the total sum as a number (int or float)"
+        ],
+        "verification_case_count": 3,
+        "verification_passed": true,
+        "failure_type": "runtime",
+        "failure_message": null,
+        "failed_case": null
+      },
+      "failure_type": "runtime",
+      "cold_error": "TypeError: field_name must be a non-empty string",
+      "warm_error": null,
+      "cold_total_latency_ms": 123342.78479999921,
+      "warm_total_latency_ms": 25431.92519999866,
+      "cold_response": {
+        "path_taken": "slow",
+        "result": null,
+        "total_latency_ms": 123342.78479999921,
+        "tool_id": "e875b3ea-f229-4634-af9a-154c0f2e2d8b",
+        "tool_name": "sum_jsonl_field",
+        "strategy": "agent",
+        "reused_existing_tool": false,
+        "retrieval_latency_ms": null,
+        "forge_latency_ms": 109667.93959999632,
+        "execution_latency_ms": 123.16949998785276,
+        "search_score": null,
+        "retrieval_trace": [],
+        "explain": null,
+        "forge_trace_id": "00a4566ab380466f844a352bb2d6cdae",
+        "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\00a4566ab380466f844a352bb2d6cdae.json",
+        "forge_summary": {
+          "headline": "Forge succeeded for sum_jsonl_field after 2 attempt(s).",
+          "function_name": "sum_jsonl_field",
+          "status": "success",
+          "attempts": 2,
+          "step_count": 5,
+          "plan_steps": [
+            "Validate that input is a string and field_name is a non-empty string",
+            "Split the string into lines and parse each non-empty line as JSON",
+            "For each parsed object, safely extract the value for field_name, converting numeric strings if needed",
+            "Accumulate the sum only for values that are int or float, ignoring missing or non-numeric entries",
+            "Return the total sum as a number (int or float)"
+          ],
+          "verification_case_count": 3,
+          "verification_passed": true,
+          "failure_type": "runtime",
+          "failure_message": null,
+          "failed_case": null
+        },
+        "failure_type": null,
+        "error": "TypeError: field_name must be a non-empty string"
+      },
+      "warm_response": {
+        "path_taken": "fast",
+        "result": 7,
+        "total_latency_ms": 25431.92519999866,
+        "tool_id": "e875b3ea-f229-4634-af9a-154c0f2e2d8b",
+        "tool_name": "sum_jsonl_field",
+        "strategy": "full",
+        "reused_existing_tool": true,
+        "retrieval_latency_ms": 0.568500006920658,
+        "forge_latency_ms": null,
+        "execution_latency_ms": 104.22820001258515,
+        "search_score": 0.8091,
+        "retrieval_trace": [
+          {
+            "rank": 1,
+            "tool_id": "e875b3ea-f229-4634-af9a-154c0f2e2d8b",
+            "tool_name": "sum_jsonl_field",
+            "score": 0.8091,
+            "scores": {
+              "lexical": 0.8091,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": true,
+            "reason": "accepted"
+          },
+          {
+            "rank": 2,
+            "tool_id": "bc6a29f3-46f9-43ff-8d67-2660cad0a887",
+            "tool_name": "sort_numbers_ascending",
+            "score": 0.0105,
+            "scores": {
+              "lexical": 0.0105,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 3,
+            "tool_id": "99f06a4f-d455-4f0b-b7e3-d8fa606610b9",
+            "tool_name": "reverse_text",
+            "score": 0.01,
+            "scores": {
+              "lexical": 0.01,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 4,
+            "tool_id": "44683528-60b3-41cc-b6dd-674cbd8102d6",
+            "tool_name": "deduplicate_preserve_order",
+            "score": 0.0087,
+            "scores": {
+              "lexical": 0.0087,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 5,
+            "tool_id": "6118beee-2c1b-4f94-931f-2b1c3f67e969",
+            "tool_name": "count_vowels",
+            "score": 0.0083,
+            "scores": {
+              "lexical": 0.0083,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          }
+        ],
+        "explain": null,
+        "forge_trace_id": null,
+        "forge_log_path": null,
+        "forge_summary": null,
+        "failure_type": null,
+        "error": null
+      }
+    },
+    {
+      "id": "agent_demo_08_moving_average",
+      "family": "moving_average",
+      "cold_query": "Create a reusable function that computes a moving average over a numeric series.",
+      "warm_query": "compute_moving_average: {\"values\":[10.0,11.0,12.0,13.0],\"window\":3}",
+      "expected_output": [
+        11.0,
+        12.0
+      ],
+      "cold_success": true,
+      "cold_example_success": false,
+      "cold_example_result": null,
+      "cold_example_error": "Traceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 86, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 72, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\nTypeError: compute_moving_average() got an unexpected keyword argument 'values'\n",
+      "cold_example_payload": {
+        "values": [
+          10.0,
+          11.0,
+          12.0,
+          13.0
+        ],
+        "window": 3,
+        "__function_name": "compute_moving_average"
+      },
+      "warm_success": true,
+      "warm_reused_existing_tool": true,
+      "cold_path_taken": "slow",
+      "warm_path_taken": "fast",
+      "tool_id": "2dad4257-8c0a-4a3a-b36e-0f198185d799",
+      "tool_name": "compute_moving_average",
+      "forge_trace_id": "8a649f64769c4a39bd2c2c52ecb3fcb8",
+      "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\8a649f64769c4a39bd2c2c52ecb3fcb8.json",
+      "forge_summary": {
+        "headline": "Forge succeeded for compute_moving_average after 1 attempt(s).",
+        "function_name": "compute_moving_average",
+        "status": "success",
+        "attempts": 1,
+        "step_count": 5,
+        "plan_steps": [
+          "Validate that series is a non-empty list of numeric values (int or float).",
+          "Validate that window is a positive integer and does not exceed the length of the series.",
+          "Initialize an empty list for results.",
+          "Slide a window of given size across the series, computing the arithmetic mean of each segment.",
+          "Return the list of moving averages."
+        ],
+        "verification_case_count": 3,
+        "verification_passed": true,
+        "failure_type": null,
+        "failure_message": null,
+        "failed_case": null
+      },
+      "failure_type": null,
+      "cold_error": "ValueError: series must be non-empty",
+      "warm_error": null,
+      "cold_total_latency_ms": 55747.6139000064,
+      "warm_total_latency_ms": 10565.23809999635,
+      "cold_response": {
+        "path_taken": "slow",
+        "result": null,
+        "total_latency_ms": 55747.6139000064,
+        "tool_id": "2dad4257-8c0a-4a3a-b36e-0f198185d799",
+        "tool_name": "compute_moving_average",
+        "strategy": "agent",
+        "reused_existing_tool": false,
+        "retrieval_latency_ms": null,
+        "forge_latency_ms": 44665.475600006175,
+        "execution_latency_ms": 117.83580000337679,
+        "search_score": null,
+        "retrieval_trace": [],
+        "explain": null,
+        "forge_trace_id": "8a649f64769c4a39bd2c2c52ecb3fcb8",
+        "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\8a649f64769c4a39bd2c2c52ecb3fcb8.json",
+        "forge_summary": {
+          "headline": "Forge succeeded for compute_moving_average after 1 attempt(s).",
+          "function_name": "compute_moving_average",
+          "status": "success",
+          "attempts": 1,
+          "step_count": 5,
+          "plan_steps": [
+            "Validate that series is a non-empty list of numeric values (int or float).",
+            "Validate that window is a positive integer and does not exceed the length of the series.",
+            "Initialize an empty list for results.",
+            "Slide a window of given size across the series, computing the arithmetic mean of each segment.",
+            "Return the list of moving averages."
+          ],
+          "verification_case_count": 3,
+          "verification_passed": true,
+          "failure_type": null,
+          "failure_message": null,
+          "failed_case": null
+        },
+        "failure_type": null,
+        "error": "ValueError: series must be non-empty"
+      },
+      "warm_response": {
+        "path_taken": "fast",
+        "result": [
+          11.0,
+          12.0
+        ],
+        "total_latency_ms": 10565.23809999635,
+        "tool_id": "2dad4257-8c0a-4a3a-b36e-0f198185d799",
+        "tool_name": "compute_moving_average",
+        "strategy": "full",
+        "reused_existing_tool": true,
+        "retrieval_latency_ms": 0.7119000074453652,
+        "forge_latency_ms": null,
+        "execution_latency_ms": 96.29400000267196,
+        "search_score": 0.8091,
+        "retrieval_trace": [
+          {
+            "rank": 1,
+            "tool_id": "2dad4257-8c0a-4a3a-b36e-0f198185d799",
+            "tool_name": "compute_moving_average",
+            "score": 0.8091,
+            "scores": {
+              "lexical": 0.8091,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": true,
+            "reason": "accepted"
+          },
+          {
+            "rank": 2,
+            "tool_id": "bc6a29f3-46f9-43ff-8d67-2660cad0a887",
+            "tool_name": "sort_numbers_ascending",
+            "score": 0.0105,
+            "scores": {
+              "lexical": 0.0105,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 3,
+            "tool_id": "99f06a4f-d455-4f0b-b7e3-d8fa606610b9",
+            "tool_name": "reverse_text",
+            "score": 0.01,
+            "scores": {
+              "lexical": 0.01,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 4,
+            "tool_id": "e875b3ea-f229-4634-af9a-154c0f2e2d8b",
+            "tool_name": "sum_jsonl_field",
+            "score": 0.0091,
+            "scores": {
+              "lexical": 0.0091,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 5,
+            "tool_id": "44683528-60b3-41cc-b6dd-674cbd8102d6",
+            "tool_name": "deduplicate_preserve_order",
+            "score": 0.0087,
+            "scores": {
+              "lexical": 0.0087,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          }
+        ],
+        "explain": null,
+        "forge_trace_id": null,
+        "forge_log_path": null,
+        "forge_summary": null,
+        "failure_type": null,
+        "error": null
+      }
+    },
+    {
+      "id": "agent_demo_09_category_aggregation",
+      "family": "category_aggregation",
+      "cold_query": "Create a reusable function that totals amounts by category for row dictionaries.",
+      "warm_query": "sum_amounts_by_category: {\"rows\":[{\"cat\":\"infra\",\"amt\":18},{\"cat\":\"ml\",\"amt\":32},{\"cat\":\"infra\",\"amt\":22}]}",
+      "expected_output": {
+        "infra": 40,
+        "ml": 32
+      },
+      "cold_success": true,
+      "cold_example_success": false,
+      "cold_example_result": null,
+      "cold_example_error": "Traceback (most recent call last):\n  File \"/tmp/autoforge/script.py\", line 92, in <module>\n    result = _call(func, params)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 78, in _call\n    return func(**params)\n           ^^^^^^^^^^^^^^\n  File \"/tmp/autoforge/script.py\", line 31, in sum_amounts_by_category\n    raise ValueError(f\"Row at index {i} is missing 'category' key.\")\nValueError: Row at index 0 is missing 'category' key.\n",
+      "cold_example_payload": {
+        "rows": [
+          {
+            "cat": "infra",
+            "amt": 18
+          },
+          {
+            "cat": "ml",
+            "amt": 32
+          },
+          {
+            "cat": "infra",
+            "amt": 22
+          }
+        ],
+        "__function_name": "sum_amounts_by_category"
+      },
+      "warm_success": true,
+      "warm_reused_existing_tool": false,
+      "cold_path_taken": "slow",
+      "warm_path_taken": "slow",
+      "tool_id": "9022c5af-f65c-4ea4-84ec-dac1dd37055f",
+      "tool_name": "sum_amounts_by_category",
+      "forge_trace_id": "ee301f1eb0854eeb90aedf7152934a49",
+      "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\ee301f1eb0854eeb90aedf7152934a49.json",
+      "forge_summary": {
+        "headline": "Forge succeeded for sum_amounts_by_category after 2 attempt(s).",
+        "function_name": "sum_amounts_by_category",
+        "status": "success",
+        "attempts": 2,
+        "step_count": 6,
+        "plan_steps": [
+          "Validate input is a non-empty list of dictionaries.",
+          "Check that each dictionary has 'category' and 'amount' keys; raise errors if missing.",
+          "Initialize an empty dictionary to accumulate totals.",
+          "Iterate over rows, converting the amount to a numeric type (float) if not already numeric.",
+          "For each valid row, add the amount to the entry for the row's category in the accumulator.",
+          "Return the dictionary of category totals."
+        ],
+        "verification_case_count": 3,
+        "verification_passed": true,
+        "failure_type": "runtime",
+        "failure_message": null,
+        "failed_case": null
+      },
+      "failure_type": "runtime",
+      "cold_error": null,
+      "warm_error": null,
+      "cold_total_latency_ms": 83687.52669999958,
+      "warm_total_latency_ms": 85750.59480000346,
+      "cold_response": {
+        "path_taken": "slow",
+        "result": {},
+        "total_latency_ms": 83687.52669999958,
+        "tool_id": "9022c5af-f65c-4ea4-84ec-dac1dd37055f",
+        "tool_name": "sum_amounts_by_category",
+        "strategy": "agent",
+        "reused_existing_tool": false,
+        "retrieval_latency_ms": null,
+        "forge_latency_ms": 77701.63259998662,
+        "execution_latency_ms": 107.85410000244156,
+        "search_score": null,
+        "retrieval_trace": [],
+        "explain": null,
+        "forge_trace_id": "ee301f1eb0854eeb90aedf7152934a49",
+        "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\ee301f1eb0854eeb90aedf7152934a49.json",
+        "forge_summary": {
+          "headline": "Forge succeeded for sum_amounts_by_category after 2 attempt(s).",
+          "function_name": "sum_amounts_by_category",
+          "status": "success",
+          "attempts": 2,
+          "step_count": 6,
+          "plan_steps": [
+            "Validate input is a non-empty list of dictionaries.",
+            "Check that each dictionary has 'category' and 'amount' keys; raise errors if missing.",
+            "Initialize an empty dictionary to accumulate totals.",
+            "Iterate over rows, converting the amount to a numeric type (float) if not already numeric.",
+            "For each valid row, add the amount to the entry for the row's category in the accumulator.",
+            "Return the dictionary of category totals."
+          ],
+          "verification_case_count": 3,
+          "verification_passed": true,
+          "failure_type": "runtime",
+          "failure_message": null,
+          "failed_case": null
+        },
+        "failure_type": null,
+        "error": null
+      },
+      "warm_response": {
+        "path_taken": "slow",
+        "result": {
+          "infra": 40,
+          "ml": 32
+        },
+        "total_latency_ms": 85750.59480000346,
+        "tool_id": "2dc1c4b9-440c-46ed-93f6-a255d7773eb0",
+        "tool_name": "sum_amounts_by_category",
+        "strategy": "full",
+        "reused_existing_tool": false,
+        "retrieval_latency_ms": 0.7792999967932701,
+        "forge_latency_ms": 54468.180299998494,
+        "execution_latency_ms": 108.63590000371914,
+        "search_score": 0.0091,
+        "retrieval_trace": [
+          {
+            "rank": 1,
+            "tool_id": "9022c5af-f65c-4ea4-84ec-dac1dd37055f",
+            "tool_name": "sum_amounts_by_category",
+            "score": 0.8091,
+            "scores": {
+              "lexical": 0.8091,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "execution_failed: ValueError: Row at index 0 is missing 'category' key."
+          },
+          {
+            "rank": 2,
+            "tool_id": "bc6a29f3-46f9-43ff-8d67-2660cad0a887",
+            "tool_name": "sort_numbers_ascending",
+            "score": 0.0105,
+            "scores": {
+              "lexical": 0.0105,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "below_threshold"
+          },
+          {
+            "rank": 3,
+            "tool_id": "99f06a4f-d455-4f0b-b7e3-d8fa606610b9",
+            "tool_name": "reverse_text",
+            "score": 0.01,
+            "scores": {
+              "lexical": 0.01,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "below_threshold"
+          },
+          {
+            "rank": 4,
+            "tool_id": "2dad4257-8c0a-4a3a-b36e-0f198185d799",
+            "tool_name": "compute_moving_average",
+            "score": 0.0091,
+            "scores": {
+              "lexical": 0.0091,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "below_threshold"
+          },
+          {
+            "rank": 5,
+            "tool_id": "e875b3ea-f229-4634-af9a-154c0f2e2d8b",
+            "tool_name": "sum_jsonl_field",
+            "score": 0.0091,
+            "scores": {
+              "lexical": 0.0091,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "below_threshold"
+          }
+        ],
+        "explain": null,
+        "forge_trace_id": "e65478ea71cc4f4c9ae21e68afdef85f",
+        "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\e65478ea71cc4f4c9ae21e68afdef85f.json",
+        "forge_summary": {
+          "headline": "Forge succeeded for sum_amounts_by_category after 1 attempt(s).",
+          "function_name": "sum_amounts_by_category",
+          "status": "success",
+          "attempts": 1,
+          "step_count": 4,
+          "plan_steps": [
+            "Validate input is a list of records with 'cat' and 'amt' fields",
+            "Initialize an empty dictionary for category sums",
+            "For each record, add its 'amt' to the corresponding category total",
+            "Return the dictionary of category totals"
+          ],
+          "verification_case_count": 3,
+          "verification_passed": true,
+          "failure_type": null,
+          "failure_message": null,
+          "failed_case": null
+        },
+        "failure_type": null,
+        "error": null
+      }
+    },
+    {
+      "id": "agent_demo_10_url_query_keys",
+      "family": "url",
+      "cold_query": "Create a reusable function that returns sorted query parameter names from a URL.",
+      "warm_query": "sorted_query_parameter_names: {\"url\":\"https://demo.org/report?day=mon&owner=alex&status=open\"}",
+      "expected_output": [
+        "day",
+        "owner",
+        "status"
+      ],
+      "cold_success": true,
+      "cold_example_success": true,
+      "cold_example_result": [
+        "day",
+        "owner",
+        "status"
+      ],
+      "cold_example_error": null,
+      "cold_example_payload": {
+        "url": "https://demo.org/report?day=mon&owner=alex&status=open",
+        "__function_name": "sorted_query_parameter_names"
+      },
+      "warm_success": true,
+      "warm_reused_existing_tool": true,
+      "cold_path_taken": "slow",
+      "warm_path_taken": "fast",
+      "tool_id": "ec199524-8bd3-4596-b3a5-3b95ca969aa0",
+      "tool_name": "sorted_query_parameter_names",
+      "forge_trace_id": "daa8e77e7f794a45b3a1f61b871996b1",
+      "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\daa8e77e7f794a45b3a1f61b871996b1.json",
+      "forge_summary": {
+        "headline": "Forge succeeded for sorted_query_parameter_names after 1 attempt(s).",
+        "function_name": "sorted_query_parameter_names",
+        "status": "success",
+        "attempts": 1,
+        "step_count": 5,
+        "plan_steps": [
+          "Validate input is a non-empty string",
+          "Parse the URL and extract the query string",
+          "Parse the query string into key-value pairs",
+          "Collect and sort the keys alphabetically",
+          "Return the sorted list of parameter names"
+        ],
+        "verification_case_count": 3,
+        "verification_passed": true,
+        "failure_type": null,
+        "failure_message": null,
+        "failed_case": null
+      },
+      "failure_type": null,
+      "cold_error": null,
+      "warm_error": null,
+      "cold_total_latency_ms": 43650.31969999836,
+      "warm_total_latency_ms": 8288.356999997632,
+      "cold_response": {
+        "path_taken": "slow",
+        "result": [
+          "a",
+          "b",
+          "c"
+        ],
+        "total_latency_ms": 43650.31969999836,
+        "tool_id": "ec199524-8bd3-4596-b3a5-3b95ca969aa0",
+        "tool_name": "sorted_query_parameter_names",
+        "strategy": "agent",
+        "reused_existing_tool": false,
+        "retrieval_latency_ms": null,
+        "forge_latency_ms": 36631.50639999367,
+        "execution_latency_ms": 123.31700000504497,
+        "search_score": null,
+        "retrieval_trace": [],
+        "explain": null,
+        "forge_trace_id": "daa8e77e7f794a45b3a1f61b871996b1",
+        "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_final_v2\\daa8e77e7f794a45b3a1f61b871996b1.json",
+        "forge_summary": {
+          "headline": "Forge succeeded for sorted_query_parameter_names after 1 attempt(s).",
+          "function_name": "sorted_query_parameter_names",
+          "status": "success",
+          "attempts": 1,
+          "step_count": 5,
+          "plan_steps": [
+            "Validate input is a non-empty string",
+            "Parse the URL and extract the query string",
+            "Parse the query string into key-value pairs",
+            "Collect and sort the keys alphabetically",
+            "Return the sorted list of parameter names"
+          ],
+          "verification_case_count": 3,
+          "verification_passed": true,
+          "failure_type": null,
+          "failure_message": null,
+          "failed_case": null
+        },
+        "failure_type": null,
+        "error": null
+      },
+      "warm_response": {
+        "path_taken": "fast",
+        "result": [
+          "day",
+          "owner",
+          "status"
+        ],
+        "total_latency_ms": 8288.356999997632,
+        "tool_id": "ec199524-8bd3-4596-b3a5-3b95ca969aa0",
+        "tool_name": "sorted_query_parameter_names",
+        "strategy": "full",
+        "reused_existing_tool": true,
+        "retrieval_latency_ms": 0.6806000019423664,
+        "forge_latency_ms": null,
+        "execution_latency_ms": 94.43639998789877,
+        "search_score": 0.8095,
+        "retrieval_trace": [
+          {
+            "rank": 1,
+            "tool_id": "ec199524-8bd3-4596-b3a5-3b95ca969aa0",
+            "tool_name": "sorted_query_parameter_names",
+            "score": 0.8095,
+            "scores": {
+              "lexical": 0.8095,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": true,
+            "reason": "accepted"
+          },
+          {
+            "rank": 2,
+            "tool_id": "bc6a29f3-46f9-43ff-8d67-2660cad0a887",
+            "tool_name": "sort_numbers_ascending",
+            "score": 0.0105,
+            "scores": {
+              "lexical": 0.0105,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 3,
+            "tool_id": "99f06a4f-d455-4f0b-b7e3-d8fa606610b9",
+            "tool_name": "reverse_text",
+            "score": 0.01,
+            "scores": {
+              "lexical": 0.01,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 4,
+            "tool_id": "2dad4257-8c0a-4a3a-b36e-0f198185d799",
+            "tool_name": "compute_moving_average",
+            "score": 0.0091,
+            "scores": {
+              "lexical": 0.0091,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 5,
+            "tool_id": "9022c5af-f65c-4ea4-84ec-dac1dd37055f",
+            "tool_name": "sum_amounts_by_category",
+            "score": 0.0091,
+            "scores": {
+              "lexical": 0.0091,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          }
+        ],
+        "explain": null,
+        "forge_trace_id": null,
+        "forge_log_path": null,
+        "forge_summary": null,
+        "failure_type": null,
+        "error": null
+      }
+    }
+  ],
+  "report_path": "evaluation\\results\\agent_demo_report_agent_20260502_054643.json"
+}

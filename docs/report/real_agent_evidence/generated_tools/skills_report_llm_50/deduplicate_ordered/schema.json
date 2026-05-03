@@ -1,0 +1,16 @@
+{
+  "name": "deduplicate_ordered",
+  "description": "Remove duplicates from an iterable while preserving the order of first occurrence.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "seq": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "seq"
+    ]
+  }
+}

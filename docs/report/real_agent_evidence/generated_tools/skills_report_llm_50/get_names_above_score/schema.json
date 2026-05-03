@@ -1,0 +1,29 @@
+{
+  "name": "get_names_above_score",
+  "description": "Filter rows by a score threshold and return the associated names.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      },
+      "threshold": {
+        "type": "integer",
+        "description": ""
+      },
+      "score_field": {
+        "type": "string",
+        "description": ""
+      },
+      "name_field": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows",
+      "threshold"
+    ]
+  }
+}

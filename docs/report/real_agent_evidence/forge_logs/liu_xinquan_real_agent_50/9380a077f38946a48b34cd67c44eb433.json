@@ -1,0 +1,141 @@
+{
+  "trace_id": "9380a077f38946a48b34cd67c44eb433",
+  "timestamp": "2026-05-02T06:57:33.618983+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for sum_json_lines_field after 1 attempt(s).",
+    "function_name": "sum_json_lines_field",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 5,
+    "plan_steps": [
+      "Validate that the input is an iterable of strings and field_name is a string",
+      "Initialize total to 0",
+      "For each line, attempt to parse it as a JSON object",
+      "If parsing succeeds and the field exists, verify the value is numeric (int or float) and add to total",
+      "Return the total sum"
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that parses JSON lines and sums a numeric field."
+  },
+  "plan": {
+    "steps": [
+      "Validate that the input is an iterable of strings and field_name is a string",
+      "Initialize total to 0",
+      "For each line, attempt to parse it as a JSON object",
+      "If parsing succeeds and the field exists, verify the value is numeric (int or float) and add to total",
+      "Return the total sum"
+    ],
+    "suggested_function_name": "sum_json_lines_field"
+  },
+  "source_code": "import json\nfrom typing import Iterable, Union\n\n\ndef sum_json_lines_field(lines: Iterable[str], field_name: str) -> Union[int, float]:\n    \"\"\"\n    Sum the values of a specified field across a sequence of JSON lines.\n\n    Each line is parsed as a JSON object. If the field exists and its value is\n    numeric (``int`` or ``float``, *not* ``bool``), the value is added to the\n    running total.  Missing fields, non‑numeric values, and malformed JSON lines\n    are silently skipped.\n\n    Args:\n        lines:       An iterable of strings, where each string is a JSON object.\n        field_name:  The key whose values should be summed.\n\n    Returns:\n        The total sum as an ``int`` or ``float``.  Returns 0 if no valid numeric\n        values are found.\n\n    Raises:\n        TypeError: If *lines* is not an iterable of strings or *field_name* is\n                   not a string.\n    \"\"\"\n    # --- Input validation ---\n    if not isinstance(field_name, str):\n        raise TypeError(\"field_name must be a string\")\n    # Make sure lines is iterable (this check will fail eagerly for non‑iterables)\n    try:\n        iterator = iter(lines)\n    except TypeError:\n        raise TypeError(\"lines must be an iterable of strings\")\n\n    total: Union[int, float] = 0\n\n    for line in iterator:\n        if not isinstance(line, str):\n            # If line is not a string, we still follow the plan's silent-skip\n            # logic for malformed input; a non‑string cannot be valid JSON.\n            continue\n        try:\n            obj = json.loads(line)\n        except (json.JSONDecodeError, TypeError):\n            # Malformed JSON – skip this line\n            continue\n\n        if not isinstance(obj, dict):\n            # Not a JSON object – skip\n            continue\n\n        value = obj.get(field_name)\n        if value is None:\n            # Field missing\n            continue\n\n        # Accept int and float but reject bool (which is a subclass of int)\n        if isinstance(value, bool) or not isinstance(value, (int, float)):\n            continue\n\n        total += value\n\n    return total",
+  "function_name": "sum_json_lines_field",
+  "verification": {
+    "success": true,
+    "stdout": "10\n",
+    "stderr": "",
+    "execution_time_ms": 1932.4762999895029,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "sum_json_lines_field",
+          "lines": [
+            "{\"x\": 1}",
+            "{\"x\": 2}",
+            "{\"x\": 4}"
+          ],
+          "field_name": "x"
+        },
+        "success": true,
+        "stdout": "7\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 7
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "sum_json_lines_field",
+          "lines": [
+            "{\"score\": 2}",
+            "{\"score\": 5}"
+          ],
+          "field_name": "score"
+        },
+        "success": true,
+        "stdout": "7\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 7
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "sum_json_lines_field",
+          "lines": [
+            "{\"amt\": 3}",
+            "{\"amt\": 7}"
+          ],
+          "field_name": "amt"
+        },
+        "success": true,
+        "stdout": "10\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 10
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "cd58718b-629d-497a-a6c9-389b5c5d0d32",
+    "name": "sum_json_lines_field",
+    "description": "Sum the values of a specified field across a sequence of JSON lines.",
+    "parameters": [
+      {
+        "name": "lines",
+        "type": "string",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "field_name",
+        "type": "string",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "import json\nfrom typing import Iterable, Union\n\n\ndef sum_json_lines_field(lines: Iterable[str], field_name: str) -> Union[int, float]:\n    \"\"\"\n    Sum the values of a specified field across a sequence of JSON lines.\n\n    Each line is parsed as a JSON object. If the field exists and its value is\n    numeric (``int`` or ``float``, *not* ``bool``), the value is added to the\n    running total.  Missing fields, non‑numeric values, and malformed JSON lines\n    are silently skipped.\n\n    Args:\n        lines:       An iterable of strings, where each string is a JSON object.\n        field_name:  The key whose values should be summed.\n\n    Returns:\n        The total sum as an ``int`` or ``float``.  Returns 0 if no valid numeric\n        values are found.\n\n    Raises:\n        TypeError: If *lines* is not an iterable of strings or *field_name* is\n                   not a string.\n    \"\"\"\n    # --- Input validation ---\n    if not isinstance(field_name, str):\n        raise TypeError(\"field_name must be a string\")\n    # Make sure lines is iterable (this check will fail eagerly for non‑iterables)\n    try:\n        iterator = iter(lines)\n    except TypeError:\n        raise TypeError(\"lines must be an iterable of strings\")\n\n    total: Union[int, float] = 0\n\n    for line in iterator:\n        if not isinstance(line, str):\n            # If line is not a string, we still follow the plan's silent-skip\n            # logic for malformed input; a non‑string cannot be valid JSON.\n            continue\n        try:\n            obj = json.loads(line)\n        except (json.JSONDecodeError, TypeError):\n            # Malformed JSON – skip this line\n            continue\n\n        if not isinstance(obj, dict):\n            # Not a JSON object – skip\n            continue\n\n        value = obj.get(field_name)\n        if value is None:\n            # Field missing\n            continue\n\n        # Accept int and float but reject bool (which is a subclass of int)\n        if isinstance(value, bool) or not isinstance(value, (int, float)):\n            continue\n\n        total += value\n\n    return total",
+    "json_schema": {
+      "name": "sum_json_lines_field",
+      "description": "Sum the values of a specified field across a sequence of JSON lines.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "lines": {
+            "type": "string",
+            "description": ""
+          },
+          "field_name": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "lines",
+          "field_name"
+        ]
+      }
+    }
+  }
+}

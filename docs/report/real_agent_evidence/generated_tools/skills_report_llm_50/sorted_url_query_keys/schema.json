@@ -1,0 +1,16 @@
+{
+  "name": "sorted_url_query_keys",
+  "description": "Parse the query string of a URL and return the parameter names sorted alphabetically.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "url"
+    ]
+  }
+}

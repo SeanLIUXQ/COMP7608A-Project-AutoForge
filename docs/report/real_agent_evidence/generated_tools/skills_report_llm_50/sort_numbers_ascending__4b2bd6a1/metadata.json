@@ -1,0 +1,19 @@
+{
+  "metadata_version": 1,
+  "tool_id": "4b2bd6a1-41c8-4b20-837c-2646b9632039",
+  "name": "sort_numbers_ascending",
+  "description": "Return a new list containing the numbers sorted in ascending order.",
+  "created_at": "2026-05-02T07:18:34.694423+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

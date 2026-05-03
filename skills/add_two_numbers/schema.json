@@ -1,0 +1,21 @@
+{
+  "name": "add_two_numbers",
+  "description": "Returns the sum of two integers.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "a": {
+        "type": "integer",
+        "description": ""
+      },
+      "b": {
+        "type": "integer",
+        "description": ""
+      }
+    },
+    "required": [
+      "a",
+      "b"
+    ]
+  }
+}

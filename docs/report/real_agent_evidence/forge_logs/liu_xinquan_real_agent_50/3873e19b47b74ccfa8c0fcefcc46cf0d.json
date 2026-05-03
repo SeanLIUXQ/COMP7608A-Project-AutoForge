@@ -1,0 +1,153 @@
+{
+  "trace_id": "3873e19b47b74ccfa8c0fcefcc46cf0d",
+  "timestamp": "2026-05-02T06:40:56.168188+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for join_column_above_threshold_from_csv after 1 attempt(s).",
+    "function_name": "join_column_above_threshold_from_csv",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 6,
+    "plan_steps": [
+      "Validate input types: csv_text is a string, threshold is a number, name_column and score_column are non-empty strings.",
+      "Parse the CSV text using csv.DictReader with default comma delimiter into a list of dictionaries.",
+      "Confirm that the header contains both name_column and score_column; raise an error if not.",
+      "Filter rows: convert each row's score_column value to float, keeping only those where the value exceeds the threshold.",
+      "Extract the values from name_column for the filtered rows.",
+      "Join the extracted name values into a comma-separated string and return it."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that parses CSV text and joins names whose score is above a threshold."
+  },
+  "plan": {
+    "steps": [
+      "Validate input types: csv_text is a string, threshold is a number, name_column and score_column are non-empty strings.",
+      "Parse the CSV text using csv.DictReader with default comma delimiter into a list of dictionaries.",
+      "Confirm that the header contains both name_column and score_column; raise an error if not.",
+      "Filter rows: convert each row's score_column value to float, keeping only those where the value exceeds the threshold.",
+      "Extract the values from name_column for the filtered rows.",
+      "Join the extracted name values into a comma-separated string and return it."
+    ],
+    "suggested_function_name": "join_column_above_threshold_from_csv"
+  },
+  "source_code": "import csv\nimport io\nfrom typing import Union\n\n\ndef join_column_above_threshold_from_csv(\n    csv_text: str,\n    threshold: Union[int, float],\n    name_column: str = \"name\",\n    score_column: str = \"score\",\n) -> str:\n    \"\"\"\n    Parse a CSV string, filter rows where a numeric column exceeds a threshold,\n    and return a comma-separated string of values from another column.\n\n    Args:\n        csv_text: CSV-formatted string with a header row.\n        threshold: Numeric threshold; rows with a score strictly greater than\n                   this value are kept.\n        name_column: Name of the column whose values are joined (default \"name\").\n        score_column: Name of the numeric column used for filtering (default \"score\").\n\n    Returns:\n        A comma-separated string of the name_column values from rows that pass\n        the threshold filter.\n\n    Raises:\n        TypeError: If inputs have incorrect types.\n        ValueError: If column names are empty or not found in the CSV header,\n                    or if score values cannot be converted to float.\n    \"\"\"\n    # --- input validation ---\n    if not isinstance(csv_text, str):\n        raise TypeError(\"csv_text must be a string\")\n    if not isinstance(threshold, (int, float)):\n        raise TypeError(\"threshold must be a number (int or float)\")\n    if not isinstance(name_column, str) or not name_column.strip():\n        raise ValueError(\"name_column must be a non-empty string\")\n    if not isinstance(score_column, str) or not score_column.strip():\n        raise ValueError(\"score_column must be a non-empty string\")\n\n    name_column = name_column.strip()\n    score_column = score_column.strip()\n\n    # --- parse CSV ---\n    reader = csv.DictReader(io.StringIO(csv_text))\n    if reader.fieldnames is None:\n        raise ValueError(\"CSV text contains no header row\")\n    if name_column not in reader.fieldnames:\n        raise ValueError(\n            f\"name_column '{name_column}' not found in CSV header: {reader.fieldnames}\"\n        )\n    if score_column not in reader.fieldnames:\n        raise ValueError(\n            f\"score_column '{score_column}' not found in CSV header: {reader.fieldnames}\"\n        )\n\n    # --- filter and collect names ---\n    names: list[str] = []\n    for row in reader:\n        score_str = row.get(score_column, \"\")\n        try:\n            score_value = float(score_str)\n        except (ValueError, TypeError) as exc:\n            raise ValueError(\n                f\"Could not convert score value '{score_str}' to float\"\n            ) from exc\n        if score_value > threshold:\n            names.append(row[name_column])\n\n    return \",\".join(names)",
+  "function_name": "join_column_above_threshold_from_csv",
+  "verification": {
+    "success": true,
+    "stdout": "\n",
+    "stderr": "",
+    "execution_time_ms": 3889.728300011484,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "join_column_above_threshold_from_csv",
+          "csv_text": "name,score\nAda,91\nBen,72\nCy,88",
+          "threshold": 80
+        },
+        "success": true,
+        "stdout": "Ada,Cy\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "Ada,Cy"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "join_column_above_threshold_from_csv",
+          "csv_text": "name,score\nA,1\nB,3",
+          "threshold": 1
+        },
+        "success": true,
+        "stdout": "B\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "B"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "join_column_above_threshold_from_csv",
+          "csv_text": "name,score\nZero,0",
+          "threshold": 0
+        },
+        "success": true,
+        "stdout": "\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": null
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "3b10f962-12b2-459d-b9f8-804cb49f63a3",
+    "name": "join_column_above_threshold_from_csv",
+    "description": "Parse a CSV string, filter rows where a numeric column exceeds a threshold,",
+    "parameters": [
+      {
+        "name": "csv_text",
+        "type": "string",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "threshold",
+        "type": "integer",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "name_column",
+        "type": "string",
+        "description": null,
+        "required": false
+      },
+      {
+        "name": "score_column",
+        "type": "string",
+        "description": null,
+        "required": false
+      }
+    ],
+    "source_code": "import csv\nimport io\nfrom typing import Union\n\n\ndef join_column_above_threshold_from_csv(\n    csv_text: str,\n    threshold: Union[int, float],\n    name_column: str = \"name\",\n    score_column: str = \"score\",\n) -> str:\n    \"\"\"\n    Parse a CSV string, filter rows where a numeric column exceeds a threshold,\n    and return a comma-separated string of values from another column.\n\n    Args:\n        csv_text: CSV-formatted string with a header row.\n        threshold: Numeric threshold; rows with a score strictly greater than\n                   this value are kept.\n        name_column: Name of the column whose values are joined (default \"name\").\n        score_column: Name of the numeric column used for filtering (default \"score\").\n\n    Returns:\n        A comma-separated string of the name_column values from rows that pass\n        the threshold filter.\n\n    Raises:\n        TypeError: If inputs have incorrect types.\n        ValueError: If column names are empty or not found in the CSV header,\n                    or if score values cannot be converted to float.\n    \"\"\"\n    # --- input validation ---\n    if not isinstance(csv_text, str):\n        raise TypeError(\"csv_text must be a string\")\n    if not isinstance(threshold, (int, float)):\n        raise TypeError(\"threshold must be a number (int or float)\")\n    if not isinstance(name_column, str) or not name_column.strip():\n        raise ValueError(\"name_column must be a non-empty string\")\n    if not isinstance(score_column, str) or not score_column.strip():\n        raise ValueError(\"score_column must be a non-empty string\")\n\n    name_column = name_column.strip()\n    score_column = score_column.strip()\n\n    # --- parse CSV ---\n    reader = csv.DictReader(io.StringIO(csv_text))\n    if reader.fieldnames is None:\n        raise ValueError(\"CSV text contains no header row\")\n    if name_column not in reader.fieldnames:\n        raise ValueError(\n            f\"name_column '{name_column}' not found in CSV header: {reader.fieldnames}\"\n        )\n    if score_column not in reader.fieldnames:\n        raise ValueError(\n            f\"score_column '{score_column}' not found in CSV header: {reader.fieldnames}\"\n        )\n\n    # --- filter and collect names ---\n    names: list[str] = []\n    for row in reader:\n        score_str = row.get(score_column, \"\")\n        try:\n            score_value = float(score_str)\n        except (ValueError, TypeError) as exc:\n            raise ValueError(\n                f\"Could not convert score value '{score_str}' to float\"\n            ) from exc\n        if score_value > threshold:\n            names.append(row[name_column])\n\n    return \",\".join(names)",
+    "json_schema": {
+      "name": "join_column_above_threshold_from_csv",
+      "description": "Parse a CSV string, filter rows where a numeric column exceeds a threshold,",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "csv_text": {
+            "type": "string",
+            "description": ""
+          },
+          "threshold": {
+            "type": "integer",
+            "description": ""
+          },
+          "name_column": {
+            "type": "string",
+            "description": ""
+          },
+          "score_column": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "csv_text",
+          "threshold"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "trace_id": "305ab8b455f7451ea7c5b52a6f604885",
+  "timestamp": "2026-05-02T07:19:34.115544+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for remove_duplicates_preserve_order after 1 attempt(s).",
+    "function_name": "remove_duplicates_preserve_order",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 5,
+    "plan_steps": [
+      "Check that input is a sequence or iterable.",
+      "Initialize an empty set to track seen elements.",
+      "Initialize an empty list for the result.",
+      "For each element, if not in the seen set, append to result and add to seen.",
+      "Return the result list."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that removes duplicates while preserving first occurrence order."
+  },
+  "plan": {
+    "steps": [
+      "Check that input is a sequence or iterable.",
+      "Initialize an empty set to track seen elements.",
+      "Initialize an empty list for the result.",
+      "For each element, if not in the seen set, append to result and add to seen.",
+      "Return the result list."
+    ],
+    "suggested_function_name": "remove_duplicates_preserve_order"
+  },
+  "source_code": "def remove_duplicates_preserve_order(iterable):\n    \"\"\"\n    Remove duplicate elements from an iterable, preserving the order of first occurrence.\n\n    Args:\n        iterable: An iterable of hashable items.\n\n    Returns:\n        A list containing each unique item in the original order.\n\n    Raises:\n        TypeError: If the input is not iterable.\n    \"\"\"\n    # Validate that the input is iterable\n    try:\n        iterator = iter(iterable)\n    except TypeError:\n        raise TypeError(\"Input must be an iterable\")\n\n    seen = set()\n    result = []\n    for item in iterator:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result",
+  "function_name": "remove_duplicates_preserve_order",
+  "verification": {
+    "success": true,
+    "stdout": "[]\n",
+    "stderr": "",
+    "execution_time_ms": 2141.641399997752,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "remove_duplicates_preserve_order",
+          "iterable": [
+            1,
+            2,
+            2,
+            3,
+            1,
+            4
+          ]
+        },
+        "success": true,
+        "stdout": "[1, 2, 3, 4]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "remove_duplicates_preserve_order",
+          "iterable": [
+            "a",
+            "b",
+            "a"
+          ]
+        },
+        "success": true,
+        "stdout": "['a', 'b']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['a', 'b']"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "remove_duplicates_preserve_order",
+          "iterable": []
+        },
+        "success": true,
+        "stdout": "[]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": []
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "6ea48de9-a491-4bb2-a6a9-ab63e70c5530",
+    "name": "remove_duplicates_preserve_order",
+    "description": "Remove duplicate elements from an iterable, preserving the order of first occurrence.",
+    "parameters": [
+      {
+        "name": "iterable",
+        "type": "string",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "def remove_duplicates_preserve_order(iterable):\n    \"\"\"\n    Remove duplicate elements from an iterable, preserving the order of first occurrence.\n\n    Args:\n        iterable: An iterable of hashable items.\n\n    Returns:\n        A list containing each unique item in the original order.\n\n    Raises:\n        TypeError: If the input is not iterable.\n    \"\"\"\n    # Validate that the input is iterable\n    try:\n        iterator = iter(iterable)\n    except TypeError:\n        raise TypeError(\"Input must be an iterable\")\n\n    seen = set()\n    result = []\n    for item in iterator:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result",
+    "json_schema": {
+      "name": "remove_duplicates_preserve_order",
+      "description": "Remove duplicate elements from an iterable, preserving the order of first occurrence.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "iterable": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "iterable"
+        ]
+      }
+    }
+  }
+}

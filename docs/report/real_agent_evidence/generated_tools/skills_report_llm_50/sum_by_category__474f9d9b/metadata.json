@@ -1,0 +1,19 @@
+{
+  "metadata_version": 1,
+  "tool_id": "474f9d9b-d946-4f32-971c-fecc876f4d37",
+  "name": "sum_by_category",
+  "description": "Aggregate numeric values per category from a list of dictionaries.",
+  "created_at": "2026-05-02T07:25:10.885910+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

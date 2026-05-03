@@ -1,0 +1,160 @@
+{
+  "trace_id": "aeda1312d8594ae0ab92f8ffcf353d88",
+  "timestamp": "2026-05-02T07:39:00.493581+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for compute_moving_average after 1 attempt(s).",
+    "function_name": "compute_moving_average",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 4,
+    "plan_steps": [
+      "Validate that the input series is a list of numbers (int or float).",
+      "Verify that the window size is a positive integer and not greater than the series length.",
+      "Compute the moving average for each valid window using a sliding sum or mean calculation.",
+      "Return the list of computed moving averages."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that computes a moving average over a numeric series."
+  },
+  "plan": {
+    "steps": [
+      "Validate that the input series is a list of numbers (int or float).",
+      "Verify that the window size is a positive integer and not greater than the series length.",
+      "Compute the moving average for each valid window using a sliding sum or mean calculation.",
+      "Return the list of computed moving averages."
+    ],
+    "suggested_function_name": "compute_moving_average"
+  },
+  "source_code": "from typing import List, Union\n\ndef compute_moving_average(values: List[Union[int, float]], window: int) -> List[float]:\n    \"\"\"\n    Compute the simple moving average of a list of numbers over a given window.\n\n    Args:\n        values: A list of integers or floats. Booleans are not accepted.\n        window: A strictly positive integer window size, not larger than the\n                length of values.\n\n    Returns:\n        A list of floats representing the moving averages, one for each valid\n        window. The length of the output is len(values) - window + 1.\n\n    Raises:\n        TypeError: If values is not a list, contains non-numeric entries,\n                   contains booleans, or window is not an integer (or is a bool).\n        ValueError: If window is not positive or if it exceeds len(values).\n    \"\"\"\n    # --- input validation ---\n    if not isinstance(values, list):\n        raise TypeError(\"values must be a list.\")\n    for x in values:\n        if isinstance(x, bool):\n            raise TypeError(\"values must contain only int or float, not bool.\")\n        if not isinstance(x, (int, float)):\n            raise TypeError(\"values must contain only int or float.\")\n    if isinstance(window, bool):\n        raise TypeError(\"window must be an int, not bool.\")\n    if not isinstance(window, int):\n        raise TypeError(\"window must be an integer.\")\n    if window <= 0:\n        raise ValueError(\"window must be a positive integer.\")\n    n = len(values)\n    if window > n:\n        raise ValueError(\"window must not exceed the length of values.\")\n\n    # --- sliding window computation ---\n    result = []\n    # initial window sum\n    win_sum = sum(values[:window])\n    result.append(win_sum / window)\n\n    # slide the window, updating the sum in O(1) per step\n    for i in range(1, n - window + 1):\n        win_sum += values[i + window - 1] - values[i - 1]\n        result.append(win_sum / window)\n\n    return result",
+  "function_name": "compute_moving_average",
+  "verification": {
+    "success": true,
+    "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+    "stderr": "",
+    "execution_time_ms": 1605.4220999940298,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "values": [
+            5,
+            1,
+            9,
+            2
+          ],
+          "window": 3
+        },
+        "success": true,
+        "stdout": "[5.0, 4.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          5.0,
+          4.0
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "values": [
+            1,
+            2,
+            2,
+            3,
+            1,
+            4
+          ],
+          "window": 2
+        },
+        "success": true,
+        "stdout": "[1.5, 2.0, 2.5, 2.0, 2.5]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1.5,
+          2.0,
+          2.5,
+          2.0,
+          2.5
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "values": [
+            10.0,
+            11.0,
+            12.0,
+            13.0
+          ],
+          "window": 1
+        },
+        "success": true,
+        "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          10.0,
+          11.0,
+          12.0,
+          13.0
+        ]
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "3c0c26fd-5530-4481-b6c2-3e272bfe12dd",
+    "name": "compute_moving_average",
+    "description": "Compute the simple moving average of a list of numbers over a given window.",
+    "parameters": [
+      {
+        "name": "values",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "window",
+        "type": "integer",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import List, Union\n\ndef compute_moving_average(values: List[Union[int, float]], window: int) -> List[float]:\n    \"\"\"\n    Compute the simple moving average of a list of numbers over a given window.\n\n    Args:\n        values: A list of integers or floats. Booleans are not accepted.\n        window: A strictly positive integer window size, not larger than the\n                length of values.\n\n    Returns:\n        A list of floats representing the moving averages, one for each valid\n        window. The length of the output is len(values) - window + 1.\n\n    Raises:\n        TypeError: If values is not a list, contains non-numeric entries,\n                   contains booleans, or window is not an integer (or is a bool).\n        ValueError: If window is not positive or if it exceeds len(values).\n    \"\"\"\n    # --- input validation ---\n    if not isinstance(values, list):\n        raise TypeError(\"values must be a list.\")\n    for x in values:\n        if isinstance(x, bool):\n            raise TypeError(\"values must contain only int or float, not bool.\")\n        if not isinstance(x, (int, float)):\n            raise TypeError(\"values must contain only int or float.\")\n    if isinstance(window, bool):\n        raise TypeError(\"window must be an int, not bool.\")\n    if not isinstance(window, int):\n        raise TypeError(\"window must be an integer.\")\n    if window <= 0:\n        raise ValueError(\"window must be a positive integer.\")\n    n = len(values)\n    if window > n:\n        raise ValueError(\"window must not exceed the length of values.\")\n\n    # --- sliding window computation ---\n    result = []\n    # initial window sum\n    win_sum = sum(values[:window])\n    result.append(win_sum / window)\n\n    # slide the window, updating the sum in O(1) per step\n    for i in range(1, n - window + 1):\n        win_sum += values[i + window - 1] - values[i - 1]\n        result.append(win_sum / window)\n\n    return result",
+    "json_schema": {
+      "name": "compute_moving_average",
+      "description": "Compute the simple moving average of a list of numbers over a given window.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "description": ""
+          },
+          "window": {
+            "type": "integer",
+            "description": ""
+          }
+        },
+        "required": [
+          "values",
+          "window"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "trace_id": "98f44b345899437cb3ceb14100ce0ea5",
+  "timestamp": "2026-05-02T07:00:49.168964+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for compute_moving_average after 1 attempt(s).",
+    "function_name": "compute_moving_average",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 4,
+    "plan_steps": [
+      "Validate that series is a non-empty list of numbers and window is an integer >= 1.",
+      "Check that window size does not exceed series length, raising ValueError if it does.",
+      "Compute moving averages by sliding a window of the given size and taking the arithmetic mean of each window.",
+      "Return the list of moving averages."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that computes a moving average over a numeric series."
+  },
+  "plan": {
+    "steps": [
+      "Validate that series is a non-empty list of numbers and window is an integer >= 1.",
+      "Check that window size does not exceed series length, raising ValueError if it does.",
+      "Compute moving averages by sliding a window of the given size and taking the arithmetic mean of each window.",
+      "Return the list of moving averages."
+    ],
+    "suggested_function_name": "compute_moving_average"
+  },
+  "source_code": "import statistics\nfrom typing import Union\n\n\ndef compute_moving_average(values: list[Union[int, float]], window: int) -> list[float]:\n    \"\"\"Compute the moving average of a list of numbers using a sliding window.\n\n    Args:\n        values: A non-empty list of numbers (int or float).\n        window: A positive integer window size, must not exceed len(values).\n\n    Returns:\n        A list of floats representing the arithmetic mean of each sliding window.\n\n    Raises:\n        ValueError: If values is empty, window is not a positive integer,\n                    or window exceeds the length of values.\n        TypeError: If values contains non-numeric elements.\n    \"\"\"\n    # Validate values is a non-empty list\n    if not isinstance(values, list):\n        raise TypeError(\"values must be a list\")\n    if len(values) == 0:\n        raise ValueError(\"values must be a non-empty list\")\n\n    # Validate all elements are numbers\n    for i, v in enumerate(values):\n        if not isinstance(v, (int, float)) or isinstance(v, bool):\n            raise TypeError(\n                f\"All elements in values must be int or float, got {type(v).__name__} at index {i}\"\n            )\n\n    # Validate window is a positive integer\n    if not isinstance(window, int) or isinstance(window, bool):\n        raise TypeError(\"window must be an integer\")\n    if window < 1:\n        raise ValueError(\"window must be a positive integer (>= 1)\")\n\n    # Validate window does not exceed series length\n    if window > len(values):\n        raise ValueError(\n            f\"window ({window}) must not exceed the length of values ({len(values)})\"\n        )\n\n    # Compute moving averages using sliding window\n    result: list[float] = []\n    for i in range(len(values) - window + 1):\n        window_slice = values[i:i + window]\n        result.append(statistics.mean(window_slice))\n\n    return result",
+  "function_name": "compute_moving_average",
+  "verification": {
+    "success": true,
+    "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+    "stderr": "",
+    "execution_time_ms": 2178.4233000071254,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "values": [
+            5,
+            1,
+            9,
+            2
+          ],
+          "window": 3
+        },
+        "success": true,
+        "stdout": "[5, 4]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          5,
+          4
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "values": [
+            1,
+            2,
+            2,
+            3,
+            1,
+            4
+          ],
+          "window": 2
+        },
+        "success": true,
+        "stdout": "[1.5, 2, 2.5, 2, 2.5]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1.5,
+          2,
+          2.5,
+          2,
+          2.5
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "values": [
+            10.0,
+            11.0,
+            12.0,
+            13.0
+          ],
+          "window": 1
+        },
+        "success": true,
+        "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          10.0,
+          11.0,
+          12.0,
+          13.0
+        ]
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "14bc1bd0-5304-41cd-89cb-3b12889baf09",
+    "name": "compute_moving_average",
+    "description": "Compute the moving average of a list of numbers using a sliding window.",
+    "parameters": [
+      {
+        "name": "values",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "window",
+        "type": "integer",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "import statistics\nfrom typing import Union\n\n\ndef compute_moving_average(values: list[Union[int, float]], window: int) -> list[float]:\n    \"\"\"Compute the moving average of a list of numbers using a sliding window.\n\n    Args:\n        values: A non-empty list of numbers (int or float).\n        window: A positive integer window size, must not exceed len(values).\n\n    Returns:\n        A list of floats representing the arithmetic mean of each sliding window.\n\n    Raises:\n        ValueError: If values is empty, window is not a positive integer,\n                    or window exceeds the length of values.\n        TypeError: If values contains non-numeric elements.\n    \"\"\"\n    # Validate values is a non-empty list\n    if not isinstance(values, list):\n        raise TypeError(\"values must be a list\")\n    if len(values) == 0:\n        raise ValueError(\"values must be a non-empty list\")\n\n    # Validate all elements are numbers\n    for i, v in enumerate(values):\n        if not isinstance(v, (int, float)) or isinstance(v, bool):\n            raise TypeError(\n                f\"All elements in values must be int or float, got {type(v).__name__} at index {i}\"\n            )\n\n    # Validate window is a positive integer\n    if not isinstance(window, int) or isinstance(window, bool):\n        raise TypeError(\"window must be an integer\")\n    if window < 1:\n        raise ValueError(\"window must be a positive integer (>= 1)\")\n\n    # Validate window does not exceed series length\n    if window > len(values):\n        raise ValueError(\n            f\"window ({window}) must not exceed the length of values ({len(values)})\"\n        )\n\n    # Compute moving averages using sliding window\n    result: list[float] = []\n    for i in range(len(values) - window + 1):\n        window_slice = values[i:i + window]\n        result.append(statistics.mean(window_slice))\n\n    return result",
+    "json_schema": {
+      "name": "compute_moving_average",
+      "description": "Compute the moving average of a list of numbers using a sliding window.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "description": ""
+          },
+          "window": {
+            "type": "integer",
+            "description": ""
+          }
+        },
+        "required": [
+          "values",
+          "window"
+        ]
+      }
+    }
+  }
+}

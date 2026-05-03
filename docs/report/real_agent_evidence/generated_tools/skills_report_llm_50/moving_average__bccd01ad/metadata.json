@@ -1,0 +1,17 @@
+{
+  "metadata_version": 1,
+  "tool_id": "bccd01ad-5f87-47bc-b942-f0da1d8e7904",
+  "name": "moving_average",
+  "description": "Compute the simple moving average of a numeric series.",
+  "created_at": "2026-05-02T07:22:21.129669+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

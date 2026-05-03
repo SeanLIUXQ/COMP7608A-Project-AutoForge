@@ -1,0 +1,133 @@
+{
+  "trace_id": "1dc320a380d246189844575dfcbdd3fe",
+  "timestamp": "2026-05-02T07:26:03.955826+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for filter_names_by_score_threshold after 1 attempt(s).",
+    "function_name": "filter_names_by_score_threshold",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 6,
+    "plan_steps": [
+      "Validate that csv_text is a non-empty string and threshold is a number.",
+      "Parse the CSV text into rows, using the first row as headers.",
+      "Ensure the parsed data contains the required columns 'name' and 'score'.",
+      "Filter rows where the 'score' value converted to a numeric type is greater than the threshold.",
+      "Extract the 'name' field from each filtered row.",
+      "Return the resulting list of names."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "filter_csv_names_by_score: {\"csv_text\":\"name,score\\nAda,91\\nBen,72\\nCy,88\",\"threshold\":80}"
+  },
+  "plan": {
+    "steps": [
+      "Validate that csv_text is a non-empty string and threshold is a number.",
+      "Parse the CSV text into rows, using the first row as headers.",
+      "Ensure the parsed data contains the required columns 'name' and 'score'.",
+      "Filter rows where the 'score' value converted to a numeric type is greater than the threshold.",
+      "Extract the 'name' field from each filtered row.",
+      "Return the resulting list of names."
+    ],
+    "suggested_function_name": "filter_names_by_score_threshold"
+  },
+  "source_code": "import csv\nimport io\nfrom typing import List, Union\n\n\ndef filter_names_by_score_threshold(csv_text: str, threshold: Union[float, int]) -> List[str]:\n    \"\"\"\n    Parse CSV text and return names where the score exceeds a given threshold.\n\n    The CSV must have a header row containing at least the columns 'name' and 'score'.\n    Rows with a non-numeric or missing 'score' value are silently skipped.\n\n    Args:\n        csv_text: Non-empty string containing CSV data with headers.\n        threshold: Numeric value to compare scores against (int or float).\n\n    Returns:\n        List of 'name' values from rows where the score (as float) > threshold.\n\n    Raises:\n        ValueError: If csv_text is not a non-empty string, threshold is not a number,\n                    or the CSV does not contain both 'name' and 'score' columns.\n    \"\"\"\n    # Validate csv_text\n    if not isinstance(csv_text, str) or not csv_text.strip():\n        raise ValueError(\"csv_text must be a non-empty string\")\n\n    # Validate threshold\n    if not isinstance(threshold, (int, float)):\n        raise ValueError(\"threshold must be a number (int or float)\")\n\n    # Parse CSV\n    reader = csv.DictReader(io.StringIO(csv_text))\n\n    # Ensure required columns exist\n    if reader.fieldnames is None or 'name' not in reader.fieldnames or 'score' not in reader.fieldnames:\n        raise ValueError(\"CSV must contain 'name' and 'score' header columns\")\n\n    names: List[str] = []\n    for row in reader:\n        score_raw = row.get('score', '')\n        if not score_raw:\n            continue\n        try:\n            score_val = float(score_raw)\n        except (ValueError, TypeError):\n            continue\n        if score_val > threshold:\n            name = row.get('name', '').strip()\n            if name:  # keep non-empty names only\n                names.append(name)\n\n    return names",
+  "function_name": "filter_names_by_score_threshold",
+  "verification": {
+    "success": true,
+    "stdout": "[]\n",
+    "stderr": "",
+    "execution_time_ms": 2205.3535000013653,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "filter_names_by_score_threshold",
+          "csv_text": "name,score\nAda,91\nBen,72\nCy,88",
+          "threshold": 80
+        },
+        "success": true,
+        "stdout": "['Ada', 'Cy']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['Ada', 'Cy']"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "filter_names_by_score_threshold",
+          "csv_text": "name,score\nA,1\nB,3",
+          "threshold": 1
+        },
+        "success": true,
+        "stdout": "['B']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['B']"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "filter_names_by_score_threshold",
+          "csv_text": "name,score\nZero,0",
+          "threshold": 0
+        },
+        "success": true,
+        "stdout": "[]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": []
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "a9261f8d-f767-42f3-9de2-8bc99191ab2b",
+    "name": "filter_names_by_score_threshold",
+    "description": "Parse CSV text and return names where the score exceeds a given threshold.",
+    "parameters": [
+      {
+        "name": "csv_text",
+        "type": "string",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "threshold",
+        "type": "number",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "import csv\nimport io\nfrom typing import List, Union\n\n\ndef filter_names_by_score_threshold(csv_text: str, threshold: Union[float, int]) -> List[str]:\n    \"\"\"\n    Parse CSV text and return names where the score exceeds a given threshold.\n\n    The CSV must have a header row containing at least the columns 'name' and 'score'.\n    Rows with a non-numeric or missing 'score' value are silently skipped.\n\n    Args:\n        csv_text: Non-empty string containing CSV data with headers.\n        threshold: Numeric value to compare scores against (int or float).\n\n    Returns:\n        List of 'name' values from rows where the score (as float) > threshold.\n\n    Raises:\n        ValueError: If csv_text is not a non-empty string, threshold is not a number,\n                    or the CSV does not contain both 'name' and 'score' columns.\n    \"\"\"\n    # Validate csv_text\n    if not isinstance(csv_text, str) or not csv_text.strip():\n        raise ValueError(\"csv_text must be a non-empty string\")\n\n    # Validate threshold\n    if not isinstance(threshold, (int, float)):\n        raise ValueError(\"threshold must be a number (int or float)\")\n\n    # Parse CSV\n    reader = csv.DictReader(io.StringIO(csv_text))\n\n    # Ensure required columns exist\n    if reader.fieldnames is None or 'name' not in reader.fieldnames or 'score' not in reader.fieldnames:\n        raise ValueError(\"CSV must contain 'name' and 'score' header columns\")\n\n    names: List[str] = []\n    for row in reader:\n        score_raw = row.get('score', '')\n        if not score_raw:\n            continue\n        try:\n            score_val = float(score_raw)\n        except (ValueError, TypeError):\n            continue\n        if score_val > threshold:\n            name = row.get('name', '').strip()\n            if name:  # keep non-empty names only\n                names.append(name)\n\n    return names",
+    "json_schema": {
+      "name": "filter_names_by_score_threshold",
+      "description": "Parse CSV text and return names where the score exceeds a given threshold.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "csv_text": {
+            "type": "string",
+            "description": ""
+          },
+          "threshold": {
+            "type": "number",
+            "description": ""
+          }
+        },
+        "required": [
+          "csv_text",
+          "threshold"
+        ]
+      }
+    }
+  }
+}

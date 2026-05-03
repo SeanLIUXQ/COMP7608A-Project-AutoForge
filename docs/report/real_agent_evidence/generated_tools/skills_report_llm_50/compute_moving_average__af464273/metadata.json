@@ -1,0 +1,17 @@
+{
+  "metadata_version": 1,
+  "tool_id": "af464273-7047-498f-aebf-34ca0d3a745d",
+  "name": "compute_moving_average",
+  "description": "Compute the moving average of a numerical sequence.",
+  "created_at": "2026-05-02T07:06:48.581042+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

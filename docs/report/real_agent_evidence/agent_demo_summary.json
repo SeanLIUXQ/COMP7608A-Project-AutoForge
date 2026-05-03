@@ -1,0 +1,128 @@
+{
+  "source_report": "evaluation\\results\\agent_demo_report_agent_20260502_074909.json",
+  "model": "deepseek-v4-pro",
+  "sandbox_backend": "docker",
+  "docker_image": "autoforge-sandbox:latest",
+  "total_cases": 50,
+  "base_case_count": 10,
+  "repeats": 5,
+  "cold_forge_success_count": 50,
+  "cold_forge_success_rate": 1.0,
+  "cold_example_success_count": 24,
+  "cold_example_success_rate": 0.48,
+  "warm_success_count": 46,
+  "warm_success_rate": 0.92,
+  "warm_reuse_count": 46,
+  "warm_reuse_rate": 0.92,
+  "duration_seconds": 4491.23,
+  "duration_minutes": 74.85,
+  "families": [
+    "category_aggregation",
+    "csv_text",
+    "json_rows",
+    "jsonl",
+    "list",
+    "moving_average",
+    "string",
+    "url"
+  ],
+  "failure_types": {
+    "none": 45,
+    "runtime": 5
+  },
+  "repeat_summary": [
+    {
+      "repeat_index": 1,
+      "trials": 10,
+      "cold_success_rate": 1.0,
+      "warm_success_rate": 0.9,
+      "warm_reuse_rate": 0.9
+    },
+    {
+      "repeat_index": 2,
+      "trials": 10,
+      "cold_success_rate": 1.0,
+      "warm_success_rate": 1.0,
+      "warm_reuse_rate": 0.9
+    },
+    {
+      "repeat_index": 3,
+      "trials": 10,
+      "cold_success_rate": 1.0,
+      "warm_success_rate": 0.9,
+      "warm_reuse_rate": 1.0
+    },
+    {
+      "repeat_index": 4,
+      "trials": 10,
+      "cold_success_rate": 1.0,
+      "warm_success_rate": 0.8,
+      "warm_reuse_rate": 0.8
+    },
+    {
+      "repeat_index": 5,
+      "trials": 10,
+      "cold_success_rate": 1.0,
+      "warm_success_rate": 1.0,
+      "warm_reuse_rate": 1.0
+    }
+  ],
+  "family_summary": [
+    {
+      "family": "category_aggregation",
+      "trials": 5,
+      "cold_success_rate": 1.0,
+      "warm_success_rate": 1.0,
+      "warm_reuse_rate": 1.0
+    },
+    {
+      "family": "csv_text",
+      "trials": 5,
+      "cold_success_rate": 1.0,
+      "warm_success_rate": 0.6,
+      "warm_reuse_rate": 0.8
+    },
+    {
+      "family": "json_rows",
+      "trials": 5,
+      "cold_success_rate": 1.0,
+      "warm_success_rate": 1.0,
+      "warm_reuse_rate": 1.0
+    },
+    {
+      "family": "jsonl",
+      "trials": 5,
+      "cold_success_rate": 1.0,
+      "warm_success_rate": 0.6,
+      "warm_reuse_rate": 0.6
+    },
+    {
+      "family": "list",
+      "trials": 10,
+      "cold_success_rate": 1.0,
+      "warm_success_rate": 1.0,
+      "warm_reuse_rate": 0.9
+    },
+    {
+      "family": "moving_average",
+      "trials": 5,
+      "cold_success_rate": 1.0,
+      "warm_success_rate": 1.0,
+      "warm_reuse_rate": 1.0
+    },
+    {
+      "family": "string",
+      "trials": 10,
+      "cold_success_rate": 1.0,
+      "warm_success_rate": 1.0,
+      "warm_reuse_rate": 1.0
+    },
+    {
+      "family": "url",
+      "trials": 5,
+      "cold_success_rate": 1.0,
+      "warm_success_rate": 1.0,
+      "warm_reuse_rate": 1.0
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "sum_amounts_by_category",
+  "description": "Aggregate sum of a numeric field grouped by a category field.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      },
+      "category_field": {
+        "type": "string",
+        "description": ""
+      },
+      "amount_field": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows"
+    ]
+  }
+}

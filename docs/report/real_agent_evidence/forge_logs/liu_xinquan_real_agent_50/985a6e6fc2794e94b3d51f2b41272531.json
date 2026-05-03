@@ -1,0 +1,119 @@
+{
+  "trace_id": "985a6e6fc2794e94b3d51f2b41272531",
+  "timestamp": "2026-05-02T07:44:38.668070+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for deduplicate_preserving_order after 1 attempt(s).",
+    "function_name": "deduplicate_preserving_order",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 6,
+    "plan_steps": [
+      "Validate that input is a list or iterable and convert to a list if needed",
+      "Initialize an empty set to track seen elements",
+      "Initialize an empty result list",
+      "Iterate through each element in the input list",
+      "If element not in seen set, add to result list and add to seen set",
+      "Return the result list"
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that removes duplicates while preserving first occurrence order."
+  },
+  "plan": {
+    "steps": [
+      "Validate that input is a list or iterable and convert to a list if needed",
+      "Initialize an empty set to track seen elements",
+      "Initialize an empty result list",
+      "Iterate through each element in the input list",
+      "If element not in seen set, add to result list and add to seen set",
+      "Return the result list"
+    ],
+    "suggested_function_name": "deduplicate_preserving_order"
+  },
+  "source_code": "from typing import Iterable, List, TypeVar, Any\n\nT = TypeVar('T', bound=Any)\n\ndef deduplicate_preserving_order(seq: Iterable[T]) -> List[T]:\n    \"\"\"\n    Remove duplicates from an iterable while preserving the original order \n    of first occurrences.\n\n    Args:\n        seq: An iterable of hashable elements.\n\n    Returns:\n        A list containing all unique elements in the order they first appeared.\n\n    Raises:\n        TypeError: If `seq` is not iterable.\n    \"\"\"\n    try:\n        iterator = iter(seq)\n    except TypeError as exc:\n        raise TypeError(\"Input must be an iterable\") from exc\n\n    seen = set()\n    result = []\n    for item in iterator:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result",
+  "function_name": "deduplicate_preserving_order",
+  "verification": {
+    "success": true,
+    "stdout": "[]\n",
+    "stderr": "",
+    "execution_time_ms": 1764.8294999962673,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "deduplicate_preserving_order",
+          "seq": "example"
+        },
+        "success": true,
+        "stdout": "['e', 'x', 'a', 'm', 'p', 'l']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['e', 'x', 'a', 'm', 'p', 'l']"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "deduplicate_preserving_order",
+          "seq": "nearby input"
+        },
+        "success": true,
+        "stdout": "['n', 'e', 'a', 'r', 'b', 'y', ' ', 'i', 'p', 'u', 't']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['n', 'e', 'a', 'r', 'b', 'y', ' ', 'i', 'p', 'u', 't']"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "deduplicate_preserving_order",
+          "seq": ""
+        },
+        "success": true,
+        "stdout": "[]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": []
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "29c07716-b48f-449e-bccb-0524c599c590",
+    "name": "deduplicate_preserving_order",
+    "description": "Remove duplicates from an iterable while preserving the original order ",
+    "parameters": [
+      {
+        "name": "seq",
+        "type": "string",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import Iterable, List, TypeVar, Any\n\nT = TypeVar('T', bound=Any)\n\ndef deduplicate_preserving_order(seq: Iterable[T]) -> List[T]:\n    \"\"\"\n    Remove duplicates from an iterable while preserving the original order \n    of first occurrences.\n\n    Args:\n        seq: An iterable of hashable elements.\n\n    Returns:\n        A list containing all unique elements in the order they first appeared.\n\n    Raises:\n        TypeError: If `seq` is not iterable.\n    \"\"\"\n    try:\n        iterator = iter(seq)\n    except TypeError as exc:\n        raise TypeError(\"Input must be an iterable\") from exc\n\n    seen = set()\n    result = []\n    for item in iterator:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result",
+    "json_schema": {
+      "name": "deduplicate_preserving_order",
+      "description": "Remove duplicates from an iterable while preserving the original order ",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "seq": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "seq"
+        ]
+      }
+    }
+  }
+}

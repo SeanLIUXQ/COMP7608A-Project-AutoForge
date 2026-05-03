@@ -1,0 +1,21 @@
+{
+  "name": "sum_field_in_jsonl",
+  "description": "Parse an iterable of JSON strings (JSONL) and return the sum of all numeric",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "lines": {
+        "type": "string",
+        "description": ""
+      },
+      "field": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "lines",
+      "field"
+    ]
+  }
+}

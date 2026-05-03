@@ -1,0 +1,189 @@
+{
+  "timestamp": "2026-05-02T04:25:36.261616+00:00",
+  "mode": "agent",
+  "cases_path": "agents/demo_cases.json",
+  "total_cases": 1,
+  "cold_success_count": 1,
+  "warm_success_count": 1,
+  "warm_reuse_count": 1,
+  "cold_success_rate": 1.0,
+  "warm_success_rate": 1.0,
+  "warm_reuse_rate": 1.0,
+  "duration_seconds": 78.485,
+  "results": [
+    {
+      "id": "agent_demo_01_text_reverse",
+      "family": "string",
+      "cold_query": "Create a reusable function that reverses any input text.",
+      "warm_query": "reverse_text: {\"text\":\"AutoForge\"}",
+      "expected_output": "egroFotuA",
+      "cold_success": true,
+      "cold_example_result": "egroFotuA",
+      "cold_example_error": null,
+      "cold_example_payload": {
+        "text": "AutoForge",
+        "__function_name": "reverse_text"
+      },
+      "warm_success": true,
+      "warm_reused_existing_tool": true,
+      "cold_path_taken": "slow",
+      "warm_path_taken": "fast",
+      "tool_id": "21c7de49-b956-4be1-a44d-dd3bd2f038ad",
+      "tool_name": "reverse_text",
+      "forge_trace_id": "c6eed4e4be87456aadb2ac0c6e20552c",
+      "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_smoke2\\c6eed4e4be87456aadb2ac0c6e20552c.json",
+      "forge_summary": {
+        "headline": "Forge succeeded for reverse_text after 1 attempt(s).",
+        "function_name": "reverse_text",
+        "status": "success",
+        "attempts": 1,
+        "step_count": 4,
+        "plan_steps": [
+          "Verify that the input is a string; raise TypeError if not.",
+          "Reverse the string using slice notation [::-1].",
+          "Store the reversed string in a variable.",
+          "Return the reversed string."
+        ],
+        "verification_case_count": 3,
+        "verification_passed": true,
+        "failure_type": null,
+        "failure_message": null,
+        "failed_case": null
+      },
+      "failure_type": null,
+      "cold_error": null,
+      "warm_error": null,
+      "cold_total_latency_ms": 73942.1782999998,
+      "warm_total_latency_ms": 3932.861299996148,
+      "cold_response": {
+        "path_taken": "slow",
+        "result": null,
+        "total_latency_ms": 73942.1782999998,
+        "tool_id": "21c7de49-b956-4be1-a44d-dd3bd2f038ad",
+        "tool_name": "reverse_text",
+        "strategy": "agent",
+        "reused_existing_tool": false,
+        "retrieval_latency_ms": null,
+        "forge_latency_ms": 64877.93149999925,
+        "execution_latency_ms": 97.46450000966433,
+        "search_score": null,
+        "retrieval_trace": [],
+        "explain": null,
+        "forge_trace_id": "c6eed4e4be87456aadb2ac0c6e20552c",
+        "forge_log_path": "data\\forge_logs\\liu_xinquan_real_agent_smoke2\\c6eed4e4be87456aadb2ac0c6e20552c.json",
+        "forge_summary": {
+          "headline": "Forge succeeded for reverse_text after 1 attempt(s).",
+          "function_name": "reverse_text",
+          "status": "success",
+          "attempts": 1,
+          "step_count": 4,
+          "plan_steps": [
+            "Verify that the input is a string; raise TypeError if not.",
+            "Reverse the string using slice notation [::-1].",
+            "Store the reversed string in a variable.",
+            "Return the reversed string."
+          ],
+          "verification_case_count": 3,
+          "verification_passed": true,
+          "failure_type": null,
+          "failure_message": null,
+          "failed_case": null
+        },
+        "failure_type": null,
+        "error": null
+      },
+      "warm_response": {
+        "path_taken": "fast",
+        "result": "egroFotuA",
+        "total_latency_ms": 3932.861299996148,
+        "tool_id": "21c7de49-b956-4be1-a44d-dd3bd2f038ad",
+        "tool_name": "reverse_text",
+        "strategy": "full",
+        "reused_existing_tool": true,
+        "retrieval_latency_ms": 0.7918000046629459,
+        "forge_latency_ms": null,
+        "execution_latency_ms": 102.11399999388959,
+        "search_score": 0.81,
+        "retrieval_trace": [
+          {
+            "rank": 1,
+            "tool_id": "21c7de49-b956-4be1-a44d-dd3bd2f038ad",
+            "tool_name": "reverse_text",
+            "score": 0.81,
+            "scores": {
+              "lexical": 0.81,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": true,
+            "reason": "accepted"
+          },
+          {
+            "rank": 2,
+            "tool_id": "autoforge-url-time-v1",
+            "tool_name": "url_time_query_tool",
+            "score": 0.0049,
+            "scores": {
+              "lexical": 0.0049,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 3,
+            "tool_id": "autoforge-text-basic-v1",
+            "tool_name": "text_basic_query_tool",
+            "score": 0.0047,
+            "scores": {
+              "lexical": 0.0047,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 4,
+            "tool_id": "autoforge-number-list-v1",
+            "tool_name": "number_list_query_tool",
+            "score": 0.0043,
+            "scores": {
+              "lexical": 0.0043,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          },
+          {
+            "rank": 5,
+            "tool_id": "autoforge-pipeline-v1",
+            "tool_name": "pipeline_query_tool",
+            "score": 0.0039,
+            "scores": {
+              "lexical": 0.0039,
+              "chroma": null
+            },
+            "retrieval_backend": "lexical",
+            "threshold": 0.75,
+            "accepted": false,
+            "reason": "not_evaluated"
+          }
+        ],
+        "explain": null,
+        "forge_trace_id": null,
+        "forge_log_path": null,
+        "forge_summary": null,
+        "failure_type": null,
+        "error": null
+      }
+    }
+  ],
+  "report_path": "evaluation\\results\\agent_demo_report_agent_20260502_042536.json"
+}

@@ -1,0 +1,119 @@
+{
+  "trace_id": "06dd75f71ebf4c35946d8fb02e6d0316",
+  "timestamp": "2026-05-02T07:26:02.839437+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for get_sorted_query_param_names after 1 attempt(s).",
+    "function_name": "get_sorted_query_param_names",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 6,
+    "plan_steps": [
+      "Validate that the input URL is a non-empty string",
+      "Parse the URL to extract the query string",
+      "Split query string into parameter key-value pairs",
+      "Collect all parameter names (keys only)",
+      "Sort the names alphabetically",
+      "Return the sorted list of names"
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that returns sorted query parameter names from a URL."
+  },
+  "plan": {
+    "steps": [
+      "Validate that the input URL is a non-empty string",
+      "Parse the URL to extract the query string",
+      "Split query string into parameter key-value pairs",
+      "Collect all parameter names (keys only)",
+      "Sort the names alphabetically",
+      "Return the sorted list of names"
+    ],
+    "suggested_function_name": "get_sorted_query_param_names"
+  },
+  "source_code": "import urllib.parse\nfrom typing import List\n\n\ndef get_sorted_query_param_names(url: str) -> List[str]:\n    \"\"\"\n    Extract query parameter names from a URL and return them sorted alphabetically.\n\n    Args:\n        url: A non-empty string representing an absolute or relative URL.\n\n    Returns:\n        A list of parameter names (keys) from the query string, sorted in ascending\n        alphabetical order.  If the URL contains no query string, an empty list is\n        returned.\n\n    Raises:\n        ValueError: If `url` is not a non-empty string.\n    \"\"\"\n    if not isinstance(url, str) or not url:\n        raise ValueError(\"url must be a non-empty string\")\n\n    parsed = urllib.parse.urlparse(url)\n    query_string = parsed.query\n\n    # parse_qs gives a dict of key -> list[value]; keep_blank_values=True ensures\n    # parameters like '?name' are still captured as a key with an empty string value.\n    params = urllib.parse.parse_qs(query_string, keep_blank_values=True)\n\n    # Return the unique parameter names sorted alphabetically.\n    return sorted(params.keys())",
+  "function_name": "get_sorted_query_param_names",
+  "verification": {
+    "success": true,
+    "stdout": "[]\n",
+    "stderr": "",
+    "execution_time_ms": 2110.1387000089744,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "get_sorted_query_param_names",
+          "url": "https://demo.org/report?day=mon&owner=alex&status=open"
+        },
+        "success": true,
+        "stdout": "['day', 'owner', 'status']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['day', 'owner', 'status']"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "get_sorted_query_param_names",
+          "url": "https://demo.org/search?page=2&sort=desc"
+        },
+        "success": true,
+        "stdout": "['page', 'sort']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['page', 'sort']"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "get_sorted_query_param_names",
+          "url": "https://demo.org/"
+        },
+        "success": true,
+        "stdout": "[]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": []
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "954b49e9-f9e3-4805-9a30-aca83e805f92",
+    "name": "get_sorted_query_param_names",
+    "description": "Extract query parameter names from a URL and return them sorted alphabetically.",
+    "parameters": [
+      {
+        "name": "url",
+        "type": "string",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "import urllib.parse\nfrom typing import List\n\n\ndef get_sorted_query_param_names(url: str) -> List[str]:\n    \"\"\"\n    Extract query parameter names from a URL and return them sorted alphabetically.\n\n    Args:\n        url: A non-empty string representing an absolute or relative URL.\n\n    Returns:\n        A list of parameter names (keys) from the query string, sorted in ascending\n        alphabetical order.  If the URL contains no query string, an empty list is\n        returned.\n\n    Raises:\n        ValueError: If `url` is not a non-empty string.\n    \"\"\"\n    if not isinstance(url, str) or not url:\n        raise ValueError(\"url must be a non-empty string\")\n\n    parsed = urllib.parse.urlparse(url)\n    query_string = parsed.query\n\n    # parse_qs gives a dict of key -> list[value]; keep_blank_values=True ensures\n    # parameters like '?name' are still captured as a key with an empty string value.\n    params = urllib.parse.parse_qs(query_string, keep_blank_values=True)\n\n    # Return the unique parameter names sorted alphabetically.\n    return sorted(params.keys())",
+    "json_schema": {
+      "name": "get_sorted_query_param_names",
+      "description": "Extract query parameter names from a URL and return them sorted alphabetically.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    }
+  }
+}

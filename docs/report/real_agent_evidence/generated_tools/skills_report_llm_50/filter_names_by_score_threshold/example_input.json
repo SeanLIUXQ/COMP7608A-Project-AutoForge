@@ -1,0 +1,7 @@
+{
+  "__function_name": "filter_names_by_score_threshold",
+  "records": [],
+  "threshold": 1,
+  "score_field": "example",
+  "name_field": "example"
+}

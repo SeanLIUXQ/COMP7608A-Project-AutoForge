@@ -1,0 +1,16 @@
+{
+  "name": "count_vowels",
+  "description": "Return the number of vowels (a, e, i, o, u) in the input string, ignoring case.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "text"
+    ]
+  }
+}

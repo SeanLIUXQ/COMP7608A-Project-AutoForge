@@ -1,0 +1,16 @@
+{
+  "name": "sort_numbers_ascending",
+  "description": "Return a new list containing the numbers sorted in ascending order.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "numbers": {
+        "type": "array",
+        "description": ""
+      }
+    },
+    "required": [
+      "numbers"
+    ]
+  }
+}

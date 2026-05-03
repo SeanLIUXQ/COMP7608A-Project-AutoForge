@@ -1,0 +1,29 @@
+{
+  "name": "filter_names_by_threshold",
+  "description": "Filter a list of rows (dictionaries) by a score threshold and return the",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      },
+      "threshold": {
+        "type": "number",
+        "description": ""
+      },
+      "score_field": {
+        "type": "string",
+        "description": ""
+      },
+      "name_field": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows",
+      "threshold"
+    ]
+  }
+}

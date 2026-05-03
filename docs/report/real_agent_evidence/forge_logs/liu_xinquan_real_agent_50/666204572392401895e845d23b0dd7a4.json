@@ -1,0 +1,135 @@
+{
+  "trace_id": "666204572392401895e845d23b0dd7a4",
+  "timestamp": "2026-05-02T07:45:56.689223+00:00",
+  "status": "success",
+  "attempts": 2,
+  "summary": {
+    "headline": "Forge succeeded for deduplicate_keep_first after 2 attempt(s).",
+    "function_name": "deduplicate_keep_first",
+    "status": "success",
+    "attempts": 2,
+    "step_count": 4,
+    "plan_steps": [
+      "Raise TypeError if input is not a list.",
+      "Initialize an empty list for output and an empty set for seen items.",
+      "Iterate through each item in the input list; if item is not in the seen set, add it to seen and append to output list.",
+      "Return the output list."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": "runtime",
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that removes duplicates while preserving first occurrence order."
+  },
+  "plan": {
+    "steps": [
+      "Raise TypeError if input is not a list.",
+      "Initialize an empty list for output and an empty set for seen items.",
+      "Iterate through each item in the input list; if item is not in the seen set, add it to seen and append to output list.",
+      "Return the output list."
+    ],
+    "suggested_function_name": "deduplicate_keep_first"
+  },
+  "source_code": "from typing import Any\n\ndef deduplicate_keep_first(lst: list) -> list:\n    \"\"\"\n    Return a new list containing the unique elements of `lst` in the order they first appear.\n\n    Works with both hashable (e.g., int, str, tuple) and unhashable elements (e.g., list, dict).\n    Raises TypeError if `lst` is not a list.\n    \"\"\"\n    if not isinstance(lst, list):\n        raise TypeError(\"Input must be a list.\")\n    \n    output = []\n    seen_set = set()          # for hashable elements\n    seen_unhashable = []      # for unhashable elements (compared by equality)\n    \n    for item in lst:\n        try:\n            if item not in seen_set:\n                seen_set.add(item)\n                output.append(item)\n        except TypeError:\n            # item is unhashable (e.g., dict, list)\n            # use linear scan over previously seen unhashable items\n            if item not in seen_unhashable:\n                seen_unhashable.append(item)\n                output.append(item)\n                \n    return output",
+  "function_name": "deduplicate_keep_first",
+  "verification": {
+    "success": true,
+    "stdout": "[0]\n",
+    "stderr": "",
+    "execution_time_ms": 1797.2736999945482,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "deduplicate_keep_first",
+          "lst": [
+            1,
+            2,
+            3
+          ]
+        },
+        "success": true,
+        "stdout": "[1, 2, 3]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "deduplicate_keep_first",
+          "lst": [
+            3,
+            1,
+            2
+          ]
+        },
+        "success": true,
+        "stdout": "[3, 1, 2]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          3,
+          1,
+          2
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "deduplicate_keep_first",
+          "lst": [
+            0
+          ]
+        },
+        "success": true,
+        "stdout": "[0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          0
+        ]
+      }
+    ]
+  },
+  "error_type": "runtime",
+  "error": null,
+  "tool": {
+    "tool_id": "ad28a13d-73df-4367-8a99-c336c14912b0",
+    "name": "deduplicate_keep_first",
+    "description": "Return a new list containing the unique elements of `lst` in the order they first appear.",
+    "parameters": [
+      {
+        "name": "lst",
+        "type": "array",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import Any\n\ndef deduplicate_keep_first(lst: list) -> list:\n    \"\"\"\n    Return a new list containing the unique elements of `lst` in the order they first appear.\n\n    Works with both hashable (e.g., int, str, tuple) and unhashable elements (e.g., list, dict).\n    Raises TypeError if `lst` is not a list.\n    \"\"\"\n    if not isinstance(lst, list):\n        raise TypeError(\"Input must be a list.\")\n    \n    output = []\n    seen_set = set()          # for hashable elements\n    seen_unhashable = []      # for unhashable elements (compared by equality)\n    \n    for item in lst:\n        try:\n            if item not in seen_set:\n                seen_set.add(item)\n                output.append(item)\n        except TypeError:\n            # item is unhashable (e.g., dict, list)\n            # use linear scan over previously seen unhashable items\n            if item not in seen_unhashable:\n                seen_unhashable.append(item)\n                output.append(item)\n                \n    return output",
+    "json_schema": {
+      "name": "deduplicate_keep_first",
+      "description": "Return a new list containing the unique elements of `lst` in the order they first appear.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "lst": {
+            "type": "array",
+            "description": ""
+          }
+        },
+        "required": [
+          "lst"
+        ]
+      }
+    }
+  }
+}

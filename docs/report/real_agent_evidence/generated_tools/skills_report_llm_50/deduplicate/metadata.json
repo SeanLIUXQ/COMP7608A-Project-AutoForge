@@ -1,0 +1,19 @@
+{
+  "metadata_version": 1,
+  "tool_id": "8220d474-cae9-4240-be9d-e835615e61eb",
+  "name": "deduplicate",
+  "description": "Remove duplicates from an iterable while preserving the order of first occurrence.",
+  "created_at": "2026-05-02T06:52:55.604463+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

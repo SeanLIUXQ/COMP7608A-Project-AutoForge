@@ -1,0 +1,119 @@
+{
+  "trace_id": "36aef332208b419b86496372204609cd",
+  "timestamp": "2026-05-02T07:16:06.669891+00:00",
+  "status": "success",
+  "attempts": 2,
+  "summary": {
+    "headline": "Forge succeeded for get_sorted_query_param_names after 2 attempt(s).",
+    "function_name": "get_sorted_query_param_names",
+    "status": "success",
+    "attempts": 2,
+    "step_count": 6,
+    "plan_steps": [
+      "Validate that the input is a non-empty string with '?' query separator",
+      "Extract the query part from the URL after '?'",
+      "Parse the query string into parameter key-value pairs",
+      "Collect unique parameter names",
+      "Sort the parameter names lexicographically",
+      "Return the sorted list of parameter names"
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": "runtime",
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that returns sorted query parameter names from a URL."
+  },
+  "plan": {
+    "steps": [
+      "Validate that the input is a non-empty string with '?' query separator",
+      "Extract the query part from the URL after '?'",
+      "Parse the query string into parameter key-value pairs",
+      "Collect unique parameter names",
+      "Sort the parameter names lexicographically",
+      "Return the sorted list of parameter names"
+    ],
+    "suggested_function_name": "get_sorted_query_param_names"
+  },
+  "source_code": "import urllib.parse\nfrom typing import List\n\ndef get_sorted_query_param_names(url: str) -> List[str]:\n    \"\"\"\n    Extract unique query parameter names from a URL, sorted lexicographically.\n    \n    Args:\n        url: A string representing a URL. May contain a '?' followed by a query\n             string, and optionally a '#' fragment.\n    \n    Returns:\n        A list of unique parameter names, sorted in ascending string order.\n        Returns an empty list if the URL contains no query string or is empty.\n    \n    Raises:\n        TypeError: If `url` is not a string.\n    \"\"\"\n    if not isinstance(url, str):\n        raise TypeError(\"url must be a string\")\n    \n    # Empty string or no query separator → no parameters\n    if not url or '?' not in url:\n        return []\n    \n    # Extract query component: after '?' and before any fragment '#'\n    query_start = url.find('?') + 1\n    raw_query = url[query_start:]\n    fragment_pos = raw_query.find('#')\n    if fragment_pos != -1:\n        raw_query = raw_query[:fragment_pos]\n    \n    # Parse query string into dict of parameter name → list of values\n    parsed = urllib.parse.parse_qs(raw_query)\n    \n    # Return sorted unique parameter names\n    return sorted(parsed.keys())",
+  "function_name": "get_sorted_query_param_names",
+  "verification": {
+    "success": true,
+    "stdout": "[]\n",
+    "stderr": "",
+    "execution_time_ms": 1980.0900999980513,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "get_sorted_query_param_names",
+          "url": "https://demo.org/report?day=mon&owner=alex&status=open"
+        },
+        "success": true,
+        "stdout": "['day', 'owner', 'status']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['day', 'owner', 'status']"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "get_sorted_query_param_names",
+          "url": "https://demo.org/search?page=2&sort=desc"
+        },
+        "success": true,
+        "stdout": "['page', 'sort']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['page', 'sort']"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "get_sorted_query_param_names",
+          "url": "https://demo.org/"
+        },
+        "success": true,
+        "stdout": "[]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": []
+      }
+    ]
+  },
+  "error_type": "runtime",
+  "error": null,
+  "tool": {
+    "tool_id": "40373c95-9213-4266-bf03-cbd777fb3eb5",
+    "name": "get_sorted_query_param_names",
+    "description": "Extract unique query parameter names from a URL, sorted lexicographically.",
+    "parameters": [
+      {
+        "name": "url",
+        "type": "string",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "import urllib.parse\nfrom typing import List\n\ndef get_sorted_query_param_names(url: str) -> List[str]:\n    \"\"\"\n    Extract unique query parameter names from a URL, sorted lexicographically.\n    \n    Args:\n        url: A string representing a URL. May contain a '?' followed by a query\n             string, and optionally a '#' fragment.\n    \n    Returns:\n        A list of unique parameter names, sorted in ascending string order.\n        Returns an empty list if the URL contains no query string or is empty.\n    \n    Raises:\n        TypeError: If `url` is not a string.\n    \"\"\"\n    if not isinstance(url, str):\n        raise TypeError(\"url must be a string\")\n    \n    # Empty string or no query separator → no parameters\n    if not url or '?' not in url:\n        return []\n    \n    # Extract query component: after '?' and before any fragment '#'\n    query_start = url.find('?') + 1\n    raw_query = url[query_start:]\n    fragment_pos = raw_query.find('#')\n    if fragment_pos != -1:\n        raw_query = raw_query[:fragment_pos]\n    \n    # Parse query string into dict of parameter name → list of values\n    parsed = urllib.parse.parse_qs(raw_query)\n    \n    # Return sorted unique parameter names\n    return sorted(parsed.keys())",
+    "json_schema": {
+      "name": "get_sorted_query_param_names",
+      "description": "Extract unique query parameter names from a URL, sorted lexicographically.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    }
+  }
+}

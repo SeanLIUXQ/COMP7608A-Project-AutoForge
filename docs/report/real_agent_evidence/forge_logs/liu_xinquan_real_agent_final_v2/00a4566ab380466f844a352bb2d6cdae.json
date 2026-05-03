@@ -1,0 +1,141 @@
+{
+  "trace_id": "00a4566ab380466f844a352bb2d6cdae",
+  "timestamp": "2026-05-02T05:41:14.102936+00:00",
+  "status": "success",
+  "attempts": 2,
+  "summary": {
+    "headline": "Forge succeeded for sum_jsonl_field after 2 attempt(s).",
+    "function_name": "sum_jsonl_field",
+    "status": "success",
+    "attempts": 2,
+    "step_count": 5,
+    "plan_steps": [
+      "Validate that input is a string and field_name is a non-empty string",
+      "Split the string into lines and parse each non-empty line as JSON",
+      "For each parsed object, safely extract the value for field_name, converting numeric strings if needed",
+      "Accumulate the sum only for values that are int or float, ignoring missing or non-numeric entries",
+      "Return the total sum as a number (int or float)"
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": "runtime",
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that parses JSON lines and sums a numeric field."
+  },
+  "plan": {
+    "steps": [
+      "Validate that input is a string and field_name is a non-empty string",
+      "Split the string into lines and parse each non-empty line as JSON",
+      "For each parsed object, safely extract the value for field_name, converting numeric strings if needed",
+      "Accumulate the sum only for values that are int or float, ignoring missing or non-numeric entries",
+      "Return the total sum as a number (int or float)"
+    ],
+    "suggested_function_name": "sum_jsonl_field"
+  },
+  "source_code": "import json\nfrom typing import Union, List, Dict, Any\n\ndef sum_jsonl_field(jsonl_text: Union[str, List[str]], field_name: str) -> float:\n    \"\"\"\n    Compute the sum of a numeric field across a JSONL input.\n\n    Args:\n        jsonl_text: Either a single string containing multiple JSON lines\n                    separated by newlines, or a list of strings where each\n                    element is a single JSON line.\n        field_name: The name of the field to sum (non-empty string).\n\n    Returns:\n        The total sum of the numeric values found for the given field.\n        Values that are already int or float are summed directly.\n        String values that represent valid numbers are converted (int\n        preferred over float). Missing fields or non-numeric values are\n        silently skipped. If no numeric values are encountered, returns 0.\n\n    Raises:\n        TypeError:  If jsonl_text is neither a string nor a list of strings,\n                    or if field_name is not a non-empty string.\n        json.JSONDecodeError: If any non-empty line is not valid JSON.\n    \"\"\"\n    # Validate field_name\n    if not isinstance(field_name, str) or not field_name.strip():\n        raise TypeError(\"field_name must be a non-empty string\")\n\n    # Normalize jsonl_text to a list of lines (strings)\n    if isinstance(jsonl_text, str):\n        lines: List[str] = jsonl_text.splitlines()\n    elif isinstance(jsonl_text, list):\n        # Accept list of strings (each element is a JSON line)\n        if not all(isinstance(line, str) for line in jsonl_text):\n            raise TypeError(\"If jsonl_text is a list, every element must be a string\")\n        lines = jsonl_text\n    else:\n        raise TypeError(\n            \"jsonl_text must be a string (multiline JSONL) or a list of strings \"\n            \"(each element a JSON line)\"\n        )\n\n    total: float = 0.0\n    for line in lines:\n        line = line.strip()\n        if not line:   # skip empty lines\n            continue\n        obj: Dict[str, Any] = json.loads(line)\n        if not isinstance(obj, dict):\n            # Not a JSON object; skip or treat as non-dict? plan says parsed object.\n            # We'll skip if not a dict.\n            continue\n\n        # Extract value for field_name\n        if field_name not in obj:\n            continue\n\n        value = obj[field_name]\n\n        # If value is already a number, add it\n        if isinstance(value, (int, float)):\n            total += value\n            continue\n\n        # If value is a numeric string, attempt conversion\n        if isinstance(value, str):\n            value_str = value.strip()\n            if not value_str:\n                continue\n            # Try int first, then float\n            try:\n                total += int(value_str)\n                continue\n            except ValueError:\n                pass\n            try:\n                total += float(value_str)\n                continue\n            except ValueError:\n                pass\n\n        # Otherwise ignore (bool, list, None, etc.)\n        continue\n\n    # Return as int if total is whole number, else float\n    if total == int(total) and not isinstance(total, bool):\n        return int(total)\n    return total",
+  "function_name": "sum_jsonl_field",
+  "verification": {
+    "success": true,
+    "stdout": "10\n",
+    "stderr": "",
+    "execution_time_ms": 1615.6443999934709,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "sum_jsonl_field",
+          "jsonl_text": [
+            "{\"x\": 1}",
+            "{\"x\": 2}",
+            "{\"x\": 4}"
+          ],
+          "field_name": "x"
+        },
+        "success": true,
+        "stdout": "7\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 7
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "sum_jsonl_field",
+          "jsonl_text": [
+            "{\"score\": 2}",
+            "{\"score\": 5}"
+          ],
+          "field_name": "score"
+        },
+        "success": true,
+        "stdout": "7\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 7
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "sum_jsonl_field",
+          "jsonl_text": [
+            "{\"amt\": 3}",
+            "{\"amt\": 7}"
+          ],
+          "field_name": "amt"
+        },
+        "success": true,
+        "stdout": "10\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 10
+      }
+    ]
+  },
+  "error_type": "runtime",
+  "error": null,
+  "tool": {
+    "tool_id": "e875b3ea-f229-4634-af9a-154c0f2e2d8b",
+    "name": "sum_jsonl_field",
+    "description": "Compute the sum of a numeric field across a JSONL input.",
+    "parameters": [
+      {
+        "name": "jsonl_text",
+        "type": "string",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "field_name",
+        "type": "string",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "import json\nfrom typing import Union, List, Dict, Any\n\ndef sum_jsonl_field(jsonl_text: Union[str, List[str]], field_name: str) -> float:\n    \"\"\"\n    Compute the sum of a numeric field across a JSONL input.\n\n    Args:\n        jsonl_text: Either a single string containing multiple JSON lines\n                    separated by newlines, or a list of strings where each\n                    element is a single JSON line.\n        field_name: The name of the field to sum (non-empty string).\n\n    Returns:\n        The total sum of the numeric values found for the given field.\n        Values that are already int or float are summed directly.\n        String values that represent valid numbers are converted (int\n        preferred over float). Missing fields or non-numeric values are\n        silently skipped. If no numeric values are encountered, returns 0.\n\n    Raises:\n        TypeError:  If jsonl_text is neither a string nor a list of strings,\n                    or if field_name is not a non-empty string.\n        json.JSONDecodeError: If any non-empty line is not valid JSON.\n    \"\"\"\n    # Validate field_name\n    if not isinstance(field_name, str) or not field_name.strip():\n        raise TypeError(\"field_name must be a non-empty string\")\n\n    # Normalize jsonl_text to a list of lines (strings)\n    if isinstance(jsonl_text, str):\n        lines: List[str] = jsonl_text.splitlines()\n    elif isinstance(jsonl_text, list):\n        # Accept list of strings (each element is a JSON line)\n        if not all(isinstance(line, str) for line in jsonl_text):\n            raise TypeError(\"If jsonl_text is a list, every element must be a string\")\n        lines = jsonl_text\n    else:\n        raise TypeError(\n            \"jsonl_text must be a string (multiline JSONL) or a list of strings \"\n            \"(each element a JSON line)\"\n        )\n\n    total: float = 0.0\n    for line in lines:\n        line = line.strip()\n        if not line:   # skip empty lines\n            continue\n        obj: Dict[str, Any] = json.loads(line)\n        if not isinstance(obj, dict):\n            # Not a JSON object; skip or treat as non-dict? plan says parsed object.\n            # We'll skip if not a dict.\n            continue\n\n        # Extract value for field_name\n        if field_name not in obj:\n            continue\n\n        value = obj[field_name]\n\n        # If value is already a number, add it\n        if isinstance(value, (int, float)):\n            total += value\n            continue\n\n        # If value is a numeric string, attempt conversion\n        if isinstance(value, str):\n            value_str = value.strip()\n            if not value_str:\n                continue\n            # Try int first, then float\n            try:\n                total += int(value_str)\n                continue\n            except ValueError:\n                pass\n            try:\n                total += float(value_str)\n                continue\n            except ValueError:\n                pass\n\n        # Otherwise ignore (bool, list, None, etc.)\n        continue\n\n    # Return as int if total is whole number, else float\n    if total == int(total) and not isinstance(total, bool):\n        return int(total)\n    return total",
+    "json_schema": {
+      "name": "sum_jsonl_field",
+      "description": "Compute the sum of a numeric field across a JSONL input.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "jsonl_text": {
+            "type": "string",
+            "description": ""
+          },
+          "field_name": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "jsonl_text",
+          "field_name"
+        ]
+      }
+    }
+  }
+}

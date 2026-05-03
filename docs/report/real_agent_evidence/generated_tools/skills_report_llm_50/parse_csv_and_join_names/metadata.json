@@ -1,0 +1,21 @@
+{
+  "metadata_version": 1,
+  "tool_id": "2e6bb9ff-9b1b-4ebc-8040-2700e950e83b",
+  "name": "parse_csv_and_join_names",
+  "description": "Parse CSV text, filter rows where a score column is greater than a threshold,",
+  "created_at": "2026-05-02T07:33:56.485523+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "csv",
+    "io",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

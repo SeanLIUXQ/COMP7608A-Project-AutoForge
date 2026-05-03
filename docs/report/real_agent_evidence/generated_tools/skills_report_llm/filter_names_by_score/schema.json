@@ -1,0 +1,21 @@
+{
+  "name": "filter_names_by_score",
+  "description": "Return a list of 'name' values from rows whose 'score' is at least the threshold.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      },
+      "threshold": {
+        "type": "number",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows",
+      "threshold"
+    ]
+  }
+}

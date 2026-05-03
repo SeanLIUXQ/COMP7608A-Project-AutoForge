@@ -1,0 +1,19 @@
+{
+  "metadata_version": 1,
+  "tool_id": "e8d0011d-f536-4c9e-b5e7-739f9ab2f29d",
+  "name": "sort_numbers_ascending",
+  "description": "Return a new list containing the input numbers sorted in ascending order.",
+  "created_at": "2026-05-02T07:33:07.647951+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

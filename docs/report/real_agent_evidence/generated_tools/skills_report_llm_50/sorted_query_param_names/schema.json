@@ -1,0 +1,16 @@
+{
+  "name": "sorted_query_param_names",
+  "description": "Extract the query parameter keys from a URL string, sort them lexicographically,",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "url"
+    ]
+  }
+}

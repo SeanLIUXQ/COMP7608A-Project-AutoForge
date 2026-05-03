@@ -1,0 +1,21 @@
+{
+  "name": "moving_average",
+  "description": "Compute the simple moving average of a series using a sliding window.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "values": {
+        "type": "array",
+        "description": ""
+      },
+      "window": {
+        "type": "integer",
+        "description": ""
+      }
+    },
+    "required": [
+      "values",
+      "window"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "metadata_version": 1,
+  "tool_id": "580b6675-f7cc-4f7f-bc41-33bd56d72fc2",
+  "name": "filter_csv_and_join_column",
+  "description": "Parse a CSV (with a header row), keep rows where the numeric value of",
+  "created_at": "2026-05-02T06:56:18.408345+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "csv",
+    "io",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

@@ -1,0 +1,20 @@
+{
+  "metadata_version": 1,
+  "tool_id": "40373c95-9213-4266-bf03-cbd777fb3eb5",
+  "name": "get_sorted_query_param_names",
+  "description": "Extract unique query parameter names from a URL, sorted lexicographically.",
+  "created_at": "2026-05-02T07:16:06.683097+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing",
+    "urllib"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

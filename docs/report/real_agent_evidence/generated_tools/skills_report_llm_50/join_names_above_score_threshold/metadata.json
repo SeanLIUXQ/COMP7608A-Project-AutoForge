@@ -1,0 +1,21 @@
+{
+  "metadata_version": 1,
+  "tool_id": "89e20cb1-7c45-4035-aa7b-03fb518deea9",
+  "name": "join_names_above_score_threshold",
+  "description": "Extract names from a CSV string where the score exceeds a threshold.",
+  "created_at": "2026-05-02T07:18:31.712479+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "csv",
+    "io",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

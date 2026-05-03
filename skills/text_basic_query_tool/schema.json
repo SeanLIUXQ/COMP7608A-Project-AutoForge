@@ -1,0 +1,16 @@
+{
+  "name": "text_basic_query_tool",
+  "description": "Solve string reversal, vowel counting, title case, phone cleanup, and token frequency tasks.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "Natural-language task to execute"
+      }
+    },
+    "required": [
+      "query"
+    ]
+  }
+}

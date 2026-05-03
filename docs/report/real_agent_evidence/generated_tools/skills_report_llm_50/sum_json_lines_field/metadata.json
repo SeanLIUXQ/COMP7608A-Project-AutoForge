@@ -1,0 +1,20 @@
+{
+  "metadata_version": 1,
+  "tool_id": "cd58718b-629d-497a-a6c9-389b5c5d0d32",
+  "name": "sum_json_lines_field",
+  "description": "Sum the values of a specified field across a sequence of JSON lines.",
+  "created_at": "2026-05-02T06:57:33.631414+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "json",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

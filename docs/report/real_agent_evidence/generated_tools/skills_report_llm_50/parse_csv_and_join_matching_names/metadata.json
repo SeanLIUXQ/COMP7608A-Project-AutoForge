@@ -1,0 +1,21 @@
+{
+  "metadata_version": 1,
+  "tool_id": "97b776c2-1072-427b-8b93-0a2836a10b39",
+  "name": "parse_csv_and_join_matching_names",
+  "description": "Parse a CSV string and return names from rows whose score exceeds a threshold.",
+  "created_at": "2026-05-02T07:42:01.672020+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "csv",
+    "io",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

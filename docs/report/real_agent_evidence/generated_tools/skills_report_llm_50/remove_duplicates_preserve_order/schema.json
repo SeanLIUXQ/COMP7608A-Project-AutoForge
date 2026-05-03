@@ -1,0 +1,16 @@
+{
+  "name": "remove_duplicates_preserve_order",
+  "description": "Remove duplicate elements from an iterable, preserving the order of first occurrence.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "iterable": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "iterable"
+    ]
+  }
+}

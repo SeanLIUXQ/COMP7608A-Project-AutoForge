@@ -1,0 +1,17 @@
+{
+  "metadata_version": 1,
+  "tool_id": "b0b5f07d-2dd0-4bc0-88db-aa54bd189abc",
+  "name": "total_by_category",
+  "description": "Aggregates total amounts by category from a list of dictionaries.",
+  "created_at": "2026-05-02T07:24:15.297749+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

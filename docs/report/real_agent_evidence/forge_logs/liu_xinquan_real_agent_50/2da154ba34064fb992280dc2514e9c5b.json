@@ -1,0 +1,159 @@
+{
+  "trace_id": "2da154ba34064fb992280dc2514e9c5b",
+  "timestamp": "2026-05-02T07:24:15.285403+00:00",
+  "status": "success",
+  "attempts": 2,
+  "summary": {
+    "headline": "Forge succeeded for total_by_category after 2 attempt(s).",
+    "function_name": "total_by_category",
+    "status": "success",
+    "attempts": 2,
+    "step_count": 5,
+    "plan_steps": [
+      "Validate that input is a non-empty list of dictionaries, each containing 'category' and 'amount' keys.",
+      "Initialize an empty dictionary to accumulate category totals.",
+      "Iterate over each row, converting the 'amount' value to a numeric type (float or int).",
+      "Add the numeric amount to the accumulator for the corresponding 'category'.",
+      "Return the dictionary mapping each category to its total amount."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": "runtime",
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that totals amounts by category for row dictionaries."
+  },
+  "plan": {
+    "steps": [
+      "Validate that input is a non-empty list of dictionaries, each containing 'category' and 'amount' keys.",
+      "Initialize an empty dictionary to accumulate category totals.",
+      "Iterate over each row, converting the 'amount' value to a numeric type (float or int).",
+      "Add the numeric amount to the accumulator for the corresponding 'category'.",
+      "Return the dictionary mapping each category to its total amount."
+    ],
+    "suggested_function_name": "total_by_category"
+  },
+  "source_code": "def total_by_category(rows: list[dict]) -> dict:\n    \"\"\"\n    Aggregates total amounts by category from a list of dictionaries.\n\n    Args:\n        rows (list[dict]): A list of dictionaries, each containing at least\n                           the keys 'category' and 'amount'.\n\n    Returns:\n        dict: A dictionary mapping each category to the sum of its amounts.\n\n    Raises:\n        TypeError: If `rows` is not a list or any element is not a dictionary.\n        ValueError: If any dictionary is missing 'category' or 'amount',\n                    or if 'amount' cannot be converted to a number.\n    \"\"\"\n    if not isinstance(rows, list):\n        raise TypeError(\"Input must be a list.\")\n\n    # An empty list yields an empty aggregation.\n    if not rows:\n        return {}\n\n    totals: dict[str, float] = {}\n\n    for row in rows:\n        if not isinstance(row, dict):\n            raise TypeError(\"Each item in the list must be a dictionary.\")\n        if 'category' not in row:\n            raise ValueError(\"Missing required key: 'category' in row.\")\n        if 'amount' not in row:\n            raise ValueError(\"Missing required key: 'amount' in row.\")\n\n        category = row['category']\n        try:\n            amount = float(row['amount'])\n        except (ValueError, TypeError) as ex:\n            raise ValueError(f\"Amount must be a number, got: {row['amount']!r}\") from ex\n\n        totals[category] = totals.get(category, 0) + amount\n\n    return totals",
+  "function_name": "total_by_category",
+  "verification": {
+    "success": true,
+    "stdout": "{}\n",
+    "stderr": "",
+    "execution_time_ms": 1835.9737999999197,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "total_by_category",
+          "rows": [
+            {
+              "name": "Ada",
+              "score": 91,
+              "cat": "infra",
+              "amt": 18,
+              "category": "infra",
+              "amount": 18
+            },
+            {
+              "name": "Ben",
+              "score": 72,
+              "cat": "ml",
+              "amt": 32,
+              "category": "ml",
+              "amount": 32
+            },
+            {
+              "name": "Cy",
+              "score": 88,
+              "cat": "infra",
+              "amt": 22,
+              "category": "infra",
+              "amount": 22
+            }
+          ]
+        },
+        "success": true,
+        "stdout": "{'infra': 40.0, 'ml': 32.0}\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "{'infra': 40.0, 'ml': 32.0}"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "total_by_category",
+          "rows": [
+            {
+              "name": "A",
+              "score": 1,
+              "cat": "ops",
+              "amt": 1,
+              "category": "ops",
+              "amount": 1
+            },
+            {
+              "name": "B",
+              "score": 3,
+              "cat": "ops",
+              "amt": 2,
+              "category": "ops",
+              "amount": 2
+            }
+          ]
+        },
+        "success": true,
+        "stdout": "{'ops': 3.0}\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "{'ops': 3.0}"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "total_by_category",
+          "rows": []
+        },
+        "success": true,
+        "stdout": "{}\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": {}
+      }
+    ]
+  },
+  "error_type": "runtime",
+  "error": null,
+  "tool": {
+    "tool_id": "b0b5f07d-2dd0-4bc0-88db-aa54bd189abc",
+    "name": "total_by_category",
+    "description": "Aggregates total amounts by category from a list of dictionaries.",
+    "parameters": [
+      {
+        "name": "rows",
+        "type": "array",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "def total_by_category(rows: list[dict]) -> dict:\n    \"\"\"\n    Aggregates total amounts by category from a list of dictionaries.\n\n    Args:\n        rows (list[dict]): A list of dictionaries, each containing at least\n                           the keys 'category' and 'amount'.\n\n    Returns:\n        dict: A dictionary mapping each category to the sum of its amounts.\n\n    Raises:\n        TypeError: If `rows` is not a list or any element is not a dictionary.\n        ValueError: If any dictionary is missing 'category' or 'amount',\n                    or if 'amount' cannot be converted to a number.\n    \"\"\"\n    if not isinstance(rows, list):\n        raise TypeError(\"Input must be a list.\")\n\n    # An empty list yields an empty aggregation.\n    if not rows:\n        return {}\n\n    totals: dict[str, float] = {}\n\n    for row in rows:\n        if not isinstance(row, dict):\n            raise TypeError(\"Each item in the list must be a dictionary.\")\n        if 'category' not in row:\n            raise ValueError(\"Missing required key: 'category' in row.\")\n        if 'amount' not in row:\n            raise ValueError(\"Missing required key: 'amount' in row.\")\n\n        category = row['category']\n        try:\n            amount = float(row['amount'])\n        except (ValueError, TypeError) as ex:\n            raise ValueError(f\"Amount must be a number, got: {row['amount']!r}\") from ex\n\n        totals[category] = totals.get(category, 0) + amount\n\n    return totals",
+    "json_schema": {
+      "name": "total_by_category",
+      "description": "Aggregates total amounts by category from a list of dictionaries.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "description": ""
+          }
+        },
+        "required": [
+          "rows"
+        ]
+      }
+    }
+  }
+}

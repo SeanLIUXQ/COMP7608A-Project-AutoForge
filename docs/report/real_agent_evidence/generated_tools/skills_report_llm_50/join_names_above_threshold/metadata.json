@@ -1,0 +1,21 @@
+{
+  "metadata_version": 1,
+  "tool_id": "d75f97fe-ee58-4ac9-8f34-6667fd1834e5",
+  "name": "join_names_above_threshold",
+  "description": "Parse CSV and return a comma-separated string of names where score > threshold.",
+  "created_at": "2026-05-02T06:59:48.454942+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "csv",
+    "io",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

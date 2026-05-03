@@ -1,0 +1,7 @@
+{
+  "__function_name": "collect_names_meeting_score_threshold",
+  "rows": [],
+  "threshold": 1,
+  "score_field": "example",
+  "name_field": "example"
+}

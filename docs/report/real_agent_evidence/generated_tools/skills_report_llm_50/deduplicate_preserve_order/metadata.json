@@ -1,0 +1,19 @@
+{
+  "metadata_version": 1,
+  "tool_id": "5fc52159-e956-4d00-b613-7fe5b34738f4",
+  "name": "deduplicate_preserve_order",
+  "description": "Return a new list containing the unique elements of `lst` in their first occurrence order.",
+  "created_at": "2026-05-02T06:37:46.696850+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

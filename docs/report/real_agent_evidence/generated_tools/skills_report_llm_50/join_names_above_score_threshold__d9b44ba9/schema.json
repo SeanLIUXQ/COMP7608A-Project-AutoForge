@@ -1,0 +1,21 @@
+{
+  "name": "join_names_above_score_threshold",
+  "description": "Parse a CSV string containing 'name' and 'score' columns, filter rows where",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "csv_text": {
+        "type": "string",
+        "description": ""
+      },
+      "threshold": {
+        "type": "integer",
+        "description": ""
+      }
+    },
+    "required": [
+      "csv_text",
+      "threshold"
+    ]
+  }
+}

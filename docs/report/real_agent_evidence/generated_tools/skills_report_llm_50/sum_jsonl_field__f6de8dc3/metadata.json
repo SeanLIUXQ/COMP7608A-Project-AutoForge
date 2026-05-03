@@ -1,0 +1,20 @@
+{
+  "metadata_version": 1,
+  "tool_id": "f6de8dc3-7c3c-4d4e-ab37-56f33704b9b4",
+  "name": "sum_jsonl_field",
+  "description": "Parse a list of JSON strings and sum the numeric values of a given field.",
+  "created_at": "2026-05-02T07:20:42.901855+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "json",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

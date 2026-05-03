@@ -1,0 +1,21 @@
+{
+  "name": "get_names_by_score_threshold",
+  "description": "Given a list of dictionaries and a numeric threshold, return a list of 'name'",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      },
+      "threshold": {
+        "type": "integer",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows",
+      "threshold"
+    ]
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "trace_id": "9f081a6c93e64659a150c2bc7c28f0a4",
+  "timestamp": "2026-05-02T07:44:52.318524+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for moving_average after 1 attempt(s).",
+    "function_name": "moving_average",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 6,
+    "plan_steps": [
+      "Validate that series is a list of numbers and window is a positive integer <= len(series).",
+      "Handle edge cases: return empty list if series is empty or window is 0.",
+      "Initialize an empty list for moving averages.",
+      "Loop i from 0 to len(series) - window.",
+      "For each i, extract the slice series[i:i+window], compute its arithmetic mean, and append to result.",
+      "Return the list of moving averages."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that computes a moving average over a numeric series."
+  },
+  "plan": {
+    "steps": [
+      "Validate that series is a list of numbers and window is a positive integer <= len(series).",
+      "Handle edge cases: return empty list if series is empty or window is 0.",
+      "Initialize an empty list for moving averages.",
+      "Loop i from 0 to len(series) - window.",
+      "For each i, extract the slice series[i:i+window], compute its arithmetic mean, and append to result.",
+      "Return the list of moving averages."
+    ],
+    "suggested_function_name": "moving_average"
+  },
+  "source_code": "from typing import Union\n\ndef moving_average(series: list[Union[int, float]], window: int) -> list[float]:\n    \"\"\"\n    Compute the simple moving average of a numeric series.\n\n    The function slides a window of the given size across the series and\n    returns the arithmetic mean of each window.\n\n    Args:\n        series: A list of numbers (int or float).\n        window: Window size (non‑negative integer). A window of 0 returns an\n                empty list. Must not exceed len(series) when series is non‑empty.\n\n    Returns:\n        A list of moving averages as floats.  Returns an empty list if the\n        series is empty or window is 0.\n\n    Raises:\n        TypeError: If *series* is not a list or *window* is not an integer.\n        ValueError: If the series contains non‑numeric values, or if *window*\n                    is negative, or if *window* > len(series) for a non‑empty series.\n    \"\"\"\n    # --- Input validation -------------------------------------------------\n    if not isinstance(series, list):\n        raise TypeError(\"series must be a list\")\n    if not all(isinstance(x, (int, float)) for x in series):\n        raise ValueError(\"series must contain only numbers (int or float)\")\n    if not isinstance(window, int):\n        raise TypeError(\"window must be an integer\")\n    if window < 0:\n        raise ValueError(\"window must be non-negative\")\n\n    # --- Edge cases -------------------------------------------------------\n    if not series or window == 0:\n        return []\n    if window > len(series):\n        raise ValueError(\"window size cannot exceed length of series\")\n\n    # --- Compute moving averages ------------------------------------------\n    result = []\n    for i in range(len(series) - window + 1):\n        window_slice = series[i : i + window]\n        avg = sum(window_slice) / window\n        result.append(avg)\n\n    return result",
+  "function_name": "moving_average",
+  "verification": {
+    "success": true,
+    "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+    "stderr": "",
+    "execution_time_ms": 1601.4121000189334,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "moving_average",
+          "series": [
+            5,
+            1,
+            9,
+            2
+          ],
+          "window": 3
+        },
+        "success": true,
+        "stdout": "[5.0, 4.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          5.0,
+          4.0
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "moving_average",
+          "series": [
+            1,
+            2,
+            2,
+            3,
+            1,
+            4
+          ],
+          "window": 2
+        },
+        "success": true,
+        "stdout": "[1.5, 2.0, 2.5, 2.0, 2.5]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1.5,
+          2.0,
+          2.5,
+          2.0,
+          2.5
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "moving_average",
+          "series": [
+            10.0,
+            11.0,
+            12.0,
+            13.0
+          ],
+          "window": 1
+        },
+        "success": true,
+        "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          10.0,
+          11.0,
+          12.0,
+          13.0
+        ]
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "f0b39eb9-bc10-4059-9a63-ec00d6281d6f",
+    "name": "moving_average",
+    "description": "Compute the simple moving average of a numeric series.",
+    "parameters": [
+      {
+        "name": "series",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "window",
+        "type": "integer",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import Union\n\ndef moving_average(series: list[Union[int, float]], window: int) -> list[float]:\n    \"\"\"\n    Compute the simple moving average of a numeric series.\n\n    The function slides a window of the given size across the series and\n    returns the arithmetic mean of each window.\n\n    Args:\n        series: A list of numbers (int or float).\n        window: Window size (non‑negative integer). A window of 0 returns an\n                empty list. Must not exceed len(series) when series is non‑empty.\n\n    Returns:\n        A list of moving averages as floats.  Returns an empty list if the\n        series is empty or window is 0.\n\n    Raises:\n        TypeError: If *series* is not a list or *window* is not an integer.\n        ValueError: If the series contains non‑numeric values, or if *window*\n                    is negative, or if *window* > len(series) for a non‑empty series.\n    \"\"\"\n    # --- Input validation -------------------------------------------------\n    if not isinstance(series, list):\n        raise TypeError(\"series must be a list\")\n    if not all(isinstance(x, (int, float)) for x in series):\n        raise ValueError(\"series must contain only numbers (int or float)\")\n    if not isinstance(window, int):\n        raise TypeError(\"window must be an integer\")\n    if window < 0:\n        raise ValueError(\"window must be non-negative\")\n\n    # --- Edge cases -------------------------------------------------------\n    if not series or window == 0:\n        return []\n    if window > len(series):\n        raise ValueError(\"window size cannot exceed length of series\")\n\n    # --- Compute moving averages ------------------------------------------\n    result = []\n    for i in range(len(series) - window + 1):\n        window_slice = series[i : i + window]\n        avg = sum(window_slice) / window\n        result.append(avg)\n\n    return result",
+    "json_schema": {
+      "name": "moving_average",
+      "description": "Compute the simple moving average of a numeric series.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "series": {
+            "type": "array",
+            "description": ""
+          },
+          "window": {
+            "type": "integer",
+            "description": ""
+          }
+        },
+        "required": [
+          "series",
+          "window"
+        ]
+      }
+    }
+  }
+}

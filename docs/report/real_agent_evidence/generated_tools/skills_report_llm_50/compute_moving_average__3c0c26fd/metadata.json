@@ -1,0 +1,19 @@
+{
+  "metadata_version": 1,
+  "tool_id": "3c0c26fd-5530-4481-b6c2-3e272bfe12dd",
+  "name": "compute_moving_average",
+  "description": "Compute the simple moving average of a list of numbers over a given window.",
+  "created_at": "2026-05-02T07:39:00.502745+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

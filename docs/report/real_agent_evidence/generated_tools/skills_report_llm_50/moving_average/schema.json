@@ -1,0 +1,21 @@
+{
+  "name": "moving_average",
+  "description": "Compute the moving average of a list of numbers over a given window.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "values": {
+        "type": "array",
+        "description": ""
+      },
+      "window": {
+        "type": "integer",
+        "description": ""
+      }
+    },
+    "required": [
+      "values",
+      "window"
+    ]
+  }
+}

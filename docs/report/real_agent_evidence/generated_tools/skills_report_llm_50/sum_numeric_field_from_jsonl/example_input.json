@@ -1,0 +1,5 @@
+{
+  "__function_name": "sum_numeric_field_from_jsonl",
+  "jsonl_text": "example",
+  "field_name": "example"
+}

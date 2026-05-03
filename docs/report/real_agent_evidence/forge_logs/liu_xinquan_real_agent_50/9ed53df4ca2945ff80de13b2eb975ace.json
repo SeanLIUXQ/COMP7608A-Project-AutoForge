@@ -1,0 +1,160 @@
+{
+  "trace_id": "9ed53df4ca2945ff80de13b2eb975ace",
+  "timestamp": "2026-05-02T07:38:34.686024+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for compute_moving_average after 1 attempt(s).",
+    "function_name": "compute_moving_average",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 4,
+    "plan_steps": [
+      "Validate inputs: series is a list of numeric values, window_size is a positive integer, and window_size <= len(series); raise ValueError if invalid.",
+      "Initialize an empty list to hold moving averages.",
+      "For i from 0 to (len(series) - window_size), calculate the arithmetic mean of series[i:i+window_size] and append it to the list.",
+      "Return the list of moving averages."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that computes a moving average over a numeric series."
+  },
+  "plan": {
+    "steps": [
+      "Validate inputs: series is a list of numeric values, window_size is a positive integer, and window_size <= len(series); raise ValueError if invalid.",
+      "Initialize an empty list to hold moving averages.",
+      "For i from 0 to (len(series) - window_size), calculate the arithmetic mean of series[i:i+window_size] and append it to the list.",
+      "Return the list of moving averages."
+    ],
+    "suggested_function_name": "compute_moving_average"
+  },
+  "source_code": "from typing import List, Union\n\ndef compute_moving_average(series: List[Union[int, float]], window_size: int) -> List[float]:\n    \"\"\"Calculate the simple moving average of a numeric series.\n\n    Args:\n        series: A list of numeric values (int or float).\n        window_size: Positive integer specifying the number of consecutive elements\n                     to average at each step. Must not exceed len(series).\n\n    Returns:\n        A list of floats representing the moving averages,\n        computed for each window of length window_size from left to right.\n\n    Raises:\n        ValueError: If series is empty, contains non-numeric values,\n                    or window_size is not a positive integer <= len(series).\n    \"\"\"\n    # Validate series type and elements\n    if not isinstance(series, list):\n        raise ValueError(\"series must be a list.\")\n    for val in series:\n        if not isinstance(val, (int, float)):\n            raise ValueError(\n                f\"All series elements must be int or float, got {type(val)}\"\n            )\n    \n    # Validate window_size\n    if not isinstance(window_size, int) or window_size <= 0:\n        raise ValueError(\"window_size must be a positive integer.\")\n    if window_size > len(series):\n        raise ValueError(\"window_size cannot exceed the length of series.\")\n\n    # Compute moving averages\n    averages: List[float] = []\n    for i in range(len(series) - window_size + 1):\n        window = series[i : i + window_size]\n        averages.append(sum(window) / window_size)\n\n    return averages",
+  "function_name": "compute_moving_average",
+  "verification": {
+    "success": true,
+    "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+    "stderr": "",
+    "execution_time_ms": 1566.6271999944001,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "series": [
+            5,
+            1,
+            9,
+            2
+          ],
+          "window_size": 3
+        },
+        "success": true,
+        "stdout": "[5.0, 4.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          5.0,
+          4.0
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "series": [
+            1,
+            2,
+            2,
+            3,
+            1,
+            4
+          ],
+          "window_size": 2
+        },
+        "success": true,
+        "stdout": "[1.5, 2.0, 2.5, 2.0, 2.5]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1.5,
+          2.0,
+          2.5,
+          2.0,
+          2.5
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "series": [
+            10.0,
+            11.0,
+            12.0,
+            13.0
+          ],
+          "window_size": 1
+        },
+        "success": true,
+        "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          10.0,
+          11.0,
+          12.0,
+          13.0
+        ]
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "2d1e05c0-516e-4ee3-8413-45acaed8c7a4",
+    "name": "compute_moving_average",
+    "description": "Calculate the simple moving average of a numeric series.",
+    "parameters": [
+      {
+        "name": "series",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "window_size",
+        "type": "integer",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import List, Union\n\ndef compute_moving_average(series: List[Union[int, float]], window_size: int) -> List[float]:\n    \"\"\"Calculate the simple moving average of a numeric series.\n\n    Args:\n        series: A list of numeric values (int or float).\n        window_size: Positive integer specifying the number of consecutive elements\n                     to average at each step. Must not exceed len(series).\n\n    Returns:\n        A list of floats representing the moving averages,\n        computed for each window of length window_size from left to right.\n\n    Raises:\n        ValueError: If series is empty, contains non-numeric values,\n                    or window_size is not a positive integer <= len(series).\n    \"\"\"\n    # Validate series type and elements\n    if not isinstance(series, list):\n        raise ValueError(\"series must be a list.\")\n    for val in series:\n        if not isinstance(val, (int, float)):\n            raise ValueError(\n                f\"All series elements must be int or float, got {type(val)}\"\n            )\n    \n    # Validate window_size\n    if not isinstance(window_size, int) or window_size <= 0:\n        raise ValueError(\"window_size must be a positive integer.\")\n    if window_size > len(series):\n        raise ValueError(\"window_size cannot exceed the length of series.\")\n\n    # Compute moving averages\n    averages: List[float] = []\n    for i in range(len(series) - window_size + 1):\n        window = series[i : i + window_size]\n        averages.append(sum(window) / window_size)\n\n    return averages",
+    "json_schema": {
+      "name": "compute_moving_average",
+      "description": "Calculate the simple moving average of a numeric series.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "series": {
+            "type": "array",
+            "description": ""
+          },
+          "window_size": {
+            "type": "integer",
+            "description": ""
+          }
+        },
+        "required": [
+          "series",
+          "window_size"
+        ]
+      }
+    }
+  }
+}

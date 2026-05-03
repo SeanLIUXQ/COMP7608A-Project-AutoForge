@@ -1,0 +1,7 @@
+{
+  "__function_name": "join_column_above_threshold_from_csv",
+  "csv_text": "example",
+  "threshold": 1,
+  "name_column": "example",
+  "score_column": "example"
+}

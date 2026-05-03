@@ -1,0 +1,173 @@
+{
+  "trace_id": "b4b979b2955846aa9cc72fc659bbc6eb",
+  "timestamp": "2026-05-02T07:22:54.190051+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for filter_names_by_threshold after 1 attempt(s).",
+    "function_name": "filter_names_by_threshold",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 5,
+    "plan_steps": [
+      "Validate that rows is a list and threshold is a number (int or float).",
+      "Check each row is a dict and contains both 'score' and 'name' keys.",
+      "Filter rows to those where row['score'] >= threshold.",
+      "Extract the 'name' value from each filtered row.",
+      "Return the list of collected names."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that returns names for row dictionaries whose score is at least a threshold."
+  },
+  "plan": {
+    "steps": [
+      "Validate that rows is a list and threshold is a number (int or float).",
+      "Check each row is a dict and contains both 'score' and 'name' keys.",
+      "Filter rows to those where row['score'] >= threshold.",
+      "Extract the 'name' value from each filtered row.",
+      "Return the list of collected names."
+    ],
+    "suggested_function_name": "filter_names_by_threshold"
+  },
+  "source_code": "from typing import Union, List, Dict, Any\n\ndef filter_names_by_threshold(rows: List[Dict[str, Any]], threshold: Union[int, float]) -> List[str]:\n    \"\"\"\n    Filter a list of dictionaries, keeping only rows where the 'score' value\n    meets or exceeds a given threshold, and return a list of the 'name' values\n    from those rows.\n\n    Args:\n        rows: A list of dictionaries. Each dictionary must contain the keys 'score'\n              and 'name'.\n        threshold: The numeric threshold (inclusive) that a row's 'score' must meet.\n\n    Returns:\n        A list of the 'name' strings from rows whose 'score' >= threshold.\n\n    Raises:\n        TypeError: If rows is not a list, if threshold is not a number (int/float),\n                   or if any element of rows is not a dictionary.\n        ValueError: If any dictionary in rows does not contain both 'score' and 'name'.\n    \"\"\"\n    # Validate rows is a list\n    if not isinstance(rows, list):\n        raise TypeError(\"rows must be a list\")\n\n    # Validate threshold is a number\n    if not isinstance(threshold, (int, float)):\n        raise TypeError(\"threshold must be an int or float\")\n\n    names = []\n    for i, row in enumerate(rows):\n        # Check row is a dict\n        if not isinstance(row, dict):\n            raise TypeError(f\"Element at index {i} is not a dictionary\")\n\n        # Check required keys\n        if 'score' not in row or 'name' not in row:\n            raise ValueError(f\"Dictionary at index {i} must contain 'score' and 'name' keys\")\n\n        # Apply threshold filter\n        if row['score'] >= threshold:\n            names.append(row['name'])\n\n    return names",
+  "function_name": "filter_names_by_threshold",
+  "verification": {
+    "success": true,
+    "stdout": "[]\n",
+    "stderr": "",
+    "execution_time_ms": 1928.9015999966068,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "filter_names_by_threshold",
+          "rows": [
+            {
+              "name": "Ada",
+              "score": 91,
+              "cat": "infra",
+              "amt": 18,
+              "category": "infra",
+              "amount": 18
+            },
+            {
+              "name": "Ben",
+              "score": 72,
+              "cat": "ml",
+              "amt": 32,
+              "category": "ml",
+              "amount": 32
+            },
+            {
+              "name": "Cy",
+              "score": 88,
+              "cat": "infra",
+              "amt": 22,
+              "category": "infra",
+              "amount": 22
+            }
+          ],
+          "threshold": 80
+        },
+        "success": true,
+        "stdout": "['Ada', 'Cy']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['Ada', 'Cy']"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "filter_names_by_threshold",
+          "rows": [
+            {
+              "name": "A",
+              "score": 1,
+              "cat": "ops",
+              "amt": 1,
+              "category": "ops",
+              "amount": 1
+            },
+            {
+              "name": "B",
+              "score": 3,
+              "cat": "ops",
+              "amt": 2,
+              "category": "ops",
+              "amount": 2
+            }
+          ],
+          "threshold": 1
+        },
+        "success": true,
+        "stdout": "['A', 'B']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['A', 'B']"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "filter_names_by_threshold",
+          "rows": [],
+          "threshold": 0
+        },
+        "success": true,
+        "stdout": "[]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": []
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "b2780816-b525-43aa-867b-2cddd59d429e",
+    "name": "filter_names_by_threshold",
+    "description": "Filter a list of dictionaries, keeping only rows where the 'score' value",
+    "parameters": [
+      {
+        "name": "rows",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "threshold",
+        "type": "integer",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import Union, List, Dict, Any\n\ndef filter_names_by_threshold(rows: List[Dict[str, Any]], threshold: Union[int, float]) -> List[str]:\n    \"\"\"\n    Filter a list of dictionaries, keeping only rows where the 'score' value\n    meets or exceeds a given threshold, and return a list of the 'name' values\n    from those rows.\n\n    Args:\n        rows: A list of dictionaries. Each dictionary must contain the keys 'score'\n              and 'name'.\n        threshold: The numeric threshold (inclusive) that a row's 'score' must meet.\n\n    Returns:\n        A list of the 'name' strings from rows whose 'score' >= threshold.\n\n    Raises:\n        TypeError: If rows is not a list, if threshold is not a number (int/float),\n                   or if any element of rows is not a dictionary.\n        ValueError: If any dictionary in rows does not contain both 'score' and 'name'.\n    \"\"\"\n    # Validate rows is a list\n    if not isinstance(rows, list):\n        raise TypeError(\"rows must be a list\")\n\n    # Validate threshold is a number\n    if not isinstance(threshold, (int, float)):\n        raise TypeError(\"threshold must be an int or float\")\n\n    names = []\n    for i, row in enumerate(rows):\n        # Check row is a dict\n        if not isinstance(row, dict):\n            raise TypeError(f\"Element at index {i} is not a dictionary\")\n\n        # Check required keys\n        if 'score' not in row or 'name' not in row:\n            raise ValueError(f\"Dictionary at index {i} must contain 'score' and 'name' keys\")\n\n        # Apply threshold filter\n        if row['score'] >= threshold:\n            names.append(row['name'])\n\n    return names",
+    "json_schema": {
+      "name": "filter_names_by_threshold",
+      "description": "Filter a list of dictionaries, keeping only rows where the 'score' value",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "description": ""
+          },
+          "threshold": {
+            "type": "integer",
+            "description": ""
+          }
+        },
+        "required": [
+          "rows",
+          "threshold"
+        ]
+      }
+    }
+  }
+}

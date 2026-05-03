@@ -1,0 +1,29 @@
+{
+  "name": "join_column_above_threshold_from_csv",
+  "description": "Parse a CSV string, filter rows where a numeric column exceeds a threshold,",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "csv_text": {
+        "type": "string",
+        "description": ""
+      },
+      "threshold": {
+        "type": "integer",
+        "description": ""
+      },
+      "name_column": {
+        "type": "string",
+        "description": ""
+      },
+      "score_column": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "csv_text",
+      "threshold"
+    ]
+  }
+}

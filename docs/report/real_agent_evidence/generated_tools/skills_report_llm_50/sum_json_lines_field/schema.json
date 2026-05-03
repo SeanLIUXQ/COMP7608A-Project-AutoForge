@@ -1,0 +1,21 @@
+{
+  "name": "sum_json_lines_field",
+  "description": "Sum the values of a specified field across a sequence of JSON lines.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "lines": {
+        "type": "string",
+        "description": ""
+      },
+      "field_name": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "lines",
+      "field_name"
+    ]
+  }
+}

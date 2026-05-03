@@ -1,0 +1,29 @@
+{
+  "name": "filter_names_by_score_threshold",
+  "description": "Return names from a list of dictionaries where the score meets or exceeds a threshold.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "records": {
+        "type": "array",
+        "description": ""
+      },
+      "threshold": {
+        "type": "integer",
+        "description": ""
+      },
+      "score_field": {
+        "type": "string",
+        "description": ""
+      },
+      "name_field": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "records",
+      "threshold"
+    ]
+  }
+}

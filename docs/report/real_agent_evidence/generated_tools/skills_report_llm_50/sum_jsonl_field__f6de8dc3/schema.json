@@ -1,0 +1,21 @@
+{
+  "name": "sum_jsonl_field",
+  "description": "Parse a list of JSON strings and sum the numeric values of a given field.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "lines": {
+        "type": "array",
+        "description": ""
+      },
+      "field_name": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "lines",
+      "field_name"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "sum_jsonl_field",
+  "description": "Parse a string of JSON lines (or an iterable of such lines) and return",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "jsonl_text": {
+        "type": "string",
+        "description": ""
+      },
+      "field_name": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "jsonl_text",
+      "field_name"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "metadata_version": 1,
+  "tool_id": "b2780816-b525-43aa-867b-2cddd59d429e",
+  "name": "filter_names_by_threshold",
+  "description": "Filter a list of dictionaries, keeping only rows where the 'score' value",
+  "created_at": "2026-05-02T07:22:54.201405+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

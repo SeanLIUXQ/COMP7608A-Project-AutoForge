@@ -1,0 +1,19 @@
+{
+  "metadata_version": 1,
+  "tool_id": "337c094c-1f88-4213-a997-0e4f429a6396",
+  "name": "reverse_string",
+  "description": "Return the reverse of the input string.",
+  "created_at": "2026-05-02T06:34:59.958790+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

@@ -1,0 +1,16 @@
+{
+  "name": "url_time_query_tool",
+  "description": "Solve URL query-parameter and timestamp-interval tasks.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "Natural-language task to execute"
+      }
+    },
+    "required": [
+      "query"
+    ]
+  }
+}

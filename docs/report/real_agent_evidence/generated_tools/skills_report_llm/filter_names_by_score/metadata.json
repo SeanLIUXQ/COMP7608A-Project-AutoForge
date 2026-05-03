@@ -1,0 +1,17 @@
+{
+  "metadata_version": 1,
+  "tool_id": "a8baae27-4454-4de9-9dc1-aea68bdb4934",
+  "name": "filter_names_by_score",
+  "description": "Return a list of 'name' values from rows whose 'score' is at least the threshold.",
+  "created_at": "2026-05-02T05:37:42.679803+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

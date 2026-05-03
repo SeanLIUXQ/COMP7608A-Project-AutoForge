@@ -1,0 +1,26 @@
+{
+  "safe_add": {
+    "success": true,
+    "stdout": "5\n",
+    "stderr": "",
+    "execution_time_ms": 1049.3610999983503,
+    "failure_type": null,
+    "cases": []
+  },
+  "unsafe_open": {
+    "success": false,
+    "stdout": "",
+    "stderr": "Security warning: call to 'open' is not allowed",
+    "execution_time_ms": 0.327600006130524,
+    "failure_type": "unsafe_call",
+    "cases": []
+  },
+  "unsafe_import": {
+    "success": false,
+    "stdout": "",
+    "stderr": "Security warning: 'os' is not allowed",
+    "execution_time_ms": 0.12199999764561653,
+    "failure_type": "unsafe_import",
+    "cases": []
+  }
+}

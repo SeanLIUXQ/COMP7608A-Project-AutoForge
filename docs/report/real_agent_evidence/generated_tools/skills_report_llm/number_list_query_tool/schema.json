@@ -1,0 +1,16 @@
+{
+  "name": "number_list_query_tool",
+  "description": "Solve sorting, averaging, deduplication, rounded sums, and byte-conversion tasks.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "Natural-language task to execute"
+      }
+    },
+    "required": [
+      "query"
+    ]
+  }
+}

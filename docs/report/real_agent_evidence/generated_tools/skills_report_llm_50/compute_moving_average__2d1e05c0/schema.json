@@ -1,0 +1,21 @@
+{
+  "name": "compute_moving_average",
+  "description": "Calculate the simple moving average of a numeric series.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "series": {
+        "type": "array",
+        "description": ""
+      },
+      "window_size": {
+        "type": "integer",
+        "description": ""
+      }
+    },
+    "required": [
+      "series",
+      "window_size"
+    ]
+  }
+}

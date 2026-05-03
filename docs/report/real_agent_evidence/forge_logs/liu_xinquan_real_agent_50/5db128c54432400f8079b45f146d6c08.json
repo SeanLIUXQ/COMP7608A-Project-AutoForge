@@ -1,0 +1,187 @@
+{
+  "trace_id": "5db128c54432400f8079b45f146d6c08",
+  "timestamp": "2026-05-02T07:47:30.105451+00:00",
+  "status": "success",
+  "attempts": 2,
+  "summary": {
+    "headline": "Forge succeeded for sum_by_group after 2 attempt(s).",
+    "function_name": "sum_by_group",
+    "status": "success",
+    "attempts": 2,
+    "step_count": 5,
+    "plan_steps": [
+      "Validate inputs: rows is a non-empty list of dicts, group_key and value_key are strings.",
+      "Initialize an empty dictionary for totals.",
+      "Iterate over each row dictionary, extracting the group value and numeric amount (default 0 if missing).",
+      "Add the amount to the running total for that group in the totals dictionary.",
+      "Return the totals dictionary mapping group values to summed amounts."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": "runtime",
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that totals amounts by category for row dictionaries."
+  },
+  "plan": {
+    "steps": [
+      "Validate inputs: rows is a non-empty list of dicts, group_key and value_key are strings.",
+      "Initialize an empty dictionary for totals.",
+      "Iterate over each row dictionary, extracting the group value and numeric amount (default 0 if missing).",
+      "Add the amount to the running total for that group in the totals dictionary.",
+      "Return the totals dictionary mapping group values to summed amounts."
+    ],
+    "suggested_function_name": "sum_by_group"
+  },
+  "source_code": "def sum_by_group(rows: list[dict], group_key: str, value_key: str) -> dict:\n    \"\"\"\n    Sum numeric values grouped by a key from a list of dictionaries.\n\n    Args:\n        rows: list of dictionaries (can be empty).\n        group_key: key to group by in each dictionary.\n        value_key: key holding a numeric value to sum (defaults to 0 if missing).\n\n    Returns:\n        dict mapping group values (including None if key missing) to total summed value.\n\n    Raises:\n        TypeError: if rows is not a list, or group_key/value_key are not strings,\n                   or any value encountered is not a number (int or float).\n    \"\"\"\n    # Input validation\n    if not isinstance(rows, list):\n        raise TypeError(\"rows must be a list\")\n    if not isinstance(group_key, str):\n        raise TypeError(\"group_key must be a string\")\n    if not isinstance(value_key, str):\n        raise TypeError(\"value_key must be a string\")\n\n    totals = {}\n    for row in rows:\n        if not isinstance(row, dict):\n            raise TypeError(\"Each row must be a dictionary\")\n        \n        group = row.get(group_key)          # may be None\n        value = row.get(value_key, 0)       # default 0 if missing\n        \n        if not isinstance(value, (int, float)):\n            raise TypeError(\n                f\"Value for '{value_key}' must be numeric, got {type(value).__name__}\"\n            )\n        \n        totals[group] = totals.get(group, 0) + value\n\n    return totals",
+  "function_name": "sum_by_group",
+  "verification": {
+    "success": true,
+    "stdout": "{}\n",
+    "stderr": "",
+    "execution_time_ms": 1507.557300006738,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "sum_by_group",
+          "rows": [
+            {
+              "name": "Ada",
+              "score": 91,
+              "cat": "infra",
+              "amt": 18,
+              "category": "infra",
+              "amount": 18
+            },
+            {
+              "name": "Ben",
+              "score": 72,
+              "cat": "ml",
+              "amt": 32,
+              "category": "ml",
+              "amount": 32
+            },
+            {
+              "name": "Cy",
+              "score": 88,
+              "cat": "infra",
+              "amt": 22,
+              "category": "infra",
+              "amount": 22
+            }
+          ],
+          "group_key": "example",
+          "value_key": "example"
+        },
+        "success": true,
+        "stdout": "{None: 0}\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "{None: 0}"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "sum_by_group",
+          "rows": [
+            {
+              "name": "A",
+              "score": 1,
+              "cat": "ops",
+              "amt": 1,
+              "category": "ops",
+              "amount": 1
+            },
+            {
+              "name": "B",
+              "score": 3,
+              "cat": "ops",
+              "amt": 2,
+              "category": "ops",
+              "amount": 2
+            }
+          ],
+          "group_key": "nearby input",
+          "value_key": "nearby input"
+        },
+        "success": true,
+        "stdout": "{None: 0}\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "{None: 0}"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "sum_by_group",
+          "rows": [],
+          "group_key": "",
+          "value_key": ""
+        },
+        "success": true,
+        "stdout": "{}\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": {}
+      }
+    ]
+  },
+  "error_type": "runtime",
+  "error": null,
+  "tool": {
+    "tool_id": "ec5db69d-dc48-4880-8469-365b1061fb6a",
+    "name": "sum_by_group",
+    "description": "Sum numeric values grouped by a key from a list of dictionaries.",
+    "parameters": [
+      {
+        "name": "rows",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "group_key",
+        "type": "string",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "value_key",
+        "type": "string",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "def sum_by_group(rows: list[dict], group_key: str, value_key: str) -> dict:\n    \"\"\"\n    Sum numeric values grouped by a key from a list of dictionaries.\n\n    Args:\n        rows: list of dictionaries (can be empty).\n        group_key: key to group by in each dictionary.\n        value_key: key holding a numeric value to sum (defaults to 0 if missing).\n\n    Returns:\n        dict mapping group values (including None if key missing) to total summed value.\n\n    Raises:\n        TypeError: if rows is not a list, or group_key/value_key are not strings,\n                   or any value encountered is not a number (int or float).\n    \"\"\"\n    # Input validation\n    if not isinstance(rows, list):\n        raise TypeError(\"rows must be a list\")\n    if not isinstance(group_key, str):\n        raise TypeError(\"group_key must be a string\")\n    if not isinstance(value_key, str):\n        raise TypeError(\"value_key must be a string\")\n\n    totals = {}\n    for row in rows:\n        if not isinstance(row, dict):\n            raise TypeError(\"Each row must be a dictionary\")\n        \n        group = row.get(group_key)          # may be None\n        value = row.get(value_key, 0)       # default 0 if missing\n        \n        if not isinstance(value, (int, float)):\n            raise TypeError(\n                f\"Value for '{value_key}' must be numeric, got {type(value).__name__}\"\n            )\n        \n        totals[group] = totals.get(group, 0) + value\n\n    return totals",
+    "json_schema": {
+      "name": "sum_by_group",
+      "description": "Sum numeric values grouped by a key from a list of dictionaries.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "description": ""
+          },
+          "group_key": {
+            "type": "string",
+            "description": ""
+          },
+          "value_key": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "rows",
+          "group_key",
+          "value_key"
+        ]
+      }
+    }
+  }
+}

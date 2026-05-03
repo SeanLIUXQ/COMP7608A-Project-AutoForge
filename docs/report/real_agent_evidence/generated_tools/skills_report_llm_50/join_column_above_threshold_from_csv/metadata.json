@@ -1,0 +1,21 @@
+{
+  "metadata_version": 1,
+  "tool_id": "3b10f962-12b2-459d-b9f8-804cb49f63a3",
+  "name": "join_column_above_threshold_from_csv",
+  "description": "Parse a CSV string, filter rows where a numeric column exceeds a threshold,",
+  "created_at": "2026-05-02T06:40:56.185770+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "csv",
+    "io",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

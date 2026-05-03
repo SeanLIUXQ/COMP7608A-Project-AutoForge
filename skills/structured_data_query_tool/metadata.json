@@ -1,0 +1,47 @@
+{
+  "metadata_version": 1,
+  "tool_id": "autoforge-structured-data-v1",
+  "name": "structured_data_query_tool",
+  "description": "Solve dict, JSON, grouping, filtering, and category aggregation tasks.",
+  "created_at": "seeded",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "ast",
+    "collections",
+    "csv",
+    "datetime",
+    "io",
+    "re",
+    "urllib"
+  ],
+  "language": "python",
+  "tool_origin": "seeded",
+  "tool_status": "active",
+  "keywords": [
+    "json",
+    "dict",
+    "keys",
+    "alphabetically",
+    "grouping",
+    "filter rows",
+    "score",
+    "return names",
+    "list names",
+    "output names",
+    "aggregate by category",
+    "category totals",
+    "contains key"
+  ],
+  "examples": [
+    "Extract keys from object {'name':'Ada','age':20} sorted alphabetically",
+    "Given list [{'x':1},{'x':3}], sum field x",
+    "Filter rows where score >= 80 and return names",
+    "Compute category totals for rows with cat and amt",
+    "Group words ['apple','ape','banana'] by first letter"
+  ],
+  "seeded": true
+}

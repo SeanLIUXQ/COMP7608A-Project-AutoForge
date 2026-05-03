@@ -1,0 +1,17 @@
+{
+  "metadata_version": 1,
+  "tool_id": "7803f3e6-1079-4fe7-8b83-96b5df3638f8",
+  "name": "count_vowels",
+  "description": "Count the number of vowels (a, e, i, o, u) in a string.",
+  "created_at": "2026-05-02T06:50:21.496002+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

@@ -1,0 +1,8 @@
+{
+  "__function_name": "join_names_above_threshold",
+  "csv_text": "example",
+  "threshold": 1,
+  "name_column": "example",
+  "score_column": "example",
+  "separator": "example"
+}

@@ -1,0 +1,29 @@
+{
+  "name": "filter_names_by_score",
+  "description": "Return a list of names from rows where the score meets or exceeds a threshold.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      },
+      "threshold": {
+        "type": "number",
+        "description": ""
+      },
+      "name_field": {
+        "type": "string",
+        "description": ""
+      },
+      "score_field": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows",
+      "threshold"
+    ]
+  }
+}

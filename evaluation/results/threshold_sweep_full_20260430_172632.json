@@ -1,0 +1,86 @@
+{
+  "timestamp": "2026-04-30T17:26:32.468791+00:00",
+  "dataset_path": "evaluation/benchmark/dataset.json",
+  "strategy": "full",
+  "include_paraphrases": false,
+  "thresholds": [
+    0.55,
+    0.65,
+    0.75,
+    0.85
+  ],
+  "rows": [
+    {
+      "threshold": 0.55,
+      "total": 80,
+      "success_rate": 1.0,
+      "fast_rate": 0.7,
+      "slow_rate": 0.3,
+      "fast_incorrect_rate": 0.0,
+      "fast_error_rate": 0.0,
+      "registry_only_miss_rate": 0.0,
+      "counts": {
+        "success": 80,
+        "fast": 56,
+        "slow": 24,
+        "fast_incorrect": 0,
+        "fast_error": 0,
+        "registry_only_miss": 0
+      }
+    },
+    {
+      "threshold": 0.65,
+      "total": 80,
+      "success_rate": 1.0,
+      "fast_rate": 0.65,
+      "slow_rate": 0.35,
+      "fast_incorrect_rate": 0.0,
+      "fast_error_rate": 0.0,
+      "registry_only_miss_rate": 0.0,
+      "counts": {
+        "success": 80,
+        "fast": 52,
+        "slow": 28,
+        "fast_incorrect": 0,
+        "fast_error": 0,
+        "registry_only_miss": 0
+      }
+    },
+    {
+      "threshold": 0.75,
+      "total": 80,
+      "success_rate": 1.0,
+      "fast_rate": 0.625,
+      "slow_rate": 0.375,
+      "fast_incorrect_rate": 0.0,
+      "fast_error_rate": 0.0,
+      "registry_only_miss_rate": 0.0,
+      "counts": {
+        "success": 80,
+        "fast": 50,
+        "slow": 30,
+        "fast_incorrect": 0,
+        "fast_error": 0,
+        "registry_only_miss": 0
+      }
+    },
+    {
+      "threshold": 0.85,
+      "total": 80,
+      "success_rate": 1.0,
+      "fast_rate": 0.0,
+      "slow_rate": 1.0,
+      "fast_incorrect_rate": 0.0,
+      "fast_error_rate": 0.0,
+      "registry_only_miss_rate": 0.0,
+      "counts": {
+        "success": 80,
+        "fast": 0,
+        "slow": 80,
+        "fast_incorrect": 0,
+        "fast_error": 0,
+        "registry_only_miss": 0
+      }
+    }
+  ]
+}

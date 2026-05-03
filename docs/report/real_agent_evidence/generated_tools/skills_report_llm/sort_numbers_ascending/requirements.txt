@@ -1,0 +1,2 @@
+# AutoForge skill requirements
+# Add third-party packages if the tool imports them.

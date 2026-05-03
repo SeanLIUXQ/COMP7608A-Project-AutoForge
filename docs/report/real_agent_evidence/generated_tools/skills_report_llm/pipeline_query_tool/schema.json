@@ -1,0 +1,16 @@
+{
+  "name": "pipeline_query_tool",
+  "description": "Solve CSV, JSONL, aggregation, moving-average, and multi-step pipeline tasks.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "Natural-language task to execute"
+      }
+    },
+    "required": [
+      "query"
+    ]
+  }
+}

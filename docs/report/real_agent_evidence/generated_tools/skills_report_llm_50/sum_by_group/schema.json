@@ -1,0 +1,26 @@
+{
+  "name": "sum_by_group",
+  "description": "Sum numeric values grouped by a key from a list of dictionaries.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      },
+      "group_key": {
+        "type": "string",
+        "description": ""
+      },
+      "value_key": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows",
+      "group_key",
+      "value_key"
+    ]
+  }
+}

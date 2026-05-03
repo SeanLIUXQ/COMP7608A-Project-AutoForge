@@ -1,0 +1,42 @@
+[
+  {
+    "order": 1,
+    "scenario": "cold_forge",
+    "title": "Cold forge or slow fallback",
+    "strategy": "agent",
+    "query": "Create a helper that extracts sorted query parameter names from a URL like https://example.com/path?a=1&b=2",
+    "expected_focus": "Show first-time slow path behavior, forge/fallback latency, and traceable failure if no LLM key is configured."
+  },
+  {
+    "order": 2,
+    "scenario": "warm_reuse",
+    "title": "Warm reuse paraphrase",
+    "strategy": "full",
+    "query": "Return sorted query keys for URL https://example.com/path?a=1&b=2",
+    "expected_focus": "Show fast path reuse, accepted retrieval decision, low total latency, and reused_existing_tool=true."
+  },
+  {
+    "order": 3,
+    "scenario": "registry_miss",
+    "title": "Registry-only miss",
+    "strategy": "registry_only",
+    "query": "Summarize this free-form paragraph into three teaching bullets without using numeric or table data.",
+    "expected_focus": "Show registry-only rejection or miss behavior and explain why fallback is disabled for this strategy."
+  },
+  {
+    "order": 4,
+    "scenario": "fallback_success",
+    "title": "Fallback success",
+    "strategy": "no_retrieval",
+    "query": "Given payload {'prices': [10.0, 11.0, 12.0, 13.0]}, compute 3-point moving average",
+    "expected_focus": "Show deterministic slow fallback success and compare its latency against warm reuse."
+  },
+  {
+    "order": 5,
+    "scenario": "mcp_invocation",
+    "title": "MCP-compatible direct invocation",
+    "strategy": "full",
+    "query": "Use the Tool Browser to inspect a registered tool schema, then invoke the matching tool with a concrete payload.",
+    "expected_focus": "Show catalog/schema visibility and direct invocation path. Backend/MCP owners can replace this with external MCP client output."
+  }
+]

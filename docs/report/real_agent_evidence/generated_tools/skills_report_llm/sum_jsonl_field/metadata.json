@@ -1,0 +1,20 @@
+{
+  "metadata_version": 1,
+  "tool_id": "e875b3ea-f229-4634-af9a-154c0f2e2d8b",
+  "name": "sum_jsonl_field",
+  "description": "Compute the sum of a numeric field across a JSONL input.",
+  "created_at": "2026-05-02T05:41:14.111495+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "json",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

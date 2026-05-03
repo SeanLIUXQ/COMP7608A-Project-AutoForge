@@ -1,0 +1,147 @@
+{
+  "trace_id": "cd5185a76b144585ba588476fe499844",
+  "timestamp": "2026-05-02T07:22:08.163699+00:00",
+  "status": "success",
+  "attempts": 2,
+  "summary": {
+    "headline": "Forge succeeded for remove_duplicates_preserve_order after 2 attempt(s).",
+    "function_name": "remove_duplicates_preserve_order",
+    "status": "success",
+    "attempts": 2,
+    "step_count": 4,
+    "plan_steps": [
+      "Validate that input is a dict with key 'values' holding a list.",
+      "Initialize an empty set 'seen' and an empty list 'result'.",
+      "Iterate through the list; for each item, if not in 'seen', append to 'result' and add to 'seen'.",
+      "Return the 'result' list."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": "runtime",
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "remove_duplicates_preserve_order: {\"values\":[1,2,2,3,1,4]}"
+  },
+  "plan": {
+    "steps": [
+      "Validate that input is a dict with key 'values' holding a list.",
+      "Initialize an empty set 'seen' and an empty list 'result'.",
+      "Iterate through the list; for each item, if not in 'seen', append to 'result' and add to 'seen'.",
+      "Return the 'result' list."
+    ],
+    "suggested_function_name": "remove_duplicates_preserve_order"
+  },
+  "source_code": "def remove_duplicates_preserve_order(values: list) -> list:\n    \"\"\"Return a new list with duplicates removed while preserving the order of first occurrence.\n\n    Args:\n        values: A list of hashable items.\n\n    Returns:\n        A list containing each unique item from `values` in the order they first appear.\n    \"\"\"\n    if not isinstance(values, list):\n        raise TypeError(\"Input must be a list\")\n    seen = set()\n    result = []\n    for item in values:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result",
+  "function_name": "remove_duplicates_preserve_order",
+  "verification": {
+    "success": true,
+    "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+    "stderr": "",
+    "execution_time_ms": 2115.142700014985,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "remove_duplicates_preserve_order",
+          "values": [
+            5,
+            1,
+            9,
+            2
+          ]
+        },
+        "success": true,
+        "stdout": "[5, 1, 9, 2]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          5,
+          1,
+          9,
+          2
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "remove_duplicates_preserve_order",
+          "values": [
+            1,
+            2,
+            2,
+            3,
+            1,
+            4
+          ]
+        },
+        "success": true,
+        "stdout": "[1, 2, 3, 4]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "remove_duplicates_preserve_order",
+          "values": [
+            10.0,
+            11.0,
+            12.0,
+            13.0
+          ]
+        },
+        "success": true,
+        "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          10.0,
+          11.0,
+          12.0,
+          13.0
+        ]
+      }
+    ]
+  },
+  "error_type": "runtime",
+  "error": null,
+  "tool": {
+    "tool_id": "9829cc2c-d48c-4406-a1fc-4eabcf424f66",
+    "name": "remove_duplicates_preserve_order",
+    "description": "Return a new list with duplicates removed while preserving the order of first occurrence.",
+    "parameters": [
+      {
+        "name": "values",
+        "type": "array",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "def remove_duplicates_preserve_order(values: list) -> list:\n    \"\"\"Return a new list with duplicates removed while preserving the order of first occurrence.\n\n    Args:\n        values: A list of hashable items.\n\n    Returns:\n        A list containing each unique item from `values` in the order they first appear.\n    \"\"\"\n    if not isinstance(values, list):\n        raise TypeError(\"Input must be a list\")\n    seen = set()\n    result = []\n    for item in values:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result",
+    "json_schema": {
+      "name": "remove_duplicates_preserve_order",
+      "description": "Return a new list with duplicates removed while preserving the order of first occurrence.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "description": ""
+          }
+        },
+        "required": [
+          "values"
+        ]
+      }
+    }
+  }
+}

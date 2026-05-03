@@ -1,0 +1,19 @@
+{
+  "metadata_version": 1,
+  "tool_id": "e021b58c-e416-468e-abe7-2f5783c3b426",
+  "name": "sort_numbers_ascending",
+  "description": "Sort a list of numbers (int or float) in ascending order and return a new sorted list.",
+  "created_at": "2026-05-02T07:28:36.941365+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

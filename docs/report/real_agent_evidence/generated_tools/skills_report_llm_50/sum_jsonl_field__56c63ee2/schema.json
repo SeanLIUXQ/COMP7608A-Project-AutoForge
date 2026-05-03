@@ -1,0 +1,21 @@
+{
+  "name": "sum_jsonl_field",
+  "description": "Sum all numeric values found under a given field across JSONL data.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input_data": {
+        "type": "string",
+        "description": ""
+      },
+      "field": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "input_data",
+      "field"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "metadata_version": 1,
+  "tool_id": "24ba91da-fe4d-4590-8cb7-0df298d73d71",
+  "name": "sum_field_in_jsonl",
+  "description": "Parse an iterable of JSON strings (JSONL) and return the sum of all numeric",
+  "created_at": "2026-05-02T07:49:24.949276+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "json",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

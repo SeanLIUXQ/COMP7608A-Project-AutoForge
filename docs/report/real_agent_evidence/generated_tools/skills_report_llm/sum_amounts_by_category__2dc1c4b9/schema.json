@@ -1,0 +1,24 @@
+{
+  "name": "sum_amounts_by_category",
+  "description": "Sum numeric amounts grouped by category.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "records": {
+        "type": "array",
+        "description": ""
+      },
+      "cat_field": {
+        "type": "string",
+        "description": ""
+      },
+      "amt_field": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "records"
+    ]
+  }
+}

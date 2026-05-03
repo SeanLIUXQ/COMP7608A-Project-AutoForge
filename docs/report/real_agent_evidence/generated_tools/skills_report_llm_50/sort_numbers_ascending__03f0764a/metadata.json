@@ -1,0 +1,19 @@
+{
+  "metadata_version": 1,
+  "tool_id": "03f0764a-d7fd-4c69-b946-da8b6a2874dd",
+  "name": "sort_numbers_ascending",
+  "description": "Sort a list containing only numbers (int or float) in ascending order.",
+  "created_at": "2026-05-02T07:43:48.386900+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

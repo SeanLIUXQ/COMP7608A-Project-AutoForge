@@ -1,0 +1,159 @@
+{
+  "trace_id": "482bed25936b4912a54dcf9b7f2ac8bc",
+  "timestamp": "2026-05-02T06:52:55.591934+00:00",
+  "status": "success",
+  "attempts": 2,
+  "summary": {
+    "headline": "Forge succeeded for deduplicate after 2 attempt(s).",
+    "function_name": "deduplicate",
+    "status": "success",
+    "attempts": 2,
+    "step_count": 5,
+    "plan_steps": [
+      "Validate that the input is an iterable (e.g., list).",
+      "Initialize an empty set to track seen items and an empty list for results.",
+      "Iterate over each item in the input.",
+      "If the item is not in the seen set, add it to the set and append to the results list.",
+      "Return the results list with duplicates removed and first occurrence order preserved."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": "runtime",
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that removes duplicates while preserving first occurrence order."
+  },
+  "plan": {
+    "steps": [
+      "Validate that the input is an iterable (e.g., list).",
+      "Initialize an empty set to track seen items and an empty list for results.",
+      "Iterate over each item in the input.",
+      "If the item is not in the seen set, add it to the set and append to the results list.",
+      "Return the results list with duplicates removed and first occurrence order preserved."
+    ],
+    "suggested_function_name": "deduplicate"
+  },
+  "source_code": "from typing import Any, Iterable, List\n\ndef deduplicate(items: Iterable[Any]) -> List[Any]:\n    \"\"\"\n    Remove duplicates from an iterable while preserving the order of first occurrence.\n\n    The function works with any objects that support equality comparison, including\n    unhashable types like lists and dictionaries.\n\n    Args:\n        items: An iterable of elements to deduplicate.\n\n    Returns:\n        A list of unique elements in the order they first appear.\n\n    Raises:\n        TypeError: If *items* is not iterable.\n    \"\"\"\n    # Validate that the input is iterable.\n    try:\n        iter(items)\n    except TypeError:\n        raise TypeError(\"items must be iterable\")\n\n    seen: list[Any] = []      # list to track elements we have already seen\n    result: list[Any] = []    # final list preserving original order\n\n    for item in items:\n        # Check whether the item is already in the seen list.\n        # Using `in` on a list performs equality checks, which works for\n        # both hashable and unhashable objects.\n        if item not in seen:\n            seen.append(item)\n            result.append(item)\n\n    return result",
+  "function_name": "deduplicate",
+  "verification": {
+    "success": true,
+    "stdout": "[]\n",
+    "stderr": "",
+    "execution_time_ms": 1886.3621999917086,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "deduplicate",
+          "items": [
+            {
+              "name": "Ada",
+              "score": 91,
+              "cat": "infra",
+              "amt": 18,
+              "category": "infra",
+              "amount": 18
+            },
+            {
+              "name": "Ben",
+              "score": 72,
+              "cat": "ml",
+              "amt": 32,
+              "category": "ml",
+              "amount": 32
+            },
+            {
+              "name": "Cy",
+              "score": 88,
+              "cat": "infra",
+              "amt": 22,
+              "category": "infra",
+              "amount": 22
+            }
+          ]
+        },
+        "success": true,
+        "stdout": "[{'name': 'Ada', 'score': 91, 'cat': 'infra', 'amt': 18, 'category': 'infra', 'amount': 18}, {'name': 'Ben', 'score': 72, 'cat': 'ml', 'amt': 32, 'category': 'ml', 'amount': 32}, {'name': 'Cy', 'score': 88, 'cat': 'infra', 'amt': 22, 'category': 'infra', 'amount': 22}]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "[{'name': 'Ada', 'score': 91, 'cat': 'infra', 'amt': 18, 'category': 'infra', 'amount': 18}, {'name': 'Ben', 'score': 72, 'cat': 'ml', 'amt': 32, 'category': 'ml', 'amount': 32}, {'name': 'Cy', 'score': 88, 'cat': 'infra', 'amt': 22, 'category': 'infra', 'amount': 22}]"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "deduplicate",
+          "items": [
+            {
+              "name": "A",
+              "score": 1,
+              "cat": "ops",
+              "amt": 1,
+              "category": "ops",
+              "amount": 1
+            },
+            {
+              "name": "B",
+              "score": 3,
+              "cat": "ops",
+              "amt": 2,
+              "category": "ops",
+              "amount": 2
+            }
+          ]
+        },
+        "success": true,
+        "stdout": "[{'name': 'A', 'score': 1, 'cat': 'ops', 'amt': 1, 'category': 'ops', 'amount': 1}, {'name': 'B', 'score': 3, 'cat': 'ops', 'amt': 2, 'category': 'ops', 'amount': 2}]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "[{'name': 'A', 'score': 1, 'cat': 'ops', 'amt': 1, 'category': 'ops', 'amount': 1}, {'name': 'B', 'score': 3, 'cat': 'ops', 'amt': 2, 'category': 'ops', 'amount': 2}]"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "deduplicate",
+          "items": []
+        },
+        "success": true,
+        "stdout": "[]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": []
+      }
+    ]
+  },
+  "error_type": "runtime",
+  "error": null,
+  "tool": {
+    "tool_id": "8220d474-cae9-4240-be9d-e835615e61eb",
+    "name": "deduplicate",
+    "description": "Remove duplicates from an iterable while preserving the order of first occurrence.",
+    "parameters": [
+      {
+        "name": "items",
+        "type": "string",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import Any, Iterable, List\n\ndef deduplicate(items: Iterable[Any]) -> List[Any]:\n    \"\"\"\n    Remove duplicates from an iterable while preserving the order of first occurrence.\n\n    The function works with any objects that support equality comparison, including\n    unhashable types like lists and dictionaries.\n\n    Args:\n        items: An iterable of elements to deduplicate.\n\n    Returns:\n        A list of unique elements in the order they first appear.\n\n    Raises:\n        TypeError: If *items* is not iterable.\n    \"\"\"\n    # Validate that the input is iterable.\n    try:\n        iter(items)\n    except TypeError:\n        raise TypeError(\"items must be iterable\")\n\n    seen: list[Any] = []      # list to track elements we have already seen\n    result: list[Any] = []    # final list preserving original order\n\n    for item in items:\n        # Check whether the item is already in the seen list.\n        # Using `in` on a list performs equality checks, which works for\n        # both hashable and unhashable objects.\n        if item not in seen:\n            seen.append(item)\n            result.append(item)\n\n    return result",
+    "json_schema": {
+      "name": "deduplicate",
+      "description": "Remove duplicates from an iterable while preserving the order of first occurrence.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "items"
+        ]
+      }
+    }
+  }
+}

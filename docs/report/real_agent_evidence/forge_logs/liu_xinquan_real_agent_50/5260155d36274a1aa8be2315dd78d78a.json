@@ -1,0 +1,147 @@
+{
+  "trace_id": "5260155d36274a1aa8be2315dd78d78a",
+  "timestamp": "2026-05-02T06:57:16.094537+00:00",
+  "status": "success",
+  "attempts": 2,
+  "summary": {
+    "headline": "Forge succeeded for deduplicate_ordered after 2 attempt(s).",
+    "function_name": "deduplicate_ordered",
+    "status": "success",
+    "attempts": 2,
+    "step_count": 4,
+    "plan_steps": [
+      "Validate that input is a dictionary containing the key 'values' and its value is a list",
+      "Initialize an empty set for seen elements and an empty list for the result",
+      "Iterate over each element in the input list; if element not in seen, add to seen and append to result",
+      "Return the result list, preserving the first occurrence order of values"
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": "runtime",
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "deduplicate_ordered: {\"values\":[1,2,2,3,1,4]}"
+  },
+  "plan": {
+    "steps": [
+      "Validate that input is a dictionary containing the key 'values' and its value is a list",
+      "Initialize an empty set for seen elements and an empty list for the result",
+      "Iterate over each element in the input list; if element not in seen, add to seen and append to result",
+      "Return the result list, preserving the first occurrence order of values"
+    ],
+    "suggested_function_name": "deduplicate_ordered"
+  },
+  "source_code": "from typing import Any, List\n\ndef deduplicate_ordered(values: List[Any]) -> List[Any]:\n    \"\"\"\n    Remove duplicate values from a list while preserving the original order\n    of first occurrences.\n\n    Args:\n        values: A list of hashable elements (strings, numbers, tuples, etc.).\n\n    Returns:\n        A new list containing only unique elements, in the order they first appeared.\n\n    Raises:\n        ValueError: If the input is not a list.\n    \"\"\"\n    if not isinstance(values, list):\n        raise ValueError(\"Input must be a list.\")\n\n    seen = set()\n    result = []\n    for item in values:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result",
+  "function_name": "deduplicate_ordered",
+  "verification": {
+    "success": true,
+    "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+    "stderr": "",
+    "execution_time_ms": 2254.7133000043686,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "deduplicate_ordered",
+          "values": [
+            5,
+            1,
+            9,
+            2
+          ]
+        },
+        "success": true,
+        "stdout": "[5, 1, 9, 2]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          5,
+          1,
+          9,
+          2
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "deduplicate_ordered",
+          "values": [
+            1,
+            2,
+            2,
+            3,
+            1,
+            4
+          ]
+        },
+        "success": true,
+        "stdout": "[1, 2, 3, 4]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "deduplicate_ordered",
+          "values": [
+            10.0,
+            11.0,
+            12.0,
+            13.0
+          ]
+        },
+        "success": true,
+        "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          10.0,
+          11.0,
+          12.0,
+          13.0
+        ]
+      }
+    ]
+  },
+  "error_type": "runtime",
+  "error": null,
+  "tool": {
+    "tool_id": "d2eab43c-ff90-4391-8dbe-a28e6ec33eda",
+    "name": "deduplicate_ordered",
+    "description": "Remove duplicate values from a list while preserving the original order",
+    "parameters": [
+      {
+        "name": "values",
+        "type": "array",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import Any, List\n\ndef deduplicate_ordered(values: List[Any]) -> List[Any]:\n    \"\"\"\n    Remove duplicate values from a list while preserving the original order\n    of first occurrences.\n\n    Args:\n        values: A list of hashable elements (strings, numbers, tuples, etc.).\n\n    Returns:\n        A new list containing only unique elements, in the order they first appeared.\n\n    Raises:\n        ValueError: If the input is not a list.\n    \"\"\"\n    if not isinstance(values, list):\n        raise ValueError(\"Input must be a list.\")\n\n    seen = set()\n    result = []\n    for item in values:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result",
+    "json_schema": {
+      "name": "deduplicate_ordered",
+      "description": "Remove duplicate values from a list while preserving the original order",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "description": ""
+          }
+        },
+        "required": [
+          "values"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "metadata_version": 1,
+  "tool_id": "ec5db69d-dc48-4880-8469-365b1061fb6a",
+  "name": "sum_by_group",
+  "description": "Sum numeric values grouped by a key from a list of dictionaries.",
+  "created_at": "2026-05-02T07:47:30.114372+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

@@ -1,0 +1,1242 @@
+[
+  {
+    "sample_id": "L1_001",
+    "difficulty": 1,
+    "query": "Count vowels in the string 'AutoForge'",
+    "paraphrases": [
+      "Return vowel count for 'AutoForge'",
+      "How many vowels are in 'AutoForge'?",
+      "Count vowels for 'AutoForge'"
+    ],
+    "expected_output": 5,
+    "expected_output_type": "numeric",
+    "tool_family": "string_ops"
+  },
+  {
+    "sample_id": "L1_002",
+    "difficulty": 1,
+    "query": "Count vowels in the string 'evaluation'",
+    "paraphrases": [
+      "Return vowel count for 'evaluation'",
+      "How many vowels are in 'evaluation'?",
+      "Count vowels for 'evaluation'"
+    ],
+    "expected_output": 6,
+    "expected_output_type": "numeric",
+    "tool_family": "string_ops"
+  },
+  {
+    "sample_id": "L1_003",
+    "difficulty": 1,
+    "query": "Reverse the text 'streamlit'",
+    "paraphrases": [
+      "Return the reverse of 'streamlit'",
+      "Write 'streamlit' backwards",
+      "Reverse 'streamlit'"
+    ],
+    "expected_output": "tilmaerts",
+    "expected_output_type": "exact",
+    "tool_family": "string_ops"
+  },
+  {
+    "sample_id": "L1_004",
+    "difficulty": 1,
+    "query": "Reverse the text 'benchmark'",
+    "paraphrases": [
+      "Return the reverse of 'benchmark'",
+      "Write 'benchmark' backwards",
+      "Reverse 'benchmark'"
+    ],
+    "expected_output": "kramhcneb",
+    "expected_output_type": "exact",
+    "tool_family": "string_ops"
+  },
+  {
+    "sample_id": "L1_005",
+    "difficulty": 1,
+    "query": "Sort numbers [5, 1, 9, 2] ascending",
+    "paraphrases": [
+      "Return ascending sort for [5, 1, 9, 2]",
+      "Sort [5, 1, 9, 2] from small to large",
+      "Order [5, 1, 9, 2] ascending"
+    ],
+    "expected_output": [
+      1,
+      2,
+      5,
+      9
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "list_ops"
+  },
+  {
+    "sample_id": "L1_006",
+    "difficulty": 1,
+    "query": "Sort numbers [8, 3, 8, 1] ascending",
+    "paraphrases": [
+      "Return ascending sort for [8, 3, 8, 1]",
+      "Sort [8, 3, 8, 1] from small to large",
+      "Order [8, 3, 8, 1] ascending"
+    ],
+    "expected_output": [
+      1,
+      3,
+      8,
+      8
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "list_ops"
+  },
+  {
+    "sample_id": "L1_007",
+    "difficulty": 1,
+    "query": "Compute average of [10, 20, 30, 40]",
+    "paraphrases": [
+      "Return the mean of [10, 20, 30, 40]",
+      "Average the numbers in [10, 20, 30, 40]",
+      "What is the average for [10, 20, 30, 40]?"
+    ],
+    "expected_output": 25.0,
+    "expected_output_type": "numeric",
+    "tool_family": "math_ops"
+  },
+  {
+    "sample_id": "L1_008",
+    "difficulty": 1,
+    "query": "Compute average of [4, 6, 8, 10]",
+    "paraphrases": [
+      "Return the mean of [4, 6, 8, 10]",
+      "Average the numbers in [4, 6, 8, 10]",
+      "What is the average for [4, 6, 8, 10]?"
+    ],
+    "expected_output": 7.0,
+    "expected_output_type": "numeric",
+    "tool_family": "math_ops"
+  },
+  {
+    "sample_id": "L1_009",
+    "difficulty": 1,
+    "query": "Convert 'hello world' to title case",
+    "paraphrases": [
+      "Return 'hello world' in title case",
+      "Title-case 'hello world'",
+      "Convert 'hello world' into title case"
+    ],
+    "expected_output": "Hello World",
+    "expected_output_type": "exact",
+    "tool_family": "string_ops"
+  },
+  {
+    "sample_id": "L1_010",
+    "difficulty": 1,
+    "query": "Convert 'auto forge dashboard' to title case",
+    "paraphrases": [
+      "Return 'auto forge dashboard' in title case",
+      "Title-case 'auto forge dashboard'",
+      "Convert 'auto forge dashboard' into title case"
+    ],
+    "expected_output": "Auto Forge Dashboard",
+    "expected_output_type": "exact",
+    "tool_family": "string_ops"
+  },
+  {
+    "sample_id": "L1_011",
+    "difficulty": 1,
+    "query": "Remove duplicates from [1, 2, 2, 3, 1, 4] preserving order",
+    "paraphrases": [
+      "Deduplicate [1, 2, 2, 3, 1, 4] while preserving order",
+      "Keep first occurrences only from [1, 2, 2, 3, 1, 4]",
+      "Remove duplicates but preserve order for [1, 2, 2, 3, 1, 4]"
+    ],
+    "expected_output": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "list_ops"
+  },
+  {
+    "sample_id": "L1_012",
+    "difficulty": 1,
+    "query": "Remove duplicates from [5, 5, 2, 5, 3, 2] preserving order",
+    "paraphrases": [
+      "Deduplicate [5, 5, 2, 5, 3, 2] while preserving order",
+      "Keep first occurrences only from [5, 5, 2, 5, 3, 2]",
+      "Remove duplicates but preserve order for [5, 5, 2, 5, 3, 2]"
+    ],
+    "expected_output": [
+      5,
+      2,
+      3
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "list_ops"
+  },
+  {
+    "sample_id": "L1_013",
+    "difficulty": 1,
+    "query": "For values [1.0, 2.5, 3.5], compute sum rounded to 1 decimal",
+    "paraphrases": [
+      "Return the sum of [1.0, 2.5, 3.5] rounded to 1 dp",
+      "Add [1.0, 2.5, 3.5] and keep 1 decimal",
+      "Compute rounded sum for [1.0, 2.5, 3.5] with 1 decimal"
+    ],
+    "expected_output": 7.0,
+    "expected_output_type": "numeric",
+    "tool_family": "math_ops"
+  },
+  {
+    "sample_id": "L1_014",
+    "difficulty": 1,
+    "query": "For values [2.25, 3.25, 4.25], compute sum rounded to 2 decimal",
+    "paraphrases": [
+      "Return the sum of [2.25, 3.25, 4.25] rounded to 2 dp",
+      "Add [2.25, 3.25, 4.25] and keep 2 decimal",
+      "Compute rounded sum for [2.25, 3.25, 4.25] with 2 decimal"
+    ],
+    "expected_output": 9.75,
+    "expected_output_type": "numeric",
+    "tool_family": "math_ops"
+  },
+  {
+    "sample_id": "L1_015",
+    "difficulty": 1,
+    "query": "Convert 1048576 bytes to megabytes with 2 decimals",
+    "paraphrases": [
+      "Return 1048576 bytes in megabytes with 2 dp",
+      "How many megabytes is 1048576 bytes with 2 decimals?",
+      "Convert 1048576 bytes into MB with 2 decimals"
+    ],
+    "expected_output": 1.0,
+    "expected_output_type": "numeric",
+    "tool_family": "unit_conversion"
+  },
+  {
+    "sample_id": "L1_016",
+    "difficulty": 1,
+    "query": "Convert 1572864 bytes to megabytes with 2 decimals",
+    "paraphrases": [
+      "Return 1572864 bytes in megabytes with 2 dp",
+      "How many megabytes is 1572864 bytes with 2 decimals?",
+      "Convert 1572864 bytes into MB with 2 decimals"
+    ],
+    "expected_output": 1.5,
+    "expected_output_type": "numeric",
+    "tool_family": "unit_conversion"
+  },
+  {
+    "sample_id": "L1_017",
+    "difficulty": 1,
+    "query": "Count vowels in the string 'retrieval'",
+    "paraphrases": [
+      "Return vowel count for 'retrieval'",
+      "How many vowels are in 'retrieval'?",
+      "Count vowels for 'retrieval'"
+    ],
+    "expected_output": 4,
+    "expected_output_type": "numeric",
+    "tool_family": "string_ops"
+  },
+  {
+    "sample_id": "L1_018",
+    "difficulty": 1,
+    "query": "Count vowels in the string 'automation'",
+    "paraphrases": [
+      "Return vowel count for 'automation'",
+      "How many vowels are in 'automation'?",
+      "Count vowels for 'automation'"
+    ],
+    "expected_output": 6,
+    "expected_output_type": "numeric",
+    "tool_family": "string_ops"
+  },
+  {
+    "sample_id": "L1_019",
+    "difficulty": 1,
+    "query": "Remove duplicates from [3, 1, 3, 2, 1] preserving order",
+    "paraphrases": [
+      "Deduplicate [3, 1, 3, 2, 1] while preserving order",
+      "Keep first occurrences only from [3, 1, 3, 2, 1]",
+      "Remove duplicates but preserve order for [3, 1, 3, 2, 1]"
+    ],
+    "expected_output": [
+      3,
+      1,
+      2
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "list_ops"
+  },
+  {
+    "sample_id": "L1_020",
+    "difficulty": 1,
+    "query": "Remove duplicates from [9, 7, 7, 5, 9, 3] preserving order",
+    "paraphrases": [
+      "Deduplicate [9, 7, 7, 5, 9, 3] while preserving order",
+      "Keep first occurrences only from [9, 7, 7, 5, 9, 3]",
+      "Remove duplicates but preserve order for [9, 7, 7, 5, 9, 3]"
+    ],
+    "expected_output": [
+      9,
+      7,
+      5,
+      3
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "list_ops"
+  },
+  {
+    "sample_id": "L2_001",
+    "difficulty": 2,
+    "query": "Normalize phone '+852 9123-4567' to digits only",
+    "paraphrases": [
+      "Keep digits only from phone '+852 9123-4567'",
+      "Return phone digits for '+852 9123-4567'",
+      "Convert phone '+852 9123-4567' to digits only"
+    ],
+    "expected_output": "85291234567",
+    "expected_output_type": "exact",
+    "tool_family": "phone_cleanup"
+  },
+  {
+    "sample_id": "L2_002",
+    "difficulty": 2,
+    "query": "Normalize phone '+1 (415) 555-0100' to digits only",
+    "paraphrases": [
+      "Keep digits only from phone '+1 (415) 555-0100'",
+      "Return phone digits for '+1 (415) 555-0100'",
+      "Convert phone '+1 (415) 555-0100' to digits only"
+    ],
+    "expected_output": "14155550100",
+    "expected_output_type": "exact",
+    "tool_family": "phone_cleanup"
+  },
+  {
+    "sample_id": "L2_003",
+    "difficulty": 2,
+    "query": "Extract keys from object {'name': 'Ada', 'age': 20, 'city': 'HK'} sorted alphabetically",
+    "paraphrases": [
+      "Return sorted keys for {'name': 'Ada', 'age': 20, 'city': 'HK'}",
+      "List the keys in {'name': 'Ada', 'age': 20, 'city': 'HK'} alphabetically",
+      "Sort the keys from {'name': 'Ada', 'age': 20, 'city': 'HK'}"
+    ],
+    "expected_output": [
+      "age",
+      "city",
+      "name"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "json_processing"
+  },
+  {
+    "sample_id": "L2_004",
+    "difficulty": 2,
+    "query": "Extract keys from object {'product': 'Book', 'price': 18, 'stock': 7} sorted alphabetically",
+    "paraphrases": [
+      "Return sorted keys for {'product': 'Book', 'price': 18, 'stock': 7}",
+      "List the keys in {'product': 'Book', 'price': 18, 'stock': 7} alphabetically",
+      "Sort the keys from {'product': 'Book', 'price': 18, 'stock': 7}"
+    ],
+    "expected_output": [
+      "price",
+      "product",
+      "stock"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "json_processing"
+  },
+  {
+    "sample_id": "L2_005",
+    "difficulty": 2,
+    "query": "Given list [{'x': 1}, {'x': 3}, {'x': 5}], sum field x",
+    "paraphrases": [
+      "Return the total for field x in [{'x': 1}, {'x': 3}, {'x': 5}]",
+      "Compute sum field x for [{'x': 1}, {'x': 3}, {'x': 5}]",
+      "Add up field x from [{'x': 1}, {'x': 3}, {'x': 5}]"
+    ],
+    "expected_output": 9,
+    "expected_output_type": "numeric",
+    "tool_family": "json_processing"
+  },
+  {
+    "sample_id": "L2_006",
+    "difficulty": 2,
+    "query": "Given list [{'score': 4}, {'score': 6}, {'score': 10}], sum field score",
+    "paraphrases": [
+      "Return the total for field score in [{'score': 4}, {'score': 6}, {'score': 10}]",
+      "Compute sum field score for [{'score': 4}, {'score': 6}, {'score': 10}]",
+      "Add up field score from [{'score': 4}, {'score': 6}, {'score': 10}]"
+    ],
+    "expected_output": 20,
+    "expected_output_type": "numeric",
+    "tool_family": "json_processing"
+  },
+  {
+    "sample_id": "L2_007",
+    "difficulty": 2,
+    "query": "Filter rows [{'name': 'A', 'score': 70}, {'name': 'B', 'score': 90}, {'name': 'C', 'score': 85}] where score >= 80 and return names",
+    "paraphrases": [
+      "Return names from [{'name': 'A', 'score': 70}, {'name': 'B', 'score': 90}, {'name': 'C', 'score': 85}] with score >= 80",
+      "Keep rows in [{'name': 'A', 'score': 70}, {'name': 'B', 'score': 90}, {'name': 'C', 'score': 85}] where score >= 80 and list names",
+      "Filter [{'name': 'A', 'score': 70}, {'name': 'B', 'score': 90}, {'name': 'C', 'score': 85}] by score >= 80 and output names"
+    ],
+    "expected_output": [
+      "B",
+      "C"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "table_filter"
+  },
+  {
+    "sample_id": "L2_008",
+    "difficulty": 2,
+    "query": "Filter rows [{'name': 'Tom', 'score': 75}, {'name': 'May', 'score': 88}, {'name': 'Eve', 'score': 60}] where score >= 75 and return names",
+    "paraphrases": [
+      "Return names from [{'name': 'Tom', 'score': 75}, {'name': 'May', 'score': 88}, {'name': 'Eve', 'score': 60}] with score >= 75",
+      "Keep rows in [{'name': 'Tom', 'score': 75}, {'name': 'May', 'score': 88}, {'name': 'Eve', 'score': 60}] where score >= 75 and list names",
+      "Filter [{'name': 'Tom', 'score': 75}, {'name': 'May', 'score': 88}, {'name': 'Eve', 'score': 60}] by score >= 75 and output names"
+    ],
+    "expected_output": [
+      "Tom",
+      "May"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "table_filter"
+  },
+  {
+    "sample_id": "L2_009",
+    "difficulty": 2,
+    "query": "Group words ['apple', 'ape', 'banana', 'boat'] by first letter",
+    "paraphrases": [
+      "Return first-letter groups for ['apple', 'ape', 'banana', 'boat']",
+      "Bucket words ['apple', 'ape', 'banana', 'boat'] by first letter",
+      "Group the words in ['apple', 'ape', 'banana', 'boat'] using their first letter"
+    ],
+    "expected_output": {
+      "a": [
+        "apple",
+        "ape"
+      ],
+      "b": [
+        "banana",
+        "boat"
+      ]
+    },
+    "expected_output_type": "exact",
+    "tool_family": "text_grouping"
+  },
+  {
+    "sample_id": "L2_010",
+    "difficulty": 2,
+    "query": "Group words ['cat', 'car', 'dog', 'dove'] by first letter",
+    "paraphrases": [
+      "Return first-letter groups for ['cat', 'car', 'dog', 'dove']",
+      "Bucket words ['cat', 'car', 'dog', 'dove'] by first letter",
+      "Group the words in ['cat', 'car', 'dog', 'dove'] using their first letter"
+    ],
+    "expected_output": {
+      "c": [
+        "cat",
+        "car"
+      ],
+      "d": [
+        "dog",
+        "dove"
+      ]
+    },
+    "expected_output_type": "exact",
+    "tool_family": "text_grouping"
+  },
+  {
+    "sample_id": "L2_011",
+    "difficulty": 2,
+    "query": "Check whether JSON text '{\"a\":1,\"b\":2}' contains key 'b'",
+    "paraphrases": [
+      "Return whether key 'b' exists in JSON text '{\"a\":1,\"b\":2}'",
+      "Does JSON text '{\"a\":1,\"b\":2}' contain key 'b'?",
+      "Check key 'b' inside '{\"a\":1,\"b\":2}'"
+    ],
+    "expected_output": true,
+    "expected_output_type": "exact",
+    "tool_family": "json_processing"
+  },
+  {
+    "sample_id": "L2_012",
+    "difficulty": 2,
+    "query": "Check whether JSON text '{\"name\":\"Ada\",\"region\":\"HK\"}' contains key 'region'",
+    "paraphrases": [
+      "Return whether key 'region' exists in JSON text '{\"name\":\"Ada\",\"region\":\"HK\"}'",
+      "Does JSON text '{\"name\":\"Ada\",\"region\":\"HK\"}' contain key 'region'?",
+      "Check key 'region' inside '{\"name\":\"Ada\",\"region\":\"HK\"}'"
+    ],
+    "expected_output": true,
+    "expected_output_type": "exact",
+    "tool_family": "json_processing"
+  },
+  {
+    "sample_id": "L2_013",
+    "difficulty": 2,
+    "query": "Parse URL 'https://example.com/path?a=1&b=2' and return query parameter names sorted",
+    "paraphrases": [
+      "Return sorted query parameter names for 'https://example.com/path?a=1&b=2'",
+      "List query parameter names in 'https://example.com/path?a=1&b=2' alphabetically",
+      "Extract sorted query keys from 'https://example.com/path?a=1&b=2'"
+    ],
+    "expected_output": [
+      "a",
+      "b"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "url_processing"
+  },
+  {
+    "sample_id": "L2_014",
+    "difficulty": 2,
+    "query": "Parse URL 'https://demo.org/search?page=2&sort=desc' and return query parameter names sorted",
+    "paraphrases": [
+      "Return sorted query parameter names for 'https://demo.org/search?page=2&sort=desc'",
+      "List query parameter names in 'https://demo.org/search?page=2&sort=desc' alphabetically",
+      "Extract sorted query keys from 'https://demo.org/search?page=2&sort=desc'"
+    ],
+    "expected_output": [
+      "page",
+      "sort"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "url_processing"
+  },
+  {
+    "sample_id": "L2_015",
+    "difficulty": 2,
+    "query": "Given ISO timestamps ['2025-01-01T00:00:00Z', '2025-01-01T01:30:00Z'], return interval in minutes",
+    "paraphrases": [
+      "Return the interval in minutes for ['2025-01-01T00:00:00Z', '2025-01-01T01:30:00Z']",
+      "Compute difference in minutes for ['2025-01-01T00:00:00Z', '2025-01-01T01:30:00Z']",
+      "Find the minute interval between ['2025-01-01T00:00:00Z', '2025-01-01T01:30:00Z']"
+    ],
+    "expected_output": 90,
+    "expected_output_type": "numeric",
+    "tool_family": "datetime_ops"
+  },
+  {
+    "sample_id": "L2_016",
+    "difficulty": 2,
+    "query": "Given ISO timestamps ['2025-03-10T10:15:00Z', '2025-03-10T11:30:00Z'], return interval in minutes",
+    "paraphrases": [
+      "Return the interval in minutes for ['2025-03-10T10:15:00Z', '2025-03-10T11:30:00Z']",
+      "Compute difference in minutes for ['2025-03-10T10:15:00Z', '2025-03-10T11:30:00Z']",
+      "Find the minute interval between ['2025-03-10T10:15:00Z', '2025-03-10T11:30:00Z']"
+    ],
+    "expected_output": 75,
+    "expected_output_type": "numeric",
+    "tool_family": "datetime_ops"
+  },
+  {
+    "sample_id": "L2_017",
+    "difficulty": 2,
+    "query": "Check whether JSON text '{\"team\":\"ml\",\"status\":\"ready\"}' contains key 'team'",
+    "paraphrases": [
+      "Return whether key 'team' exists in JSON text '{\"team\":\"ml\",\"status\":\"ready\"}'",
+      "Does JSON text '{\"team\":\"ml\",\"status\":\"ready\"}' contain key 'team'?",
+      "Check key 'team' inside '{\"team\":\"ml\",\"status\":\"ready\"}'"
+    ],
+    "expected_output": true,
+    "expected_output_type": "exact",
+    "tool_family": "json_processing"
+  },
+  {
+    "sample_id": "L2_018",
+    "difficulty": 2,
+    "query": "Check whether JSON text '{\"owner\":\"Lyu\",\"metric\":\"trr\",\"value\":0.7}' contains key 'metric'",
+    "paraphrases": [
+      "Return whether key 'metric' exists in JSON text '{\"owner\":\"Lyu\",\"metric\":\"trr\",\"value\":0.7}'",
+      "Does JSON text '{\"owner\":\"Lyu\",\"metric\":\"trr\",\"value\":0.7}' contain key 'metric'?",
+      "Check key 'metric' inside '{\"owner\":\"Lyu\",\"metric\":\"trr\",\"value\":0.7}'"
+    ],
+    "expected_output": true,
+    "expected_output_type": "exact",
+    "tool_family": "json_processing"
+  },
+  {
+    "sample_id": "L2_019",
+    "difficulty": 2,
+    "query": "Parse URL 'https://autoforge.local/tools?mode=fast&limit=5' and return query parameter names sorted",
+    "paraphrases": [
+      "Return sorted query parameter names for 'https://autoforge.local/tools?mode=fast&limit=5'",
+      "List query parameter names in 'https://autoforge.local/tools?mode=fast&limit=5' alphabetically",
+      "Extract sorted query keys from 'https://autoforge.local/tools?mode=fast&limit=5'"
+    ],
+    "expected_output": [
+      "limit",
+      "mode"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "url_processing"
+  },
+  {
+    "sample_id": "L2_020",
+    "difficulty": 2,
+    "query": "Parse URL 'https://example.net/data?format=json&retry=2' and return query parameter names sorted",
+    "paraphrases": [
+      "Return sorted query parameter names for 'https://example.net/data?format=json&retry=2'",
+      "List query parameter names in 'https://example.net/data?format=json&retry=2' alphabetically",
+      "Extract sorted query keys from 'https://example.net/data?format=json&retry=2'"
+    ],
+    "expected_output": [
+      "format",
+      "retry"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "url_processing"
+  },
+  {
+    "sample_id": "L3_001",
+    "difficulty": 3,
+    "query": "Find top 2 frequent tokens in 'a b c a b a'",
+    "paraphrases": [
+      "Return top 2 tokens for 'a b c a b a'",
+      "Compute top 2 frequent tokens in 'a b c a b a'",
+      "List the top 2 tokens from 'a b c a b a'"
+    ],
+    "expected_output": [
+      "a",
+      "b"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "text_stats"
+  },
+  {
+    "sample_id": "L3_002",
+    "difficulty": 3,
+    "query": "Find top 3 frequent tokens in 'red blue red green red blue yellow'",
+    "paraphrases": [
+      "Return top 3 tokens for 'red blue red green red blue yellow'",
+      "Compute top 3 frequent tokens in 'red blue red green red blue yellow'",
+      "List the top 3 tokens from 'red blue red green red blue yellow'"
+    ],
+    "expected_output": [
+      "red",
+      "blue",
+      "green"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "text_stats"
+  },
+  {
+    "sample_id": "L3_003",
+    "difficulty": 3,
+    "query": "From rows [{'item': 'A', 'price': 10}, {'item': 'B', 'price': 20}], increase price by 20%",
+    "paraphrases": [
+      "Increase price by 20% for rows [{'item': 'A', 'price': 10}, {'item': 'B', 'price': 20}]",
+      "Apply a 20% price increase to [{'item': 'A', 'price': 10}, {'item': 'B', 'price': 20}]",
+      "Raise the price field in [{'item': 'A', 'price': 10}, {'item': 'B', 'price': 20}] by 20%"
+    ],
+    "expected_output": [
+      12.0,
+      24.0
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "csv_pipeline"
+  },
+  {
+    "sample_id": "L3_004",
+    "difficulty": 3,
+    "query": "From rows [{'item': 'Pen', 'price': 5}, {'item': 'Book', 'price': 12}], increase price by 15%",
+    "paraphrases": [
+      "Increase price by 15% for rows [{'item': 'Pen', 'price': 5}, {'item': 'Book', 'price': 12}]",
+      "Apply a 15% price increase to [{'item': 'Pen', 'price': 5}, {'item': 'Book', 'price': 12}]",
+      "Raise the price field in [{'item': 'Pen', 'price': 5}, {'item': 'Book', 'price': 12}] by 15%"
+    ],
+    "expected_output": [
+      5.75,
+      13.8
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "csv_pipeline"
+  },
+  {
+    "sample_id": "L3_005",
+    "difficulty": 3,
+    "query": "Aggregate total by category for [{'cat': 'food', 'amt': 30}, {'cat': 'book', 'amt': 20}, {'cat': 'food', 'amt': 15}]",
+    "paraphrases": [
+      "Return category totals for [{'cat': 'food', 'amt': 30}, {'cat': 'book', 'amt': 20}, {'cat': 'food', 'amt': 15}]",
+      "Aggregate totals by category in [{'cat': 'food', 'amt': 30}, {'cat': 'book', 'amt': 20}, {'cat': 'food', 'amt': 15}]",
+      "Compute total amount by category for [{'cat': 'food', 'amt': 30}, {'cat': 'book', 'amt': 20}, {'cat': 'food', 'amt': 15}]"
+    ],
+    "expected_output": {
+      "food": 45,
+      "book": 20
+    },
+    "expected_output_type": "exact",
+    "tool_family": "aggregation_pipeline"
+  },
+  {
+    "sample_id": "L3_006",
+    "difficulty": 3,
+    "query": "Aggregate total by category for [{'cat': 'travel', 'amt': 100}, {'cat': 'food', 'amt': 25}, {'cat': 'travel', 'amt': 50}]",
+    "paraphrases": [
+      "Return category totals for [{'cat': 'travel', 'amt': 100}, {'cat': 'food', 'amt': 25}, {'cat': 'travel', 'amt': 50}]",
+      "Aggregate totals by category in [{'cat': 'travel', 'amt': 100}, {'cat': 'food', 'amt': 25}, {'cat': 'travel', 'amt': 50}]",
+      "Compute total amount by category for [{'cat': 'travel', 'amt': 100}, {'cat': 'food', 'amt': 25}, {'cat': 'travel', 'amt': 50}]"
+    ],
+    "expected_output": {
+      "travel": 150,
+      "food": 25
+    },
+    "expected_output_type": "exact",
+    "tool_family": "aggregation_pipeline"
+  },
+  {
+    "sample_id": "L3_007",
+    "difficulty": 3,
+    "query": "Given rows [{'v': 1}, {'v': None}, {'v': 3}], drop null v and return mean",
+    "paraphrases": [
+      "Drop null v from [{'v': 1}, {'v': None}, {'v': 3}] and return mean",
+      "Filter null v values in [{'v': 1}, {'v': None}, {'v': 3}] then compute mean",
+      "Return the mean after dropping null v in [{'v': 1}, {'v': None}, {'v': 3}]"
+    ],
+    "expected_output": 2.0,
+    "expected_output_type": "numeric",
+    "tool_family": "data_cleaning_pipeline"
+  },
+  {
+    "sample_id": "L3_008",
+    "difficulty": 3,
+    "query": "Given rows [{'v': 2}, {'v': None}, {'v': 4}, {'v': 6}], drop null v and return mean",
+    "paraphrases": [
+      "Drop null v from [{'v': 2}, {'v': None}, {'v': 4}, {'v': 6}] and return mean",
+      "Filter null v values in [{'v': 2}, {'v': None}, {'v': 4}, {'v': 6}] then compute mean",
+      "Return the mean after dropping null v in [{'v': 2}, {'v': None}, {'v': 4}, {'v': 6}]"
+    ],
+    "expected_output": 4.0,
+    "expected_output_type": "numeric",
+    "tool_family": "data_cleaning_pipeline"
+  },
+  {
+    "sample_id": "L3_009",
+    "difficulty": 3,
+    "query": "From CSV text 'name,score\nA,80\nB,90\nC,70', keep score>=80 and return names joined by comma",
+    "paraphrases": [
+      "Filter CSV text 'name,score\nA,80\nB,90\nC,70' with score>=80 and join names",
+      "Return comma-joined names from 'name,score\nA,80\nB,90\nC,70' where score>=80",
+      "Keep score>=80 in CSV text 'name,score\nA,80\nB,90\nC,70' and join matching names"
+    ],
+    "expected_output": "A,B",
+    "expected_output_type": "exact",
+    "tool_family": "csv_pipeline"
+  },
+  {
+    "sample_id": "L3_010",
+    "difficulty": 3,
+    "query": "From CSV text 'name,score\nAna,91\nBo,85\nCy,60', keep score>=90 and return names joined by comma",
+    "paraphrases": [
+      "Filter CSV text 'name,score\nAna,91\nBo,85\nCy,60' with score>=90 and join names",
+      "Return comma-joined names from 'name,score\nAna,91\nBo,85\nCy,60' where score>=90",
+      "Keep score>=90 in CSV text 'name,score\nAna,91\nBo,85\nCy,60' and join matching names"
+    ],
+    "expected_output": "Ana",
+    "expected_output_type": "exact",
+    "tool_family": "csv_pipeline"
+  },
+  {
+    "sample_id": "L3_011",
+    "difficulty": 3,
+    "query": "Read JSON lines ['{\"x\":1}', '{\"x\":2}', '{\"y\":3}'], keep x records and return sum x",
+    "paraphrases": [
+      "Return sum x from JSON lines ['{\"x\":1}', '{\"x\":2}', '{\"y\":3}']",
+      "Keep JSON lines with x and sum x for ['{\"x\":1}', '{\"x\":2}', '{\"y\":3}']",
+      "Read ['{\"x\":1}', '{\"x\":2}', '{\"y\":3}'] and total field x"
+    ],
+    "expected_output": 3,
+    "expected_output_type": "numeric",
+    "tool_family": "jsonl_pipeline"
+  },
+  {
+    "sample_id": "L3_012",
+    "difficulty": 3,
+    "query": "Read JSON lines ['{\"score\":4}', '{\"score\":6}', '{\"skip\":1}'], keep score records and return sum score",
+    "paraphrases": [
+      "Return sum score from JSON lines ['{\"score\":4}', '{\"score\":6}', '{\"skip\":1}']",
+      "Keep JSON lines with score and sum score for ['{\"score\":4}', '{\"score\":6}', '{\"skip\":1}']",
+      "Read ['{\"score\":4}', '{\"score\":6}', '{\"skip\":1}'] and total field score"
+    ],
+    "expected_output": 10,
+    "expected_output_type": "numeric",
+    "tool_family": "jsonl_pipeline"
+  },
+  {
+    "sample_id": "L3_013",
+    "difficulty": 3,
+    "query": "Given payload {'prices': [10.0, 11.0, 12.0, 13.0]}, compute 3-point moving average",
+    "paraphrases": [
+      "Return the 3-point moving average for {'prices': [10.0, 11.0, 12.0, 13.0]}",
+      "Compute 3-point moving average from {'prices': [10.0, 11.0, 12.0, 13.0]}",
+      "Calculate 3-point moving average using {'prices': [10.0, 11.0, 12.0, 13.0]}"
+    ],
+    "expected_output": [
+      11.0,
+      12.0
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "timeseries_pipeline"
+  },
+  {
+    "sample_id": "L3_014",
+    "difficulty": 3,
+    "query": "Given payload {'prices': [2.0, 4.0, 6.0, 8.0]}, compute 2-point moving average",
+    "paraphrases": [
+      "Return the 2-point moving average for {'prices': [2.0, 4.0, 6.0, 8.0]}",
+      "Compute 2-point moving average from {'prices': [2.0, 4.0, 6.0, 8.0]}",
+      "Calculate 2-point moving average using {'prices': [2.0, 4.0, 6.0, 8.0]}"
+    ],
+    "expected_output": [
+      3.0,
+      5.0,
+      7.0
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "timeseries_pipeline"
+  },
+  {
+    "sample_id": "L3_015",
+    "difficulty": 3,
+    "query": "Take text lines ['apple,3', 'banana,1', 'apple,2'], aggregate counts and return descending pairs",
+    "paraphrases": [
+      "Aggregate counts from text lines ['apple,3', 'banana,1', 'apple,2'] and return descending pairs",
+      "Return descending aggregated pairs for ['apple,3', 'banana,1', 'apple,2']",
+      "Group and sum the text lines ['apple,3', 'banana,1', 'apple,2'], then return descending pairs"
+    ],
+    "expected_output": [
+      [
+        "apple",
+        5
+      ],
+      [
+        "banana",
+        1
+      ]
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "text_etl_pipeline"
+  },
+  {
+    "sample_id": "L3_016",
+    "difficulty": 3,
+    "query": "Take text lines ['cat,2', 'dog,5', 'cat,1', 'dog,1'], aggregate counts and return descending pairs",
+    "paraphrases": [
+      "Aggregate counts from text lines ['cat,2', 'dog,5', 'cat,1', 'dog,1'] and return descending pairs",
+      "Return descending aggregated pairs for ['cat,2', 'dog,5', 'cat,1', 'dog,1']",
+      "Group and sum the text lines ['cat,2', 'dog,5', 'cat,1', 'dog,1'], then return descending pairs"
+    ],
+    "expected_output": [
+      [
+        "dog",
+        6
+      ],
+      [
+        "cat",
+        3
+      ]
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "text_etl_pipeline"
+  },
+  {
+    "sample_id": "L3_017",
+    "difficulty": 3,
+    "query": "Find top 2 frequent tokens in 'tool rag tool forge rag'",
+    "paraphrases": [
+      "Return top 2 tokens for 'tool rag tool forge rag'",
+      "Compute top 2 frequent tokens in 'tool rag tool forge rag'",
+      "List the top 2 tokens from 'tool rag tool forge rag'"
+    ],
+    "expected_output": [
+      "rag",
+      "tool"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "text_stats"
+  },
+  {
+    "sample_id": "L3_018",
+    "difficulty": 3,
+    "query": "Find top 3 frequent tokens in 'fast slow fast agent slow fast'",
+    "paraphrases": [
+      "Return top 3 tokens for 'fast slow fast agent slow fast'",
+      "Compute top 3 frequent tokens in 'fast slow fast agent slow fast'",
+      "List the top 3 tokens from 'fast slow fast agent slow fast'"
+    ],
+    "expected_output": [
+      "fast",
+      "slow",
+      "agent"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "text_stats"
+  },
+  {
+    "sample_id": "L3_019",
+    "difficulty": 3,
+    "query": "Given payload {'prices': [5.0, 7.0, 9.0, 11.0, 13.0]}, compute 4-point moving average",
+    "paraphrases": [
+      "Return the 4-point moving average for {'prices': [5.0, 7.0, 9.0, 11.0, 13.0]}",
+      "Compute 4-point moving average from {'prices': [5.0, 7.0, 9.0, 11.0, 13.0]}",
+      "Calculate 4-point moving average using {'prices': [5.0, 7.0, 9.0, 11.0, 13.0]}"
+    ],
+    "expected_output": [
+      8.0,
+      10.0
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "timeseries_pipeline"
+  },
+  {
+    "sample_id": "L3_020",
+    "difficulty": 3,
+    "query": "Given payload {'prices': [3.0, 6.0, 9.0, 12.0]}, compute 3-point moving average",
+    "paraphrases": [
+      "Return the 3-point moving average for {'prices': [3.0, 6.0, 9.0, 12.0]}",
+      "Compute 3-point moving average from {'prices': [3.0, 6.0, 9.0, 12.0]}",
+      "Calculate 3-point moving average using {'prices': [3.0, 6.0, 9.0, 12.0]}"
+    ],
+    "expected_output": [
+      6.0,
+      9.0
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "timeseries_pipeline"
+  },
+  {
+    "sample_id": "L4_001",
+    "difficulty": 4,
+    "query": "Filter rows [{'name': 'Kai', 'score': 88}, {'name': 'Li', 'score': 91}, {'name': 'Mo', 'score': 79}, {'name': 'Jo', 'score': 85}] where score >= 85 and return names",
+    "paraphrases": [
+      "Keep names from [{'name': 'Kai', 'score': 88}, {'name': 'Li', 'score': 91}, {'name': 'Mo', 'score': 79}, {'name': 'Jo', 'score': 85}] with score >= 85",
+      "Return rows in [{'name': 'Kai', 'score': 88}, {'name': 'Li', 'score': 91}, {'name': 'Mo', 'score': 79}, {'name': 'Jo', 'score': 85}] where score >= 85 as names only",
+      "Filter [{'name': 'Kai', 'score': 88}, {'name': 'Li', 'score': 91}, {'name': 'Mo', 'score': 79}, {'name': 'Jo', 'score': 85}] using score >= 85 and output names"
+    ],
+    "expected_output": [
+      "Kai",
+      "Li",
+      "Jo"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "table_filter"
+  },
+  {
+    "sample_id": "L4_002",
+    "difficulty": 4,
+    "query": "Filter rows [{'name': 'Nia', 'score': 92}, {'name': 'Oli', 'score': 68}, {'name': 'Pia', 'score': 95}, {'name': 'Qin', 'score': 89}] where score >= 90 and return names",
+    "paraphrases": [
+      "Keep names from [{'name': 'Nia', 'score': 92}, {'name': 'Oli', 'score': 68}, {'name': 'Pia', 'score': 95}, {'name': 'Qin', 'score': 89}] with score >= 90",
+      "Return rows in [{'name': 'Nia', 'score': 92}, {'name': 'Oli', 'score': 68}, {'name': 'Pia', 'score': 95}, {'name': 'Qin', 'score': 89}] where score >= 90 as names only",
+      "Filter [{'name': 'Nia', 'score': 92}, {'name': 'Oli', 'score': 68}, {'name': 'Pia', 'score': 95}, {'name': 'Qin', 'score': 89}] using score >= 90 and output names"
+    ],
+    "expected_output": [
+      "Nia",
+      "Pia"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "table_filter"
+  },
+  {
+    "sample_id": "L4_003",
+    "difficulty": 4,
+    "query": "Aggregate total by category for [{'cat': 'food', 'amt': 12}, {'cat': 'travel', 'amt': 40}, {'cat': 'food', 'amt': 18}, {'cat': 'books', 'amt': 25}]",
+    "paraphrases": [
+      "Compute category totals for [{'cat': 'food', 'amt': 12}, {'cat': 'travel', 'amt': 40}, {'cat': 'food', 'amt': 18}, {'cat': 'books', 'amt': 25}]",
+      "Return aggregated category totals for [{'cat': 'food', 'amt': 12}, {'cat': 'travel', 'amt': 40}, {'cat': 'food', 'amt': 18}, {'cat': 'books', 'amt': 25}]",
+      "Sum the amounts by category in [{'cat': 'food', 'amt': 12}, {'cat': 'travel', 'amt': 40}, {'cat': 'food', 'amt': 18}, {'cat': 'books', 'amt': 25}]"
+    ],
+    "expected_output": {
+      "food": 30,
+      "travel": 40,
+      "books": 25
+    },
+    "expected_output_type": "exact",
+    "tool_family": "aggregation_pipeline"
+  },
+  {
+    "sample_id": "L4_004",
+    "difficulty": 4,
+    "query": "Aggregate total by category for [{'cat': 'ops', 'amt': 30}, {'cat': 'ops', 'amt': 50}, {'cat': 'sales', 'amt': 45}, {'cat': 'sales', 'amt': 20}]",
+    "paraphrases": [
+      "Compute category totals for [{'cat': 'ops', 'amt': 30}, {'cat': 'ops', 'amt': 50}, {'cat': 'sales', 'amt': 45}, {'cat': 'sales', 'amt': 20}]",
+      "Return aggregated category totals for [{'cat': 'ops', 'amt': 30}, {'cat': 'ops', 'amt': 50}, {'cat': 'sales', 'amt': 45}, {'cat': 'sales', 'amt': 20}]",
+      "Sum the amounts by category in [{'cat': 'ops', 'amt': 30}, {'cat': 'ops', 'amt': 50}, {'cat': 'sales', 'amt': 45}, {'cat': 'sales', 'amt': 20}]"
+    ],
+    "expected_output": {
+      "ops": 80,
+      "sales": 65
+    },
+    "expected_output_type": "exact",
+    "tool_family": "aggregation_pipeline"
+  },
+  {
+    "sample_id": "L4_005",
+    "difficulty": 4,
+    "query": "Given rows [{'v': 2}, {'v': None}, {'v': 4}, {'v': 6}, {'v': None}, {'v': 8}], drop null v and return mean",
+    "paraphrases": [
+      "Drop null v values in [{'v': 2}, {'v': None}, {'v': 4}, {'v': 6}, {'v': None}, {'v': 8}] and return mean",
+      "Filter null v entries from [{'v': 2}, {'v': None}, {'v': 4}, {'v': 6}, {'v': None}, {'v': 8}], then compute mean",
+      "Return the mean after dropping null v from [{'v': 2}, {'v': None}, {'v': 4}, {'v': 6}, {'v': None}, {'v': 8}]"
+    ],
+    "expected_output": 5.0,
+    "expected_output_type": "numeric",
+    "tool_family": "data_cleaning_pipeline"
+  },
+  {
+    "sample_id": "L4_006",
+    "difficulty": 4,
+    "query": "Given rows [{'v': 10}, {'v': None}, {'v': 20}, {'v': 30}], drop null v and return mean",
+    "paraphrases": [
+      "Drop null v values in [{'v': 10}, {'v': None}, {'v': 20}, {'v': 30}] and return mean",
+      "Filter null v entries from [{'v': 10}, {'v': None}, {'v': 20}, {'v': 30}], then compute mean",
+      "Return the mean after dropping null v from [{'v': 10}, {'v': None}, {'v': 20}, {'v': 30}]"
+    ],
+    "expected_output": 20.0,
+    "expected_output_type": "numeric",
+    "tool_family": "data_cleaning_pipeline"
+  },
+  {
+    "sample_id": "L4_007",
+    "difficulty": 4,
+    "query": "From CSV text 'name,score\nAva,88\nBen,91\nCal,79\nDia,95', keep score>=90 and return names joined by comma",
+    "paraphrases": [
+      "Keep score>=90 from CSV text 'name,score\nAva,88\nBen,91\nCal,79\nDia,95' and join the names",
+      "Return comma-joined names from 'name,score\nAva,88\nBen,91\nCal,79\nDia,95' with score>=90",
+      "Filter 'name,score\nAva,88\nBen,91\nCal,79\nDia,95' on score>=90 and join matching names"
+    ],
+    "expected_output": "Ben,Dia",
+    "expected_output_type": "exact",
+    "tool_family": "csv_pipeline"
+  },
+  {
+    "sample_id": "L4_008",
+    "difficulty": 4,
+    "query": "From CSV text 'name,score\nIan,72\nJia,86\nKen,90\nLux,94', keep score>=86 and return names joined by comma",
+    "paraphrases": [
+      "Keep score>=86 from CSV text 'name,score\nIan,72\nJia,86\nKen,90\nLux,94' and join the names",
+      "Return comma-joined names from 'name,score\nIan,72\nJia,86\nKen,90\nLux,94' with score>=86",
+      "Filter 'name,score\nIan,72\nJia,86\nKen,90\nLux,94' on score>=86 and join matching names"
+    ],
+    "expected_output": "Jia,Ken,Lux",
+    "expected_output_type": "exact",
+    "tool_family": "csv_pipeline"
+  },
+  {
+    "sample_id": "L4_009",
+    "difficulty": 4,
+    "query": "Given payload {'prices': [1.0, 2.0, 3.0, 4.0, 5.0]}, compute 3-point moving average",
+    "paraphrases": [
+      "Compute 3-point moving average from payload {'prices': [1.0, 2.0, 3.0, 4.0, 5.0]}",
+      "Return 3-point moving average for payload {'prices': [1.0, 2.0, 3.0, 4.0, 5.0]}",
+      "Calculate a 3-point moving average using {'prices': [1.0, 2.0, 3.0, 4.0, 5.0]}"
+    ],
+    "expected_output": [
+      2.0,
+      3.0,
+      4.0
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "timeseries_pipeline"
+  },
+  {
+    "sample_id": "L4_010",
+    "difficulty": 4,
+    "query": "Given payload {'prices': [12.0, 14.0, 16.0, 18.0, 20.0]}, compute 2-point moving average",
+    "paraphrases": [
+      "Compute 2-point moving average from payload {'prices': [12.0, 14.0, 16.0, 18.0, 20.0]}",
+      "Return 2-point moving average for payload {'prices': [12.0, 14.0, 16.0, 18.0, 20.0]}",
+      "Calculate a 2-point moving average using {'prices': [12.0, 14.0, 16.0, 18.0, 20.0]}"
+    ],
+    "expected_output": [
+      13.0,
+      15.0,
+      17.0,
+      19.0
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "timeseries_pipeline"
+  },
+  {
+    "sample_id": "L4_011",
+    "difficulty": 4,
+    "query": "Read JSON lines ['{\"x\":1}', '{\"x\":2}', '{\"x\":4}', '{\"skip\":9}'], keep x records and return sum x",
+    "paraphrases": [
+      "Return total x from JSON lines ['{\"x\":1}', '{\"x\":2}', '{\"x\":4}', '{\"skip\":9}']",
+      "Sum x for JSON lines ['{\"x\":1}', '{\"x\":2}', '{\"x\":4}', '{\"skip\":9}']",
+      "Keep records with x in ['{\"x\":1}', '{\"x\":2}', '{\"x\":4}', '{\"skip\":9}'] and return sum x"
+    ],
+    "expected_output": 7,
+    "expected_output_type": "numeric",
+    "tool_family": "jsonl_pipeline"
+  },
+  {
+    "sample_id": "L4_012",
+    "difficulty": 4,
+    "query": "Read JSON lines ['{\"score\":5}', '{\"score\":7}', '{\"score\":8}', '{\"other\":1}'], keep score records and return sum score",
+    "paraphrases": [
+      "Return total score from JSON lines ['{\"score\":5}', '{\"score\":7}', '{\"score\":8}', '{\"other\":1}']",
+      "Sum score for JSON lines ['{\"score\":5}', '{\"score\":7}', '{\"score\":8}', '{\"other\":1}']",
+      "Keep records with score in ['{\"score\":5}', '{\"score\":7}', '{\"score\":8}', '{\"other\":1}'] and return sum score"
+    ],
+    "expected_output": 20,
+    "expected_output_type": "numeric",
+    "tool_family": "jsonl_pipeline"
+  },
+  {
+    "sample_id": "L4_013",
+    "difficulty": 4,
+    "query": "Take text lines ['alpha,4', 'beta,1', 'alpha,3', 'gamma,2'], aggregate counts and return descending pairs",
+    "paraphrases": [
+      "Aggregate counts for text lines ['alpha,4', 'beta,1', 'alpha,3', 'gamma,2'] and return descending pairs",
+      "Return descending aggregated pairs from ['alpha,4', 'beta,1', 'alpha,3', 'gamma,2']",
+      "Group and sum ['alpha,4', 'beta,1', 'alpha,3', 'gamma,2'], then output descending pairs"
+    ],
+    "expected_output": [
+      [
+        "alpha",
+        7
+      ],
+      [
+        "gamma",
+        2
+      ],
+      [
+        "beta",
+        1
+      ]
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "text_etl_pipeline"
+  },
+  {
+    "sample_id": "L4_014",
+    "difficulty": 4,
+    "query": "Take text lines ['red,5', 'blue,2', 'red,1', 'green,4', 'blue,1'], aggregate counts and return descending pairs",
+    "paraphrases": [
+      "Aggregate counts for text lines ['red,5', 'blue,2', 'red,1', 'green,4', 'blue,1'] and return descending pairs",
+      "Return descending aggregated pairs from ['red,5', 'blue,2', 'red,1', 'green,4', 'blue,1']",
+      "Group and sum ['red,5', 'blue,2', 'red,1', 'green,4', 'blue,1'], then output descending pairs"
+    ],
+    "expected_output": [
+      [
+        "red",
+        6
+      ],
+      [
+        "green",
+        4
+      ],
+      [
+        "blue",
+        3
+      ]
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "text_etl_pipeline"
+  },
+  {
+    "sample_id": "L4_015",
+    "difficulty": 4,
+    "query": "Parse URL 'https://svc.example.com/api?region=hk&team=ml&view=full' and return query parameter names sorted",
+    "paraphrases": [
+      "Return sorted query parameter names for URL 'https://svc.example.com/api?region=hk&team=ml&view=full'",
+      "Extract query keys from 'https://svc.example.com/api?region=hk&team=ml&view=full' and sort them",
+      "List sorted query parameter names in 'https://svc.example.com/api?region=hk&team=ml&view=full'"
+    ],
+    "expected_output": [
+      "region",
+      "team",
+      "view"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "url_processing"
+  },
+  {
+    "sample_id": "L4_016",
+    "difficulty": 4,
+    "query": "Parse URL 'https://demo.org/report?day=mon&owner=alex&status=open' and return query parameter names sorted",
+    "paraphrases": [
+      "Return sorted query parameter names for URL 'https://demo.org/report?day=mon&owner=alex&status=open'",
+      "Extract query keys from 'https://demo.org/report?day=mon&owner=alex&status=open' and sort them",
+      "List sorted query parameter names in 'https://demo.org/report?day=mon&owner=alex&status=open'"
+    ],
+    "expected_output": [
+      "day",
+      "owner",
+      "status"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "url_processing"
+  },
+  {
+    "sample_id": "L4_017",
+    "difficulty": 4,
+    "query": "Filter rows [{'name': 'Uma', 'score': 84}, {'name': 'Vic', 'score': 86}, {'name': 'Wen', 'score': 91}, {'name': 'Xiu', 'score': 73}] where score >= 86 and return names",
+    "paraphrases": [
+      "Keep names from [{'name': 'Uma', 'score': 84}, {'name': 'Vic', 'score': 86}, {'name': 'Wen', 'score': 91}, {'name': 'Xiu', 'score': 73}] with score >= 86",
+      "Return rows in [{'name': 'Uma', 'score': 84}, {'name': 'Vic', 'score': 86}, {'name': 'Wen', 'score': 91}, {'name': 'Xiu', 'score': 73}] where score >= 86 as names only",
+      "Filter [{'name': 'Uma', 'score': 84}, {'name': 'Vic', 'score': 86}, {'name': 'Wen', 'score': 91}, {'name': 'Xiu', 'score': 73}] using score >= 86 and output names"
+    ],
+    "expected_output": [
+      "Vic",
+      "Wen"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "table_filter"
+  },
+  {
+    "sample_id": "L4_018",
+    "difficulty": 4,
+    "query": "Filter rows [{'name': 'Ray', 'score': 78}, {'name': 'Sue', 'score': 82}, {'name': 'Tao', 'score': 82}, {'name': 'Uma', 'score': 99}] where score >= 82 and return names",
+    "paraphrases": [
+      "Keep names from [{'name': 'Ray', 'score': 78}, {'name': 'Sue', 'score': 82}, {'name': 'Tao', 'score': 82}, {'name': 'Uma', 'score': 99}] with score >= 82",
+      "Return rows in [{'name': 'Ray', 'score': 78}, {'name': 'Sue', 'score': 82}, {'name': 'Tao', 'score': 82}, {'name': 'Uma', 'score': 99}] where score >= 82 as names only",
+      "Filter [{'name': 'Ray', 'score': 78}, {'name': 'Sue', 'score': 82}, {'name': 'Tao', 'score': 82}, {'name': 'Uma', 'score': 99}] using score >= 82 and output names"
+    ],
+    "expected_output": [
+      "Sue",
+      "Tao",
+      "Uma"
+    ],
+    "expected_output_type": "exact",
+    "tool_family": "table_filter"
+  },
+  {
+    "sample_id": "L4_019",
+    "difficulty": 4,
+    "query": "Aggregate total by category for [{'cat': 'infra', 'amt': 18}, {'cat': 'ml', 'amt': 32}, {'cat': 'infra', 'amt': 22}, {'cat': 'ui', 'amt': 11}]",
+    "paraphrases": [
+      "Compute category totals for [{'cat': 'infra', 'amt': 18}, {'cat': 'ml', 'amt': 32}, {'cat': 'infra', 'amt': 22}, {'cat': 'ui', 'amt': 11}]",
+      "Return aggregated category totals for [{'cat': 'infra', 'amt': 18}, {'cat': 'ml', 'amt': 32}, {'cat': 'infra', 'amt': 22}, {'cat': 'ui', 'amt': 11}]",
+      "Sum the amounts by category in [{'cat': 'infra', 'amt': 18}, {'cat': 'ml', 'amt': 32}, {'cat': 'infra', 'amt': 22}, {'cat': 'ui', 'amt': 11}]"
+    ],
+    "expected_output": {
+      "infra": 40,
+      "ml": 32,
+      "ui": 11
+    },
+    "expected_output_type": "exact",
+    "tool_family": "aggregation_pipeline"
+  },
+  {
+    "sample_id": "L4_020",
+    "difficulty": 4,
+    "query": "Aggregate total by category for [{'cat': 'eval', 'amt': 14}, {'cat': 'rag', 'amt': 21}, {'cat': 'eval', 'amt': 16}, {'cat': 'rag', 'amt': 9}]",
+    "paraphrases": [
+      "Compute category totals for [{'cat': 'eval', 'amt': 14}, {'cat': 'rag', 'amt': 21}, {'cat': 'eval', 'amt': 16}, {'cat': 'rag', 'amt': 9}]",
+      "Return aggregated category totals for [{'cat': 'eval', 'amt': 14}, {'cat': 'rag', 'amt': 21}, {'cat': 'eval', 'amt': 16}, {'cat': 'rag', 'amt': 9}]",
+      "Sum the amounts by category in [{'cat': 'eval', 'amt': 14}, {'cat': 'rag', 'amt': 21}, {'cat': 'eval', 'amt': 16}, {'cat': 'rag', 'amt': 9}]"
+    ],
+    "expected_output": {
+      "eval": 30,
+      "rag": 30
+    },
+    "expected_output_type": "exact",
+    "tool_family": "aggregation_pipeline"
+  }
+]

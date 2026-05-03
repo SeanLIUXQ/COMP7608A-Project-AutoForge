@@ -1,0 +1,33 @@
+{
+  "name": "join_names_above_threshold",
+  "description": "Parse a CSV string and return a string containing the names (from `name_column`)",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "csv_text": {
+        "type": "string",
+        "description": ""
+      },
+      "threshold": {
+        "type": "integer",
+        "description": ""
+      },
+      "name_column": {
+        "type": "string",
+        "description": ""
+      },
+      "score_column": {
+        "type": "string",
+        "description": ""
+      },
+      "separator": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "csv_text",
+      "threshold"
+    ]
+  }
+}

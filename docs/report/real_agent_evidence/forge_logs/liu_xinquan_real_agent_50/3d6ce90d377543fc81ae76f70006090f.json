@@ -1,0 +1,143 @@
+{
+  "trace_id": "3d6ce90d377543fc81ae76f70006090f",
+  "timestamp": "2026-05-02T07:37:12.177165+00:00",
+  "status": "success",
+  "attempts": 3,
+  "summary": {
+    "headline": "Forge succeeded for sum_numeric_field_from_jsonl after 3 attempt(s).",
+    "function_name": "sum_numeric_field_from_jsonl",
+    "status": "success",
+    "attempts": 3,
+    "step_count": 6,
+    "plan_steps": [
+      "Validate that input is a non-empty string and field name is a non-empty string",
+      "Split the input string into individual lines and discard empty lines",
+      "Parse each line as JSON; skip or report malformed lines",
+      "Extract the specified field from each JSON object; verify it is a number (int/float) and not null",
+      "Accumulate the numeric values into a running total",
+      "Return the total sum (0 if no valid numeric values)"
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": "runtime",
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that parses JSON lines and sums a numeric field."
+  },
+  "plan": {
+    "steps": [
+      "Validate that input is a non-empty string and field name is a non-empty string",
+      "Split the input string into individual lines and discard empty lines",
+      "Parse each line as JSON; skip or report malformed lines",
+      "Extract the specified field from each JSON object; verify it is a number (int/float) and not null",
+      "Accumulate the numeric values into a running total",
+      "Return the total sum (0 if no valid numeric values)"
+    ],
+    "suggested_function_name": "sum_numeric_field_from_jsonl"
+  },
+  "source_code": "import json\nfrom typing import Union, List\n\ndef sum_numeric_field_from_jsonl(\n    jsonl_text: Union[str, List[str]], field_name: str\n) -> float:\n    \"\"\"\n    Parse JSONL input (a newline-separated string or a list of JSON strings),\n    extract the numeric value from ``field_name`` in each JSON object, and\n    return the total sum.  Returns 0 if no valid numeric values are found.\n\n    Args:\n        jsonl_text: Either a single string containing JSON lines separated by\n                    newlines, or a list where each element is a JSON string.\n        field_name: The key whose numeric value should be summed.\n\n    Returns:\n        The sum of all numeric values found under ``field_name``.\n\n    Raises:\n        ValueError: If either argument is empty.\n        TypeError: If ``jsonl_text`` is not a string or a list of strings.\n    \"\"\"\n    if not isinstance(field_name, str) or not field_name:\n        raise ValueError(\"field_name must be a non-empty string\")\n\n    if isinstance(jsonl_text, str):\n        if not jsonl_text:\n            raise ValueError(\"jsonl_text must be a non-empty string\")\n        lines = jsonl_text.splitlines()\n    elif isinstance(jsonl_text, list):\n        if not jsonl_text:\n            raise ValueError(\"jsonl_text must be a non-empty list\")\n        lines = jsonl_text\n    else:\n        raise TypeError(\"jsonl_text must be a string or a list of strings\")\n\n    total = 0.0\n\n    for line in lines:\n        if not isinstance(line, str):\n            continue\n        line = line.strip()\n        if not line:\n            continue\n\n        try:\n            obj = json.loads(line)\n        except (json.JSONDecodeError, ValueError):\n            continue\n\n        if not isinstance(obj, dict):\n            continue\n        if field_name not in obj:\n            continue\n\n        value = obj[field_name]\n        if value is None:\n            continue\n        if isinstance(value, bool):\n            continue  # exclude booleans (they are int subclasses)\n        if isinstance(value, (int, float)):\n            total += value\n\n    return total",
+  "function_name": "sum_numeric_field_from_jsonl",
+  "verification": {
+    "success": true,
+    "stdout": "10.0\n",
+    "stderr": "",
+    "execution_time_ms": 1621.3601999916136,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "sum_numeric_field_from_jsonl",
+          "jsonl_text": [
+            "{\"x\": 1}",
+            "{\"x\": 2}",
+            "{\"x\": 4}"
+          ],
+          "field_name": "x"
+        },
+        "success": true,
+        "stdout": "7.0\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 7.0
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "sum_numeric_field_from_jsonl",
+          "jsonl_text": [
+            "{\"score\": 2}",
+            "{\"score\": 5}"
+          ],
+          "field_name": "score"
+        },
+        "success": true,
+        "stdout": "7.0\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 7.0
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "sum_numeric_field_from_jsonl",
+          "jsonl_text": [
+            "{\"amt\": 3}",
+            "{\"amt\": 7}"
+          ],
+          "field_name": "amt"
+        },
+        "success": true,
+        "stdout": "10.0\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": 10.0
+      }
+    ]
+  },
+  "error_type": "runtime",
+  "error": null,
+  "tool": {
+    "tool_id": "0daaf230-52f0-4e0e-82ef-96953529fc1d",
+    "name": "sum_numeric_field_from_jsonl",
+    "description": "Parse JSONL input (a newline-separated string or a list of JSON strings),",
+    "parameters": [
+      {
+        "name": "jsonl_text",
+        "type": "string",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "field_name",
+        "type": "string",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "import json\nfrom typing import Union, List\n\ndef sum_numeric_field_from_jsonl(\n    jsonl_text: Union[str, List[str]], field_name: str\n) -> float:\n    \"\"\"\n    Parse JSONL input (a newline-separated string or a list of JSON strings),\n    extract the numeric value from ``field_name`` in each JSON object, and\n    return the total sum.  Returns 0 if no valid numeric values are found.\n\n    Args:\n        jsonl_text: Either a single string containing JSON lines separated by\n                    newlines, or a list where each element is a JSON string.\n        field_name: The key whose numeric value should be summed.\n\n    Returns:\n        The sum of all numeric values found under ``field_name``.\n\n    Raises:\n        ValueError: If either argument is empty.\n        TypeError: If ``jsonl_text`` is not a string or a list of strings.\n    \"\"\"\n    if not isinstance(field_name, str) or not field_name:\n        raise ValueError(\"field_name must be a non-empty string\")\n\n    if isinstance(jsonl_text, str):\n        if not jsonl_text:\n            raise ValueError(\"jsonl_text must be a non-empty string\")\n        lines = jsonl_text.splitlines()\n    elif isinstance(jsonl_text, list):\n        if not jsonl_text:\n            raise ValueError(\"jsonl_text must be a non-empty list\")\n        lines = jsonl_text\n    else:\n        raise TypeError(\"jsonl_text must be a string or a list of strings\")\n\n    total = 0.0\n\n    for line in lines:\n        if not isinstance(line, str):\n            continue\n        line = line.strip()\n        if not line:\n            continue\n\n        try:\n            obj = json.loads(line)\n        except (json.JSONDecodeError, ValueError):\n            continue\n\n        if not isinstance(obj, dict):\n            continue\n        if field_name not in obj:\n            continue\n\n        value = obj[field_name]\n        if value is None:\n            continue\n        if isinstance(value, bool):\n            continue  # exclude booleans (they are int subclasses)\n        if isinstance(value, (int, float)):\n            total += value\n\n    return total",
+    "json_schema": {
+      "name": "sum_numeric_field_from_jsonl",
+      "description": "Parse JSONL input (a newline-separated string or a list of JSON strings),",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "jsonl_text": {
+            "type": "string",
+            "description": ""
+          },
+          "field_name": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "jsonl_text",
+          "field_name"
+        ]
+      }
+    }
+  }
+}

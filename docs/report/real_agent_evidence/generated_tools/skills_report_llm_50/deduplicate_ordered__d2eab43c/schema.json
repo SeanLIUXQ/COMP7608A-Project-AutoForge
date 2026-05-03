@@ -1,0 +1,16 @@
+{
+  "name": "deduplicate_ordered",
+  "description": "Remove duplicate values from a list while preserving the original order",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "values": {
+        "type": "array",
+        "description": ""
+      }
+    },
+    "required": [
+      "values"
+    ]
+  }
+}

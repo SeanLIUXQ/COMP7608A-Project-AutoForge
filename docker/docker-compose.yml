@@ -1,0 +1,17 @@
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+      args:
+        PIP_INDEX_URL: ${PIP_INDEX_URL:-https://pypi.tuna.tsinghua.edu.cn/simple}
+    env_file:
+      - ../.env
+    environment:
+      SANDBOX_BACKEND: local
+      AUTOFORGE_ENABLE_VECTOR_STORE: "0"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../data:/app/data
+      - ../skills:/app/skills

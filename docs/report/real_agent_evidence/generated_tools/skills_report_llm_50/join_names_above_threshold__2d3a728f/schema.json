@@ -1,0 +1,35 @@
+{
+  "name": "join_names_above_threshold",
+  "description": "Filter CSV rows by a numeric score threshold and return the joined name values.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "csv_text": {
+        "type": "string",
+        "description": ""
+      },
+      "threshold": {
+        "type": "number",
+        "description": ""
+      },
+      "name_column": {
+        "type": "string",
+        "description": ""
+      },
+      "score_column": {
+        "type": "string",
+        "description": ""
+      },
+      "separator": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "csv_text",
+      "threshold",
+      "name_column",
+      "score_column"
+    ]
+  }
+}

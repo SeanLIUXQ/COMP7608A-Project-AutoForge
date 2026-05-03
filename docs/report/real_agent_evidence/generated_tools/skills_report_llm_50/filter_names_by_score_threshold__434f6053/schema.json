@@ -1,0 +1,21 @@
+{
+  "name": "filter_names_by_score_threshold",
+  "description": "Filter a list of records by a score threshold and return the list of names",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      },
+      "threshold": {
+        "type": "integer",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows",
+      "threshold"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "metadata_version": 1,
+  "tool_id": "14bc1bd0-5304-41cd-89cb-3b12889baf09",
+  "name": "compute_moving_average",
+  "description": "Compute the moving average of a list of numbers using a sliding window.",
+  "created_at": "2026-05-02T07:00:49.181617+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "statistics",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

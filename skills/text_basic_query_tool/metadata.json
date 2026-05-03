@@ -1,0 +1,39 @@
+{
+  "metadata_version": 1,
+  "tool_id": "autoforge-text-basic-v1",
+  "name": "text_basic_query_tool",
+  "description": "Solve string reversal, vowel counting, title case, phone cleanup, and token frequency tasks.",
+  "created_at": "seeded",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "ast",
+    "collections",
+    "csv",
+    "datetime",
+    "io",
+    "re",
+    "urllib"
+  ],
+  "language": "python",
+  "tool_origin": "seeded",
+  "tool_status": "active",
+  "keywords": [
+    "text",
+    "string",
+    "vowel",
+    "reverse",
+    "title case",
+    "phone",
+    "token frequency"
+  ],
+  "examples": [
+    "Count vowels in the string 'AutoForge'",
+    "Reverse the text 'streamlit'",
+    "Find top 2 frequent tokens in 'a b c a b a'"
+  ],
+  "seeded": true
+}

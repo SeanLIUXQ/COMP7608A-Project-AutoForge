@@ -1,0 +1,9 @@
+﻿FROM python:3.11-slim
+
+RUN pip install --no-cache-dir numpy pandas requests
+
+RUN pip uninstall pip -y || true
+
+RUN useradd -m -u 1000 sandbox
+USER sandbox
+WORKDIR /tmp

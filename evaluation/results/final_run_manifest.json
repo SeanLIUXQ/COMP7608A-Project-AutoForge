@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-04-30T17:36:24.643196+00:00",
+  "git_commit": "3ecfb6e3d2daf127187d5faa5583208542d485cc",
+  "python": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26220-SP0",
+  "results_dir": "evaluation\\results",
+  "mode_filter": "mock",
+  "strategy_filter": [
+    "full",
+    "no_retrieval",
+    "registry_only"
+  ],
+  "evaluation_reports": [
+    "evaluation\\results\\eval_report_mock_registry_only_20260430_172213.json",
+    "evaluation\\results\\eval_report_mock_no_retrieval_20260430_172213.json",
+    "evaluation\\results\\eval_report_mock_full_20260430_172213.json"
+  ],
+  "agent_demo_reports": [
+    "evaluation\\results\\agent_demo_report_mock_20260430_172143.json",
+    "evaluation\\results\\agent_demo_report_mock_20260430_163849.json"
+  ],
+  "threshold_reports": [
+    "evaluation\\results\\threshold_sweep_full_20260430_172632.json",
+    "evaluation\\results\\threshold_sweep_full_20260430_172253.json",
+    "evaluation\\results\\threshold_sweep_full_20260430_164222.json",
+    "evaluation\\results\\threshold_sweep_full_20260430_164148.json"
+  ],
+  "generated_assets": {
+    "metrics": "evaluation\\results\\final_metrics_table.md",
+    "failure_taxonomy": "evaluation\\results\\failure_taxonomy.md",
+    "representative_cases": "evaluation\\results\\representative_cases.md"
+  }
+}

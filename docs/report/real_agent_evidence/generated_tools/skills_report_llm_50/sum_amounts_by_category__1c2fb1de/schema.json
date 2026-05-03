@@ -1,0 +1,24 @@
+{
+  "name": "sum_amounts_by_category",
+  "description": "Sum numeric amounts grouped by a category field from a list of dictionaries.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      },
+      "category_field": {
+        "type": "string",
+        "description": ""
+      },
+      "amount_field": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows"
+    ]
+  }
+}

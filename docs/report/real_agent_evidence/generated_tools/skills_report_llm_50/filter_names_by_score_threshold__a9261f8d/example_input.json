@@ -1,0 +1,5 @@
+{
+  "__function_name": "filter_names_by_score_threshold",
+  "csv_text": "example",
+  "threshold": 1.0
+}

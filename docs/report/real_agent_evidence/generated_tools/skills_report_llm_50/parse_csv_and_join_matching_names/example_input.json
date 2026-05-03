@@ -1,0 +1,8 @@
+{
+  "__function_name": "parse_csv_and_join_matching_names",
+  "csv_text": "example",
+  "name_col": "example",
+  "score_col": "example",
+  "threshold": 1,
+  "separator": "example"
+}

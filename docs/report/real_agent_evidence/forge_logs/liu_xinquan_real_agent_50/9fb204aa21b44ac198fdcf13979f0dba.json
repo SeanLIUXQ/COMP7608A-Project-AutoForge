@@ -1,0 +1,139 @@
+{
+  "trace_id": "9fb204aa21b44ac198fdcf13979f0dba",
+  "timestamp": "2026-05-02T06:37:46.683601+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for deduplicate_preserve_order after 1 attempt(s).",
+    "function_name": "deduplicate_preserve_order",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 6,
+    "plan_steps": [
+      "Validate that the input is a list.",
+      "Create an empty set to track seen elements.",
+      "Create an empty list to store unique items in order.",
+      "Iterate over each element of the input list.",
+      "If the element is not in the seen set, add it to the seen set and append it to the output list.",
+      "Return the output list."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that removes duplicates while preserving first occurrence order."
+  },
+  "plan": {
+    "steps": [
+      "Validate that the input is a list.",
+      "Create an empty set to track seen elements.",
+      "Create an empty list to store unique items in order.",
+      "Iterate over each element of the input list.",
+      "If the element is not in the seen set, add it to the seen set and append it to the output list.",
+      "Return the output list."
+    ],
+    "suggested_function_name": "deduplicate_preserve_order"
+  },
+  "source_code": "from typing import Any, List\n\ndef deduplicate_preserve_order(lst: list) -> list:\n    \"\"\"\n    Return a new list containing the unique elements of `lst` in their first occurrence order.\n\n    The function preserves the original order and removes all but the first occurrence\n    of each element. Elements must be hashable; otherwise a TypeError will be raised\n    during membership testing.\n\n    Args:\n        lst: Input list of elements.\n\n    Returns:\n        A new list of unique elements in the order they first appear.\n\n    Raises:\n        TypeError: If `lst` is not a list.\n    \"\"\"\n    if not isinstance(lst, list):\n        raise TypeError(\"Input must be a list.\")\n    seen = set()\n    result: List[Any] = []\n    for item in lst:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result",
+  "function_name": "deduplicate_preserve_order",
+  "verification": {
+    "success": true,
+    "stdout": "[0]\n",
+    "stderr": "",
+    "execution_time_ms": 3489.8308999981964,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "deduplicate_preserve_order",
+          "lst": [
+            1,
+            2,
+            3
+          ]
+        },
+        "success": true,
+        "stdout": "[1, 2, 3]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "deduplicate_preserve_order",
+          "lst": [
+            3,
+            1,
+            2
+          ]
+        },
+        "success": true,
+        "stdout": "[3, 1, 2]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          3,
+          1,
+          2
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "deduplicate_preserve_order",
+          "lst": [
+            0
+          ]
+        },
+        "success": true,
+        "stdout": "[0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          0
+        ]
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "5fc52159-e956-4d00-b613-7fe5b34738f4",
+    "name": "deduplicate_preserve_order",
+    "description": "Return a new list containing the unique elements of `lst` in their first occurrence order.",
+    "parameters": [
+      {
+        "name": "lst",
+        "type": "array",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "from typing import Any, List\n\ndef deduplicate_preserve_order(lst: list) -> list:\n    \"\"\"\n    Return a new list containing the unique elements of `lst` in their first occurrence order.\n\n    The function preserves the original order and removes all but the first occurrence\n    of each element. Elements must be hashable; otherwise a TypeError will be raised\n    during membership testing.\n\n    Args:\n        lst: Input list of elements.\n\n    Returns:\n        A new list of unique elements in the order they first appear.\n\n    Raises:\n        TypeError: If `lst` is not a list.\n    \"\"\"\n    if not isinstance(lst, list):\n        raise TypeError(\"Input must be a list.\")\n    seen = set()\n    result: List[Any] = []\n    for item in lst:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result",
+    "json_schema": {
+      "name": "deduplicate_preserve_order",
+      "description": "Return a new list containing the unique elements of `lst` in their first occurrence order.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "lst": {
+            "type": "array",
+            "description": ""
+          }
+        },
+        "required": [
+          "lst"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "filter_and_extract_by_threshold",
+  "description": "Filter a list of dictionaries by a numeric score threshold and extract names.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "rows": {
+        "type": "array",
+        "description": ""
+      },
+      "threshold": {
+        "type": "number",
+        "description": ""
+      },
+      "score_key": {
+        "type": "string",
+        "description": ""
+      },
+      "name_key": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "rows",
+      "threshold"
+    ]
+  }
+}

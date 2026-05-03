@@ -1,0 +1,173 @@
+{
+  "trace_id": "f060ccd4f8af4125b469d5ca4634abd1",
+  "timestamp": "2026-05-02T05:37:42.672661+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for filter_names_by_score after 1 attempt(s).",
+    "function_name": "filter_names_by_score",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 5,
+    "plan_steps": [
+      "Validate that input is a list of dictionaries and threshold is a numeric value.",
+      "Check that every dictionary contains the required keys 'score' and 'name'.",
+      "Filter the list to retain only rows where row['score'] >= threshold.",
+      "Extract the 'name' value from each filtered row.",
+      "Return the resulting list of names."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that returns names for row dictionaries whose score is at least a threshold."
+  },
+  "plan": {
+    "steps": [
+      "Validate that input is a list of dictionaries and threshold is a numeric value.",
+      "Check that every dictionary contains the required keys 'score' and 'name'.",
+      "Filter the list to retain only rows where row['score'] >= threshold.",
+      "Extract the 'name' value from each filtered row.",
+      "Return the resulting list of names."
+    ],
+    "suggested_function_name": "filter_names_by_score"
+  },
+  "source_code": "def filter_names_by_score(rows: list[dict], threshold: float) -> list[str]:\n    \"\"\"\n    Return a list of 'name' values from rows whose 'score' is at least the threshold.\n\n    Args:\n        rows: A list of dictionaries, each containing the keys 'score' and 'name'.\n        threshold: The minimum score value (inclusive) for a row to be included.\n\n    Returns:\n        A list of the 'name' strings from the matching rows.\n\n    Raises:\n        TypeError: If rows is not a list of dicts or threshold is not numeric.\n        ValueError: If any row lacks the required keys 'score' or 'name'.\n    \"\"\"\n    # Validate rows is a list\n    if not isinstance(rows, list):\n        raise TypeError(\"rows must be a list of dictionaries\")\n    # Validate threshold is a real number (and not a boolean)\n    if not isinstance(threshold, (int, float)) or isinstance(threshold, bool):\n        raise TypeError(\"threshold must be a numeric value (int or float)\")\n\n    names = []\n    for i, row in enumerate(rows):\n        if not isinstance(row, dict):\n            raise TypeError(f\"rows[{i}] must be a dictionary\")\n        missing = [key for key in ('score', 'name') if key not in row]\n        if missing:\n            raise ValueError(f\"rows[{i}] is missing required key(s): {missing}\")\n        if row['score'] >= threshold:\n            names.append(row['name'])\n    return names",
+  "function_name": "filter_names_by_score",
+  "verification": {
+    "success": true,
+    "stdout": "[]\n",
+    "stderr": "",
+    "execution_time_ms": 1595.7419000187656,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "filter_names_by_score",
+          "rows": [
+            {
+              "name": "Ada",
+              "score": 91,
+              "cat": "infra",
+              "amt": 18,
+              "category": "infra",
+              "amount": 18
+            },
+            {
+              "name": "Ben",
+              "score": 72,
+              "cat": "ml",
+              "amt": 32,
+              "category": "ml",
+              "amount": 32
+            },
+            {
+              "name": "Cy",
+              "score": 88,
+              "cat": "infra",
+              "amt": 22,
+              "category": "infra",
+              "amount": 22
+            }
+          ],
+          "threshold": 80
+        },
+        "success": true,
+        "stdout": "['Ada', 'Cy']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['Ada', 'Cy']"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "filter_names_by_score",
+          "rows": [
+            {
+              "name": "A",
+              "score": 1,
+              "cat": "ops",
+              "amt": 1,
+              "category": "ops",
+              "amount": 1
+            },
+            {
+              "name": "B",
+              "score": 3,
+              "cat": "ops",
+              "amt": 2,
+              "category": "ops",
+              "amount": 2
+            }
+          ],
+          "threshold": 1
+        },
+        "success": true,
+        "stdout": "['A', 'B']\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "['A', 'B']"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "filter_names_by_score",
+          "rows": [],
+          "threshold": 0
+        },
+        "success": true,
+        "stdout": "[]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": []
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "a8baae27-4454-4de9-9dc1-aea68bdb4934",
+    "name": "filter_names_by_score",
+    "description": "Return a list of 'name' values from rows whose 'score' is at least the threshold.",
+    "parameters": [
+      {
+        "name": "rows",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "threshold",
+        "type": "number",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "def filter_names_by_score(rows: list[dict], threshold: float) -> list[str]:\n    \"\"\"\n    Return a list of 'name' values from rows whose 'score' is at least the threshold.\n\n    Args:\n        rows: A list of dictionaries, each containing the keys 'score' and 'name'.\n        threshold: The minimum score value (inclusive) for a row to be included.\n\n    Returns:\n        A list of the 'name' strings from the matching rows.\n\n    Raises:\n        TypeError: If rows is not a list of dicts or threshold is not numeric.\n        ValueError: If any row lacks the required keys 'score' or 'name'.\n    \"\"\"\n    # Validate rows is a list\n    if not isinstance(rows, list):\n        raise TypeError(\"rows must be a list of dictionaries\")\n    # Validate threshold is a real number (and not a boolean)\n    if not isinstance(threshold, (int, float)) or isinstance(threshold, bool):\n        raise TypeError(\"threshold must be a numeric value (int or float)\")\n\n    names = []\n    for i, row in enumerate(rows):\n        if not isinstance(row, dict):\n            raise TypeError(f\"rows[{i}] must be a dictionary\")\n        missing = [key for key in ('score', 'name') if key not in row]\n        if missing:\n            raise ValueError(f\"rows[{i}] is missing required key(s): {missing}\")\n        if row['score'] >= threshold:\n            names.append(row['name'])\n    return names",
+    "json_schema": {
+      "name": "filter_names_by_score",
+      "description": "Return a list of 'name' values from rows whose 'score' is at least the threshold.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "description": ""
+          },
+          "threshold": {
+            "type": "number",
+            "description": ""
+          }
+        },
+        "required": [
+          "rows",
+          "threshold"
+        ]
+      }
+    }
+  }
+}

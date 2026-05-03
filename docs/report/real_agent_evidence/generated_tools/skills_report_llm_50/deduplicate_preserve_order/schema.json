@@ -1,0 +1,16 @@
+{
+  "name": "deduplicate_preserve_order",
+  "description": "Return a new list containing the unique elements of `lst` in their first occurrence order.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "lst": {
+        "type": "array",
+        "description": ""
+      }
+    },
+    "required": [
+      "lst"
+    ]
+  }
+}

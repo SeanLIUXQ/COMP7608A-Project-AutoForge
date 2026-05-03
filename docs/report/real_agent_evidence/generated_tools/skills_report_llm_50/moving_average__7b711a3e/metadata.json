@@ -1,0 +1,19 @@
+{
+  "metadata_version": 1,
+  "tool_id": "7b711a3e-ee38-41df-87f5-9ee10b66db65",
+  "name": "moving_average",
+  "description": "Compute the simple moving average (SMA) of a numerical series.",
+  "created_at": "2026-05-02T07:12:19.596983+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

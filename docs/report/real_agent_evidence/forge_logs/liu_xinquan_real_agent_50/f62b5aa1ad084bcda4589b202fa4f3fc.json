@@ -1,0 +1,159 @@
+{
+  "trace_id": "f62b5aa1ad084bcda4589b202fa4f3fc",
+  "timestamp": "2026-05-02T07:31:56.369130+00:00",
+  "status": "success",
+  "attempts": 2,
+  "summary": {
+    "headline": "Forge succeeded for remove_duplicates_preserve_order after 2 attempt(s).",
+    "function_name": "remove_duplicates_preserve_order",
+    "status": "success",
+    "attempts": 2,
+    "step_count": 5,
+    "plan_steps": [
+      "Validate that the input is a list; raise ValueError if not.",
+      "Initialize an empty set to track seen elements.",
+      "Initialize an empty list to hold the deduplicated result.",
+      "Iterate over the input list; for each item, if it is not in the seen set, add it to the set and append to the result list.",
+      "Return the result list preserving first-occurrence order."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": "runtime",
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that removes duplicates while preserving first occurrence order."
+  },
+  "plan": {
+    "steps": [
+      "Validate that the input is a list; raise ValueError if not.",
+      "Initialize an empty set to track seen elements.",
+      "Initialize an empty list to hold the deduplicated result.",
+      "Iterate over the input list; for each item, if it is not in the seen set, add it to the set and append to the result list.",
+      "Return the result list preserving first-occurrence order."
+    ],
+    "suggested_function_name": "remove_duplicates_preserve_order"
+  },
+  "source_code": "def remove_duplicates_preserve_order(items: list) -> list:\n    \"\"\"\n    Remove duplicates from a list while preserving the order of first occurrence.\n\n    Supports any element type, including unhashable types like dicts and lists.\n\n    Args:\n        items: A list of elements. Must be a list.\n\n    Returns:\n        A new list with duplicates removed, maintaining the original order of\n        first occurrence.\n\n    Raises:\n        ValueError: If `items` is not a list.\n    \"\"\"\n    if not isinstance(items, list):\n        raise ValueError(\"Input must be a list.\")\n\n    seen = []  # use a list to handle unhashable types via equality\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.append(item)\n            result.append(item)\n    return result",
+  "function_name": "remove_duplicates_preserve_order",
+  "verification": {
+    "success": true,
+    "stdout": "[]\n",
+    "stderr": "",
+    "execution_time_ms": 1879.0755000227364,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "remove_duplicates_preserve_order",
+          "items": [
+            {
+              "name": "Ada",
+              "score": 91,
+              "cat": "infra",
+              "amt": 18,
+              "category": "infra",
+              "amount": 18
+            },
+            {
+              "name": "Ben",
+              "score": 72,
+              "cat": "ml",
+              "amt": 32,
+              "category": "ml",
+              "amount": 32
+            },
+            {
+              "name": "Cy",
+              "score": 88,
+              "cat": "infra",
+              "amt": 22,
+              "category": "infra",
+              "amount": 22
+            }
+          ]
+        },
+        "success": true,
+        "stdout": "[{'name': 'Ada', 'score': 91, 'cat': 'infra', 'amt': 18, 'category': 'infra', 'amount': 18}, {'name': 'Ben', 'score': 72, 'cat': 'ml', 'amt': 32, 'category': 'ml', 'amount': 32}, {'name': 'Cy', 'score': 88, 'cat': 'infra', 'amt': 22, 'category': 'infra', 'amount': 22}]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "[{'name': 'Ada', 'score': 91, 'cat': 'infra', 'amt': 18, 'category': 'infra', 'amount': 18}, {'name': 'Ben', 'score': 72, 'cat': 'ml', 'amt': 32, 'category': 'ml', 'amount': 32}, {'name': 'Cy', 'score': 88, 'cat': 'infra', 'amt': 22, 'category': 'infra', 'amount': 22}]"
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "remove_duplicates_preserve_order",
+          "items": [
+            {
+              "name": "A",
+              "score": 1,
+              "cat": "ops",
+              "amt": 1,
+              "category": "ops",
+              "amount": 1
+            },
+            {
+              "name": "B",
+              "score": 3,
+              "cat": "ops",
+              "amt": 2,
+              "category": "ops",
+              "amount": 2
+            }
+          ]
+        },
+        "success": true,
+        "stdout": "[{'name': 'A', 'score': 1, 'cat': 'ops', 'amt': 1, 'category': 'ops', 'amount': 1}, {'name': 'B', 'score': 3, 'cat': 'ops', 'amt': 2, 'category': 'ops', 'amount': 2}]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": "[{'name': 'A', 'score': 1, 'cat': 'ops', 'amt': 1, 'category': 'ops', 'amount': 1}, {'name': 'B', 'score': 3, 'cat': 'ops', 'amt': 2, 'category': 'ops', 'amount': 2}]"
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "remove_duplicates_preserve_order",
+          "items": []
+        },
+        "success": true,
+        "stdout": "[]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": []
+      }
+    ]
+  },
+  "error_type": "runtime",
+  "error": null,
+  "tool": {
+    "tool_id": "152c39ad-d248-41a4-9750-fa643e655aa7",
+    "name": "remove_duplicates_preserve_order",
+    "description": "Remove duplicates from a list while preserving the order of first occurrence.",
+    "parameters": [
+      {
+        "name": "items",
+        "type": "array",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "def remove_duplicates_preserve_order(items: list) -> list:\n    \"\"\"\n    Remove duplicates from a list while preserving the order of first occurrence.\n\n    Supports any element type, including unhashable types like dicts and lists.\n\n    Args:\n        items: A list of elements. Must be a list.\n\n    Returns:\n        A new list with duplicates removed, maintaining the original order of\n        first occurrence.\n\n    Raises:\n        ValueError: If `items` is not a list.\n    \"\"\"\n    if not isinstance(items, list):\n        raise ValueError(\"Input must be a list.\")\n\n    seen = []  # use a list to handle unhashable types via equality\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.append(item)\n            result.append(item)\n    return result",
+    "json_schema": {
+      "name": "remove_duplicates_preserve_order",
+      "description": "Remove duplicates from a list while preserving the order of first occurrence.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "description": ""
+          }
+        },
+        "required": [
+          "items"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "count_vowels",
+  "description": "Count the number of English vowel characters in a string.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "s": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "s"
+    ]
+  }
+}

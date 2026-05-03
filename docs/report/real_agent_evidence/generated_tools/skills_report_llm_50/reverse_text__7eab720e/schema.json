@@ -1,0 +1,16 @@
+{
+  "name": "reverse_text",
+  "description": "Reverse the given string and return the result.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "text"
+    ]
+  }
+}

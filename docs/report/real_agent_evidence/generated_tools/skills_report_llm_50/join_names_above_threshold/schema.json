@@ -1,0 +1,37 @@
+{
+  "name": "join_names_above_threshold",
+  "description": "Parse CSV and return a comma-separated string of names where score > threshold.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "csv_text": {
+        "type": "string",
+        "description": ""
+      },
+      "threshold": {
+        "type": "integer",
+        "description": ""
+      },
+      "name_field": {
+        "type": "string",
+        "description": ""
+      },
+      "score_field": {
+        "type": "string",
+        "description": ""
+      },
+      "delimiter": {
+        "type": "string",
+        "description": ""
+      },
+      "quotechar": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "csv_text",
+      "threshold"
+    ]
+  }
+}

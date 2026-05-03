@@ -1,0 +1,16 @@
+{
+  "name": "remove_duplicates_preserve_order",
+  "description": "Return a list of unique elements from the input sequence, preserving the",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "sequence": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "sequence"
+    ]
+  }
+}

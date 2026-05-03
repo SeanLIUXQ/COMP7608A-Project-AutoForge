@@ -1,0 +1,20 @@
+{
+  "metadata_version": 1,
+  "tool_id": "56c63ee2-19e9-4bd9-b638-25f6da4a410e",
+  "name": "sum_jsonl_field",
+  "description": "Sum all numeric values found under a given field across JSONL data.",
+  "created_at": "2026-05-02T07:37:03.411128+00:00",
+  "schema_file": "schema.json",
+  "source_file": "tool.py",
+  "readme_file": "README.md",
+  "requirements_file": "requirements.txt",
+  "example_input_file": "example_input.json",
+  "imports": [
+    "json",
+    "typing"
+  ],
+  "language": "python",
+  "tool_origin": "forged",
+  "tool_status": "active",
+  "forged": true
+}

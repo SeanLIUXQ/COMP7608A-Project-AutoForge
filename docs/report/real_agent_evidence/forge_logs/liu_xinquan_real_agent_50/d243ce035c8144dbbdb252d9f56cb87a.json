@@ -1,0 +1,164 @@
+{
+  "trace_id": "d243ce035c8144dbbdb252d9f56cb87a",
+  "timestamp": "2026-05-02T07:06:48.569883+00:00",
+  "status": "success",
+  "attempts": 1,
+  "summary": {
+    "headline": "Forge succeeded for compute_moving_average after 1 attempt(s).",
+    "function_name": "compute_moving_average",
+    "status": "success",
+    "attempts": 1,
+    "step_count": 6,
+    "plan_steps": [
+      "Check inputs: 'data' must be a list of numbers and 'window_size' a positive int not exceeding len(data); raise ValueError otherwise.",
+      "Initialize an empty list for the moving averages.",
+      "Loop index i from 0 to len(data) - window_size.",
+      "Slice data[i:i + window_size], compute the mean as sum(slice)/window_size.",
+      "Append the mean to the results list.",
+      "Return the results list."
+    ],
+    "verification_case_count": 3,
+    "verification_passed": true,
+    "failure_type": null,
+    "failure_message": null,
+    "failed_case": null
+  },
+  "request": {
+    "query": "Create a reusable function that computes a moving average over a numeric series."
+  },
+  "plan": {
+    "steps": [
+      "Check inputs: 'data' must be a list of numbers and 'window_size' a positive int not exceeding len(data); raise ValueError otherwise.",
+      "Initialize an empty list for the moving averages.",
+      "Loop index i from 0 to len(data) - window_size.",
+      "Slice data[i:i + window_size], compute the mean as sum(slice)/window_size.",
+      "Append the mean to the results list.",
+      "Return the results list."
+    ],
+    "suggested_function_name": "compute_moving_average"
+  },
+  "source_code": "def compute_moving_average(data: list[float | int], window_size: int) -> list[float]:\n    \"\"\"\n    Compute the moving average of a numerical sequence.\n\n    For each contiguous window of length `window_size`, the arithmetic mean\n    of the values is calculated. The result contains one average for every\n    valid window position, preserving the order of the original data.\n\n    Args:\n        data: A non-empty list of numeric values (int or float).\n        window_size: A positive integer not exceeding the length of `data`.\n\n    Returns:\n        A list of float values representing the moving averages.\n\n    Raises:\n        TypeError: If `data` is not a list or contains non-numeric values,\n                   or if `window_size` is not an integer.\n        ValueError: If `data` is empty, `window_size` is non-positive, or\n                    `window_size` exceeds the length of `data`.\n    \"\"\"\n    # --- input validation ---\n    if not isinstance(data, list):\n        raise TypeError(\"data must be a list\")\n    if not all(isinstance(x, (int, float)) for x in data):\n        raise TypeError(\"all elements in data must be int or float\")\n    if not isinstance(window_size, int):\n        raise TypeError(\"window_size must be an integer\")\n    if window_size <= 0:\n        raise ValueError(\"window_size must be a positive integer\")\n    if window_size > len(data):\n        raise ValueError(\"window_size cannot exceed the length of data\")\n\n    # --- compute moving averages ---\n    averages: list[float] = []\n    # Loop from i = 0 to len(data) - window_size (inclusive)\n    for i in range(len(data) - window_size + 1):\n        window = data[i : i + window_size]\n        avg = sum(window) / window_size\n        averages.append(avg)\n\n    return averages",
+  "function_name": "compute_moving_average",
+  "verification": {
+    "success": true,
+    "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+    "stderr": "",
+    "execution_time_ms": 1971.3487000117311,
+    "failure_type": null,
+    "cases": [
+      {
+        "case": 1,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "data": [
+            5,
+            1,
+            9,
+            2
+          ],
+          "window_size": 3
+        },
+        "success": true,
+        "stdout": "[5.0, 4.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          5.0,
+          4.0
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "data": [
+            1,
+            2,
+            2,
+            3,
+            1,
+            4
+          ],
+          "window_size": 2
+        },
+        "success": true,
+        "stdout": "[1.5, 2.0, 2.5, 2.0, 2.5]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          1.5,
+          2.0,
+          2.5,
+          2.0,
+          2.5
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "__function_name": "compute_moving_average",
+          "data": [
+            10.0,
+            11.0,
+            12.0,
+            13.0
+          ],
+          "window_size": 1
+        },
+        "success": true,
+        "stdout": "[10.0, 11.0, 12.0, 13.0]\n",
+        "stderr": "",
+        "failure_type": null,
+        "result": [
+          10.0,
+          11.0,
+          12.0,
+          13.0
+        ]
+      }
+    ]
+  },
+  "error_type": null,
+  "error": null,
+  "tool": {
+    "tool_id": "af464273-7047-498f-aebf-34ca0d3a745d",
+    "name": "compute_moving_average",
+    "description": "Compute the moving average of a numerical sequence.",
+    "parameters": [
+      {
+        "name": "data",
+        "type": "array",
+        "description": null,
+        "required": true
+      },
+      {
+        "name": "window_size",
+        "type": "integer",
+        "description": null,
+        "required": true
+      }
+    ],
+    "source_code": "def compute_moving_average(data: list[float | int], window_size: int) -> list[float]:\n    \"\"\"\n    Compute the moving average of a numerical sequence.\n\n    For each contiguous window of length `window_size`, the arithmetic mean\n    of the values is calculated. The result contains one average for every\n    valid window position, preserving the order of the original data.\n\n    Args:\n        data: A non-empty list of numeric values (int or float).\n        window_size: A positive integer not exceeding the length of `data`.\n\n    Returns:\n        A list of float values representing the moving averages.\n\n    Raises:\n        TypeError: If `data` is not a list or contains non-numeric values,\n                   or if `window_size` is not an integer.\n        ValueError: If `data` is empty, `window_size` is non-positive, or\n                    `window_size` exceeds the length of `data`.\n    \"\"\"\n    # --- input validation ---\n    if not isinstance(data, list):\n        raise TypeError(\"data must be a list\")\n    if not all(isinstance(x, (int, float)) for x in data):\n        raise TypeError(\"all elements in data must be int or float\")\n    if not isinstance(window_size, int):\n        raise TypeError(\"window_size must be an integer\")\n    if window_size <= 0:\n        raise ValueError(\"window_size must be a positive integer\")\n    if window_size > len(data):\n        raise ValueError(\"window_size cannot exceed the length of data\")\n\n    # --- compute moving averages ---\n    averages: list[float] = []\n    # Loop from i = 0 to len(data) - window_size (inclusive)\n    for i in range(len(data) - window_size + 1):\n        window = data[i : i + window_size]\n        avg = sum(window) / window_size\n        averages.append(avg)\n\n    return averages",
+    "json_schema": {
+      "name": "compute_moving_average",
+      "description": "Compute the moving average of a numerical sequence.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "description": ""
+          },
+          "window_size": {
+            "type": "integer",
+            "description": ""
+          }
+        },
+        "required": [
+          "data",
+          "window_size"
+        ]
+      }
+    }
+  }
+}

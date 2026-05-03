@@ -1,0 +1,8 @@
+{
+  "__function_name": "filter_csv_names_by_score",
+  "csv_text": "example",
+  "threshold": 1.0,
+  "name_column": "example",
+  "score_column": "example",
+  "delimiter": "example"
+}

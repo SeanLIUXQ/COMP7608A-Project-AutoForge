@@ -1,0 +1,33 @@
+{
+  "name": "join_names_above_score_threshold",
+  "description": "Parse a CSV string, filter rows where a score column exceeds a threshold,",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "csv_text": {
+        "type": "string",
+        "description": ""
+      },
+      "threshold": {
+        "type": "number",
+        "description": ""
+      },
+      "name_col": {
+        "type": "string",
+        "description": ""
+      },
+      "score_col": {
+        "type": "string",
+        "description": ""
+      },
+      "separator": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "required": [
+      "csv_text",
+      "threshold"
+    ]
+  }
+}

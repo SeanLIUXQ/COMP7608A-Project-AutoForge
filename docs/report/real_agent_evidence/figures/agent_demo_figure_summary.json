@@ -1,0 +1,21 @@
+﻿{
+  "source_report": "evaluation\\results\\agent_demo_report_agent_20260502_074909.json",
+  "total_cases": 50,
+  "base_case_count": 10,
+  "repeats": 5,
+  "cold_success_rate": 1.0,
+  "cold_example_success_rate": 0.48,
+  "warm_success_rate": 0.92,
+  "warm_reuse_rate": 0.92,
+  "mean_cold_latency_s": 67.077,
+  "mean_warm_latency_s": 21.991,
+  "duration_minutes": 74.85,
+  "figures": {
+    "trial_csv": "docs\\report\\real_agent_evidence\\figures\\agent_demo_trials_flat.csv",
+    "repeat_summary_csv": "docs\\report\\real_agent_evidence\\figures\\agent_demo_repeat_summary.csv",
+    "cumulative_rates_png": "docs\\report\\real_agent_evidence\\figures\\agent_demo_cumulative_rates.png",
+    "latency_trend_png": "docs\\report\\real_agent_evidence\\figures\\agent_demo_latency_trend.png",
+    "family_rates_png": "docs\\report\\real_agent_evidence\\figures\\agent_demo_family_rates.png",
+    "latency_box_png": "docs\\report\\real_agent_evidence\\figures\\agent_demo_latency_distribution.png"
+  }
+}
