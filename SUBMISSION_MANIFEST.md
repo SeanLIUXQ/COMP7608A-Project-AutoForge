@@ -23,7 +23,7 @@ This cleaned repository contains the files needed to run, verify, and review Aut
 
 ## Report And Evidence
 
-- `docs/Project_Report_Final_EN.pdf`: final project report.
+- `docs/Project_Report_AutoForge.pdf`: final project report.
 - `docs/Project_Report_Final_EN.md`: report source text.
 - `docs/Project_Proposal_AutoForge.pdf`: original project proposal.
 - `evaluation/results/`: selected final benchmark and real-agent result JSON files.

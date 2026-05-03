@@ -134,7 +134,7 @@ The normal TA verification path remains local and key-free.
 
 Key files:
 
-- `docs/Project_Report_Final_EN.pdf`
+- `docs/Project_Report_AutoForge.pdf`
 - `docs/Project_Report_Final_EN.md`
 - `docs/Project_Proposal_AutoForge.pdf`
 - `docs/report/real_agent_evidence/README.md`
@@ -150,7 +150,7 @@ Figure and screenshot evidence:
 
 ## Notes On Scope
 
-- The default app path is deterministic and can be validated without a API key.
+- The default app path is deterministic and can be validated without an API key.
 - Real agent forging is optional because it consumes tokens and depends on external LLM availability.
 - Vector retrieval is disabled by default to avoid first-run model downloads. Enable it with `AUTOFORGE_ENABLE_VECTOR_STORE=1`.
 - `.env`, virtual environments, caches, runtime logs, and local ChromaDB state should not be committed.

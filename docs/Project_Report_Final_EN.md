@@ -2,7 +2,7 @@
 
 **Course:** COMP7608A Large Language Models  
 **Project Report**  
-**Repository:** https://github.com/SeanLIUXQ/autoforge
+**Code Repository:** https://github.com/SeanLIUXQ/COMP7608A-Project-AutoForge.git
 
 | Name | Student ID | Primary Responsibility |
 |---|---:|---|
@@ -144,7 +144,24 @@ flowchart LR
 
 The planner and coder are LLM-driven agents, while the verifier and packager are deterministic control agents. This division is important: the LLM is used for creative program synthesis, but acceptance and packaging are controlled by reproducible code. If verification fails, the system feeds typed error information back to the coder, allowing repair attempts within a bounded retry loop.
 
-### 4.4 Sandbox and Safety
+### 4.4 Specific Model Implementation
+
+The implemented model path is a Planner-Coder-centered multi-agent framework backed by DeepSeek `deepseek-v4-pro` for the real LLM experiment. The word "model" in this project refers not only to the base LLM, but also to the concrete agent workflow, retrieval policy, verification contract, and tool artifact format used to turn natural-language tasks into reusable executable tools.
+
+| Component | Concrete Implementation |
+|---|---|
+| Base LLM for real-agent runs | DeepSeek `deepseek-v4-pro`, configured through `LLM_PROVIDER=deepseek` and `LLM_MODEL_NAME=deepseek-v4-pro`. |
+| Agent framework | Planner-Coder-centered forge pipeline implemented in `agents/forge_pipeline.py`. |
+| LLM-driven agents | Planner (`agents/planner.py`) produces implementation steps and function names; Coder (`agents/coder.py`) synthesizes reusable Python source code. |
+| Deterministic control agents | Verifier (`agents/verifier.py`) runs static/sandbox checks and example tests; Packager (`agents/packager.py`) writes deployable skill bundles. |
+| Retrieval policy | Tool-RAG registry search with threshold routing, exposed through backend strategies `full`, `registry_only`, `no_retrieval`, and `agent`. |
+| Execution backend | Local sandbox for default verification; Docker sandbox for real-agent evidence and generated-code safety checks. |
+| Prompt design | Planner, Coder, and Verifier prompts are stored under `agents/prompts/` and summarized in Appendix A. |
+| Generated artifact | A reusable tool bundle containing `tool.py`, `schema.json`, `metadata.json`, `README.md`, `requirements.txt`, and `example_input.json`. |
+
+The input to the model path is a natural-language task plus optional structured payload. The output is not only an answer, but a packaged tool that can be registered and retrieved later. This implementation choice is central to AutoForge: the LLM performs open-ended synthesis during cold forge, while deterministic components decide whether the generated code is acceptable. As a result, the system can report both generation behavior and reuse behavior as separate measurable outcomes.
+
+### 4.5 Sandbox and Safety
 
 Generated code is risky if executed without controls. AutoForge mitigates this risk through:
 
@@ -165,7 +182,7 @@ For the real LLM agent experiment, Docker sandboxing was enabled with image `aut
 
 This evidence is stored in `docs/report/real_agent_evidence/docker_sandbox/docker_sandbox_verification.json`, making the sandbox claim reproducible rather than purely descriptive.
 
-### 4.5 API, MCP, and Frontend
+### 4.6 API, MCP, and Frontend
 
 The backend exposes health, tool listing, tool inspection, and query endpoints through FastAPI. Newly packaged tools can also be registered as dynamic tool routes, so generated tools behave more like deployable services than temporary snippets.
 
@@ -354,11 +371,11 @@ Registry-only execution is too strict for complete coverage. The `registry_only`
 
 ### 7.3 What Surprised Us
 
-The strongest surprise was that real cold forge performance was more stable than expected. We anticipated more LLM variability across 50 repeated generations, but the cold forge stage succeeded every time under Docker sandbox verification.
+The strongest surprise was that real cold forge performance was more stable than expected. We anticipated more LLM variability across 50 repeated generations, but the cold forge stage succeeded every time under Docker sandbox verification. The likely reason is that the task scope was deliberately constrained to deterministic Python functions with clear input/output contracts, and the Planner-Coder-Verifier separation gave the model structured guidance plus immediate executable feedback.
 
-Another surprise was that the bottleneck moved from code generation to reuse orchestration. Once the agent can generate working functions, the next hard problem is making future natural-language requests invoke the right generated tool with the right structured payload.
+Another surprise was that the bottleneck moved from code generation to reuse orchestration. Once the agent can generate working functions, the next hard problem is making future natural-language requests invoke the right generated tool with the right structured payload. This happened because warm reuse depends on several non-generative components at once: retrieval scoring, schema alignment, payload extraction, and exact output normalization. A correct generated tool is therefore necessary but not sufficient for successful reuse.
 
-Finally, threshold sensitivity was clearer than expected. A strict threshold of 0.85 removed fast-path reuse entirely in the sweep, while lower thresholds increased fast-path use without producing fast incorrect cases in this benchmark.
+Finally, threshold sensitivity was clearer than expected. A strict threshold of 0.85 removed fast-path reuse entirely in the sweep, while lower thresholds increased fast-path use without producing fast incorrect cases in this benchmark. The reason is that the benchmark tasks are semantically related but often phrased with different surface forms; a high threshold over-penalizes paraphrases, while a moderate threshold better captures reusable intent without accepting wrong tools in this controlled dataset.
 
 ## 8. Limitations
 

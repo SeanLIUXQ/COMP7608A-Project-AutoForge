@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-03T04:46:50.964729+00:00",
+  "timestamp": "2026-05-03T05:59:07.807934+00:00",
   "catalog_count": 6,
   "catalog_sample": [
     {
@@ -66,19 +66,19 @@
     "result": "tilmaerts",
     "stdout": "tilmaerts\n",
     "stderr": "",
-    "execution_time_ms": 124.50480000006792
+    "execution_time_ms": 146.52639999985695
   },
   "natural_language_query": {
     "path_taken": "fast",
     "result": "tilmaerts",
-    "total_latency_ms": 107.20669999955135,
+    "total_latency_ms": 127.76819999999134,
     "tool_id": "autoforge-text-basic-v1",
     "tool_name": "text_basic_query_tool",
     "strategy": "full",
     "reused_existing_tool": true,
-    "retrieval_latency_ms": 0.5203000000619795,
+    "retrieval_latency_ms": 0.631299999440671,
     "forge_latency_ms": null,
-    "execution_latency_ms": 106.31449999982578,
+    "execution_latency_ms": 126.70190000062576,
     "search_score": 0.8093,
     "retrieval_trace": [
       {
